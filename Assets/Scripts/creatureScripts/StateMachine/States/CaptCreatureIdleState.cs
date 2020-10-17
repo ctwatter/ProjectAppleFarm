@@ -22,9 +22,8 @@ public class CaptCreatureIdleState : CapturedCreatureBaseState
     }
 
     public override Type Tick() {
-        Vector3 desiredPos = new Vector3(ObjToFollow.transform.position.x, base.gameObject.transform.position.y, ObjToFollow.transform.position.z);
-        if(base.gameObject.transform.position != desiredPos) {
-            return(typeof(CaptCreatureFollowState));
+        if(!captCreature.isInTrail && !captCreature.isInPlayerRadius){
+           return(typeof(CaptCreatureFollowState));
         }
         //do idle anim
         return null;
