@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{887922d3-6ffe-49c4-8c69-0b590f5f996c}">
+		<property name="assetPath">
+			<value>chords_transition.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.750204081632653</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f1fe780b-29aa-476a-a34e-3a25937f9a87}</destination>
+		</relationship>
+	</object>
+</objects>
