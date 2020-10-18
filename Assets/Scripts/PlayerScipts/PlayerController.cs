@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     Vector2 movementVel;
     CharacterController charController;
     Vector3 v3Vel;
+    Vector3 gravity;
     
     
     
@@ -27,7 +28,16 @@ public class PlayerController : MonoBehaviour
     {
         //character controller 
         v3Vel = new Vector3(movementVel.x, 0, movementVel.y);
+
+        if(!charController.isGrounded) {
+            gravity += Physics.gravity * Time.deltaTime;
+        } else{
+            gravity = Vector3.zero;
+        }
+
         charController.Move(v3Vel * speed * Time.deltaTime);
+        charController.Move(gravity * Time.deltaTime);
+
         if(movementVel != Vector2.zero) {
             transform.forward = Vector3.Slerp(transform.forward, v3Vel, Time.deltaTime * turnSpeed);
         }
