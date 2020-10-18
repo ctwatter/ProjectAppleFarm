@@ -12,6 +12,7 @@ public class CaptCreatureFollowState : CapturedCreatureBaseState
     private GameObject ObjToFollow;
     private float distanceToPlayer;
     private float wantedDistance;
+    private float rotationSpeed;
     // private NavMeshAgent agent;
     // private float moveSpeed = 3f;
     // private float angularSpeed = 90f; //deg/s
@@ -20,6 +21,7 @@ public class CaptCreatureFollowState : CapturedCreatureBaseState
 
     public CaptCreatureFollowState(CaptCreature _captCreature) : base(_captCreature.gameObject){
         captCreature = _captCreature;
+        
         // agent = base.gameObject.GetComponent<NavMeshAgent>();
         // ObjToFollow = captCreature.followPoint;
         // agent.autoBraking = true;
@@ -42,20 +44,23 @@ public class CaptCreatureFollowState : CapturedCreatureBaseState
                 captCreature.rigidbody.velocity = Vector3.zero;
                 return typeof(CaptCreatureIdleState);
             }
-            captCreature.transform.rotation = captCreature.Player.transform.rotation;
+            Quaternion desiredLook = captCreature.Player.transform.rotation;
+            captCreature.transform.rotation = Quaternion.Slerp(captCreature.transform.rotation, desiredLook, Time.deltaTime * captCreature.rotationSpeed);
             captCreature.rigidbody.velocity = (captCreature.transform.rotation * Vector3.forward * captCreature.creatureMoveSpeed );
             //face player direction, try to get 
-        } else {
-            if(captCreature.isInPlayerRadius) {
+        } else if(captCreature.isInPlayerRadius && !captCreature.isInTrail) {
                 Debug.Log("1");
-                captCreature.transform.rotation = new Quaternion(captCreature.Player.transform.rotation.x, captCreature.Player.transform.rotation.y + 180f, captCreature.Player.transform.rotation.z, captCreature.Player.transform.rotation.w);
-                captCreature.rigidbody.velocity = (captCreature.transform.rotation * Vector3.forward * captCreature.creatureMoveSpeed  );
-            } else {
+                Quaternion desiredLook = new Quaternion(captCreature.Player.transform.rotation.x, captCreature.Player.transform.rotation.y, captCreature.Player.transform.rotation.z, captCreature.Player.transform.rotation.w);
+                
+                //captCreature.transform.rotation = Quaternion.Slerp(captCreature.transform.rotation, Quaternion.Inverse(desiredLook), Time.deltaTime * captCreature.rotationSpeed);
+                //captCreature.rigidbody.velocity = (captCreature.transform.rotation * Vector3.forward * captCreature.creatureMoveSpeed  );
+        } else {
                 Debug.Log("2");
-                captCreature.transform.LookAt(captCreature.Player.transform, Vector3.up);
+                Vector3 desiredLook = new Vector3(captCreature.Player.transform.position.x, captCreature.transform.position.y, captCreature.Player.transform.position.z);
+                captCreature.transform.LookAt(desiredLook, Vector3.up);
                 captCreature.rigidbody.velocity = (captCreature.transform.rotation * Vector3.forward * captCreature.creatureMoveSpeed );
-            }
         }
+     
         
         
         

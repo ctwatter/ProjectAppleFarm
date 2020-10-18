@@ -12,6 +12,7 @@ public class CaptCreature : MonoBehaviour
     public GameObject followPoint;
     public Rigidbody rigidbody;
     public float creatureMoveSpeed = 10f;
+    public float rotationSpeed = 10f;
     
 
     public bool isInTrail;

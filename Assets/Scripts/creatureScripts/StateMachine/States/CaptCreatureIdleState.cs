@@ -22,7 +22,7 @@ public class CaptCreatureIdleState : CapturedCreatureBaseState
     }
 
     public override Type Tick() {
-        if(!captCreature.isInTrail && !captCreature.isInPlayerRadius){
+        if(!captCreature.isInPlayerRadius){
            return(typeof(CaptCreatureFollowState));
         }
         //do idle anim
