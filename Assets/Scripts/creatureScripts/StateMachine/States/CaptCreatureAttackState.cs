@@ -1,17 +1,15 @@
-﻿//Author : Colin
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.AI;
 
-public class CaptCreatureIdleState : CapturedCreatureBaseState
+public class CaptCreatureAttackState : CapturedCreatureBaseState
 {
     private CaptCreature captCreature;
     private GameObject ObjToFollow;
-    private NavMeshAgent agent;
 
-    public CaptCreatureIdleState(CaptCreature _captCreature) : base(_captCreature.gameObject){
+
+    public CaptCreatureAttackState(CaptCreature _captCreature) : base(_captCreature.gameObject){
         captCreature = _captCreature;
         //ObjToFollow = captCreature.followPoint;
     }
@@ -19,12 +17,11 @@ public class CaptCreatureIdleState : CapturedCreatureBaseState
 
     public override void Enter(){
         //enter anim
+        //captCreature.creatureData.attack1 -> ranged/melee ->
     }
 
     public override Type Tick() {
-        if(!captCreature.isInPlayerRadius){
-           return(typeof(CaptCreatureFollowState));
-        }
+
         //do idle anim
         return null;
     }
