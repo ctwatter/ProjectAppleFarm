@@ -13,7 +13,7 @@ public class CaptCreatureIdleState : CapturedCreatureBaseState
 
     public CaptCreatureIdleState(CaptCreature _captCreature) : base(_captCreature.gameObject){
         captCreature = _captCreature;
-        ObjToFollow = captCreature.followPoint;
+        //ObjToFollow = captCreature.followPoint;
     }
 
 

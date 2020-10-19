@@ -61,14 +61,6 @@ public class CaptCreatureFollowState : CapturedCreatureBaseState
                 captCreature.rigidbody.velocity = (captCreature.transform.rotation * Vector3.forward * captCreature.creatureMoveSpeed );
         }
      
-        
-        
-        
-        
-        
-        
-        
-        
         // //Debug.Log("doing follow state");
         // //base.gameObject.transform.LookAt(ObjToFollow.transform, Vector3.up);
         // Vector3 desiredPos = new Vector3(ObjToFollow.transform.position.x, base.gameObject.transform.position.y, ObjToFollow.transform.position.z);
