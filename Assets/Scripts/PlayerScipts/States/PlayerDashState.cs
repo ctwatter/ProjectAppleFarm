@@ -31,7 +31,7 @@ public class PlayerDashState : PlayerBaseState
     public override void PhysicsTick()
     {
         playerController.doMovement(10f);
-        playerController.doRotation(1f);
+        playerController.doRotation(0f);
     }
 
     public override void Exit(){

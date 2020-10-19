@@ -33,7 +33,7 @@ public class PlayerAttack1State : PlayerBaseState
     public override void PhysicsTick()
     {
         playerController.doMovement(0.1f);
-        playerController.doRotation(1f);
+        playerController.doRotation(0.1f);
     }
 
     public override void Exit(){
