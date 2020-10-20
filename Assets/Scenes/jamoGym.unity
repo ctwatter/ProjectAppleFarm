@@ -1313,8 +1313,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3069e17086869241ba840a479e6d2a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 1661788134}
   speed: 10
   turnSpeed: 10
+  playerBasicAttack: 0
+  playerDash: 0
+  playerInteract: 0
 --- !u!143 &1661788133
 CharacterController:
   m_ObjectHideFlags: 0

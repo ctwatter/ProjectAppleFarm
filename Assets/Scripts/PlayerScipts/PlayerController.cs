@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public PlayerStateMachine playerStateMachine => GetComponent<PlayerStateMachine>();
+    public Animator playerAnimator; 
     public float speed = 1f;
     public float turnSpeed = 0.15f;
     Rigidbody rb;
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         //rb = GetComponent<Rigidbody>();
         charController = GetComponent<CharacterController>();
+       
     }
 
     // Update is called once per frame

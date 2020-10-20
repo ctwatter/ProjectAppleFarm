@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//Colin and Jamo
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -6,6 +7,7 @@ using System;
 public class PlayerAttack1State : PlayerBaseState
 {
     private PlayerController playerController;
+    public Animator playerAnimator => playerController.playerAnimator;
 
 
     public PlayerAttack1State(PlayerController _playerController) : base(_playerController.gameObject) {
@@ -22,6 +24,7 @@ public class PlayerAttack1State : PlayerBaseState
         return typeof(PlayerIdleState);
         //disable movement?
         //trigger attack animation
+        playerAnimator.SetTrigger("attack1");
         //apply hitbox on area
         //
         //on animation done enable movement/
