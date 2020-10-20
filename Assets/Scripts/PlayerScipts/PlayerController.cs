@@ -8,7 +8,9 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public PlayerStateMachine playerStateMachine => GetComponent<PlayerStateMachine>();
-    public Animator playerAnimator; 
+    public Animator playerAnimator;
+
+    public bool isAnimDone = false; 
     public float speed = 1f;
     public float turnSpeed = 0.15f;
     Rigidbody rb;
@@ -77,7 +79,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnMovement(InputValue value){
-        //Debug.Log(value.Get<Vector2>());
+        Debug.Log(value.Get<Vector2>());
         movementVel = value.Get<Vector2>();
         movementVel.Normalize();
         
@@ -90,6 +92,12 @@ public class PlayerController : MonoBehaviour
     void OnAttack1(){
         playerBasicAttack = true;
     }
+
+    public void punch1AnimDone()
+    {
+        isAnimDone = true;
+    }
+
     
     void OnAttack2(){
         //attack based on creature

@@ -6,6 +6,8 @@ using System;
 
 public class PlayerAttack1State : PlayerBaseState
 {
+   
+
     private PlayerController playerController;
     public Animator playerAnimator => playerController.playerAnimator;
 
@@ -17,20 +19,30 @@ public class PlayerAttack1State : PlayerBaseState
 
     public override void Enter(){
         //enter anim
+        playerAnimator.SetTrigger("attack1");
     }
 
     public override Type Tick() {
         Debug.Log("Attack State");
-        return typeof(PlayerIdleState);
+        if(playerController.isAnimDone)
+        {
+            playerController.isAnimDone = false;
+            return typeof(PlayerIdleState);
+        } 
         //disable movement?
         //trigger attack animation
-        playerAnimator.SetTrigger("attack1");
+        
         //apply hitbox on area
         //
         //on animation done enable movement/
         
         //do idle anim
         return null;
+    }
+
+    public void punch1AnimDone()
+    {
+        playerController.isAnimDone = true;
     }
 
     public override void PhysicsTick()
