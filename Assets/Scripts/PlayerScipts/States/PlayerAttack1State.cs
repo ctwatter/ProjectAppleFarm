@@ -3,10 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.InputSystem;
 
 public class PlayerAttack1State : PlayerBaseState
 {
-   
+    // bool punchAlternate = true;
+    // public int noOfPresses = 0;
+    // float lastPressTime = 0;
+    // public float maxComboDelay;
 
     private PlayerController playerController;
     public Animator playerAnimator => playerController.playerAnimator;
@@ -19,11 +23,15 @@ public class PlayerAttack1State : PlayerBaseState
 
     public override void Enter(){
         //enter anim
-        playerAnimator.SetTrigger("attack1");
+       
+            playerAnimator.SetTrigger("attack1");
+            //punchAlternate = !punchAlternate;
+
     }
 
     public override Type Tick() {
         Debug.Log("Attack State");
+        
         if(playerController.isAnimDone)
         {
             playerController.isAnimDone = false;
