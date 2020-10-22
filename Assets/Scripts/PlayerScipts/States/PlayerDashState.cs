@@ -6,6 +6,7 @@ using System;
 public class PlayerDashState : PlayerBaseState
 {
     private PlayerController playerController;
+    
 
 
     public PlayerDashState(PlayerController _playerController) : base(_playerController.gameObject) {
