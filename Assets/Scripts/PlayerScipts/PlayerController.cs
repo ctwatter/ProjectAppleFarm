@@ -89,11 +89,4 @@ public class PlayerController : MonoBehaviour
         playerBasicAttack = true;
     }
     
-    void OnAttack2(){
-        //attack based on creature
-    }
-
-    void OnAttack3(){
-        //attack based on creature
-    }
 }

@@ -11,7 +11,6 @@ public class CaptCreatureAttackState : CapturedCreatureBaseState
 
     public CaptCreatureAttackState(CaptCreature _captCreature) : base(_captCreature.gameObject){
         captCreature = _captCreature;
-        //ObjToFollow = captCreature.followPoint;
     }
 
 

@@ -8,6 +8,7 @@ public class CaptCreature : MonoBehaviour
 {
     public CapturedCreatureStateMachine capturedCreatureStateMachine => GetComponent<CapturedCreatureStateMachine>();
     public GameObject Player;
+    public PlayerController playerController;
     public creatureData creatureData;
     public GameObject followPoint;
     public Rigidbody rigidbody;
@@ -20,6 +21,7 @@ public class CaptCreature : MonoBehaviour
 
     private void Awake() {
         rigidbody = GetComponent<Rigidbody>();
+        playerController = Player.GetComponent<PlayerController>();
         InitializeStateMachine();
 
     }
@@ -30,6 +32,17 @@ public class CaptCreature : MonoBehaviour
             {typeof(CaptCreatureFollowState), new CaptCreatureFollowState(this)}
         };
         GetComponent<CapturedCreatureStateMachine>().SetStates(states);
+    }
+    void OnAttack2(){
+
+
+    }
+    
+    
+    void OnAttack3(){
+
+        //attack based on creature
+
     }
 
     
