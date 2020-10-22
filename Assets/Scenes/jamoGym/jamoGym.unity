@@ -3794,6 +3794,8 @@ MonoBehaviour:
   isAnimDone: 0
   speed: 10
   turnSpeed: 10
+  dashSpeed: 10
+  dashTime: 0.1
   playerBasicAttack: 0
   playerDash: 0
   playerInteract: 0

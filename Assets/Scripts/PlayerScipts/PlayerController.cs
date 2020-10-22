@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public bool isAnimDone = false; 
     public float speed = 1f;
     public float turnSpeed = 0.15f;
+    public float dashSpeed;
+    public float dashTime;
     Rigidbody rb;
     Vector2 movementVel;
     CharacterController charController;
@@ -76,6 +78,11 @@ public class PlayerController : MonoBehaviour
         if(movementVel != Vector2.zero) {
             transform.forward = Vector3.Slerp(transform.forward, v3Vel, Time.deltaTime * turnSpeed * rotationModifier);
         }
+    }
+
+    public void setRotation()
+    {
+        transform.forward = v3Vel;
     }
 
     void OnMovement(InputValue value){
