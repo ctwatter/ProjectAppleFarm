@@ -9,12 +9,10 @@ public class EnemyAttackState : EnemyBaseState
     private Enemy enemy;
     private GameObject ObjToFollow;
 
-
     public EnemyAttackState(Enemy _enemy) : base(_enemy.gameObject){
         enemy = _enemy;
         //ObjToFollow = enemy.followPoint;
     }
-
 
     public override void Enter(){
         //enter anim

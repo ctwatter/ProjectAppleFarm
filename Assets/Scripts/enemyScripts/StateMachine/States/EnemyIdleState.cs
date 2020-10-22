@@ -22,7 +22,7 @@ public class EnemyIdleState : EnemyBaseState
     }
 
     public override Type Tick() {
-        if(!enemy.isInPlayerRadius){
+        if(enemy.attackArea.isPlayerInRadius){
            return(typeof(EnemyFollowState));
         }
         //do idle anim
