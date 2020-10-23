@@ -8,8 +8,17 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public PlayerStateMachine playerStateMachine => GetComponent<PlayerStateMachine>();
+    public Animator playerAnimator;
+
+    public bool isAnimDone = false; 
     public float speed = 1f;
     public float turnSpeed = 0.15f;
+
+    public float dashSpeed;
+    public float dashTime;
+    public float dashDelay = 1.2f;
+    public float dashStart = 2;
+
     Rigidbody rb;
     Vector2 movementVel;
     CharacterController charController;
@@ -37,6 +46,8 @@ public class PlayerController : MonoBehaviour
     {
         //rb = GetComponent<Rigidbody>();
         charController = GetComponent<CharacterController>();
+        dashStart = Time.time;
+       
     }
 
     // Update is called once per frame
@@ -74,20 +85,39 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void setRotation()
+    {
+        transform.forward = v3Vel;
+    }
+
     void OnMovement(InputValue value){
-        //Debug.Log(value.Get<Vector2>());
+        Debug.Log(value.Get<Vector2>());
         movementVel = value.Get<Vector2>();
         movementVel.Normalize();
         
     }
 
+//dash
     void OnInteract(){
-        playerDash = true;
+        
+        if(Time.time > dashStart + dashDelay)
+        {
+            dashStart = Time.time;
+            playerDash = true;
+        }
+        
+        
     }
 
     void OnAttack1(){
         playerBasicAttack = true;
     }
+
+    public void punch1AnimDone()
+    {
+        isAnimDone = true;
+    }
+
     
     void OnAttack2(){
         //attack based on creature

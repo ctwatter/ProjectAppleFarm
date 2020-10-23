@@ -5,7 +5,7 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
 
-public class PlayerAttack1State : PlayerBaseState
+public class BasicHitState_0 : PlayerBaseState
 {
     // bool punchAlternate = true;
     // public int noOfPresses = 0;
@@ -16,7 +16,7 @@ public class PlayerAttack1State : PlayerBaseState
     public Animator playerAnimator => playerController.playerAnimator;
 
 
-    public PlayerAttack1State(PlayerController _playerController) : base(_playerController.gameObject) {
+    public BasicHitState_0(PlayerController _playerController) : base(_playerController.gameObject) {
         playerController = _playerController;
     }
 
