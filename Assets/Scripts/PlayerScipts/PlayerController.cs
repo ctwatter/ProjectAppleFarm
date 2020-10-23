@@ -13,8 +13,12 @@ public class PlayerController : MonoBehaviour
     public bool isAnimDone = false; 
     public float speed = 1f;
     public float turnSpeed = 0.15f;
+
     public float dashSpeed;
     public float dashTime;
+    public float dashDelay = 1.2f;
+    public float dashStart = 2;
+
     Rigidbody rb;
     Vector2 movementVel;
     CharacterController charController;
@@ -42,6 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         //rb = GetComponent<Rigidbody>();
         charController = GetComponent<CharacterController>();
+        dashStart = Time.time;
        
     }
 
@@ -92,8 +97,16 @@ public class PlayerController : MonoBehaviour
         
     }
 
+//dash
     void OnInteract(){
-        playerDash = true;
+        
+        if(Time.time > dashStart + dashDelay)
+        {
+            dashStart = Time.time;
+            playerDash = true;
+        }
+        
+        
     }
 
     void OnAttack1(){
