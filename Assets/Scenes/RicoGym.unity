@@ -132,9 +132,9 @@ GameObject:
   m_Component:
   - component: {fileID: 364126384}
   - component: {fileID: 364126383}
-  - component: {fileID: 364126382}
   - component: {fileID: 364126385}
   - component: {fileID: 364126386}
+  - component: {fileID: 364126382}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -142,14 +142,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &364126382
-AudioListener:
+--- !u!114 &364126382
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364126381}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: -1
 --- !u!20 &364126383
 Camera:
   m_ObjectHideFlags: 0
@@ -1203,6 +1208,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   turnSpeed: 0.15
+  playerBasicAttack: 0
+  playerDash: 0
+  playerInteract: 0
 --- !u!54 &1661788133
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1219,6 +1227,75 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!1001 &1702149709
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1881732836050700762, guid: 966993fec94f43446ac4afc99a535b9f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.7206244
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881732836050700762, guid: 966993fec94f43446ac4afc99a535b9f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9494791
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881732836050700762, guid: 966993fec94f43446ac4afc99a535b9f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.0559616
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881732836050700762, guid: 966993fec94f43446ac4afc99a535b9f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881732836050700762, guid: 966993fec94f43446ac4afc99a535b9f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881732836050700762, guid: 966993fec94f43446ac4afc99a535b9f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881732836050700762, guid: 966993fec94f43446ac4afc99a535b9f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881732836050700762, guid: 966993fec94f43446ac4afc99a535b9f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881732836050700762, guid: 966993fec94f43446ac4afc99a535b9f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881732836050700762, guid: 966993fec94f43446ac4afc99a535b9f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881732836050700762, guid: 966993fec94f43446ac4afc99a535b9f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881732836050700767, guid: 966993fec94f43446ac4afc99a535b9f,
+        type: 3}
+      propertyPath: m_Name
+      value: FMOD Test
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 966993fec94f43446ac4afc99a535b9f, type: 3}
 --- !u!1 &1703099436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,6 +1431,11 @@ MonoBehaviour:
   Player: {fileID: 1661788126}
   creatureData: {fileID: 0}
   followPoint: {fileID: 1038070827}
+  rigidbody: {fileID: 0}
+  creatureMoveSpeed: 10
+  rotationSpeed: 10
+  isInTrail: 0
+  isInPlayerRadius: 0
 --- !u!114 &1703099443
 MonoBehaviour:
   m_ObjectHideFlags: 0
