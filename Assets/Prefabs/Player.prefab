@@ -591,7 +591,7 @@ GameObject:
   - component: {fileID: 5756408169539383538}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -698,7 +698,7 @@ MonoBehaviour:
   turnSpeed: 10
   dashSpeed: 10
   dashTime: 0.1
-  dashDelay: 1.2
+  dashDelay: 0.7
   dashStart: 2
   playerBasicAttack: 0
   playerDash: 0
