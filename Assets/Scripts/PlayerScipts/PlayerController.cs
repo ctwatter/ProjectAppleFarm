@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float dashTime;
     public float dashDelay = 1.2f;
     public float dashStart = 2;
+    public int dashCount = 0;
 
     Rigidbody rb;
     Vector2 movementVel;
@@ -97,16 +98,23 @@ public class PlayerController : MonoBehaviour
         
     }
 
-//dash
-    void OnInteract(){
+    //by Jamo
+    //allow for no more than two dashes in rapid succession
+    void OnInteract(){ //pressing dash button       
         
-        if(Time.time > dashStart + dashDelay)
+        if(Time.time > dashStart + dashDelay)//cant dash until more time than dash delay has elapsed,
         {
+            //takes dash start time
             dashStart = Time.time;
+            dashCount++;
             playerDash = true;
         }
-        
-        
+        else if(dashCount >= 1 )//if you have dashed once and are not past delay, you can dash a second time
+        {
+            dashCount = 0;
+            playerDash = true;          
+            
+        }             
     }
 
     void OnAttack1(){
