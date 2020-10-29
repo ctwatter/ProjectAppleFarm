@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PlayerStats : MonoBehaviour
+public class CreatureStats : MonoBehaviour
 {
 
     [SerializeField] private float maxHealth = 500;
