@@ -13,7 +13,13 @@ public class WeaponTriggers : MonoBehaviour
         if(other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<EnemyStats>().CurrHealth -= playerStats.damage;
-            //lower enemy health by playerStats attack damage
+            if(other.gameObject.GetComponent<EnemyStats>().CurrHealth <= 0)
+            {
+                Destroy(other.gameObject);
+            }
+            {
+
+            }
         }
     }
 }

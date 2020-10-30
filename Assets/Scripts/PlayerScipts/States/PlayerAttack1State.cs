@@ -27,8 +27,8 @@ public class PlayerAttack1State : PlayerBaseState
     public override void Enter(){
         //enter anim
            // playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-           // swordCollider = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CapsuleCollider>();
-            //swordCollider.enabled = true;
+            swordCollider = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CapsuleCollider>();
+            swordCollider.enabled = true;
             playerAnimator.SetTrigger("attack1");
             Debug.Log("assigned enter");
             //punchAlternate = !punchAlternate;
@@ -42,7 +42,7 @@ public class PlayerAttack1State : PlayerBaseState
         {
             
             playerController.isAnimDone = false;
-            //swordCollider.enabled = false;
+            swordCollider.enabled = false;
             Debug.Log("leaving");
             return typeof(PlayerIdleState);
         } 
