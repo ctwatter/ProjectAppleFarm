@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class CreatureStats : MonoBehaviour
+public class EnemyStats : MonoBehaviour
 {
 
     [SerializeField] private float maxHealth = 500;
@@ -42,8 +42,8 @@ public class CreatureStats : MonoBehaviour
     public float defense = 10;
     public float speed;
     public Slider slider;
-    public TextMeshProUGUI maxHealthUI;
-    public TextMeshProUGUI currHealthUI;
+    //public TextMeshProUGUI maxHealthUI;
+    //public TextMeshProUGUI currHealthUI;
 
     // Start is called before the first frame update
     void Start()
@@ -51,18 +51,11 @@ public class CreatureStats : MonoBehaviour
         currHealth = maxHealth;
     }
 
-    // updates health UI 
-    void Update()
-    {
-        slider.value = (currHealth / maxHealth) * 100;
-        currHealthUI.SetText((Mathf.Round(currHealth)).ToString());
-        maxHealthUI.SetText("/ " + maxHealth.ToString());
-    }
-
+    
     void healthUIUpdate()
     {
         slider.value = (currHealth / maxHealth) * 100;
-        currHealthUI.SetText((Mathf.Round(currHealth)).ToString());
-        maxHealthUI.SetText("/ " + maxHealth.ToString());
+       // currHealthUI.SetText((Mathf.Round(currHealth)).ToString());
+       // maxHealthUI.SetText("/ " + maxHealth.ToString());
     }
 }

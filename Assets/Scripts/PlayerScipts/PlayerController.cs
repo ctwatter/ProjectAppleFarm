@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnMovement(InputValue value){
-        Debug.Log(value.Get<Vector2>());
+        //Debug.Log(value.Get<Vector2>());
         movementVel = value.Get<Vector2>();
         movementVel.Normalize();
         

@@ -49,13 +49,13 @@ public class CaptCreatureFollowState : CapturedCreatureBaseState
             captCreature.rigidbody.velocity = (captCreature.transform.rotation * Vector3.forward * captCreature.creatureMoveSpeed );
             //face player direction, try to get 
         } else if(captCreature.isInPlayerRadius && !captCreature.isInTrail) {
-                Debug.Log("1");
+                //Debug.Log("1");
                 Quaternion desiredLook = new Quaternion(captCreature.Player.transform.rotation.x, captCreature.Player.transform.rotation.y, captCreature.Player.transform.rotation.z, captCreature.Player.transform.rotation.w);
                 
                 //captCreature.transform.rotation = Quaternion.Slerp(captCreature.transform.rotation, Quaternion.Inverse(desiredLook), Time.deltaTime * captCreature.rotationSpeed);
                 //captCreature.rigidbody.velocity = (captCreature.transform.rotation * Vector3.forward * captCreature.creatureMoveSpeed  );
         } else {
-                Debug.Log("2");
+                //Debug.Log("2");
                 Vector3 desiredLook = new Vector3(captCreature.Player.transform.position.x, captCreature.transform.position.y, captCreature.Player.transform.position.z);
                 captCreature.transform.LookAt(desiredLook, Vector3.up);
                 captCreature.rigidbody.velocity = (captCreature.transform.rotation * Vector3.forward * captCreature.creatureMoveSpeed );

@@ -13,7 +13,10 @@ public class PlayerAttack1State : PlayerBaseState
     // public float maxComboDelay;
 
     private PlayerController playerController;
+    private PlayerStats playerStats; 
     public Animator playerAnimator => playerController.playerAnimator;
+    //gets the swords collider, currently is a capsule
+    public CapsuleCollider swordCollider; 
 
 
     public PlayerAttack1State(PlayerController _playerController) : base(_playerController.gameObject) {
@@ -23,18 +26,24 @@ public class PlayerAttack1State : PlayerBaseState
 
     public override void Enter(){
         //enter anim
-       
+           // playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+           // swordCollider = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CapsuleCollider>();
+            //swordCollider.enabled = true;
             playerAnimator.SetTrigger("attack1");
+            Debug.Log("assigned enter");
             //punchAlternate = !punchAlternate;
 
     }
 
     public override Type Tick() {
-        Debug.Log("Attack State");
+        //Debug.Log("Attack State");
         
         if(playerController.isAnimDone)
         {
+            
             playerController.isAnimDone = false;
+            //swordCollider.enabled = false;
+            Debug.Log("leaving");
             return typeof(PlayerIdleState);
         } 
         //disable movement?
@@ -58,6 +67,9 @@ public class PlayerAttack1State : PlayerBaseState
         playerController.doMovement(0.1f);
         playerController.doRotation(0.1f);
     }
+
+    //sword collides with enemy
+    
 
     public override void Exit(){
         //exit anim
