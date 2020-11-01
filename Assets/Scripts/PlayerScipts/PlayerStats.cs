@@ -54,9 +54,7 @@ public class PlayerStats : MonoBehaviour
     // updates health UI 
     void Update()
     {
-        slider.value = (currHealth / maxHealth) * 100;
-        currHealthUI.SetText((Mathf.Round(currHealth)).ToString());
-        maxHealthUI.SetText("/ " + maxHealth.ToString());
+       
     }
 
     void healthUIUpdate()
@@ -65,4 +63,15 @@ public class PlayerStats : MonoBehaviour
         currHealthUI.SetText((Mathf.Round(currHealth)).ToString());
         maxHealthUI.SetText("/ " + maxHealth.ToString());
     }
+
+    public void takeDamage(float amount)
+    {
+        CurrHealth -= amount;
+        if(CurrHealth <= 0)
+        {
+            //trigger loss
+        }
+    }
+
+
 }
