@@ -58,4 +58,13 @@ public class EnemyStats : MonoBehaviour
        // currHealthUI.SetText((Mathf.Round(currHealth)).ToString());
        // maxHealthUI.SetText("/ " + maxHealth.ToString());
     }
+
+    public void takeDamage(float amount)
+    {
+        CurrHealth -= amount;
+        if(CurrHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
