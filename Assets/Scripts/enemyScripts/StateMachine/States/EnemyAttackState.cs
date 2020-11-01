@@ -8,6 +8,7 @@ public class EnemyAttackState : EnemyBaseState
 {
     private Enemy enemy;
     private GameObject ObjToFollow;
+    
 
     public EnemyAttackState(Enemy _enemy) : base(_enemy.gameObject){
         enemy = _enemy;
@@ -17,10 +18,15 @@ public class EnemyAttackState : EnemyBaseState
     public override void Enter(){
         //enter anim
         //enemy.enemyData.attack1 -> ranged/melee ->
+        enemy.animator.SetTrigger("attack");
     }
 
     public override Type Tick() {
-
+        if(!enemy.animator.GetCurrentAnimatorStateInfo(0).IsTag("attack")) { 
+            
+            Debug.Log("animation finished"); 
+            return typeof(EnemyFollowState); 
+        }
         //do idle anim
         return null;
     }
