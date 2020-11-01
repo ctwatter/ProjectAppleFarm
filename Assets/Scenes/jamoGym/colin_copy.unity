@@ -4057,6 +4057,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1112690979}
+    - target: {fileID: 1975994471650076520, guid: 7028ae053c257374180cf4ab0f92d965,
+        type: 3}
+      propertyPath: creatureMoveSpeed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1975994471650076523, guid: 7028ae053c257374180cf4ab0f92d965,
         type: 3}
       propertyPath: m_LocalPosition.x

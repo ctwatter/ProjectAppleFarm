@@ -27,7 +27,7 @@ public class CaptCreatureAttackState : CapturedCreatureBaseState
         foreach (var hitCollider in hitColliders)
         { 
             Debug.Log("HIT ENEMY");
-            hitCollider.gameObject.GetComponent<EnemyStats>().CurrHealth -= attackInfo.baseDmg;
+            hitCollider.gameObject.GetComponent<EnemyStats>().takeDamage(attackInfo.baseDmg);
             //hitCollider.gameObject.GetComponent<enemyData>().Something;
         }
        
