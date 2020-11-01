@@ -35,7 +35,7 @@ public class EnemyFollowState : EnemyBaseState
 
             //Set state to attackState once close enough
             // Debug.Log("Attacking player");
-            if(Vector3.Distance(enemy.transform.position, enemy.Player.transform.position) < 2){
+            if(Vector3.Distance(enemy.transform.position, enemy.Player.transform.position) < enemy.attackStoppingDistance){
                 enemy.rigidbody.velocity = Vector3.zero;
                 return typeof(EnemyAttackState);
             }

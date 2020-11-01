@@ -20,7 +20,7 @@ public class creatureData : ScriptableObject
     public float moveSpeed;
 
     public CreatureType CreatureType;
-    public creatureAttackBase attack1;
+    public creatureAttackMelee attack1;
     public creatureAttackBase attack2;
 
 }

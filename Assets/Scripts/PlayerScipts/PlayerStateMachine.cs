@@ -31,7 +31,8 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        currState.PhysicsTick();
+        
+        currState?.PhysicsTick();
     }
 
     private void SwitchToNewState(Type nextState){

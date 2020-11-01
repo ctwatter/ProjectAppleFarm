@@ -589,9 +589,10 @@ GameObject:
   - component: {fileID: 5756408169539383536}
   - component: {fileID: 5756408169539383539}
   - component: {fileID: 5756408169539383538}
+  - component: {fileID: -8186505115073490797}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -698,8 +699,9 @@ MonoBehaviour:
   turnSpeed: 10
   dashSpeed: 10
   dashTime: 0.1
-  dashDelay: 1.2
+  dashDelay: 0.7
   dashStart: 2
+  dashCount: 0
   playerBasicAttack: 0
   playerDash: 0
   playerInteract: 0
@@ -783,6 +785,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00ca78bbe1fbf34babc4837259cdd63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8186505115073490797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5756408169539383499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394615d534bf0e34c812f235a6c075fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currHealth: 0
+  damage: 10
+  defense: 10
+  speed: 0
 --- !u!1 &5756408169717145685
 GameObject:
   m_ObjectHideFlags: 0

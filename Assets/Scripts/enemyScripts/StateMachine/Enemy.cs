@@ -16,6 +16,10 @@ public class Enemy : MonoBehaviour
     public float enemyMoveSpeed = 10f;
     public float rotationSpeed = 10f;
 
+    public float attackStoppingDistance;
+
+    public Animator animator;
+
     private void Awake() {
         rigidbody = GetComponent<Rigidbody>();
         spawnPoint = transform.position;
@@ -25,6 +29,7 @@ public class Enemy : MonoBehaviour
     private void InitializeStateMachine(){
         var states = new Dictionary<Type, EnemyBaseState>(){
             {typeof(EnemyIdleState), new EnemyIdleState(this)},
+            {typeof(EnemyAttackState), new EnemyAttackState(this)},
             {typeof(EnemyFollowState), new EnemyFollowState(this)},
             {typeof(EnemyReturnToHomeState), new EnemyReturnToHomeState(this)}
         };

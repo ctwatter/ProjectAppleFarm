@@ -22,6 +22,9 @@ public class CaptCreatureIdleState : CapturedCreatureBaseState
     }
 
     public override Type Tick() {
+        if(captCreature.creatureAbility1 || captCreature.creatureAbility2){
+            return(typeof(CaptCreatureAttackState));
+        }
         if(!captCreature.isInPlayerRadius){
            return(typeof(CaptCreatureFollowState));
         }

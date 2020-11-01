@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &1989513252
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706104844215122342}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 08d60a2d928518848b14aac83a038664, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1975994471650076534
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,6 +35,7 @@ GameObject:
   - component: {fileID: 1975994471650076520}
   - component: {fileID: 1975994471650076521}
   - component: {fileID: 1975994471650076526}
+  - component: {fileID: 775772137}
   m_Layer: 0
   m_Name: creature
   m_TagString: CaptCreature
@@ -30,7 +50,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1975994471650076534}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.28, y: 0.54, z: -6.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -134,13 +154,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  creatureData: {fileID: 0}
+  playerController: {fileID: 0}
+  creatureData: {fileID: 11400000, guid: 41fdbc17e7748244d888642ae12b9e4c, type: 2}
   followPoint: {fileID: 0}
   rigidbody: {fileID: 0}
+  animator: {fileID: 1989513252}
   creatureMoveSpeed: 5
   rotationSpeed: 5
+  isAnimDone: 0
   isInTrail: 0
   isInPlayerRadius: 0
+  creatureAbility1: 0
+  creatureAbility2: 0
 --- !u!114 &1975994471650076521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +194,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &775772137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975994471650076534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: dae34d0befebbc746ac1f151e1d17b13,
+    type: 3}
+  m_NotificationBehavior: 1
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: controller
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1975994472160104921
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,17 +348,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
         type: 3}
@@ -312,7 +368,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
         type: 3}
@@ -336,6 +392,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd6e0699bdf3c3d4b910107de24c1fa7, type: 3}
+--- !u!1 &1706104844215122342 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1975994472459060471}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2082525590337069852 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
