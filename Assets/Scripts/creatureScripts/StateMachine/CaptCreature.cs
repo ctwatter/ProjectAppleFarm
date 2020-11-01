@@ -8,18 +8,24 @@ public class CaptCreature : MonoBehaviour
 {
     public CapturedCreatureStateMachine capturedCreatureStateMachine => GetComponent<CapturedCreatureStateMachine>();
     public GameObject Player;
+    public PlayerController playerController;
     public creatureData creatureData;
     public GameObject followPoint;
     public Rigidbody rigidbody;
+    public Animator animator;
     public float creatureMoveSpeed = 10f;
     public float rotationSpeed = 10f;
     
-
+    public bool isAnimDone = false;
     public bool isInTrail;
     public bool isInPlayerRadius;
+    public bool creatureAbility1 = false;
+    public bool creatureAbility2 = false;
 
     private void Awake() {
         rigidbody = GetComponent<Rigidbody>();
+        //animator = GetComponent<Animator>();
+        playerController = Player.GetComponent<PlayerController>();
         InitializeStateMachine();
 
     }
@@ -27,10 +33,29 @@ public class CaptCreature : MonoBehaviour
     private void InitializeStateMachine(){
         var states = new Dictionary<Type, CapturedCreatureBaseState>(){
             {typeof(CaptCreatureIdleState), new CaptCreatureIdleState(this)},
-            {typeof(CaptCreatureFollowState), new CaptCreatureFollowState(this)}
+            {typeof(CaptCreatureFollowState), new CaptCreatureFollowState(this)},
+            {typeof(CaptCreatureAttackState), new CaptCreatureAttackState(this)}
         };
         GetComponent<CapturedCreatureStateMachine>().SetStates(states);
     }
 
+
+    void OnAttack2(){
+        //if(cooldown)
+        creatureAbility1 = true;
+
+    }
+    
+    
+    void OnAttack3(){
+
+        //if(cooldown)
+        creatureAbility2 = true;
+
+    }
+
+    public void animationFinished(){
+        isAnimDone = true;
+    }
     
 }

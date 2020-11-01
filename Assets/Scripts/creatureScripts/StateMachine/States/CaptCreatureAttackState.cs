@@ -11,22 +11,43 @@ public class CaptCreatureAttackState : CapturedCreatureBaseState
 
     public CaptCreatureAttackState(CaptCreature _captCreature) : base(_captCreature.gameObject){
         captCreature = _captCreature;
-        //ObjToFollow = captCreature.followPoint;
     }
 
 
     public override void Enter(){
         //enter anim
-        //captCreature.creatureData.attack1 -> ranged/melee ->
+        Debug.Log("creature attack enter");
+        captCreature.creatureAbility1 = false;
+        captCreature.creatureAbility2 = false;
+        captCreature.animator.SetTrigger("attack1");
+        
+        int layermask = 1 << 8; //only layer 8 will be targeted
+        Collider[] hitColliders = Physics.OverlapSphere(captCreature.transform.position, 5f, layermask);
+        foreach (var hitCollider in hitColliders)
+        { 
+            Debug.Log("HIT ENEMY");
+            //hitCollider.gameObject.GetComponent<enemyData>().Something;
+        }
+       
     }
 
     public override Type Tick() {
-
+      
+        if(!captCreature.animator.GetCurrentAnimatorStateInfo(0).IsTag("attack")) {
+            captCreature.isAnimDone = false;
+            Debug.Log("animation finished");
+            return typeof(CaptCreatureFollowState);
+        }
         //do idle anim
         return null;
     }
 
     public override void Exit(){
         //exit anim
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(captCreature.transform.position, 5);
     }
 }

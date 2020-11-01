@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnMovement(InputValue value){
-        Debug.Log(value.Get<Vector2>());
+        //Debug.Log(value.Get<Vector2>());
         movementVel = value.Get<Vector2>();
         movementVel.Normalize();
         
@@ -127,11 +127,4 @@ public class PlayerController : MonoBehaviour
     }
 
     
-    void OnAttack2(){
-        //attack based on creature
-    }
-
-    void OnAttack3(){
-        //attack based on creature
-    }
 }

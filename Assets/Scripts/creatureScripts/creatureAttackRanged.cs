@@ -6,4 +6,12 @@ using UnityEngine;
 public class creatureAttackRanged : creatureAttackBase
 {
 
+    public float projectileSpeed;
+
+    public GameObject projectile;
+
+    public Animation anims;
+
+    public float baseDmg;
+
 }
