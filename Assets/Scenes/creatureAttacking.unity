@@ -901,14 +901,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1989513252, guid: 7028ae053c257374180cf4ab0f92d965, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1989513252, guid: 7028ae053c257374180cf4ab0f92d965, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 08d60a2d928518848b14aac83a038664, type: 2}
     - target: {fileID: 1975994471650076520, guid: 7028ae053c257374180cf4ab0f92d965,
         type: 3}
       propertyPath: Player
@@ -972,7 +964,7 @@ PrefabInstance:
     - target: {fileID: 1975994471650076534, guid: 7028ae053c257374180cf4ab0f92d965,
         type: 3}
       propertyPath: m_Name
-      value: creature
+      value: Fragaria
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7028ae053c257374180cf4ab0f92d965, type: 3}

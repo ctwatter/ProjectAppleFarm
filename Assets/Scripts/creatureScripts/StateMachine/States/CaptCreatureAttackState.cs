@@ -20,12 +20,14 @@ public class CaptCreatureAttackState : CapturedCreatureBaseState
         captCreature.creatureAbility1 = false;
         captCreature.creatureAbility2 = false;
         captCreature.animator.SetTrigger("attack1");
+        creatureAttackMelee attackInfo = captCreature.creatureData.attack1;
         
         int layermask = 1 << 8; //only layer 8 will be targeted
         Collider[] hitColliders = Physics.OverlapSphere(captCreature.transform.position, 5f, layermask);
         foreach (var hitCollider in hitColliders)
         { 
             Debug.Log("HIT ENEMY");
+            hitCollider.gameObject.GetComponent<EnemyStats>().CurrHealth -= attackInfo.baseDmg;
             //hitCollider.gameObject.GetComponent<enemyData>().Something;
         }
        

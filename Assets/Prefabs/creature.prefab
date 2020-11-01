@@ -10,7 +10,7 @@ Animator:
   m_GameObject: {fileID: 1706104844215122342}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5b1f6175224b4b84bb0be911eeeeac9e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 08d60a2d928518848b14aac83a038664, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   playerController: {fileID: 0}
-  creatureData: {fileID: 0}
+  creatureData: {fileID: 11400000, guid: 41fdbc17e7748244d888642ae12b9e4c, type: 2}
   followPoint: {fileID: 0}
   rigidbody: {fileID: 0}
   animator: {fileID: 1989513252}
