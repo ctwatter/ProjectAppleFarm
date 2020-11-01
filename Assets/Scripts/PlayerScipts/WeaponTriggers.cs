@@ -12,14 +12,8 @@ public class WeaponTriggers : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<EnemyStats>().CurrHealth -= playerStats.damage;
-            if(other.gameObject.GetComponent<EnemyStats>().CurrHealth <= 0)
-            {
-                Destroy(other.gameObject);
-            }
-            {
-
-            }
+            other.gameObject.GetComponent<EnemyStats>().takeDamage(playerStats.damage);
+            
         }
     }
 }
