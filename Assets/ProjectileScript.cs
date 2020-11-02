@@ -8,14 +8,14 @@ public class ProjectileScript : MonoBehaviour
     Rigidbody rigidBody;
     // Start is called before the first frame update
     float speed = 10;
-    float damage = 50;
+    public float damage = 50;
     void Start()
     {
         
     }
     private void Awake() {
         rigidBody = GetComponent<Rigidbody>();
-
+        Destroy(gameObject, 5f);
     }
 
     // Update is called once per frame
