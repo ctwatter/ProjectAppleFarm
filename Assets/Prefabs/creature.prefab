@@ -1,13 +1,13 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!95 &1989513252
+--- !u!95 &3889474733204666580
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706104844215122342}
+  m_GameObject: {fileID: 421152916171629804}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 08d60a2d928518848b14aac83a038664, type: 2}
@@ -51,11 +51,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1975994471650076534}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.28, y: 0.54, z: -6.37}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1975994472160104926}
-  - {fileID: 2082525590337069852}
+  - {fileID: 1050443671196401238}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -158,7 +158,7 @@ MonoBehaviour:
   creatureData: {fileID: 11400000, guid: 41fdbc17e7748244d888642ae12b9e4c, type: 2}
   followPoint: {fileID: 0}
   rigidbody: {fileID: 0}
-  animator: {fileID: 1989513252}
+  animator: {fileID: 3889474733204666580}
   creatureMoveSpeed: 5
   rotationSpeed: 5
   isAnimDone: 0
@@ -318,7 +318,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1001 &1975994472459060471
+--- !u!1001 &655649269411912125
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -333,12 +333,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5428656
+      value: -0.538
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.402
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
         type: 3}
@@ -348,17 +348,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.7071067
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
         type: 3}
@@ -368,7 +368,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
         type: 3}
@@ -388,19 +388,19 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
         type: 3}
       propertyPath: m_Name
-      value: Fragaria_1
+      value: FragariaModel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd6e0699bdf3c3d4b910107de24c1fa7, type: 3}
---- !u!1 &1706104844215122342 stripped
+--- !u!1 &421152916171629804 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
     type: 3}
-  m_PrefabInstance: {fileID: 1975994472459060471}
+  m_PrefabInstance: {fileID: 655649269411912125}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2082525590337069852 stripped
+--- !u!4 &1050443671196401238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fd6e0699bdf3c3d4b910107de24c1fa7,
     type: 3}
-  m_PrefabInstance: {fileID: 1975994472459060471}
+  m_PrefabInstance: {fileID: 655649269411912125}
   m_PrefabAsset: {fileID: 0}
