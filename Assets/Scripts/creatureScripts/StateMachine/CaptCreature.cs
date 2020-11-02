@@ -34,7 +34,8 @@ public class CaptCreature : MonoBehaviour
         var states = new Dictionary<Type, CapturedCreatureBaseState>(){
             {typeof(CaptCreatureIdleState), new CaptCreatureIdleState(this)},
             {typeof(CaptCreatureFollowState), new CaptCreatureFollowState(this)},
-            {typeof(CaptCreatureAttackState), new CaptCreatureAttackState(this)}
+            {typeof(CaptCreatureAttackState), new CaptCreatureAttackState(this)},
+            {typeof(CaptCreatureRangeAttackState), new CaptCreatureRangeAttackState(this)}
         };
         GetComponent<CapturedCreatureStateMachine>().SetStates(states);
     }
@@ -56,6 +57,11 @@ public class CaptCreature : MonoBehaviour
 
     public void animationFinished(){
         isAnimDone = true;
+    }
+
+    public GameObject spawnProjectile(GameObject obj){
+
+        return Instantiate(obj, transform.position, transform.rotation);
     }
     
 }
