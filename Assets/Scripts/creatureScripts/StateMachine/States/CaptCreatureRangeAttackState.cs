@@ -3,31 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class CaptCreatureAttackState : CapturedCreatureBaseState
+public class CaptCreatureRangeAttackState : CapturedCreatureBaseState
 {
     private CaptCreature captCreature;
     private GameObject ObjToFollow;
 
 
-    public CaptCreatureAttackState(CaptCreature _captCreature) : base(_captCreature.gameObject){
+    public CaptCreatureRangeAttackState(CaptCreature _captCreature) : base(_captCreature.gameObject){
         captCreature = _captCreature;
     }
 
 
     public override void Enter(){
         //enter anim
-        Debug.Log("creature attack enter");
-        captCreature.creatureAbility1 = false;
-        captCreature.animator.SetTrigger("attack1");
-        creatureAttackMelee attackInfo = captCreature.creatureData.attack1;
+        Debug.Log("creature Range attack enter");
+        captCreature.creatureAbility2 = false;
+        captCreature.animator.SetTrigger("attack2");
+        creatureAttackRanged attackInfo = captCreature.creatureData.attack2;
         
         int layermask = 1 << 8; //only layer 8 will be targeted
-        Collider[] hitColliders = Physics.OverlapSphere(captCreature.transform.position, 5f, layermask);
+        Collider[] hitColliders = Physics.OverlapSphere(captCreature.transform.position, 20f, layermask);
         foreach (var hitCollider in hitColliders)
         { 
             Debug.Log("HIT ENEMY");
-            hitCollider.gameObject.GetComponent<EnemyStats>().takeDamage(attackInfo.baseDmg);
-            //hitCollider.gameObject.GetComponent<enemyData>().Something;
+            GameObject projectile = captCreature.spawnProjectile(attackInfo.projectile);
+            projectile.GetComponent<ProjectileScript>().setTarget(hitCollider.gameObject, attackInfo.projectileSpeed, attackInfo.baseDmg);
+            break;
         }
        
     }

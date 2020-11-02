@@ -15,6 +15,8 @@ public class BasicHitState_2 : PlayerBaseState
     private PlayerController playerController;
     public Animator playerAnimator => playerController.playerAnimator;
 
+    public CapsuleCollider swordCollider; 
+
 
     public BasicHitState_2(PlayerController _playerController) : base(_playerController.gameObject) {
         playerController = _playerController;
@@ -23,18 +25,28 @@ public class BasicHitState_2 : PlayerBaseState
 
     public override void Enter(){
         //enter anim
-       
+           // playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+            swordCollider = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CapsuleCollider>();
+            swordCollider.enabled = true;
             playerAnimator.SetTrigger("attack1");
+            Debug.Log("assigned enter");
             //punchAlternate = !punchAlternate;
 
     }
 
     public override Type Tick() {
-        Debug.Log("Attack State");
+        //Debug.Log("Attack State");
         
         if(playerController.isAnimDone)
         {
+            
             playerController.isAnimDone = false;
+            swordCollider.enabled = false;
+            Debug.Log("Attack 2");
+            if(playerController.playerBasicAttack){
+                playerController.playerBasicAttack = false;
+                return typeof(BasicHitState_3);
+            }
             return typeof(PlayerIdleState);
         } 
         //disable movement?

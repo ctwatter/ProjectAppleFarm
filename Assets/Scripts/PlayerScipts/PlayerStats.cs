@@ -70,6 +70,7 @@ public class PlayerStats : MonoBehaviour
         if(CurrHealth <= 0)
         {
             //trigger loss
+            Destroy(gameObject);
         }
     }
 

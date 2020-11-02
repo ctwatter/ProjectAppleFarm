@@ -26,7 +26,7 @@ public class PlayerIdleState : PlayerBaseState
         }
         if(playerController.playerBasicAttack) {
             playerController.playerBasicAttack = false;
-            return(typeof(PlayerAttack1State));
+            return(typeof(BasicHitState_0));
         }
        
         //do idle anim
