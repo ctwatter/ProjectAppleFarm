@@ -37,7 +37,10 @@ public class PlayerController : MonoBehaviour
     private void InitializeStateMachine(){
          var states = new Dictionary<Type, PlayerBaseState>(){
             {typeof(PlayerIdleState), new PlayerIdleState(this)},
-            {typeof(PlayerAttack1State), new PlayerAttack1State(this)},
+            {typeof(BasicHitState_0), new BasicHitState_0(this)},
+            {typeof(BasicHitState_1), new BasicHitState_1(this)},
+            {typeof(BasicHitState_2), new BasicHitState_2(this)},
+            {typeof(BasicHitState_3), new BasicHitState_3(this)},
             {typeof(PlayerDashState), new PlayerDashState(this)}
         };
         GetComponent<PlayerStateMachine>().SetStates(states);

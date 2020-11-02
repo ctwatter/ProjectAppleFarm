@@ -44,6 +44,10 @@ public class PlayerAttack1State : PlayerBaseState
             playerController.isAnimDone = false;
             swordCollider.enabled = false;
             Debug.Log("leaving");
+            if(playerController.playerBasicAttack){
+                playerController.playerBasicAttack = false;
+                return typeof(BasicHitState_1);
+            }
             return typeof(PlayerIdleState);
         } 
         //disable movement?
