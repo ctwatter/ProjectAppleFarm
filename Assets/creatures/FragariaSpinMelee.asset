@@ -9,6 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14719212dd5e03341976e7147c01d4e5, type: 3}
-  m_Name: Creature Ranged Attack
+  m_Script: {fileID: 11500000, guid: 7a455941feff0e64e9a69ea7da767d17, type: 3}
+  m_Name: FragariaSpinMelee
   m_EditorClassIdentifier: 
+  distanceToEnemy: 0
+  moveSpeed: 0
+  anims: {fileID: 0}
+  baseDmg: 30
+  hitRadius: 10

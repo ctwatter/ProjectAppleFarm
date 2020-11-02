@@ -39,6 +39,12 @@ public class CaptCreatureFollowState : CapturedCreatureBaseState
     }
 
     public override Type Tick() {
+        if(captCreature.creatureAbility1){
+            return(typeof(CaptCreatureAttackState));
+        }
+        if (captCreature.creatureAbility2){
+            return(typeof(CaptCreatureRangeAttackState));
+        }
         if(captCreature.isInTrail){
             if(captCreature.isInPlayerRadius){
                 captCreature.rigidbody.velocity = Vector3.zero;
