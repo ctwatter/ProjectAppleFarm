@@ -24,7 +24,7 @@ public class EnemyAttackState : EnemyBaseState
     public override Type Tick() {
         if(!enemy.animator.GetCurrentAnimatorStateInfo(0).IsTag("attack")) { 
             
-            Debug.Log("animation finished"); 
+            
             return typeof(EnemyFollowState); 
         }
         //do idle anim

@@ -21,11 +21,11 @@ public class PlayerIdleState : PlayerBaseState
 
     public override Type Tick() {
         if(playerController.playerDash){
-            playerController.playerDash = false;
+            
             return(typeof(PlayerDashState));
         }
         if(playerController.playerBasicAttack) {
-            playerController.playerBasicAttack = false;
+            //playerController.playerBasicAttack = false;
             return(typeof(BasicHitState_0));
         }
        
