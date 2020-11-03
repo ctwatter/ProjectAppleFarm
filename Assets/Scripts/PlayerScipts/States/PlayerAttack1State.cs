@@ -29,7 +29,7 @@ public class PlayerAttack1State : PlayerBaseState
            // playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
             swordCollider = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CapsuleCollider>();
             swordCollider.enabled = true;
-            playerAnimator.SetTrigger("attack1");
+            playerAnimator.SetTrigger("attack");
             Debug.Log("assigned enter");
             //punchAlternate = !punchAlternate;
 

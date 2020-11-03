@@ -19,11 +19,12 @@ public class PlayerController : MonoBehaviour
     public float dashDelay = 1.2f;
     public float dashStart = 2;
     public int dashCount = 0;
+    public bool isDashing = false;
 
     Rigidbody rb;
     Vector2 movementVel;
     CharacterController charController;
-    Vector3 v3Vel;
+    public Vector3 v3Vel;
     Vector3 gravity;
 
     public bool playerBasicAttack;
@@ -70,7 +71,12 @@ public class PlayerController : MonoBehaviour
 
 
     public void doMovement(float movementModifier){
-        v3Vel = new Vector3(movementVel.x, 0, movementVel.y);
+        if(!isDashing)
+        {
+            v3Vel = new Vector3(movementVel.x, 0, movementVel.y);
+        }
+       
+        
 
         if(!charController.isGrounded) {
             gravity += Physics.gravity * Time.deltaTime;
@@ -89,9 +95,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void setRotation()
+    public void setRotation(Vector3 vec)
     {
-        transform.forward = v3Vel;
+        transform.forward = vec;
     }
 
     void OnMovement(InputValue value){
@@ -124,9 +130,10 @@ public class PlayerController : MonoBehaviour
         playerBasicAttack = true;
     }
 
-    public void punch1AnimDone()
+    public void animationDone()
     {
-        isAnimDone = true;
+        Debug.Log("Anim done");
+        isAnimDone = true;  
     }
 
     

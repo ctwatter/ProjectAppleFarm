@@ -7,6 +7,8 @@ public class PlayerDashState : PlayerBaseState
 {
     float startTime = 0;
     private PlayerController playerController;
+     public Animator playerAnimator => playerController.playerAnimator;
+    public Vector3 startRotation;
     
 
 
@@ -17,17 +19,23 @@ public class PlayerDashState : PlayerBaseState
 
     public override void Enter()
     {
+        playerController.playerDash = false;
+        playerAnimator.SetTrigger("dash");
+        playerController.isDashing = true;
         startTime = Time.time;
-        playerController.setRotation();
+        startRotation = playerController.v3Vel;
+        playerController.setRotation(startRotation);
     }
 
    
 
     public override Type Tick() {
-        Debug.Log("Dash State");
+        
         //checks if time in this state has reached limit
         if(Time.time > startTime + playerController.dashTime)
         {
+            playerController.isDashing = false;
+            playerAnimator.SetTrigger("idle");
             return typeof(PlayerIdleState);
         }
        
@@ -37,7 +45,7 @@ public class PlayerDashState : PlayerBaseState
     public override void PhysicsTick()
     {
         playerController.doMovement(playerController.dashSpeed);
-        playerController.setRotation();
+        playerController.setRotation(startRotation);
        
     }
 
