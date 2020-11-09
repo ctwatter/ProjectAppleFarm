@@ -11,6 +11,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     public EnemyBaseState currState {get; private set; }
     public event Action<EnemyBaseState> OnStateChanged;
+    
 
     public void SetStates(Dictionary<Type, EnemyBaseState> states){
         availableStates = states;

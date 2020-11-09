@@ -18,6 +18,15 @@ public class Enemy : MonoBehaviour
 
     public float attackStoppingDistance;
 
+    //for timing between attacks
+    [HideInInspector]
+    public bool isAttacking = false;
+    [HideInInspector]
+    public float startTime = 0;
+    public float timeDelay = 2;
+   
+
+
     public Animator animator;
 
     private void Awake() {
