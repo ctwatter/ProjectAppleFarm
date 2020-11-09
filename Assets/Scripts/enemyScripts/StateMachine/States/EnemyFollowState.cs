@@ -13,6 +13,7 @@ public class EnemyFollowState : EnemyBaseState
     private float wantedDistance;
     private float rotationSpeed;
 
+   
     public EnemyFollowState(Enemy _enemy) : base(_enemy.gameObject){
         enemy = _enemy;
     }
@@ -29,15 +30,22 @@ public class EnemyFollowState : EnemyBaseState
         } else {
             //Chase player
             // Debug.Log("Chasing player");
+            if(enemy.isAttacking == false)
+            {
             Vector3 desiredLook = new Vector3(enemy.Player.transform.position.x, enemy.Player.transform.position.y, enemy.Player.transform.position.z);
             enemy.transform.LookAt(desiredLook, Vector3.up);
             enemy.rigidbody.velocity = (enemy.transform.rotation * Vector3.forward * enemy.enemyMoveSpeed );
+            }
 
             //Set state to attackState once close enough
             // Debug.Log("Attacking player");
-            if(Vector3.Distance(enemy.transform.position, enemy.Player.transform.position) < enemy.attackStoppingDistance){
-                enemy.rigidbody.velocity = Vector3.zero;
-                return typeof(EnemyAttackState);
+            if(Time.time > enemy.startTime + enemy.timeDelay)
+            {
+                if(Vector3.Distance(enemy.transform.position, enemy.Player.transform.position) < enemy.attackStoppingDistance)
+                {
+                    enemy.rigidbody.velocity = Vector3.zero;
+                    return typeof(EnemyAttackState);
+                }
             }
         }
         return null;
