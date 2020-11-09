@@ -34,6 +34,7 @@ public class EnemyStats : MonoBehaviour
         set
         {
             currHealth = value;
+            //if amount was greaten than x, return isHit state
             healthUIUpdate();
         }
     }
