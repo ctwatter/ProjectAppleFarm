@@ -23,10 +23,17 @@ public class EnemyIsHit : EnemyBaseState
 
     public override Type Tick()
     {
+        if(enemy.isHit)
+        {
+            enemy.isHit = false;
+            return typeof(EnemyIsHit);
+        }
         //wait till end of animation, return to idle
         //maybe check how many times has been triggered in succession?
-        if(!enemy.animator.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
+        if(!enemy.animator.GetCurrentAnimatorStateInfo(0).IsTag("isHit"))
         {
+            Debug.Log("end hit state");
+            
             return typeof(EnemyFollowState);
         }
         
@@ -36,6 +43,6 @@ public class EnemyIsHit : EnemyBaseState
 
     public override void Exit()
     {
-       
+       Debug.Log("exiting isHit");
     }
 }
