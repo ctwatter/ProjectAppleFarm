@@ -27,9 +27,13 @@ public class PlayerController : MonoBehaviour
     public Vector3 v3Vel;
     Vector3 gravity;
 
+    public float crouchModifier = 1;
     public bool playerBasicAttack;
     public bool playerDash;
     public bool playerInteract;
+    public bool nearInteractable = false;
+    public GameObject wildCreature = null;
+    public float currSpeed;
     
     private void Awake() {
         InitializeStateMachine();
@@ -71,6 +75,7 @@ public class PlayerController : MonoBehaviour
 
 
     public void doMovement(float movementModifier){
+        
         if(!isDashing)
         {
             v3Vel = new Vector3(movementVel.x, 0, movementVel.y);
@@ -83,8 +88,9 @@ public class PlayerController : MonoBehaviour
         } else{
             gravity = Vector3.zero;
         }
-
-        charController.Move(v3Vel * speed * Time.deltaTime * movementModifier);
+        
+        currSpeed = (Mathf.Abs(v3Vel.x) + Mathf.Abs(v3Vel.z)) / 2 * speed * Time.deltaTime * movementModifier * crouchModifier;
+        charController.Move(v3Vel * speed * Time.deltaTime * movementModifier * crouchModifier);
         charController.Move(gravity * Time.deltaTime);
     }
 
@@ -110,20 +116,28 @@ public class PlayerController : MonoBehaviour
     //by Jamo
     //allow for no more than two dashes in rapid succession
     void OnInteract(){ //pressing dash button       
-        
-        if(Time.time > dashStart + dashDelay)//cant dash until more time than dash delay has elapsed,
-        {
-            //takes dash start time
-            dashStart = Time.time;
-            dashCount++;
-            playerDash = true;
+        if(nearInteractable) {
+            playerInteract = true;
+            if(wildCreature != null){
+                wildCreature.GetComponent<wildCreature>().befriend();
+                nearInteractable = false;
+            }
+        } else {
+            if(Time.time > dashStart + dashDelay)//cant dash until more time than dash delay has elapsed,
+            {
+                //takes dash start time
+                dashStart = Time.time;
+                dashCount++;
+                playerDash = true;
+            }
+            else if(dashCount >= 1 )//if you have dashed once and are not past delay, you can dash a second time
+            {
+                dashCount = 0;
+                playerDash = true;          
+                
+            }   
         }
-        else if(dashCount >= 1 )//if you have dashed once and are not past delay, you can dash a second time
-        {
-            dashCount = 0;
-            playerDash = true;          
-            
-        }             
+                 
     }
 
     void OnAttack1(){
@@ -136,5 +150,12 @@ public class PlayerController : MonoBehaviour
         isAnimDone = true;  
     }
 
+    void OnCrouch() {
+        if(crouchModifier == 1f){
+            crouchModifier = .5f;
+        } else {
+            crouchModifier = 1f;
+        }
+    }
     
 }

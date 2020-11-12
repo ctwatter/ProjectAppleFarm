@@ -22,12 +22,21 @@ public class CaptCreature : MonoBehaviour
     public bool creatureAbility1 = false;
     public bool creatureAbility2 = false;
 
+    
+
     private void Awake() {
         rigidbody = GetComponent<Rigidbody>();
-        //animator = GetComponent<Animator>();
+        capturedCreatureStateMachine.enabled = true;
         playerController = Player.GetComponent<PlayerController>();
         InitializeStateMachine();
 
+    }
+
+    private void OnEnable() {
+        rigidbody = GetComponent<Rigidbody>();
+        capturedCreatureStateMachine.enabled = true;
+        playerController = Player.GetComponent<PlayerController>();
+        InitializeStateMachine();
     }
 
     private void InitializeStateMachine(){
