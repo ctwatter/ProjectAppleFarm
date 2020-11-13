@@ -28,8 +28,8 @@ public class BasicHitState_1 : PlayerBaseState
         //enter anim
            // playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
             playerController.playerBasicAttack = false;
-            swordCollider = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CapsuleCollider>();
-            swordCollider.enabled = true;
+            
+            playerController.swordCollider.enabled = true;
             playerAnimator.Attack1();
             Debug.Log("assigned enter");
             //punchAlternate = !punchAlternate;
@@ -41,14 +41,14 @@ public class BasicHitState_1 : PlayerBaseState
          if(playerController.playerDash)
         {
             playerController.isAnimDone = false;
-            swordCollider.enabled = false;
+            playerController.swordCollider.enabled = false;
             return typeof(PlayerDashState);
         }
         if(playerController.isAnimDone)
         {
             
             playerController.isAnimDone = false;
-            swordCollider.enabled = false;
+            playerController.swordCollider.enabled = false;
             Debug.Log("Attack 1");
             if(playerController.playerBasicAttack){
                 playerController.playerBasicAttack = false;

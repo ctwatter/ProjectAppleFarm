@@ -27,9 +27,9 @@ public class BasicHitState_2 : PlayerBaseState
     public override void Enter(){
         //enter anim
            // playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-           playerController.playerBasicAttack = false;
-            swordCollider = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CapsuleCollider>();
-            swordCollider.enabled = true;
+            playerController.playerBasicAttack = false;
+            
+            playerController.swordCollider.enabled = true;
             playerAnimator.Attack2();
             Debug.Log("assigned enter");
             //punchAlternate = !punchAlternate;
@@ -41,19 +41,26 @@ public class BasicHitState_2 : PlayerBaseState
          if(playerController.playerDash)
         {
             playerController.isAnimDone = false;
-            swordCollider.enabled = false;
+            playerController.swordCollider.enabled = false;
             return typeof(PlayerDashState);
         }
         if(playerController.isAnimDone)
         {
-            
+            //for going to 4th attack
+            // playerController.isAnimDone = false;
+            // swordCollider.enabled = false;
+            // Debug.Log("Attack 2");
+            // if(playerController.playerBasicAttack){
+            //     playerController.playerBasicAttack = false;
+            //     return typeof(BasicHitState_3);
+            // }
+            // playerAnimator.SetRun(false);
+            // return typeof(PlayerIdleState);
+
             playerController.isAnimDone = false;
-            swordCollider.enabled = false;
-            Debug.Log("Attack 2");
-            if(playerController.playerBasicAttack){
-                playerController.playerBasicAttack = false;
-                return typeof(BasicHitState_3);
-            }
+            playerController.swordCollider.enabled = false;
+            //Debug.Log("Attack 3");
+           // Debug.Log("leaving");
             playerAnimator.SetRun(false);
             return typeof(PlayerIdleState);
         } 

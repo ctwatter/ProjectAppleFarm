@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public bool nearInteractable = false;
     public GameObject wildCreature = null;
     public float currSpeed;
-    
+    public CapsuleCollider swordCollider; 
     private void Awake() {
         InitializeStateMachine();
     }
