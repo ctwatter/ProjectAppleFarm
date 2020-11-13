@@ -1,4 +1,5 @@
 ﻿//Colin and Jamo
+// Herman for animations
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class BasicHitState_0 : PlayerBaseState
     // public float maxComboDelay;
 
     private PlayerController playerController;
-    public Animator playerAnimator => playerController.playerAnimator;
+    public PlayerAnimator playerAnimator => playerController.playerAnimator;
 
     public CapsuleCollider swordCollider; 
 
@@ -28,7 +29,7 @@ public class BasicHitState_0 : PlayerBaseState
             playerController.playerBasicAttack = false;
             swordCollider = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CapsuleCollider>();
             swordCollider.enabled = true;
-            playerAnimator.SetTrigger("attack0");
+            playerAnimator.Attack0();
             Debug.Log("basic state 0");
             
 
@@ -52,7 +53,7 @@ public class BasicHitState_0 : PlayerBaseState
                 playerController.playerBasicAttack = false;
                 return typeof(BasicHitState_1);
             }
-            playerAnimator.SetTrigger("idle");
+            playerAnimator.SetRun(false);
             return typeof(PlayerIdleState);
         } 
         //disable movement?
