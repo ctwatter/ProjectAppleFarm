@@ -26,13 +26,11 @@ public class BasicHitState_0 : PlayerBaseState
 
     public override void Enter(){
         //enter anim
-            playerController.playerBasicAttack = false;
-            swordCollider = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CapsuleCollider>();
-            swordCollider.enabled = true;
-            playerAnimator.Attack0();
-            Debug.Log("basic state 0");
-            
-
+        playerController.playerBasicAttack = false;
+        swordCollider = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CapsuleCollider>();
+        swordCollider.enabled = true;
+        playerAnimator.Attack0();
+        Debug.Log("basic state 0");
     }
 
     public override Type Tick() {

@@ -8,6 +8,13 @@ public class PlayerAnimator : MonoBehaviour
 {
     public GameObject model;
     private Animator animator => model.GetComponent<Animator>();
+    private PlayerController playerController => GetComponent<PlayerController>();
+
+    public void animationDone()
+    {
+        Debug.Log("Animation event done");
+        playerController.animationDone();
+    }
 
     public void Attack0()
     {

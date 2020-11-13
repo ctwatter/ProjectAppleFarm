@@ -1,19 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!136 &1672606797809601034
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8337584839720658685}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.0028210764
-  m_Height: 0.043607734
-  m_Direction: 1
-  m_Center: {x: 0.00036854547, y: 0.022440083, z: -0.000067066096}
 --- !u!95 &2965734683948667179
 Animator:
   serializedVersion: 3
@@ -33,6 +19,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3951684640524812675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934749945068085009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bd68a4bd0ad09048ab7ab0f36048f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1731152702946521024
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,6 +1184,20 @@ MonoBehaviour:
   slider: {fileID: 0}
   maxHealthUI: {fileID: 0}
   currHealthUI: {fileID: 0}
+--- !u!136 &1672606797809601034
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8337584839720658685}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.0028210764
+  m_Height: 0.043607734
+  m_Direction: 1
+  m_Center: {x: 0.00036854547, y: 0.022440083, z: -0.000067066096}
 --- !u!1001 &16202191712051776
 PrefabInstance:
   m_ObjectHideFlags: 0
