@@ -1,4 +1,5 @@
 ﻿//Colin and Jamo
+// Herman for animations
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class BasicHitState_3 : PlayerBaseState
     // public float maxComboDelay;
 
     private PlayerController playerController;
-    public Animator playerAnimator => playerController.playerAnimator;
+    public PlayerAnimator playerAnimator => playerController.playerAnimator;
 
     public CapsuleCollider swordCollider; 
 
@@ -25,11 +26,11 @@ public class BasicHitState_3 : PlayerBaseState
 
     public override void Enter(){
         //enter anim
-           // playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-           playerController.playerBasicAttack = false;
+            // playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+            playerController.playerBasicAttack = false;
             swordCollider = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CapsuleCollider>();
             swordCollider.enabled = true;
-            playerAnimator.SetTrigger("attack3");
+            playerAnimator.Attack2();
             Debug.Log("assigned enter");
             //punchAlternate = !punchAlternate;
 
@@ -37,7 +38,7 @@ public class BasicHitState_3 : PlayerBaseState
 
     public override Type Tick() {
         //Debug.Log("Attack State");
-         if(playerController.playerDash)
+        if(playerController.playerDash)
         {
             playerController.isAnimDone = false;
             swordCollider.enabled = false;
@@ -50,7 +51,7 @@ public class BasicHitState_3 : PlayerBaseState
             swordCollider.enabled = false;
             Debug.Log("Attack 3");
             Debug.Log("leaving");
-            playerAnimator.SetTrigger("idle");
+            playerAnimator.SetRun(false);
             return typeof(PlayerIdleState);
         } 
         //disable movement?

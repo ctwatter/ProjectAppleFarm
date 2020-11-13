@@ -1,4 +1,5 @@
 ﻿//Colin and Jamo
+// Herman for animations
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class PlayerAttack1State : PlayerBaseState
 
     private PlayerController playerController;
     private PlayerStats playerStats; 
-    public Animator playerAnimator => playerController.playerAnimator;
+    public PlayerAnimator playerAnimator => playerController.playerAnimator;
     //gets the swords collider, currently is a capsule
     public CapsuleCollider swordCollider; 
 
@@ -29,7 +30,7 @@ public class PlayerAttack1State : PlayerBaseState
            // playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
             swordCollider = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CapsuleCollider>();
             swordCollider.enabled = true;
-            playerAnimator.SetTrigger("attack");
+            playerAnimator.Attack0();
             Debug.Log("assigned enter");
             //punchAlternate = !punchAlternate;
 

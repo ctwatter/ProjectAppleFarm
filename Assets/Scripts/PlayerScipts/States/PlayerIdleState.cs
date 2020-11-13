@@ -7,7 +7,7 @@ public class PlayerIdleState : PlayerBaseState
 {
 
     private PlayerController playerController;
-
+    public PlayerAnimator playerAnimator => playerController.playerAnimator;
 
     public PlayerIdleState(PlayerController _playerController) : base(_playerController.gameObject) {
         playerController = _playerController;
@@ -16,6 +16,7 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void Enter(){
         //enter anim
+        playerAnimator.OnIdle();
     }
 
 

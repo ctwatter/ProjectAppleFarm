@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// Herman for animations
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -7,7 +8,7 @@ public class PlayerDashState : PlayerBaseState
 {
     float startTime = 0;
     private PlayerController playerController;
-     public Animator playerAnimator => playerController.playerAnimator;
+    public PlayerAnimator playerAnimator => playerController.playerAnimator;
     public Vector3 startRotation;
     
 
@@ -20,7 +21,7 @@ public class PlayerDashState : PlayerBaseState
     public override void Enter()
     {
         playerController.playerDash = false;
-        playerAnimator.SetTrigger("dash");
+        playerAnimator.Dash();
         playerController.isDashing = true;
         startTime = Time.time;
         startRotation = playerController.v3Vel;
@@ -35,7 +36,7 @@ public class PlayerDashState : PlayerBaseState
         if(Time.time > startTime + playerController.dashTime)
         {
             playerController.isDashing = false;
-            playerAnimator.SetTrigger("idle");
+            //playerAnimator.SetRun(false);
             return typeof(PlayerIdleState);
         }
        

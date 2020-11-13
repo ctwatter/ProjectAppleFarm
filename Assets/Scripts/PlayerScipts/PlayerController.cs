@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public PlayerStateMachine playerStateMachine => GetComponent<PlayerStateMachine>();
-    public Animator playerAnimator;
+    public PlayerAnimator playerAnimator => GetComponent<PlayerAnimator>();
 
     public bool isAnimDone = false; 
     public float speed = 1f;
@@ -88,10 +88,12 @@ public class PlayerController : MonoBehaviour
         } else{
             gravity = Vector3.zero;
         }
-        
         currSpeed = (Mathf.Abs(v3Vel.x) + Mathf.Abs(v3Vel.z)) / 2 * speed * Time.deltaTime * movementModifier * crouchModifier;
-        charController.Move(v3Vel * speed * Time.deltaTime * movementModifier * crouchModifier);
+        var movementVector = v3Vel * speed * Time.deltaTime * movementModifier * crouchModifier;
+        charController.Move(movementVector);
         charController.Move(gravity * Time.deltaTime);
+
+        playerAnimator.Move(movementVector);
     }
 
     public void doRotation(float rotationModifier){
