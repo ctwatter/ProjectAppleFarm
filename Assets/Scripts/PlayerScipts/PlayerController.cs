@@ -10,7 +10,9 @@ public class PlayerController : MonoBehaviour
     public PlayerStateMachine playerStateMachine => GetComponent<PlayerStateMachine>();
     public PlayerAnimator playerAnimator => GetComponent<PlayerAnimator>();
 
-    public bool isAnimDone = false; 
+    public bool isAttackAnim = false; 
+    public bool isFollowThroughAnim = false;
+
     public float speed = 1f;
     public float turnSpeed = 0.15f;
 
@@ -146,10 +148,24 @@ public class PlayerController : MonoBehaviour
         playerBasicAttack = true;
     }
 
-    public void animationDone()
+    public bool getIsAttackAnim()
     {
-        Debug.Log("Anim done");
-        isAnimDone = true;  
+        return isAttackAnim;
+    }
+
+    public void setIsAttackAnim(bool state)
+    {
+        isAttackAnim = state;
+    }
+
+    public bool getIsFollowThroughAnim()
+    {
+        return isFollowThroughAnim;
+    }
+
+    public void setIsFollowThroughAnim(bool state)
+    {
+        isFollowThroughAnim = state;
     }
 
     void OnCrouch() {

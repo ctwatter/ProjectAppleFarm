@@ -31,7 +31,6 @@ public class PlayerAttack1State : PlayerBaseState
             swordCollider = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CapsuleCollider>();
             swordCollider.enabled = true;
             playerAnimator.Attack0();
-            Debug.Log("assigned enter");
             //punchAlternate = !punchAlternate;
 
     }
@@ -39,12 +38,12 @@ public class PlayerAttack1State : PlayerBaseState
     public override Type Tick() {
         //Debug.Log("Attack State");
         
-        if(playerController.isAnimDone)
+        if(!playerController.getIsAttackAnim())
         {
             
-            playerController.isAnimDone = false;
+            playerAnimator.resetAttackAnim();
+
             swordCollider.enabled = false;
-            Debug.Log("leaving");
             if(playerController.playerBasicAttack){
                 playerController.playerBasicAttack = false;
                 return typeof(BasicHitState_1);
@@ -64,7 +63,7 @@ public class PlayerAttack1State : PlayerBaseState
 
     public void punch1AnimDone()
     {
-        playerController.isAnimDone = true;
+        playerAnimator.attackDone();
     }
 
     public override void PhysicsTick()

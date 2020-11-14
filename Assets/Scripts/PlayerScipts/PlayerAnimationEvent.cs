@@ -6,8 +6,13 @@ public class PlayerAnimationEvent : MonoBehaviour
 {
     private PlayerAnimator playerAnimator => transform.parent.GetComponent<PlayerAnimator>();
 
-    public void animationDone()
+    public void attackDone()
     {
-        playerAnimator.animationDone();
+        playerAnimator.attackDone();
+    }
+
+    public void followThroughDone()
+    {
+        playerAnimator.followThroughDone();
     }
 }

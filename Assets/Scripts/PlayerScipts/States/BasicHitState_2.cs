@@ -31,20 +31,19 @@ public class BasicHitState_2 : PlayerBaseState
             
             playerController.swordCollider.enabled = true;
             playerAnimator.Attack2();
-            Debug.Log("assigned enter");
             //punchAlternate = !punchAlternate;
 
     }
 
     public override Type Tick() {
         //Debug.Log("Attack State");
-         if(playerController.playerDash)
+        if(playerController.playerDash)
         {
-            playerController.isAnimDone = false;
+            playerAnimator.resetAllAttackAnims();
             playerController.swordCollider.enabled = false;
             return typeof(PlayerDashState);
         }
-        if(playerController.isAnimDone)
+        if(!playerController.getIsAttackAnim())
         {
             //for going to 4th attack
             // playerController.isAnimDone = false;
@@ -57,12 +56,15 @@ public class BasicHitState_2 : PlayerBaseState
             // playerAnimator.SetRun(false);
             // return typeof(PlayerIdleState);
 
-            playerController.isAnimDone = false;
+            playerController.setIsAttackAnim(false);
+
             playerController.swordCollider.enabled = false;
             //Debug.Log("Attack 3");
-           // Debug.Log("leaving");
-            playerAnimator.SetRun(false);
-            return typeof(PlayerIdleState);
+            // Debug.Log("leaving");
+            if(!playerController.getIsFollowThroughAnim()){
+                playerAnimator.resetAllAttackAnims();
+                return typeof(PlayerIdleState);
+            }
         } 
         //disable movement?
         //trigger attack animation
@@ -77,7 +79,7 @@ public class BasicHitState_2 : PlayerBaseState
 
     public void punch1AnimDone()
     {
-        playerController.isAnimDone = true;
+        playerAnimator.attackDone();
     }
 
     public override void PhysicsTick()

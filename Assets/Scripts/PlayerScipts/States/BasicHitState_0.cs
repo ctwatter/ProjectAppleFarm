@@ -26,33 +26,38 @@ public class BasicHitState_0 : PlayerBaseState
 
     public override void Enter(){
         //enter anim
+        Debug.Log("Enter State 0");
         playerController.playerBasicAttack = false;
         
         playerController.swordCollider.enabled = true;
         playerAnimator.Attack0();
-        Debug.Log("basic state 0");
     }
 
     public override Type Tick() {
         //Debug.Log("Attack State");
         if(playerController.playerDash)
         {
-            playerController.isAnimDone = false;
+            playerAnimator.resetAllAttackAnims();
             playerController.swordCollider.enabled = false;
             return typeof(PlayerDashState);
         }
-        if(playerController.isAnimDone)
+        if(!playerController.getIsAttackAnim())
         {
             
-            playerController.isAnimDone = false;
+            playerController.setIsAttackAnim(false);
+
             playerController.swordCollider.enabled = false;
-            Debug.Log("Attack 0");
+
             if(playerController.playerBasicAttack){
                 playerController.playerBasicAttack = false;
                 return typeof(BasicHitState_1);
             }
             playerAnimator.SetRun(false);
-            return typeof(PlayerIdleState);
+
+            if(!playerController.getIsFollowThroughAnim()){
+                playerAnimator.resetAllAttackAnims();
+                return typeof(PlayerIdleState);
+            }
         } 
         //disable movement?
         //trigger attack animation

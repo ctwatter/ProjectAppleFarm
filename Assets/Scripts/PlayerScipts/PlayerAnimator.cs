@@ -10,24 +10,54 @@ public class PlayerAnimator : MonoBehaviour
     private Animator animator => model.GetComponent<Animator>();
     private PlayerController playerController => GetComponent<PlayerController>();
 
-    public void animationDone()
+    public void attackBegin()
     {
-        Debug.Log("Animation event done");
-        playerController.animationDone();
+        playerController.setIsAttackAnim(true);
+        playerController.setIsFollowThroughAnim(true);
+    }
+
+    public void attackDone()
+    {
+        playerController.setIsAttackAnim(false);
+    }
+
+    public void followThroughDone()
+    {
+        playerController.setIsAttackAnim(false);
+        playerController.setIsFollowThroughAnim(false);
+    }
+
+    public void resetAttackAnim()
+    {
+        playerController.setIsAttackAnim(false);
+        playerController.setIsFollowThroughAnim(false);
+    }
+
+    public void resetAllAttackAnims()
+    {
+        playerController.setIsAttackAnim(false);
+        playerController.setIsFollowThroughAnim(false);
+
+        animator.ResetTrigger("Attack0");
+        animator.ResetTrigger("Attack1");
+        animator.ResetTrigger("Attack2");
     }
 
     public void Attack0()
     {
+        this.attackBegin();
         animator.SetTrigger("Attack0");
     }
 
     public void Attack1()
     {
+        this.attackBegin();
         animator.SetTrigger("Attack1");
     }
 
     public void Attack2()
     {
+        this.attackBegin();
         animator.SetTrigger("Attack2");
     }
 
@@ -58,6 +88,8 @@ public class PlayerAnimator : MonoBehaviour
 
     public void OnIdle()
     {
+        this.resetAttackAnim();
+
         animator.ResetTrigger("Attack0");
         animator.ResetTrigger("Attack1");
         animator.ResetTrigger("Attack2");
