@@ -23,28 +23,38 @@ public class EnemyFollowState : EnemyBaseState
     }
 
     public override Type Tick() {
+        if(enemy.isHit)
+        {
+            enemy.isHit = false;
+            return typeof(EnemyIsHit);
+        }
+        else{
         //If player not in radius, move back to spawn point
-        if(!(enemy.attackArea.isPlayerInRadius)){
-            enemy.rigidbody.velocity = Vector3.zero;
-            return typeof(EnemyReturnToHomeState);
-        } else {
-            //Chase player
-            // Debug.Log("Chasing player");
-            if(enemy.isAttacking == false)
+            if(!(enemy.attackArea.isPlayerInRadius))
             {
-            Vector3 desiredLook = new Vector3(enemy.Player.transform.position.x, enemy.Player.transform.position.y, enemy.Player.transform.position.z);
-            enemy.transform.LookAt(desiredLook, Vector3.up);
-            enemy.rigidbody.velocity = (enemy.transform.rotation * Vector3.forward * enemy.enemyMoveSpeed );
-            }
-
-            //Set state to attackState once close enough
-            // Debug.Log("Attacking player");
-            if(Time.time > enemy.startTime + enemy.timeDelay)
+                enemy.rigidbody.velocity = Vector3.zero;
+                return typeof(EnemyReturnToHomeState);
+            } 
+            else 
             {
-                if(Vector3.Distance(enemy.transform.position, enemy.Player.transform.position) < enemy.attackStoppingDistance)
+                //Chase player
+                // Debug.Log("Chasing player");
+                if(enemy.isAttacking == false)
                 {
-                    enemy.rigidbody.velocity = Vector3.zero;
-                    return typeof(EnemyAttackState);
+                Vector3 desiredLook = new Vector3(enemy.Player.transform.position.x, enemy.Player.transform.position.y, enemy.Player.transform.position.z);
+                enemy.transform.LookAt(desiredLook, Vector3.up);
+                enemy.rigidbody.velocity = (enemy.transform.rotation * Vector3.forward * enemy.enemyMoveSpeed );
+                }
+
+                //Set state to attackState once close enough
+                // Debug.Log("Attacking player");
+                if(Time.time > enemy.startTime + enemy.timeDelay)
+                {
+                    if(Vector3.Distance(enemy.transform.position, enemy.Player.transform.position) < enemy.attackStoppingDistance)
+                    {
+                        enemy.rigidbody.velocity = Vector3.zero;
+                        return typeof(EnemyAttackState);
+                    }
                 }
             }
         }

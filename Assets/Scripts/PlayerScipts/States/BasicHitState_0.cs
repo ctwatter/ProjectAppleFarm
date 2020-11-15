@@ -1,4 +1,5 @@
 ﻿//Colin and Jamo
+// Herman for animations
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class BasicHitState_0 : PlayerBaseState
     // public float maxComboDelay;
 
     private PlayerController playerController;
-    public Animator playerAnimator => playerController.playerAnimator;
+    public PlayerAnimator playerAnimator => playerController.playerAnimator;
 
     public CapsuleCollider swordCollider; 
 
@@ -25,35 +26,38 @@ public class BasicHitState_0 : PlayerBaseState
 
     public override void Enter(){
         //enter anim
-            playerController.playerBasicAttack = false;
-            swordCollider = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CapsuleCollider>();
-            swordCollider.enabled = true;
-            playerAnimator.SetTrigger("attack0");
-            Debug.Log("basic state 0");
-            
-
+        Debug.Log("Enter State 0");
+        playerController.playerBasicAttack = false;
+        
+        playerController.swordCollider.enabled = true;
+        playerAnimator.Attack0();
     }
 
     public override Type Tick() {
         //Debug.Log("Attack State");
         if(playerController.playerDash)
         {
-            playerController.isAnimDone = false;
-            swordCollider.enabled = false;
+            playerAnimator.resetAllAttackAnims();
+            playerController.swordCollider.enabled = false;
             return typeof(PlayerDashState);
         }
-        if(playerController.isAnimDone)
+        if(!playerController.getIsAttackAnim())
         {
             
-            playerController.isAnimDone = false;
-            swordCollider.enabled = false;
-            Debug.Log("Attack 0");
+            playerController.setIsAttackAnim(false);
+
+            playerController.swordCollider.enabled = false;
+
             if(playerController.playerBasicAttack){
                 playerController.playerBasicAttack = false;
                 return typeof(BasicHitState_1);
             }
-            playerAnimator.SetTrigger("idle");
-            return typeof(PlayerIdleState);
+            playerAnimator.SetRun(false);
+
+            if(!playerController.getIsFollowThroughAnim()){
+                playerAnimator.resetAllAttackAnims();
+                return typeof(PlayerIdleState);
+            }
         } 
         //disable movement?
         //trigger attack animation

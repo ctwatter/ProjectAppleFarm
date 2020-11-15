@@ -1,4 +1,5 @@
 ﻿//Colin and Jamo
+// Herman for animations
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class BasicHitState_2 : PlayerBaseState
     // public float maxComboDelay;
 
     private PlayerController playerController;
-    public Animator playerAnimator => playerController.playerAnimator;
+    public PlayerAnimator playerAnimator => playerController.playerAnimator;
 
     public CapsuleCollider swordCollider; 
 
@@ -26,35 +27,44 @@ public class BasicHitState_2 : PlayerBaseState
     public override void Enter(){
         //enter anim
            // playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-           playerController.playerBasicAttack = false;
-            swordCollider = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CapsuleCollider>();
-            swordCollider.enabled = true;
-            playerAnimator.SetTrigger("attack2");
-            Debug.Log("assigned enter");
+            playerController.playerBasicAttack = false;
+            
+            playerController.swordCollider.enabled = true;
+            playerAnimator.Attack2();
             //punchAlternate = !punchAlternate;
 
     }
 
     public override Type Tick() {
         //Debug.Log("Attack State");
-         if(playerController.playerDash)
+        if(playerController.playerDash)
         {
-            playerController.isAnimDone = false;
-            swordCollider.enabled = false;
+            playerAnimator.resetAllAttackAnims();
+            playerController.swordCollider.enabled = false;
             return typeof(PlayerDashState);
         }
-        if(playerController.isAnimDone)
+        if(!playerController.getIsAttackAnim())
         {
-            
-            playerController.isAnimDone = false;
-            swordCollider.enabled = false;
-            Debug.Log("Attack 2");
-            if(playerController.playerBasicAttack){
-                playerController.playerBasicAttack = false;
-                return typeof(BasicHitState_3);
+            //for going to 4th attack
+            // playerController.isAnimDone = false;
+            // swordCollider.enabled = false;
+            // Debug.Log("Attack 2");
+            // if(playerController.playerBasicAttack){
+            //     playerController.playerBasicAttack = false;
+            //     return typeof(BasicHitState_3);
+            // }
+            // playerAnimator.SetRun(false);
+            // return typeof(PlayerIdleState);
+
+            playerController.setIsAttackAnim(false);
+
+            playerController.swordCollider.enabled = false;
+            //Debug.Log("Attack 3");
+            // Debug.Log("leaving");
+            if(!playerController.getIsFollowThroughAnim()){
+                playerAnimator.resetAllAttackAnims();
+                return typeof(PlayerIdleState);
             }
-            playerAnimator.SetTrigger("idle");
-            return typeof(PlayerIdleState);
         } 
         //disable movement?
         //trigger attack animation
@@ -69,7 +79,7 @@ public class BasicHitState_2 : PlayerBaseState
 
     public void punch1AnimDone()
     {
-        playerController.isAnimDone = true;
+        playerAnimator.attackDone();
     }
 
     public override void PhysicsTick()

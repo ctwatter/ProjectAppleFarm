@@ -6,8 +6,10 @@ using TMPro;
 
 public class EnemyStats : MonoBehaviour
 {
-
+    private Enemy enemy;
     [SerializeField] private float maxHealth = 500;
+
+    
 
     //This is a property. Use MaxHealth when accessing 
     public float MaxHealth
@@ -25,15 +27,14 @@ public class EnemyStats : MonoBehaviour
 
     [SerializeField] private float currHealth;
     //This is a property. Use CurrHealth when accessing 
-    public float CurrHealth
-    {
-        get
-        {
+    public float CurrHealth{
+        get{
             return currHealth;
         }
-        set
-        {
+        set{
             currHealth = value;
+            enemy.isHit = true;
+            //if amount was greaten than x, return isHit state
             healthUIUpdate();
         }
     }
@@ -42,25 +43,18 @@ public class EnemyStats : MonoBehaviour
     public float defense = 10;
     public float speed;
     public Slider slider;
-    //public TextMeshProUGUI maxHealthUI;
-    //public TextMeshProUGUI currHealthUI;
-
-    // Start is called before the first frame update
-    void Start()
-    {
+    
+    void Start(){
         currHealth = maxHealth;
+        enemy = gameObject.GetComponent<Enemy>();
     }
 
     
-    void healthUIUpdate()
-    {
+    void healthUIUpdate(){
         slider.value = (currHealth / maxHealth) * 100;
-       // currHealthUI.SetText((Mathf.Round(currHealth)).ToString());
-       // maxHealthUI.SetText("/ " + maxHealth.ToString());
     }
 
-    public void takeDamage(float amount)
-    {
+    public void takeDamage(float amount){
         CurrHealth -= amount;
         if(CurrHealth <= 0)
         {

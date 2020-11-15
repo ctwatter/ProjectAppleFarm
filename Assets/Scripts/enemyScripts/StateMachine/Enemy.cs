@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     private Vector3 spawnPoint;
     public GameObject followPoint;
     public EnemyFollowPlayerRadiusTrigger attackArea;
+
+    public bool isHit;
     public Rigidbody rigidbody;
     public float enemyMoveSpeed = 10f;
     public float rotationSpeed = 10f;
@@ -39,6 +41,7 @@ public class Enemy : MonoBehaviour
         var states = new Dictionary<Type, EnemyBaseState>(){
             {typeof(EnemyIdleState), new EnemyIdleState(this)},
             {typeof(EnemyAttackState), new EnemyAttackState(this)},
+            {typeof(EnemyIsHit), new EnemyIsHit(this)},
             {typeof(EnemyFollowState), new EnemyFollowState(this)},
             {typeof(EnemyReturnToHomeState), new EnemyReturnToHomeState(this)}
         };

@@ -1,4 +1,5 @@
 ﻿//Colin and Jamo
+// Herman for animations
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class PlayerAttack1State : PlayerBaseState
 
     private PlayerController playerController;
     private PlayerStats playerStats; 
-    public Animator playerAnimator => playerController.playerAnimator;
+    public PlayerAnimator playerAnimator => playerController.playerAnimator;
     //gets the swords collider, currently is a capsule
     public CapsuleCollider swordCollider; 
 
@@ -29,8 +30,7 @@ public class PlayerAttack1State : PlayerBaseState
            // playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
             swordCollider = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CapsuleCollider>();
             swordCollider.enabled = true;
-            playerAnimator.SetTrigger("attack");
-            Debug.Log("assigned enter");
+            playerAnimator.Attack0();
             //punchAlternate = !punchAlternate;
 
     }
@@ -38,12 +38,12 @@ public class PlayerAttack1State : PlayerBaseState
     public override Type Tick() {
         //Debug.Log("Attack State");
         
-        if(playerController.isAnimDone)
+        if(!playerController.getIsAttackAnim())
         {
             
-            playerController.isAnimDone = false;
+            playerAnimator.resetAttackAnim();
+
             swordCollider.enabled = false;
-            Debug.Log("leaving");
             if(playerController.playerBasicAttack){
                 playerController.playerBasicAttack = false;
                 return typeof(BasicHitState_1);
@@ -63,7 +63,7 @@ public class PlayerAttack1State : PlayerBaseState
 
     public void punch1AnimDone()
     {
-        playerController.isAnimDone = true;
+        playerAnimator.attackDone();
     }
 
     public override void PhysicsTick()

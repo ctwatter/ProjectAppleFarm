@@ -8,9 +8,11 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public PlayerStateMachine playerStateMachine => GetComponent<PlayerStateMachine>();
-    public Animator playerAnimator;
+    public PlayerAnimator playerAnimator => GetComponent<PlayerAnimator>();
 
-    public bool isAnimDone = false; 
+    public bool isAttackAnim = false; 
+    public bool isFollowThroughAnim = false;
+
     public float speed = 1f;
     public float turnSpeed = 0.15f;
 
@@ -27,10 +29,14 @@ public class PlayerController : MonoBehaviour
     public Vector3 v3Vel;
     Vector3 gravity;
 
+    public float crouchModifier = 1;
     public bool playerBasicAttack;
     public bool playerDash;
     public bool playerInteract;
-    
+    public bool nearInteractable = false;
+    public GameObject wildCreature = null;
+    public float currSpeed;
+    public CapsuleCollider swordCollider; 
     private void Awake() {
         InitializeStateMachine();
     }
@@ -71,6 +77,7 @@ public class PlayerController : MonoBehaviour
 
 
     public void doMovement(float movementModifier){
+        
         if(!isDashing)
         {
             v3Vel = new Vector3(movementVel.x, 0, movementVel.y);
@@ -83,9 +90,12 @@ public class PlayerController : MonoBehaviour
         } else{
             gravity = Vector3.zero;
         }
-
-        charController.Move(v3Vel * speed * Time.deltaTime * movementModifier);
+        currSpeed = (Mathf.Abs(v3Vel.x) + Mathf.Abs(v3Vel.z)) / 2 * speed * Time.deltaTime * movementModifier * crouchModifier;
+        var movementVector = v3Vel * speed * Time.deltaTime * movementModifier * crouchModifier;
+        charController.Move(movementVector);
         charController.Move(gravity * Time.deltaTime);
+
+        playerAnimator.Move(movementVector);
     }
 
     public void doRotation(float rotationModifier){
@@ -110,31 +120,60 @@ public class PlayerController : MonoBehaviour
     //by Jamo
     //allow for no more than two dashes in rapid succession
     void OnInteract(){ //pressing dash button       
-        
-        if(Time.time > dashStart + dashDelay)//cant dash until more time than dash delay has elapsed,
-        {
-            //takes dash start time
-            dashStart = Time.time;
-            dashCount++;
-            playerDash = true;
+        if(nearInteractable) {
+            playerInteract = true;
+            if(wildCreature != null){
+                wildCreature.GetComponent<wildCreature>().befriend();
+                nearInteractable = false;
+            }
+        } else {
+            if(Time.time > dashStart + dashDelay)//cant dash until more time than dash delay has elapsed,
+            {
+                //takes dash start time
+                dashStart = Time.time;
+                dashCount++;
+                playerDash = true;
+            }
+            else if(dashCount >= 1 )//if you have dashed once and are not past delay, you can dash a second time
+            {
+                dashCount = 0;
+                playerDash = true;          
+                
+            }   
         }
-        else if(dashCount >= 1 )//if you have dashed once and are not past delay, you can dash a second time
-        {
-            dashCount = 0;
-            playerDash = true;          
-            
-        }             
+                 
     }
 
     void OnAttack1(){
         playerBasicAttack = true;
     }
 
-    public void animationDone()
+    public bool getIsAttackAnim()
     {
-        Debug.Log("Anim done");
-        isAnimDone = true;  
+        return isAttackAnim;
     }
 
+    public void setIsAttackAnim(bool state)
+    {
+        isAttackAnim = state;
+    }
+
+    public bool getIsFollowThroughAnim()
+    {
+        return isFollowThroughAnim;
+    }
+
+    public void setIsFollowThroughAnim(bool state)
+    {
+        isFollowThroughAnim = state;
+    }
+
+    void OnCrouch() {
+        if(crouchModifier == 1f){
+            crouchModifier = .5f;
+        } else {
+            crouchModifier = 1f;
+        }
+    }
     
 }
