@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     public GameObject wildCreature = null;
     public float currSpeed;
     public CapsuleCollider swordCollider; 
+    public bool isHit;
     private void Awake() {
         InitializeStateMachine();
     }
@@ -48,7 +49,8 @@ public class PlayerController : MonoBehaviour
             {typeof(BasicHitState_1), new BasicHitState_1(this)},
             {typeof(BasicHitState_2), new BasicHitState_2(this)},
             {typeof(BasicHitState_3), new BasicHitState_3(this)},
-            {typeof(PlayerDashState), new PlayerDashState(this)}
+            {typeof(PlayerDashState), new PlayerDashState(this)},
+            {typeof(PlayerIsHit), new PlayerIsHit(this)},
         };
         GetComponent<PlayerStateMachine>().SetStates(states);
     }

@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     public GameObject model;
-    private Animator animator => model.GetComponent<Animator>();
+    public Animator animator => model.GetComponent<Animator>();
     private PlayerController playerController => GetComponent<PlayerController>();
 
     public void attackBegin()
