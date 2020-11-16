@@ -21,6 +21,11 @@ public class PlayerIdleState : PlayerBaseState
 
 
     public override Type Tick() {
+        if(playerController.isHit)
+        {
+            playerController.isHit = false;
+            return typeof(PlayerIsHit);
+        }
         if(playerController.playerDash){
             
             return(typeof(PlayerDashState));
