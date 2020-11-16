@@ -17,6 +17,7 @@ public class tempEnemyWeaponTrigger : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerStats>().takeDamage(enemyStats.damage);
+            other.GetComponent<PlayerController>().isHit = true;
         }
     }
 }

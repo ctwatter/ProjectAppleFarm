@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// Unknown and Jake
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +7,7 @@ using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
+    public PlayerController playerController => GetComponent<PlayerController>();
 
     [SerializeField] private float maxHealth = 500;
 
@@ -34,11 +36,14 @@ public class PlayerStats : MonoBehaviour
         set
         {
             currHealth = value;
+            playerController.isHit = true;
             healthUIUpdate();
         }
     }
 
-    public float damage = 10;
+    public float attack1Damage = 10;
+    public float attack2Damage = 11;
+    public float attack3Damage = 12;
     public float defense = 10;
     public float speed;
     public Slider slider;
