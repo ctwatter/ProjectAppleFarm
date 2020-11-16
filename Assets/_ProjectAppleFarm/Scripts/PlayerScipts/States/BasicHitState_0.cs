@@ -73,8 +73,8 @@ public class BasicHitState_0 : PlayerBaseState
 
     public override void PhysicsTick()
     {
-        playerController.doMovement(0.1f);
-        playerController.doRotation(0.1f);
+        playerController.doMovement(0.3f);
+        playerController.doRotation(0.6f);
     }
 
     public override void Exit(){
