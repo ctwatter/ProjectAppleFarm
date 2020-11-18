@@ -23,3 +23,7 @@ MonoBehaviour:
   CreatureType: 0
   attack1: {fileID: 11400000, guid: 6c4f0baccf5292e44b5dedd5cf8f4119, type: 2}
   attack2: {fileID: 11400000, guid: a3999c08b34cc8d4b968e2ff1e9a69ac, type: 2}
+  isSkittish: 0
+  isBrash: 0
+  isBold: 0
+  isLethargic: 0
