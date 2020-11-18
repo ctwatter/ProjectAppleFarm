@@ -23,6 +23,16 @@ public class creatureData : ScriptableObject
     public creatureAttackMelee attack1;
     public creatureAttackRanged attack2;
 
+
+    // behavior stuffs / personality
+    public bool isSkittish;
+    public bool isBrash;
+    public bool isBold;
+    public bool isLethargic;
+
+
+
+
 }
 
 public enum CreatureType { //Temp creature types
