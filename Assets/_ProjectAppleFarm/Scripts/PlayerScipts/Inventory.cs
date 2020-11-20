@@ -2,12 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
+//Eugene
+
 [System.Serializable] 
 public class Inventory : ScriptableObject
 {
     private void Start() {
         {
-            AddItem(FOOD);
+            //manually add items to inventory in beginninng?
         }
     }
 
