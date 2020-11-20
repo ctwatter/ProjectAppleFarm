@@ -26,7 +26,7 @@ public class BasicHitState_0 : PlayerBaseState
 
     public override void Enter(){
         //enter anim
-        Debug.Log("Enter State 0");
+        //Debug.Log("Enter State 0");
         playerController.playerBasicAttack = false;
         
         playerController.swordCollider.enabled = true;
