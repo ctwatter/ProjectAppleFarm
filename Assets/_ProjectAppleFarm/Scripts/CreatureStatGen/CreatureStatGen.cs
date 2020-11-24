@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//COLIN
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ public class CreatureStatGen : MonoBehaviour
     
     //personality example. make a bunch of these, put them all in a list and do some logic :)
                                 //personality( _name, _statModType, _basePercentage, _maxPercentage, _statModifierAmount ){
-    personality Adventurous = new personality("Adventurous", statModifierType.POWER, 0.1f, 0.4f, 1.3f); //could pre write out all personalities we like
+    personality Adventurous = new personality("Adventurous", statModifierType.POWER, 0.1f, 0.4f, 1.1f); //could pre write out all personalities we like
     
     void rollStats(){
         power = Random.Range(powerRange.x, powerRange.y);
@@ -37,6 +38,18 @@ public class CreatureStatGen : MonoBehaviour
 
     void choosePersonalities(){
         foreach (personality personality in PowerPersonalities) {
+            if(personality.calcChance(power, powerRange.x, powerRange.y)) {
+                finalPersonalities.Add(personality);
+                break;
+            }
+        }
+        foreach (personality personality in UtilityPersonalities) {
+            if(personality.calcChance(power, powerRange.x, powerRange.y)) {
+                finalPersonalities.Add(personality);
+                break;
+            }
+        }
+        foreach (personality personality in DexterityPersonalities) {
             if(personality.calcChance(power, powerRange.x, powerRange.y)) {
                 finalPersonalities.Add(personality);
                 break;
