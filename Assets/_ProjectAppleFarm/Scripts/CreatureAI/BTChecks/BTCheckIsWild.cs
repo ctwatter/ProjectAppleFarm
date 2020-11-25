@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IsWild : BTLeaf
+public class BTCheckIsWild : BTChecker
 {
-    public IsWild(string _name, CreatureAIContext _context) : base(_name, _context)
+
+    public BTCheckIsWild(string _name, CreatureAIContext _context) : base(_name, _context)
     {
         name = _name;
         context = _context;
@@ -16,4 +17,6 @@ public class IsWild : BTLeaf
             return NodeState.SUCCESS;
         return NodeState.FAILURE;
     }
+
+
 }

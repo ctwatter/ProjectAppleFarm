@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTLeaf : BTnode
+public abstract class BTLeaf : BTnode
 {
     protected CreatureAIContext context;
+    protected bool ranOnEnter = false;
 
     protected BTLeaf(string _name, CreatureAIContext _context) : base(_name)
     {
@@ -12,8 +13,9 @@ public class BTLeaf : BTnode
         context = _context;
     }
 
-    public override NodeState Evaluate()
-    {
-        return NodeState.SUCCESS;
-    }
+    public abstract override NodeState Evaluate();
+
+    protected abstract void OnEnter();
+
+    protected abstract void OnExit();
 }

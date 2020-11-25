@@ -3,17 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreatureStatGen : MonoBehaviour
+public class CreatureStatGen 
 {
+    public creatureData dataIn;
+    public ActiveCreatureData dataOut;
 
 
-    public Vector2 lifeRange = new Vector2(100, 150);
 
-    public Vector2 powerRange = new Vector2(5,20);
-    //not sure what these two will be called yet, but I think 3 stats is good
-    public Vector2 utilityRange = new Vector2(5, 20); 
-    public Vector2 dexterityRange = new Vector2(10, 30); //dexterity is place holder??
-
+    public float life;
     public float power;
     public float utility;
     public float dexterity;
@@ -28,9 +25,9 @@ public class CreatureStatGen : MonoBehaviour
                                 //personality( _name, _statModType, _basePercentage, _maxPercentage, _statModifierAmount ){
     personality Adventurous = new personality("Adventurous", statModifierType.POWER, 0.1f, 0.4f, 1.1f); //could pre write out all personalities we like
     
-    void rollStats(){
-        power = Random.Range(powerRange.x, powerRange.y);
-    }
+
+
+ 
 
     void initPersonalities(){
         PowerPersonalities.Add(Adventurous);
@@ -38,23 +35,49 @@ public class CreatureStatGen : MonoBehaviour
 
     void choosePersonalities(){
         foreach (personality personality in PowerPersonalities) {
-            if(personality.calcChance(power, powerRange.x, powerRange.y)) {
+            if(personality.calcChance(power, dataIn.powerRange.x, dataIn.powerRange.y)) {
                 finalPersonalities.Add(personality);
                 break;
             }
         }
         foreach (personality personality in UtilityPersonalities) {
-            if(personality.calcChance(power, powerRange.x, powerRange.y)) {
+            if(personality.calcChance(utility, dataIn.utilityRange.x, dataIn.utilityRange.y)) {
                 finalPersonalities.Add(personality);
                 break;
             }
         }
         foreach (personality personality in DexterityPersonalities) {
-            if(personality.calcChance(power, powerRange.x, powerRange.y)) {
+            if(personality.calcChance(dexterity, dataIn.dexterityRange.x, dataIn.dexterityRange.y)) {
                 finalPersonalities.Add(personality);
                 break;
             }
         }
+    }
+
+    public void generateStats(){
+        initPersonalities();
+
+        life = Random.Range(dataIn.lifeRange.x, dataIn.lifeRange.y);
+        power = Random.Range(dataIn.powerRange.x, dataIn.powerRange.y);
+        utility = Random.Range(dataIn.utilityRange.x, dataIn.utilityRange.y);
+        dexterity = Random.Range(dataIn.dexterityRange.x, dataIn.dexterityRange.y);
+
+        choosePersonalities();
+
+        dataOut.maxLife = life;
+        dataOut.power = (int) power;
+        dataOut.utility = (int) utility;
+        dataOut.dexterity = (int) dexterity;
+        dataOut.personalities = finalPersonalities;
+        dataOut.moveSpeed = dataIn.moveSpeed;
+
+        chooseAbilities(); //pick moves from list of moves;
+
+        dataOut.ready = true;
+    }
+
+    void chooseAbilities() {
+
     }
 
 }

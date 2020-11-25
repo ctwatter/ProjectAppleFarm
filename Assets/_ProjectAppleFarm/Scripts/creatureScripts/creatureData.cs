@@ -11,27 +11,28 @@ public class creatureData : ScriptableObject
     public float maxLife;
     public int level; //??
 
-    public float atk;
-    public float def;
-    public float sAtk;
-    public float sDef;
-    public float atkSpeed;
+    public int power;
+    public int utility;
+    public int dexterity;
     
     public float moveSpeed;
+
+
+    public Vector2 lifeRange = new Vector2(100, 150);
+
+    public Vector2 powerRange = new Vector2(5,20);
+    //not sure what these two will be called yet, but I think 3 stats is good
+    public Vector2 utilityRange = new Vector2(5, 20); 
+    public Vector2 dexterityRange = new Vector2(10, 30); //dexterity is place holder??
+
+
+    public List<personality> personalities = new List<personality>();
+    public List<creatureAttackBase> creatureAttacks = new List<creatureAttackBase>();
+
 
     public CreatureType CreatureType;
     public creatureAttackMelee attack1;
     public creatureAttackRanged attack2;
-
-
-    // behavior stuffs / personality
-    public bool isSkittish;
-    public bool isBrash;
-    public bool isBold;
-    public bool isLethargic;
-
-
-
 
 }
 

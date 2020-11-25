@@ -1,11 +1,10 @@
-﻿// Jake
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTActionFollowPlayer : BTLeaf
+public class BTActionTrailPlayer : BTLeaf
 {
-    public BTActionFollowPlayer(string _name, CreatureAIContext _context) : base(_name, _context) {
+    public BTActionTrailPlayer(string _name, CreatureAIContext _context) : base(_name, _context) {
         name = _name;
         context = _context;
     }
@@ -19,6 +18,7 @@ public class BTActionFollowPlayer : BTLeaf
     {
         ranOnEnter = false;
         context.doMovement(0f);
+        Debug.Log("Exiting Trail");
     }
 
     public override NodeState Evaluate()
@@ -26,15 +26,15 @@ public class BTActionFollowPlayer : BTLeaf
         if(!ranOnEnter){
             OnEnter();
         }
-        Vector3 desiredLook = new Vector3(context.player.transform.position.x, context.creatureTransform.transform.position.y, context.player.transform.position.z);
-        context.doLookAt(desiredLook);
+        Quaternion desiredLook = context.player.transform.rotation;
+        context.doRotation(10f, desiredLook);
         context.doMovement(context.CD.moveSpeed);
 
         if(Vector3.Distance(context.player.transform.position, context.creatureTransform.position) > 20){
             // Player too far away
             OnExit();
             return NodeState.FAILURE;
-        } else if(context.isInPlayerRadius || context.isInPlayerTrail){
+        } else if(context.isInPlayerRadius){
             // Made it to player
             OnExit();
             return NodeState.SUCCESS;
@@ -43,4 +43,6 @@ public class BTActionFollowPlayer : BTLeaf
             return NodeState.RUNNING;
         }
     }
+
+
 }
