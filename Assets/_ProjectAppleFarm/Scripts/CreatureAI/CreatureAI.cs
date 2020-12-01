@@ -18,6 +18,10 @@ public class CreatureAI : MonoBehaviour
         
     }
 
+
+    private void FixedUpdate() {
+        //behaviorTree.Evaluate();
+    }
     //build the behavior tree for the creature
     private void BuildBT() 
     {

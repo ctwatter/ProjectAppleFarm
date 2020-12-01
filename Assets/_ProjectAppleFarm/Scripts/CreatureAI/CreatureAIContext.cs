@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [System.Serializable]
 public class CreatureAIContext : MonoBehaviour
@@ -14,6 +15,9 @@ public class CreatureAIContext : MonoBehaviour
     public Rigidbody rb;
     public ActiveCreatureData CD;
     public creatureData creatureTypeData;
+    public NavMeshAgent agent;
+    public GameObject backFollowPoint;
+    public GameObject followPoint;
     
     [Header("Bools")]
     public bool isWild;
@@ -27,6 +31,7 @@ public class CreatureAIContext : MonoBehaviour
     {
         creatureTransform = transform;
         rb = GetComponent<Rigidbody>();
+        agent = GetComponent<NavMeshAgent>();
         if(CD.ready) {
             //for now were generating a new set of stats every time
             CreatureStatGen test = new CreatureStatGen();

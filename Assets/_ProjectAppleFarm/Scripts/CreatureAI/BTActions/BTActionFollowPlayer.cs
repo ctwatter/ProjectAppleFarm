@@ -2,12 +2,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BTActionFollowPlayer : BTLeaf
 {
+
+    private NavMeshAgent agent;
+    private float moveSpeed = 5f;
+    private float angularSpeed = 720f; //deg/s
+    private float acceleration = 100f; //max accel units/sec^2
+
+
     public BTActionFollowPlayer(string _name, CreatureAIContext _context) : base(_name, _context) {
         name = _name;
         context = _context;
+
+        agent = context.agent;
+        //ObjToFollow = captCreature.followPoint;
+        agent.autoBraking = true;
+        agent.autoRepath = false;
+        agent.angularSpeed = angularSpeed;
+        agent.acceleration = acceleration;
+        agent.speed = moveSpeed;
     }
 
     protected override void OnEnter()
@@ -19,6 +35,7 @@ public class BTActionFollowPlayer : BTLeaf
     {
         ranOnEnter = false;
         context.doMovement(0f);
+        agent.ResetPath();
     }
 
     public override NodeState Evaluate()
@@ -26,9 +43,10 @@ public class BTActionFollowPlayer : BTLeaf
         if(!ranOnEnter){
             OnEnter();
         }
-        Vector3 desiredLook = new Vector3(context.player.transform.position.x, context.creatureTransform.transform.position.y, context.player.transform.position.z);
-        context.doLookAt(desiredLook);
-        context.doMovement(context.CD.moveSpeed);
+        //Vector3 desiredLook = new Vector3(context.player.transform.position.x, context.creatureTransform.transform.position.y, context.player.transform.position.z);
+        //context.doLookAt(desiredLook);
+        //context.doMovement(context.CD.moveSpeed);
+        agent.destination = context.backFollowPoint.transform.position;
 
         if(Vector3.Distance(context.player.transform.position, context.creatureTransform.position) > 20){
             // Player too far away
@@ -44,3 +62,18 @@ public class BTActionFollowPlayer : BTLeaf
         }
     }
 }
+
+
+/*
+shoot action logic?
+
+move until you have raycast then shoot
+
+or
+while raycast between navmesh parts returns false
+
+    move to stopping range
+    decrease stopping range
+
+shoot
+*/
