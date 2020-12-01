@@ -7,6 +7,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+
+    public bool isoMovement = true;
+
+
     public PlayerStateMachine playerStateMachine => GetComponent<PlayerStateMachine>();
     public PlayerAnimator playerAnimator => GetComponent<PlayerAnimator>();
 
@@ -38,6 +42,10 @@ public class PlayerController : MonoBehaviour
     public float currSpeed;
     public CapsuleCollider swordCollider; 
     public bool isHit;
+
+
+
+
     private void Awake() {
         InitializeStateMachine();
     }
@@ -84,8 +92,13 @@ public class PlayerController : MonoBehaviour
         if(!isDashing)
         {
             v3Vel = new Vector3(movementVel.x, 0, movementVel.y);
+            
+            if(isoMovement){
+                v3Vel = Quaternion.Euler(0, -45, 0) * v3Vel;
+            }
         }
        
+      
         
 
         if(!charController.isGrounded) {
@@ -98,12 +111,20 @@ public class PlayerController : MonoBehaviour
         charController.Move(movementVector);
         charController.Move(gravity * Time.deltaTime);
 
+    
+
         playerAnimator.Move(movementVector);
     }
 
     public void doRotation(float rotationModifier){
         v3Vel = new Vector3(movementVel.x, 0, movementVel.y);
+
+        
+
         if(movementVel != Vector2.zero) {
+            if(isoMovement){
+                v3Vel = Quaternion.Euler(0, -45, 0) * v3Vel;
+            }
             transform.forward = Vector3.Slerp(transform.forward, v3Vel, Time.deltaTime * turnSpeed * rotationModifier);
         }
     }
