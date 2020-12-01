@@ -152,12 +152,12 @@ MonoBehaviour:
   attackArea: {fileID: 0}
   isHit: 0
   rigidbody: {fileID: 0}
-  enemyMoveSpeed: 10
-  rotationSpeed: 10
-  attackStoppingDistance: 4
+  enemyMoveSpeed: 5
+  rotationSpeed: 1
+  attackStoppingDistance: 10
   isAttacking: 0
   startTime: 0
-  timeDelay: 1
+  timeDelay: 3
   animator: {fileID: 878230853533669236}
 --- !u!114 &878230852319099022
 MonoBehaviour:

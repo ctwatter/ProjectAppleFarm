@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public GameObject followPoint;
     public EnemyFollowPlayerRadiusTrigger attackArea;
 
-    public bool isHit;
+    public bool isHit = false;
     public Rigidbody rigidbody;
     public float enemyMoveSpeed = 10f;
     public float rotationSpeed = 10f;

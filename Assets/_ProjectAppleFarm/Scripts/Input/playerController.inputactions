@@ -79,6 +79,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "heavyAttack",
+                    "type": "Button",
+                    "id": "49b69718-c1ea-4d93-9d8c-58c5974ed64f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -145,6 +153,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "208fbb25-b1e8-438d-84c2-9196bbb94e8b",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "heavyAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

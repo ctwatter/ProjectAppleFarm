@@ -18,7 +18,7 @@ public class EnemyAttackState : EnemyBaseState
     public override void Enter(){
         //enter anim
         //enemy.enemyData.attack1 -> ranged/melee ->
-        Debug.Log("attack start");
+        //Debug.Log("attack start");
         enemy.isAttacking = true;
         enemy.animator.SetTrigger("attack");
         
@@ -26,7 +26,7 @@ public class EnemyAttackState : EnemyBaseState
 
     public override Type Tick() {
         if(!enemy.animator.GetCurrentAnimatorStateInfo(0).IsTag("attack")) { 
-            Debug.Log("attack end");
+            //Debug.Log("attack end");
             enemy.isAttacking = false;
             enemy.startTime = Time.time;
             //enemy.animator.SetTrigger("idle");
@@ -38,5 +38,6 @@ public class EnemyAttackState : EnemyBaseState
 
     public override void Exit(){
         //exit anim
+        enemy.isHit = false;
     }
 }
