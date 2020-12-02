@@ -23,7 +23,7 @@ public class CreatureStatGen
     
     //personality example. make a bunch of these, put them all in a list and do some logic :)
                                 //personality( _name, _statModType, _basePercentage, _maxPercentage, _statModifierAmount ){
-    personality Adventurous = new personality("Adventurous", statModifierType.POWER, 0.1f, 0.4f, 1.1f); //could pre write out all personalities we like
+    personality Adventurous = new personality("Adventurous", statModifierType.POWER, 1.1f, 0.1f, 0.4f); //could pre write out all personalities we like
     
 
 
@@ -87,18 +87,36 @@ public class personality {
 
 
     public string personalityName; //personality name
-    public statModifierType statModType; //the stat that this personality will modify
+    public statModifierType statModType1; //the stat that this personality will modify
+    public statModifierType statModType2;
     public float basePercentage; //base chance that a creature can roll this personality
     public float maxPercentage;
-    public float statModifierAmount; // amount that this personality affects the stat.
+    public float statModifierAmount1; // amount that this personality affects the stat.
+    public float statModifierAmount2;
 
-    public personality(string _name, statModifierType _statModType, float _basePercentage, float _maxPercentage, float _statModifierAmount ){
+    public personality(string _name, statModifierType _statModType1, float _statModifierAmount1,  float _basePercentage, float _maxPercentage){
         personalityName = _name;
-        statModType = _statModType;
+        statModType1 = _statModType1;
+        statModifierAmount1 = _statModifierAmount1;
         basePercentage = _basePercentage;
         maxPercentage = _maxPercentage;
-        statModifierAmount = _statModifierAmount;
+       
     }
+
+
+    //second constructor for having multiple stat types.
+    public personality(string _name, statModifierType _statModType1, float _statModifierAmount1, statModifierType _statModType2, float _statModifierAmount2, float _basePercentage, float _maxPercentage,){
+        personalityName = _name;
+        statModType1 = _statModType1;
+        statModifierAmount1 = _statModifierAmount1;
+        statModType2 = _statModType2;
+        statModifierAmount2 = _statModifierAmount2;
+        basePercentage = _basePercentage;
+        maxPercentage = _maxPercentage;
+        
+    }
+
+
 
     public bool calcChance(float roll, float minRoll, float MaxRoll) {
         float chance = linearMap(roll, minRoll, MaxRoll, basePercentage, maxPercentage);
@@ -115,5 +133,5 @@ public class personality {
 }
 
 public enum statModifierType {
-    POWER, UTILITY, DEXTERITY
+    POWER, UTILITY, DEXTERITY, LIFE, BONDRATE
 }

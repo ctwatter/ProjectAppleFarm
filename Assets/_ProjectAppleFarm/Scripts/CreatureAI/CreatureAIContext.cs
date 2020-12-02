@@ -32,7 +32,7 @@ public class CreatureAIContext : MonoBehaviour
         creatureTransform = transform;
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
-        if(CD.ready) {
+        if(true) {
             //for now were generating a new set of stats every time
             CreatureStatGen test = new CreatureStatGen();
             test.dataIn = creatureTypeData;
