@@ -31,8 +31,8 @@ public class creatureData : ScriptableObject
 
 
     public CreatureType CreatureType;
-    public creatureAttackMelee attack1;
-    public creatureAttackRanged attack2;
+    public creatureAttackBase attack1;
+    public creatureAttackBase attack2;
 
 }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Creature Ranged Attack", menuName = "ScriptableObjects/CreatureAttacks/RangedAttack", order = 1)]
 public class creatureAttackRanged : creatureAttackBase
 {
+    public float maxRange;
 
     public float projectileSpeed;
 

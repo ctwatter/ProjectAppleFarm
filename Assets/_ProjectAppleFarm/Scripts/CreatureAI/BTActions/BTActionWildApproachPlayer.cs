@@ -1,19 +1,17 @@
-﻿// Jake
+// Enrico
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BTActionFollowPlayer : BTLeaf
+public class BTActionWildApproachPlayer : BTLeaf
 {
-
     private NavMeshAgent agent;
-    private float moveSpeed = 5f;
+    private float moveSpeed = 2f;
     private float angularSpeed = 720f; //deg/s
     private float acceleration = 100f; //max accel units/sec^2
 
-
-    public BTActionFollowPlayer(string _name, CreatureAIContext _context) : base(_name, _context) {
+    public BTActionWildApproachPlayer(string _name, CreatureAIContext _context) : base(_name, _context) {
         name = _name;
         context = _context;
 
@@ -46,13 +44,13 @@ public class BTActionFollowPlayer : BTLeaf
         //Vector3 desiredLook = new Vector3(context.player.transform.position.x, context.creatureTransform.transform.position.y, context.player.transform.position.z);
         //context.doLookAt(desiredLook);
         //context.doMovement(context.CD.moveSpeed);
-        agent.destination = context.backFollowPoint.transform.position;
+        agent.destination = context.player.transform.position;
 
-        if(Vector3.Distance(context.player.transform.position, context.creatureTransform.position) > 20){
+        if(!context.isNoticed){
             // Player too far away
             OnExit();
             return NodeState.FAILURE;
-        } else if(context.isInPlayerRadius || context.isInPlayerTrail){
+        } else if(Vector3.Distance(context.creatureTransform.position, context.player.transform.position) < 2f){
             // Made it to player
             OnExit();
             return NodeState.SUCCESS;
@@ -60,20 +58,6 @@ public class BTActionFollowPlayer : BTLeaf
             // Still trying to get to player
             return NodeState.RUNNING;
         }
+        
     }
 }
-
-
-/*
-shoot action logic?
-
-move until you have raycast then shoot
-
-or
-while raycast between navmesh parts returns false
-
-    move to stopping range
-    decrease stopping range
-
-shoot
-*/

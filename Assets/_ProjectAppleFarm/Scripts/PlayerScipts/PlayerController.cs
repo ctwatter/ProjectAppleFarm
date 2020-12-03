@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     public bool playerInteract;
     public bool nearInteractable = false;
     public GameObject wildCreature = null;
+    public GameObject currCreature;
+    public CreatureAIContext currCreatureContext;
     public float currSpeed;
     public CapsuleCollider swordCollider; 
     public bool isHit;
@@ -147,7 +149,10 @@ public class PlayerController : MonoBehaviour
         if(nearInteractable) {
             playerInteract = true;
             if(wildCreature != null){
-                wildCreature.GetComponent<wildCreature>().befriend();
+                wildCreature.GetComponent<CreatureAIContext>().isWild = false;
+                currCreature = wildCreature;
+                currCreatureContext = currCreature.GetComponent<CreatureAIContext>();
+                //FIX LATER --- NEED TO DISABLE NOTICE/INTERACT COLLIDERS
                 nearInteractable = false;
             }
         } else {
@@ -173,6 +178,17 @@ public class PlayerController : MonoBehaviour
     }
 
     //********Insert function for heavy attack button*******
+
+    void OnAttack2(){
+        currCreatureContext.isAbilityTriggered = true;
+        currCreatureContext.lastTriggeredAbility = 0;
+    }  
+    void OnAttack3(){
+        currCreatureContext.isAbilityTriggered = true;
+        currCreatureContext.lastTriggeredAbility = 1;
+    }
+
+
 
     public bool getIsAttackAnim()
     {

@@ -23,6 +23,13 @@ public class CreatureAIContext : MonoBehaviour
     public bool isWild;
     public bool isInPlayerRadius;
     public bool isInPlayerTrail;
+    public bool isNoticed;
+    public bool isAbilityTriggered;
+
+    [Header("Misc.Numbers")]
+    public float playerSpeedToScare;
+    public int lastTriggeredAbility;
+    public float enemyDetectRange;
 
 
     #endregion
@@ -33,7 +40,7 @@ public class CreatureAIContext : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         if(true) {
-            //for now were generating a new set of stats every time
+            //for now we're generating a new set of stats every time
             CreatureStatGen test = new CreatureStatGen();
             test.dataIn = creatureTypeData;
             test.dataOut = CD;

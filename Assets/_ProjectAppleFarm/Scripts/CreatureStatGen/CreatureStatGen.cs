@@ -105,7 +105,7 @@ public class personality {
 
 
     //second constructor for having multiple stat types.
-    public personality(string _name, statModifierType _statModType1, float _statModifierAmount1, statModifierType _statModType2, float _statModifierAmount2, float _basePercentage, float _maxPercentage,){
+    public personality(string _name, statModifierType _statModType1, float _statModifierAmount1, statModifierType _statModType2, float _statModifierAmount2, float _basePercentage, float _maxPercentage){
         personalityName = _name;
         statModType1 = _statModType1;
         statModifierAmount1 = _statModifierAmount1;

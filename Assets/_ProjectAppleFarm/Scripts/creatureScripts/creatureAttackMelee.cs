@@ -10,6 +10,7 @@ public class creatureAttackMelee : creatureAttackBase
     public float moveSpeed;
 
     public Animation anims;
+    public string animTrigger;
 
     public float baseDmg;
 
