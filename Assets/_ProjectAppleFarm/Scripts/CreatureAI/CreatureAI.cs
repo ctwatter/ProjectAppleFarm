@@ -171,7 +171,29 @@ public class CreatureAI : MonoBehaviour
 
         //add this section later
         #region WILD NO PLAYER
-        
+            List<BTnode> WildNoPlayerList = new List<BTnode>();
+
+            #region wild enemies nearby
+                List<BTnode> WildEnemiesList = new List<BTnode>();
+                BTCheckWildEnemiesInRange wildEnemies = new BTCheckWildEnemiesInRange("Are Enemies Nearby?", context);
+                BTActionWildRunFromEnemies wildRunEnemy = new BTActionWildRunFromEnemies("Run From Enemies", context);
+                WildEnemiesList.Add(wildEnemies);
+                WildEnemiesList.Add(wildRunEnemy);
+                BTSequence wildEnemySequence = new BTSequence("Wild Enemies Nearby", WildEnemiesList);
+            #endregion
+
+            #region wild wander
+                List<BTnode> WildWanderList = new List<BTnode>();
+                BTActionWildWanderInLocation wildWander = new BTActionWildWanderInLocation("Wander", context);
+                BTActionWildWanderIdle wildWanderIdle = new BTActionWildWanderIdle("Wander Idle", context);
+                WildWanderList.Add(wildWander);
+                WildWanderList.Add(wildWanderIdle);
+                BTSelector wildWanderSelector = new BTSelector("Wild Wander", WildWanderList);
+            #endregion
+
+            WildNoPlayerList.Add(wildEnemySequence);
+            WildNoPlayerList.Add(wildWanderSelector);
+            BTSelector wildNoPlayerSelector = new BTSelector("Wild No Player", WildNoPlayerList);
         #endregion
 
         #region IS CREATURE WILD
@@ -179,7 +201,7 @@ public class CreatureAI : MonoBehaviour
                 List<BTnode> CreatureIsWildList = new List<BTnode>();
                 CreatureIsWildList.Add(noticedSequence);
                 //be sure to add the no player section later
-                CreatureIsWildList.Add(followIdle); //placeholder for wild w/ no player section
+                CreatureIsWildList.Add(wildNoPlayerSelector); //placeholder for wild w/ no player section
 
                 BTSelector creatureIsWildSelector = new BTSelector("Creature Is Wild", CreatureIsWildList);
             #endregion
