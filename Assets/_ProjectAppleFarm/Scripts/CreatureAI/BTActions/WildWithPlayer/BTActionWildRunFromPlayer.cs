@@ -34,6 +34,7 @@ public class BTActionWildRunFromPlayer : BTLeaf
         ranOnEnter = false;
         context.doMovement(0f);
         agent.ResetPath();
+        context.wildStartingLocation = context.creatureTransform.position;
     }
 
     public override NodeState Evaluate()

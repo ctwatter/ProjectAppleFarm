@@ -1687,7 +1687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 10, y: 10, z: -10}
-  toFollow: {fileID: 5756408169595966343}
+  toFollow: {fileID: 1975994472179932230}
   smoothSpeed: 0.5
 --- !u!4 &367486664 stripped
 Transform:
@@ -13095,9 +13095,15 @@ MonoBehaviour:
   isInPlayerTrail: 0
   isNoticed: 0
   isAbilityTriggered: 0
+  wanderIdling: 0
   playerSpeedToScare: 0.3
   lastTriggeredAbility: 0
   enemyDetectRange: 20
+  wanderRadius: 12
+  wanderIdleDuration: 0
+  wanderIdleTimer: 0
+  wanderDestination: {x: 0, y: 0, z: 0}
+  wildStartingLocation: {x: 0, y: 0, z: 0}
 --- !u!114 &1975994472179932253
 MonoBehaviour:
   m_ObjectHideFlags: 0
