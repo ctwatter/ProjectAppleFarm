@@ -12,6 +12,9 @@ public class BTCheckIfTargetExists : BTChecker
 
     public override NodeState Evaluate()
     {
+        Debug.Log("CHECKING IF TARGET EXISTS : " + context.targetEnemy);
+        //return NodeState.FAILURE;
+        
         if(context.targetEnemy == null){
             return NodeState.FAILURE;
         }

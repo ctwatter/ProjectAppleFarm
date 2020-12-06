@@ -15,6 +15,7 @@ public class BTCheckPlayerTriggeredAbility : BTChecker
     public override NodeState Evaluate()
     {
         if(context.isAbilityTriggered){
+            Debug.Log("Player Triggered Ability");
             return NodeState.SUCCESS;
         }
         return NodeState.FAILURE;

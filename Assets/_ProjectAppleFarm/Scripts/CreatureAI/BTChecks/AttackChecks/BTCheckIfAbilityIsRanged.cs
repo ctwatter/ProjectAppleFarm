@@ -12,7 +12,7 @@ public class BTCheckIfAbilityIsRanged : BTChecker
 
     public override NodeState Evaluate()
     {
-        if(context.lastTriggeredAbility > 0){
+        if(context.lastTriggeredAbility >= 0){
             if(context.CD.abilities[context.lastTriggeredAbility] is creatureAttackRanged){
                 return NodeState.SUCCESS;
             }

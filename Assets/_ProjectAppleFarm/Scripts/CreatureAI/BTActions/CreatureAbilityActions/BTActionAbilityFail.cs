@@ -22,9 +22,12 @@ public class BTActionAbilityFail : BTLeaf
     }
 
     public override NodeState Evaluate() {
+        if(!ranOnEnter){
+            OnEnter();
+        }
         context.targetEnemy = null;
         context.lastTriggeredAbility = -1;
-        context.isAbilityTriggered = true;
-        return NodeState.SUCCESS;
+        context.isAbilityTriggered = false;
+        return NodeState.FAILURE;
     }
 }

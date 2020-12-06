@@ -8,11 +8,12 @@ public class BTActionApproachForAttack : BTLeaf
 
     private NavMeshAgent agent;
      creatureAttackMelee attack;
-    private float moveSpeed = 2f;
+    private float moveSpeed = 30f;
 
     public BTActionApproachForAttack(string _name, CreatureAIContext _context ) : base(_name, _context){
         name = _name;
         context = _context;
+        agent = context.agent;
     }
 
     protected override void OnEnter()
@@ -21,7 +22,7 @@ public class BTActionApproachForAttack : BTLeaf
         ranOnEnter = true;
         attack = (creatureAttackMelee) context.CD.abilities[context.lastTriggeredAbility];
         agent.speed = moveSpeed;
-        agent.stoppingDistance = attack.distanceToEnemy;
+        // agent.stoppingDistance = attack.maxDistanceToEnemy;
     }
 
     protected override void OnExit()
@@ -32,13 +33,16 @@ public class BTActionApproachForAttack : BTLeaf
     }
 
     public override NodeState Evaluate() {
-        agent.destination = context.targetEnemy.transform.position;
+        if(!ranOnEnter){
+            OnEnter();
+        }
 
-        if(agent.pathStatus == NavMeshPathStatus.PathInvalid){
-            
-            OnExit();
-            return NodeState.FAILURE;
-        } else if(agent.pathStatus == NavMeshPathStatus.PathComplete){
+
+        agent.destination = context.targetEnemy.transform.position;
+        float distance = Vector3.Distance(context.creatureTransform.position, context.targetEnemy.transform.position);
+        
+        //Debug.Log("Distance : " + distance + " maxDist : " + attack.maxDistanceToEnemy);
+        if(distance < attack.maxDistanceToEnemy){
             // Made it to player
             OnExit();
             return NodeState.SUCCESS;

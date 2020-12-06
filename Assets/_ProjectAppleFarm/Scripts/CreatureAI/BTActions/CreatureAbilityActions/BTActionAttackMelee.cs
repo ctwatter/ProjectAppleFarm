@@ -33,7 +33,7 @@ public class BTActionAttackMelee : BTLeaf
 
         context.targetEnemy.GetComponent<EnemyStats>().takeDamage(attack.baseDmg);
         context.targetEnemy = null;
-        context.isAbilityTriggered = true;
+        context.isAbilityTriggered = false;
         if(true) { //if animation done, have to add that 
             return NodeState.SUCCESS;
         }

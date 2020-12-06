@@ -12,7 +12,7 @@ public class BTCheckIfAbilityIsUtility : BTChecker
 
     public override NodeState Evaluate()
     {
-        if(context.lastTriggeredAbility > 0){
+        if(context.lastTriggeredAbility >= 0){
             if(context.CD.abilities[context.lastTriggeredAbility] is creatureAttackUtility){
                 return NodeState.SUCCESS;
             }

@@ -80,24 +80,40 @@ public class CreatureAI : MonoBehaviour
                             TargetExistsSelectorList.Add(checkIfTargetExists);
                             TargetExistsSelectorList.Add(findTargetEnemy);
 
-                            BTSequence TargetExistsSelector = new BTSequence("Target Exists Selector", TargetExistsSelectorList);
+                            BTSelector TargetExistsSelector = new BTSelector("Target Exists Selector", TargetExistsSelectorList);
                         #endregion 
 
-                        #region Approach/Attack sequence
-                            List<BTnode> MeleeApproachAttackSequenceList = new List<BTnode>();
+                        #region Approach sequence
+                            List<BTnode> MeleeApproachSelectorList = new List<BTnode>();
+                            //BTCheckDistanceToTarget checkIfDistanceToTarget = new BTCheckDistanceToTarget("Check if in range for attack", context);
                             BTActionApproachForAttack approachForAttack = new BTActionApproachForAttack("Approach for attack", context);
+                            BTInverter invertApproachForAttack = new BTInverter("Invert Approach for Attack", approachForAttack);
                             BTActionAttackMelee attackMelee = new BTActionAttackMelee("Melee Attack", context);
-                            MeleeApproachAttackSequenceList.Add(approachForAttack);
-                            MeleeApproachAttackSequenceList.Add(attackMelee);
-
-                            BTSequence MeleeApproachAttackSequence = new BTSequence("Melee Approach / Attack Sequence", MeleeApproachAttackSequenceList);
+                            //MeleeApproachSequenceList.Add(checkIfDistanceToTarget);
+                            MeleeApproachSelectorList.Add(invertApproachForAttack);
+                            MeleeApproachSelectorList.Add(attackMelee);
+                            
+                            BTSelector MeleeApproachAttackSequence = new BTSelector("Melee Approach / Attack Sequence", MeleeApproachSelectorList);
                         #endregion
 
+                        // #region MeleeAttackSequence
+                        //     List<BTnode> MeleeAttackSequenceList = new List<BTnode>();
+                        //     BTFailReturnRun invertDistanceCheck = new BTFailReturnRun("Invert Distance Checker", checkIfDistanceToTarget); //taking node from above
+                        //     BTActionAttackMelee attackMelee = new BTActionAttackMelee("Melee Attack", context);
+                        //     MeleeAttackSequenceList.Add(invertDistanceCheck);
+                        //     
+
+                        //     BTSequence MeleeAttackSequence = new BTSequence("Melee Attack Sequence", MeleeAttackSequenceList);
+                        // #endregion
+
+
                         BTCheckIfAbilityIsMelee ifAbilityIsMelee = new BTCheckIfAbilityIsMelee("check if ability is melee", context);
+                        
                         MeleeAbilitySequenceList.Add(ifAbilityIsMelee);
                         MeleeAbilitySequenceList.Add(TargetExistsSelector);
                         MeleeAbilitySequenceList.Add(MeleeApproachAttackSequence);
-                        MeleeAbilitySequenceList.Add(AbilityFailsafe);
+                        //MeleeAbilitySequenceList.Add(MeleeAttackSequence);
+                        //MeleeAbilitySequenceList.Add(AbilityFailsafe);
                         BTSequence MeleeAbilitySequence = new BTSequence("Melee Ability Sequence", MeleeAbilitySequenceList);
 
                     #endregion
