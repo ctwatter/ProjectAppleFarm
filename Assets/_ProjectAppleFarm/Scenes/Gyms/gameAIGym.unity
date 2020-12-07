@@ -13116,6 +13116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab059d58bb33ff24aa0b1d99b1b7b9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  personalities: []
+  DefaultPersonality: {fileID: 11400000, guid: 6c35431185c976148838ffe95c22b0f1, type: 2}
 --- !u!114 &1975994472179932254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13135,6 +13137,7 @@ MonoBehaviour:
   utility: 0
   dexterity: 0
   moveSpeed: 8
+  personalities: []
   CreatureType: 0
   abilities:
   - {fileID: 11400000, guid: 6c4f0baccf5292e44b5dedd5cf8f4119, type: 2}

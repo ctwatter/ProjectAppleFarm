@@ -23,14 +23,14 @@ public class CreatureStatGen
     
     //Personality example. make a bunch of these, put them all in a list and do some logic :)
                                 //Personality( _name, _statModType, _basePercentage, _maxPercentage, _statModifierAmount ){
-    Personality Adventurous = new Personality("Adventurous", statModifierType.POWER, 1.1f, 0.1f, 0.4f); //could pre write out all personalities we like
+    //Personality Adventurous = new Personality("Adventurous", statModifierType.POWER, 1.1f, 0.1f, 0.4f); //could pre write out all personalities we like
     
 
 
  
 
     void initPersonalities(){
-        PowerPersonalities.Add(Adventurous);
+        
     }
 
     void choosePersonalities(){
@@ -85,5 +85,5 @@ public class CreatureStatGen
 
 
 public enum statModifierType {
-    POWER, UTILITY, DEXTERITY, LIFE, BONDRATE
+    POWER, UTILITY, DEXTERITY, LIFE, BONDRATE, NONE
 }
