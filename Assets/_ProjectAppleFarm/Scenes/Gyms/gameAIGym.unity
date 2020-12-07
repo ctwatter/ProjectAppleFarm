@@ -1687,7 +1687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 10, y: 10, z: -10}
-  toFollow: {fileID: 1975994472179932230}
+  toFollow: {fileID: 790840560}
   smoothSpeed: 0.5
 --- !u!4 &367486664 stripped
 Transform:

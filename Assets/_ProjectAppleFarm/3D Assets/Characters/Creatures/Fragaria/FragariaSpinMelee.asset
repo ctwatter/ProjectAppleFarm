@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a455941feff0e64e9a69ea7da767d17, type: 3}
   m_Name: FragariaSpinMelee
   m_EditorClassIdentifier: 
-  maxDistanceToEnemy: 1
+  maxDistanceToEnemy: 3
   moveSpeed: 0
   anims: {fileID: 0}
   animTrigger: 
-  baseDmg: 30
+  baseDmg: 100
   hitRadius: 10

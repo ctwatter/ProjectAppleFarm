@@ -96,16 +96,6 @@ public class CreatureAI : MonoBehaviour
                             BTSelector MeleeApproachAttackSequence = new BTSelector("Melee Approach / Attack Sequence", MeleeApproachSelectorList);
                         #endregion
 
-                        // #region MeleeAttackSequence
-                        //     List<BTnode> MeleeAttackSequenceList = new List<BTnode>();
-                        //     BTFailReturnRun invertDistanceCheck = new BTFailReturnRun("Invert Distance Checker", checkIfDistanceToTarget); //taking node from above
-                        //     BTActionAttackMelee attackMelee = new BTActionAttackMelee("Melee Attack", context);
-                        //     MeleeAttackSequenceList.Add(invertDistanceCheck);
-                        //     
-
-                        //     BTSequence MeleeAttackSequence = new BTSequence("Melee Attack Sequence", MeleeAttackSequenceList);
-                        // #endregion
-
 
                         BTCheckIfAbilityIsMelee ifAbilityIsMelee = new BTCheckIfAbilityIsMelee("check if ability is melee", context);
                         
@@ -247,5 +237,16 @@ public class CreatureAI : MonoBehaviour
         #endregion
         behaviorTree = _root;
     }
+
+    private void wildCreatureNoPlayerSubtree(){ 
+        List<BTnode> subtree = new List<BTnode>();
+        
+        
+
+        
+        
+    }
+
+
 
 }
