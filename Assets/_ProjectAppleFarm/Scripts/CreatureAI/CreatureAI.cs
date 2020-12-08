@@ -6,7 +6,7 @@ public class CreatureAI : MonoBehaviour
 {
     public BTnode behaviorTree;
     private CreatureAIContext context;
-    public List<Personality> personalities;
+    public List<Personality> personalities = new List<Personality>();
     public Personality DefaultPersonality;
 
     private void Start()
@@ -27,7 +27,7 @@ public class CreatureAI : MonoBehaviour
     //build the behavior tree for the creature
     private void BuildBT() 
     {
-        personalities = context.CD.personalities;
+        //personalities = context.CD.personalities;
         List<BTnode> RootList = new List<BTnode>();
 
         #region BONDED FOLLOW PLAYER
