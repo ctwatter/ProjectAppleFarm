@@ -6,6 +6,7 @@ using UnityEngine;
 public class Fruit : MonoBehaviour
 {
     // Start is called before the first frame update
+    public Item item;
     void Start()
     {
         
