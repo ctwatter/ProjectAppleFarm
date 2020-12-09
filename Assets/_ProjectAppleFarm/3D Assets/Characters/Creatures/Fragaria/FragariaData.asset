@@ -14,12 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLife: 0
   level: 0
-  atk: 0
-  def: 0
-  sAtk: 0
-  sDef: 0
-  atkSpeed: 0
-  moveSpeed: 0
+  power: 0
+  utility: 0
+  dexterity: 0
+  moveSpeed: 10
+  lifeRange: {x: 60, y: 75}
+  powerRange: {x: 10, y: 30}
+  utilityRange: {x: 25, y: 50}
+  dexterityRange: {x: 20, y: 40}
+  creatureAttacks: []
   CreatureType: 0
   attack1: {fileID: 11400000, guid: 6c4f0baccf5292e44b5dedd5cf8f4119, type: 2}
   attack2: {fileID: 11400000, guid: a3999c08b34cc8d4b968e2ff1e9a69ac, type: 2}
