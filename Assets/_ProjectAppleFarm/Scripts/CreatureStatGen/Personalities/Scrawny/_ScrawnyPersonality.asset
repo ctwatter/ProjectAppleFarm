@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74d844b5790621148a60a32fa8c6c23f, type: 3}
-  m_Name: _Scrawny
+  m_Name: _ScrawnyPersonality
   m_EditorClassIdentifier: 
   personalityName: 
   basePercentage: 0
@@ -19,7 +19,7 @@ MonoBehaviour:
   statModifierAmount1: 0
   statModType2: 0
   statModifierAmount2: 0
-  WildNoticed: {fileID: 0}
+  WildNoticed: {fileID: 11400000, guid: c4e45881ced68c94fad67004b1b06f50, type: 2}
   WildAlone: {fileID: 0}
   AbilityTree: {fileID: 0}
   FollowPlayerTree: {fileID: 0}

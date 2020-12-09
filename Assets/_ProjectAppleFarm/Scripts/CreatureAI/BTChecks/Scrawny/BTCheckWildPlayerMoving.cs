@@ -15,7 +15,6 @@ public class BTCheckWildPlayerMoving : BTChecker
     public override NodeState Evaluate()
     {
         if (context.player.GetComponent<PlayerController>().currSpeed > 0)
-            Debug.Log("Player is moving");
             return NodeState.SUCCESS;
         return NodeState.FAILURE;
     }
