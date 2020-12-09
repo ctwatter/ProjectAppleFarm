@@ -10,7 +10,7 @@ public class ScrawnyWildNoticed : BTSubtree
         #region WILD PLAYER
             #region wild player scary
                 List<BTnode> WildPlayerScaryList = new List<BTnode>();
-                BTCheckWildPlayerScary playerMoving = new BTCheckWildPlayerScary("Player Moving", context);
+                BTCheckWildPlayerMoving playerMoving = new BTCheckWildPlayerMoving("Player Moving", context);
                 BTActionWildRunFromPlayer runFromPlayer = new BTActionWildRunFromPlayer("Run From Player", context);
                 WildPlayerScaryList.Add(playerMoving);
                 WildPlayerScaryList.Add(runFromPlayer);
