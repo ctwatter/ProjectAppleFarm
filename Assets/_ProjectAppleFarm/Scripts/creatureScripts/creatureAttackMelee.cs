@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Creature Melee Attack", menuName = "ScriptableObjects/CreatureAttacks/MeleeAttack", order = 2)]
 public class creatureAttackMelee : creatureAttackBase
 {
-    public float distanceToEnemy;
+    public float maxDistanceToEnemy;
 
     public float moveSpeed;
 

@@ -25,11 +25,17 @@ public class CreatureAIContext : MonoBehaviour
     public bool isInPlayerTrail;
     public bool isNoticed;
     public bool isAbilityTriggered;
+    public bool wanderIdling = false;
 
     [Header("Misc.Numbers")]
     public float playerSpeedToScare;
     public int lastTriggeredAbility;
     public float enemyDetectRange;
+    public float wanderRadius; //how far from starting location the creature can wander
+    public float wanderIdleDuration;
+    public float wanderIdleTimer;
+    public Vector3 wanderDestination;
+    public Vector3 wildStartingLocation;
 
 
     #endregion
@@ -37,6 +43,7 @@ public class CreatureAIContext : MonoBehaviour
     private void Awake()
     {
         creatureTransform = transform;
+        wildStartingLocation = creatureTransform.position;
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         if(true) {

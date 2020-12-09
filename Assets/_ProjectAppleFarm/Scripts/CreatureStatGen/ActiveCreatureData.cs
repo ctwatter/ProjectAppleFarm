@@ -17,7 +17,7 @@ public class ActiveCreatureData : MonoBehaviour
 
 
 
-    public List<personality> personalities = new List<personality>();
+    public List<Personality> personalities = new List<Personality>();
 
     public CreatureType CreatureType;
     

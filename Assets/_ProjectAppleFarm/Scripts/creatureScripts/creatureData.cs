@@ -26,7 +26,7 @@ public class creatureData : ScriptableObject
     public Vector2 dexterityRange = new Vector2(10, 30); //dexterity is place holder??
 
 
-    public List<personality> personalities = new List<personality>();
+    public List<Personality> personalities = new List<Personality>();
     public List<creatureAttackBase> creatureAttacks = new List<creatureAttackBase>();
 
 

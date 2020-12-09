@@ -19,7 +19,7 @@ public class EnemyIsHit : EnemyBaseState
     {
      //trigger a hit animation
      enemy.animator.SetTrigger("isHit");
-     Debug.Log("start isHit");
+     //Debug.Log("start isHit");
     }
 
     public override Type Tick()
@@ -45,6 +45,6 @@ public class EnemyIsHit : EnemyBaseState
     public override void Exit()
     {
     enemy.isHit = false;
-       Debug.Log("exiting isHit");
+       //Debug.Log("exiting isHit");
     }
 }
