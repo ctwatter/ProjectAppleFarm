@@ -9,6 +9,8 @@ TagManager:
   - Weapon
   - FruitTree
   - Fruit
+  - FrontFollowPoint
+  - BackFollowPoint
   layers:
   - Default
   - TransparentFX

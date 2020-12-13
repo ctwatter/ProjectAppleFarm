@@ -55,7 +55,11 @@ public class BTActionWildRunFromPlayer : BTLeaf
             // creature escaped player
             OnExit();
             return NodeState.SUCCESS;
-        } else {
+        }
+        else if( context.player.GetComponent<PlayerController>().currSpeed <= context.playerSpeedToScare ){
+            return NodeState.FAILURE;
+        }
+        else {
             // Still trying to get to player
             return NodeState.RUNNING;
         }

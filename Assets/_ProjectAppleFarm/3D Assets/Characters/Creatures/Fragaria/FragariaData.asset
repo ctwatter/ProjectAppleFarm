@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38cefe1b5909324ab0e73a107c40d35, type: 3}
   m_Name: FragariaData
   m_EditorClassIdentifier: 
+  creaturePrefab: {fileID: 8167450192529632886, guid: c07cb2816bf651d40b894cc1c9b71b8a,
+    type: 3}
   maxLife: 0
   level: 0
   power: 0
@@ -24,7 +26,4 @@ MonoBehaviour:
   dexterityRange: {x: 20, y: 40}
   creatureAttacks:
   - {fileID: 11400000, guid: 6c4f0baccf5292e44b5dedd5cf8f4119, type: 2}
-  - {fileID: 11400000, guid: a3999c08b34cc8d4b968e2ff1e9a69ac, type: 2}
-  CreatureType: 0
-  attack1: {fileID: 11400000, guid: 6c4f0baccf5292e44b5dedd5cf8f4119, type: 2}
-  attack2: {fileID: 11400000, guid: a3999c08b34cc8d4b968e2ff1e9a69ac, type: 2}
+  - {fileID: 11400000, guid: 6c4f0baccf5292e44b5dedd5cf8f4119, type: 2}

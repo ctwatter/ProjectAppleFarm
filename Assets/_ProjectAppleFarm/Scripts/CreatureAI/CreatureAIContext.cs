@@ -52,14 +52,13 @@ public class CreatureAIContext : MonoBehaviour
         animator = GetComponent<CreatureAnimator>();
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
-        if(true) {
-            //for now we're generating a new set of stats every time
-            CreatureStatGen test = new CreatureStatGen();
-            test.dataIn = creatureTypeData;
-            test.dataOut = CD;
-            test.generateStats();
-            CD = test.dataOut;
-        }
+        player = GameObject.FindGameObjectWithTag("Player");
+        followPoint = GameObject.FindGameObjectWithTag("FrontFollowPoint");
+        backFollowPoint = GameObject.FindGameObjectWithTag("BackFollowPoint");
+    }
+
+    public void GetActiveCreatureData(){
+        CD = GetComponent<ActiveCreatureData>();
     }
 
     private void FixedUpdate() {
