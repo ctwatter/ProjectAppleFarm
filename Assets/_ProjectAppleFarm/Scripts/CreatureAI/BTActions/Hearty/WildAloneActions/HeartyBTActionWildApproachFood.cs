@@ -1,17 +1,19 @@
-// Jake
+﻿// Jake
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class HeartyBTActionWildApproachPlayer : BTLeaf
+public class HeartyBTActionWildApproachFood : BTLeaf
 {
+
     private NavMeshAgent agent;
-    private float moveSpeed = 2f;
+    private float moveSpeed = 5f;
     private float angularSpeed = 720f; //deg/s
     private float acceleration = 100f; //max accel units/sec^2
 
-    public HeartyBTActionWildApproachPlayer(string _name, CreatureAIContext _context) : base(_name, _context) {
+
+    public HeartyBTActionWildApproachFood(string _name, CreatureAIContext _context) : base(_name, _context) {
         name = _name;
         context = _context;
 
@@ -21,12 +23,13 @@ public class HeartyBTActionWildApproachPlayer : BTLeaf
         agent.autoRepath = false;
         agent.angularSpeed = angularSpeed;
         agent.acceleration = acceleration;
-        agent.speed = moveSpeed;
+        //agent.speed = moveSpeed;
     }
 
     protected override void OnEnter()
     {
         ranOnEnter = true;
+        agent.speed = context.CD.moveSpeed;
     }
 
     protected override void OnExit()
@@ -41,24 +44,18 @@ public class HeartyBTActionWildApproachPlayer : BTLeaf
         if(!ranOnEnter){
             OnEnter();
         }
-        //Vector3 desiredLook = new Vector3(context.player.transform.position.x, context.creatureTransform.transform.position.y, context.player.transform.position.z);
-        //context.doLookAt(desiredLook);
-        //context.doMovement(context.CD.moveSpeed);
-        agent.destination = context.player.transform.position;
 
-        if(!context.isNoticed){
-            // Player too far away
-            OnExit();
-            return NodeState.FAILURE;
-        } else if(Vector3.Distance(context.creatureTransform.position, context.player.transform.position) < 2f){
-            // Made it to player
-            // Check for dropped food and eat it somehow
+        agent.destination = context.foundFood.transform.position;
+        if(Vector3.Distance(context.foundFood.transform.position, context.creatureTransform.position) < 3) {
+            // Made it to fruit
+            Fruit fruitScript = context.foundFood.GetComponent<Fruit>();
+            //Eat the fruit
+            fruitScript.destroy();
             OnExit();
             return NodeState.SUCCESS;
-        } else{
-            // Still trying to get to player
+        } else {
+            // Keep going to fruit
             return NodeState.RUNNING;
         }
-        
     }
 }

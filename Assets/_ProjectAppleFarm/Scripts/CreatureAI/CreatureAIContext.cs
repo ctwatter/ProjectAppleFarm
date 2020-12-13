@@ -11,6 +11,8 @@ public class CreatureAIContext : MonoBehaviour
     [Header("Objects")]
     public GameObject player;
     public GameObject targetEnemy;
+    public GameObject cleverItem; //interesting items, only for clever creatures
+    public GameObject foundFood; //Used in Hearty personality to find food
     public Transform creatureTransform;
     public Rigidbody rb;
     public ActiveCreatureData CD;
@@ -18,6 +20,7 @@ public class CreatureAIContext : MonoBehaviour
     public NavMeshAgent agent;
     public GameObject backFollowPoint;
     public GameObject followPoint;
+    public CreatureAnimator animator;
     
     [Header("Bools")]
     public bool isWild;
@@ -26,11 +29,13 @@ public class CreatureAIContext : MonoBehaviour
     public bool isNoticed;
     public bool isAbilityTriggered;
     public bool wanderIdling = false;
+    public bool cleverIgnoreItems = false;
 
     [Header("Misc.Numbers")]
     public float playerSpeedToScare;
     public int lastTriggeredAbility;
     public float enemyDetectRange;
+    public float itemDetectRange; //range for detecting interesting items, only for clever creatures
     public float wanderRadius; //how far from starting location the creature can wander
     public float wanderIdleDuration;
     public float wanderIdleTimer;
@@ -44,16 +49,16 @@ public class CreatureAIContext : MonoBehaviour
     {
         creatureTransform = transform;
         wildStartingLocation = creatureTransform.position;
+        animator = GetComponent<CreatureAnimator>();
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
-        if(true) {
-            //for now we're generating a new set of stats every time
-            CreatureStatGen test = new CreatureStatGen();
-            test.dataIn = creatureTypeData;
-            test.dataOut = CD;
-            test.generateStats();
-            CD = test.dataOut;
-        }
+        player = GameObject.FindGameObjectWithTag("Player");
+        followPoint = GameObject.FindGameObjectWithTag("FrontFollowPoint");
+        backFollowPoint = GameObject.FindGameObjectWithTag("BackFollowPoint");
+    }
+
+    public void GetActiveCreatureData(){
+        CD = GetComponent<ActiveCreatureData>();
     }
 
     private void FixedUpdate() {

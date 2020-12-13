@@ -82,8 +82,16 @@
                 },
                 {
                     "name": "heavyAttack",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "49b69718-c1ea-4d93-9d8c-58c5974ed64f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "FruitSpawn",
+                    "type": "Button",
+                    "id": "47f82084-3376-4531-afbc-b14bec32f5f9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -160,10 +168,21 @@
                     "name": "",
                     "id": "208fbb25-b1e8-438d-84c2-9196bbb94e8b",
                     "path": "<Gamepad>/buttonWest",
-                    "interactions": "Hold",
+                    "interactions": "Hold(duration=0.3)",
                     "processors": "",
                     "groups": "",
                     "action": "heavyAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62016e48-e87e-4650-abc7-964de771f93a",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FruitSpawn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,17 +1,18 @@
-﻿// Jake
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class HeartyBTActionWildPickUpFood : BTLeaf
+public class BTActionApproachItem : BTLeaf
 {
+
     private NavMeshAgent agent;
     private float moveSpeed = 5f;
     private float angularSpeed = 720f; //deg/s
     private float acceleration = 100f; //max accel units/sec^2
 
-    public HeartyBTActionWildPickUpFood(string _name, CreatureAIContext _context) : base(_name, _context) {
+
+    public BTActionApproachItem(string _name, CreatureAIContext _context) : base(_name, _context) {
         name = _name;
         context = _context;
 
@@ -21,12 +22,13 @@ public class HeartyBTActionWildPickUpFood : BTLeaf
         agent.autoRepath = false;
         agent.angularSpeed = angularSpeed;
         agent.acceleration = acceleration;
-        agent.speed = moveSpeed;
+        //agent.speed = moveSpeed;
     }
 
     protected override void OnEnter()
     {
         ranOnEnter = true;
+        agent.speed = context.CD.moveSpeed;
     }
 
     protected override void OnExit()
@@ -38,18 +40,14 @@ public class HeartyBTActionWildPickUpFood : BTLeaf
 
     public override NodeState Evaluate()
     {
-        // Somehow find food and pick it up/eat it
-
         if(!ranOnEnter){
             OnEnter();
         }
 
-        Vector3 position_difference = context.creatureTransform.position - context.targetEnemy.transform.position;
-        position_difference.Normalize();
-        agent.destination = context.creatureTransform.position + position_difference * 10;
+        agent.destination = context.cleverItem.transform.position;
 
-        if(Vector3.Distance(context.targetEnemy.transform.position, context.creatureTransform.position) > 10){
-            // creature escaped player
+        if(Vector3.Distance(context.cleverItem.transform.position, context.creatureTransform.position) < 3) {
+            // Player too far away
             OnExit();
             return NodeState.SUCCESS;
         } else {

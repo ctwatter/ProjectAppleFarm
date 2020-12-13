@@ -5,19 +5,13 @@ using UnityEngine;
 
 public class Fruit : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    Fruit(bool playerDropped){
+        droppedByPlayer = playerDropped;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool droppedByPlayer = false;
 
-    private void OnCollisionEnter(Collision other) {
-        
+    public void destroy(){
+        Destroy(gameObject);
     }
 }

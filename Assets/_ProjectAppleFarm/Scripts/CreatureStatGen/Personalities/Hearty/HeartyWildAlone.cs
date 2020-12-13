@@ -19,12 +19,20 @@ public class HeartyWildAlone : BTSubtree
                 BTSequence wildEnemySequence = new BTSequence("Wild Enemies Nearby", WildEnemiesList);
             #endregion
 
+            #region Wild Find Food
+                List<BTnode> FindFoodList = new List<BTnode>();
+                HeartyBTCheckWildFindFood findFood = new HeartyBTCheckWildFindFood("Is food nearby?", context);
+                HeartyBTActionWildApproachFood getFood = new HeartyBTActionWildApproachFood("Go Eat food", context);
+                FindFoodList.Add(findFood);
+                FindFoodList.Add(getFood);
+                BTSequence findFoodSequence = new BTSequence("Wild Find Food", FindFoodList);
+            #endregion
+
             #region wild wander
                 List<BTnode> WildWanderList = new List<BTnode>();
-                HeartyBTActionWildPickUpFood findFood = new HeartyBTActionWildPickUpFood("Find Food", context);
                 BTActionWildWanderInLocation wildWander = new BTActionWildWanderInLocation("Wander", context);
                 BTActionWildWanderIdle wildWanderIdle = new BTActionWildWanderIdle("Wander Idle", context);
-                WildWanderList.Add(findFood);
+                WildWanderList.Add(findFoodSequence);
                 WildWanderList.Add(wildWander);
                 WildWanderList.Add(wildWanderIdle);
                 BTSelector wildWanderSelector = new BTSelector("Wild Wander", WildWanderList);
