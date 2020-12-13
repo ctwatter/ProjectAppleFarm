@@ -424,6 +424,7 @@ GameObject:
   - component: {fileID: 8167450192529632880}
   - component: {fileID: 8167450192529632883}
   - component: {fileID: 8167450192529632881}
+  - component: {fileID: 6899150225298738526}
   m_Layer: 9
   m_Name: FragariaPrefab
   m_TagString: CaptCreature
@@ -628,6 +629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   targetEnemy: {fileID: 0}
+  cleverItem: {fileID: 0}
   creatureTransform: {fileID: 8167450192529632875}
   rb: {fileID: 8167450192529632878}
   CD: {fileID: 8167450192529632883}
@@ -635,17 +637,33 @@ MonoBehaviour:
   agent: {fileID: 0}
   backFollowPoint: {fileID: 0}
   followPoint: {fileID: 0}
+  animator: {fileID: 0}
   isWild: 1
   isInPlayerRadius: 0
   isInPlayerTrail: 0
   isNoticed: 0
   isAbilityTriggered: 0
   wanderIdling: 0
+  cleverIgnoreItems: 0
   playerSpeedToScare: 0.3
   lastTriggeredAbility: 0
   enemyDetectRange: 20
+  itemDetectRange: 10
   wanderRadius: 12
   wanderIdleDuration: 0
   wanderIdleTimer: 0
   wanderDestination: {x: 0, y: 0, z: 0}
   wildStartingLocation: {x: 0, y: 0, z: 0}
+--- !u!114 &6899150225298738526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8167450192529632886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 150e1cce336da6440bdea9d517035e23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 6038479749991903897}

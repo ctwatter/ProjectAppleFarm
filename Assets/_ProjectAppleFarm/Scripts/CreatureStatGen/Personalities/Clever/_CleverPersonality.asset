@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d844b5790621148a60a32fa8c6c23f, type: 3}
   m_Name: _CleverPersonality
   m_EditorClassIdentifier: 
-  personalityName: 
-  basePercentage: 0
-  maxPercentage: 0
-  statModType1: 0
+  personalityName: Clever
+  basePercentage: 1
+  maxPercentage: 1
+  statModType1: 1
   statModifierAmount1: 0
-  statModType2: 0
+  statModType2: 5
   statModifierAmount2: 0
   WildNoticed: {fileID: 11400000, guid: ab58c772059864146a2a41f6898df65f, type: 2}
   WildAlone: {fileID: 11400000, guid: 7946076afb1869d4ea0ff2ec1b955440, type: 2}
