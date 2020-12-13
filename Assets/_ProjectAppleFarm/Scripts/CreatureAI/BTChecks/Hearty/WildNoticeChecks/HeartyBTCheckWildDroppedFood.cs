@@ -26,10 +26,10 @@ public class HeartyBTCheckWildDroppedFood : BTLeaf
             OnEnter();
         }
 
-        if (context.cleverIgnoreItems) {
-            OnExit();
-            return NodeState.FAILURE;
-        }
+        // if (context.cleverIgnoreItems) {
+        //     OnExit();
+        //     return NodeState.FAILURE;
+        // }
         Debug.Log("In dropped food check");
         int layermask = 1 << 10; //only layer 10 will be targeted
         Collider[] hitColliders = Physics.OverlapSphere(context.creatureTransform.position, context.itemDetectRange, layermask);

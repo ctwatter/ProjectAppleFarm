@@ -87,6 +87,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "FruitSpawn",
+                    "type": "Button",
+                    "id": "47f82084-3376-4531-afbc-b14bec32f5f9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -164,6 +172,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "heavyAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62016e48-e87e-4650-abc7-964de771f93a",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FruitSpawn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isoMovement = true;
 
-
+    public GameObject fruit;
     public PlayerStateMachine playerStateMachine => GetComponent<PlayerStateMachine>();
     public PlayerAnimator playerAnimator => GetComponent<PlayerAnimator>();
 
@@ -183,6 +183,11 @@ public class PlayerController : MonoBehaviour
             }   
         }
                  
+    }
+
+    void OnFruitSpawn(){
+        var temp = Instantiate(fruit, transform.position, Quaternion.identity);
+        temp.GetComponent<Fruit>().droppedByPlayer = true;
     }
 
     void OnAttack1(){

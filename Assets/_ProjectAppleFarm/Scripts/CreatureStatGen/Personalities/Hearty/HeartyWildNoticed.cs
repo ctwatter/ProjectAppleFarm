@@ -13,6 +13,8 @@ public class HeartyWildNoticed : BTSubtree
                 List<BTnode> WildDroppedFoodList = new List<BTnode>();
                 HeartyBTCheckWildDroppedFood droppedFood = new HeartyBTCheckWildDroppedFood("Player Dropped Food", context);
                 HeartyBTActionWildApproachDroppedFood approachDroppedFood = new HeartyBTActionWildApproachDroppedFood("Approach Dropped Food", context);
+                WildDroppedFoodList.Add(droppedFood);
+                WildDroppedFoodList.Add(approachDroppedFood);
                 BTSequence droppedFoodSequence = new BTSequence("Player Dropped Food", WildDroppedFoodList);
             #endregion
 
