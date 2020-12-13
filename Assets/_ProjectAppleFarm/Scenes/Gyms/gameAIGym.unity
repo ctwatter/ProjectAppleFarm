@@ -1410,9 +1410,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5696949472820908531, guid: 89781a0e921233c4dbe368ae1e0df335,
         type: 3}
+      propertyPath: PowerPersonalities.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696949472820908531, guid: 89781a0e921233c4dbe368ae1e0df335,
+        type: 3}
       propertyPath: UtilityPersonalities.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: d392baad254c5e04798165134794e841,
+        type: 2}
+    - target: {fileID: 5696949472820908531, guid: 89781a0e921233c4dbe368ae1e0df335,
+        type: 3}
+      propertyPath: PowerPersonalities.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: e14138f7ee8c2ed40a88e3c9c9068975,
         type: 2}
     - target: {fileID: 5696949472820908532, guid: 89781a0e921233c4dbe368ae1e0df335,
         type: 3}

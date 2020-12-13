@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: _ScrawnyPersonality
   m_EditorClassIdentifier: 
   personalityName: 
-  basePercentage: 0
-  maxPercentage: 0
+  basePercentage: 1
+  maxPercentage: 1
   statModType1: 0
   statModifierAmount1: 0
   statModType2: 0
