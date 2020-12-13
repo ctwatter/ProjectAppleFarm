@@ -20,6 +20,6 @@ MonoBehaviour:
   statModType2: 0
   statModifierAmount2: 0
   WildNoticed: {fileID: 11400000, guid: d8cd81fe20ea27941a266645a49653bb, type: 2}
-  WildAlone: {fileID: 11400000, guid: 4622aa1a843b92141a500d415cf1fba0, type: 2}
+  WildAlone: {fileID: 0}
   AbilityTree: {fileID: 0}
   FollowPlayerTree: {fileID: 0}
