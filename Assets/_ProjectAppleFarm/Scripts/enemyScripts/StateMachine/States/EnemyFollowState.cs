@@ -41,7 +41,7 @@ public class EnemyFollowState : EnemyBaseState
                 // Debug.Log("Chasing player");
                 if(enemy.isAttacking == false)
                 {
-                Vector3 desiredLook = new Vector3(enemy.Player.transform.position.x, enemy.Player.transform.position.y, enemy.Player.transform.position.z);
+                Vector3 desiredLook = new Vector3(enemy.Player.transform.position.x, transform.position.y, enemy.Player.transform.position.z);
                 enemy.transform.LookAt(desiredLook, Vector3.up);
                 enemy.rigidbody.velocity = (enemy.transform.rotation * Vector3.forward * enemy.enemyMoveSpeed );
                 }

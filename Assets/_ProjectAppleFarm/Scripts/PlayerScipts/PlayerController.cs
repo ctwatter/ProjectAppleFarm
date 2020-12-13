@@ -7,6 +7,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+
+    public bool isoMovement = true;
+
+
     public PlayerStateMachine playerStateMachine => GetComponent<PlayerStateMachine>();
     public PlayerAnimator playerAnimator => GetComponent<PlayerAnimator>();
 
@@ -33,11 +37,20 @@ public class PlayerController : MonoBehaviour
     public bool playerBasicAttack;
     public bool playerDash;
     public bool playerInteract;
+    public bool playerHeavyAttack;
     public bool nearInteractable = false;
     public GameObject wildCreature = null;
     public float currSpeed;
     public CapsuleCollider swordCollider; 
     public bool isHit;
+
+    public ParticleSystem heavyChargeVfx;
+    public ParticleSystem heavyHitVfx;
+
+
+
+
+
     private void Awake() {
         InitializeStateMachine();
     }
@@ -49,6 +62,8 @@ public class PlayerController : MonoBehaviour
             {typeof(BasicHitState_1), new BasicHitState_1(this)},
             {typeof(BasicHitState_2), new BasicHitState_2(this)},
             {typeof(BasicHitState_3), new BasicHitState_3(this)},
+            {typeof(HeavyChargeState), new HeavyChargeState(this)},  
+            {typeof(HeavyHitState), new HeavyHitState(this)},            
             {typeof(PlayerDashState), new PlayerDashState(this)},
             {typeof(PlayerIsHit), new PlayerIsHit(this)},
         };
@@ -83,8 +98,13 @@ public class PlayerController : MonoBehaviour
         if(!isDashing)
         {
             v3Vel = new Vector3(movementVel.x, 0, movementVel.y);
+            
+            if(isoMovement){
+                v3Vel = Quaternion.Euler(0, -45, 0) * v3Vel;
+            }
         }
        
+      
         
 
         if(!charController.isGrounded) {
@@ -97,12 +117,20 @@ public class PlayerController : MonoBehaviour
         charController.Move(movementVector);
         charController.Move(gravity * Time.deltaTime);
 
+    
+
         playerAnimator.Move(movementVector);
     }
 
     public void doRotation(float rotationModifier){
         v3Vel = new Vector3(movementVel.x, 0, movementVel.y);
+
+        
+
         if(movementVel != Vector2.zero) {
+            if(isoMovement){
+                v3Vel = Quaternion.Euler(0, -45, 0) * v3Vel;
+            }
             transform.forward = Vector3.Slerp(transform.forward, v3Vel, Time.deltaTime * turnSpeed * rotationModifier);
         }
     }
@@ -149,6 +177,17 @@ public class PlayerController : MonoBehaviour
     void OnAttack1(){
         playerBasicAttack = true;
     }
+
+    void OnHeavyAttack(InputValue value){
+        
+        float val = value.Get<float>();
+
+        if(val == 1) playerHeavyAttack = true;
+        else playerHeavyAttack = false;
+        
+    }
+
+    //********Insert function for heavy attack button*******
 
     public bool getIsAttackAnim()
     {

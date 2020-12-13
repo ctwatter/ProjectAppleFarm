@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 878230852251512459}
   - component: {fileID: 878230852251512460}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Enemy health bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,13 +150,14 @@ MonoBehaviour:
   enemyData: {fileID: 0}
   followPoint: {fileID: 0}
   attackArea: {fileID: 0}
+  isHit: 0
   rigidbody: {fileID: 0}
-  enemyMoveSpeed: 10
-  rotationSpeed: 10
-  attackStoppingDistance: 4
+  enemyMoveSpeed: 5
+  rotationSpeed: 1
+  attackStoppingDistance: 10
   isAttacking: 0
   startTime: 0
-  timeDelay: 1
+  timeDelay: 3
   animator: {fileID: 878230853533669236}
 --- !u!114 &878230852319099022
 MonoBehaviour:
@@ -226,7 +227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 878230852622667644}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +265,7 @@ GameObject:
   - component: {fileID: 878230852792801448}
   - component: {fileID: 878230852792801450}
   - component: {fileID: 878230852792801449}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +339,7 @@ GameObject:
   - component: {fileID: 878230852834537339}
   - component: {fileID: 878230852834537341}
   - component: {fileID: 878230852834537340}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +414,7 @@ GameObject:
   - component: {fileID: 878230852946770606}
   - component: {fileID: 878230852946770605}
   - component: {fileID: 878230852946770604}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: enemyFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,7 +506,7 @@ GameObject:
   - component: {fileID: 878230853021602964}
   - component: {fileID: 878230853021602966}
   - component: {fileID: 878230853021602965}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -581,7 +582,7 @@ GameObject:
   - component: {fileID: 878230853043509759}
   - component: {fileID: 878230853043509758}
   - component: {fileID: 7517019784392399621}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -687,7 +688,7 @@ GameObject:
   - component: {fileID: 878230853263537682}
   - component: {fileID: 878230853263537681}
   - component: {fileID: 878230853263537680}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -786,7 +787,7 @@ GameObject:
   - component: {fileID: 878230853312826513}
   - component: {fileID: 878230853312826512}
   - component: {fileID: 878230853312826543}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -876,7 +877,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 878230853326588897}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -916,7 +917,7 @@ GameObject:
   - component: {fileID: 878230853585311474}
   - component: {fileID: 878230853585311473}
   - component: {fileID: 878230853533669236}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}

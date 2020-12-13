@@ -27,7 +27,7 @@ public class PlayerIsHit : PlayerBaseState
         //maybe check how many times has been triggered in succession?
         if(!player.playerAnimator.animator.GetCurrentAnimatorStateInfo(0).IsTag("isHit"))
         {
-            Debug.Log("End Player hit state");
+            //Debug.Log("End Player hit state");
             
             return typeof(PlayerIdleState);
         }
@@ -42,6 +42,6 @@ public class PlayerIsHit : PlayerBaseState
 
     public override void Exit(){
         //exit anim
-        Debug.Log("Exiting Player isHit");
+       // Debug.Log("Exiting Player isHit");
     }
 }
