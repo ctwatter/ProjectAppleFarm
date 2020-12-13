@@ -7,39 +7,30 @@ using UnityEngine;
 public class HeartyWildNoticed : BTSubtree
 {
     public override BTSequence BuildSequenceSubtree(CreatureAIContext context) {
-        //DEFAULT BT SUBTREE
         #region WILD PLAYER
 
             #region wild player dropped food
+                List<BTnode> WildDroppedFoodList = new List<BTnode>();
                 HeartyBTCheckWildDroppedFood droppedFood = new HeartyBTCheckWildDroppedFood("Player Dropped Food", context);
-                BTInverter droppedFoodInverter = new BTInverter("Was Food Dropped", droppedFood);
+                HeartyBTActionWildApproachDroppedFood approachDroppedFood = new HeartyBTActionWildApproachDroppedFood("Approach Dropped Food", context);
+                BTSequence droppedFoodSequence = new BTSequence("Player Dropped Food", WildDroppedFoodList);
             #endregion
 
             #region wild player scary
                 List<BTnode> WildPlayerScaryList = new List<BTnode>();
-                BTCheckWildPlayerScary playerScary = new BTCheckWildPlayerScary("Player Scary", context);
                 BTActionWildRunFromPlayer runFromPlayer = new BTActionWildRunFromPlayer("Run From Player", context);
-                WildPlayerScaryList.Add(droppedFoodInverter);
-                WildPlayerScaryList.Add(playerScary);
-                WildPlayerScaryList.Add(runFromPlayer);
-                BTSequence playerScarySequence = new BTSequence("Is Player Scary", WildPlayerScaryList);
-            #endregion
-
-            #region wild approach player
-                List<BTnode> WildApproachPlayerList = new List<BTnode>();
-                HeartyBTActionWildApproachPlayer approachPlayer = new HeartyBTActionWildApproachPlayer("Approach Player", context);
                 BTActionFollowIdle followIdle = new BTActionFollowIdle("Follow Idle", context);
-                WildApproachPlayerList.Add(playerScarySequence);
-                WildApproachPlayerList.Add(approachPlayer);
-                WildApproachPlayerList.Add(followIdle);
-                BTSelector approachPlayerSelector = new BTSelector("Run/Approach Player", WildApproachPlayerList);
+                WildPlayerScaryList.Add(droppedFoodSequence);
+                WildPlayerScaryList.Add(runFromPlayer);
+                WildPlayerScaryList.Add(followIdle);
+                BTSelector approachFoodSelector = new BTSelector("Run/Approach Food", WildPlayerScaryList);
             #endregion
 
             #region wild notice player
                 List<BTnode> WildNoticePlayerList = new List<BTnode>();
                 BTCheckWildPlayerInRadius playerNoticed = new BTCheckWildPlayerInRadius("Is Player Noticed", context);
                 WildNoticePlayerList.Add(playerNoticed);
-                WildNoticePlayerList.Add(approachPlayerSelector);
+                WildNoticePlayerList.Add(approachFoodSelector);
                 BTSequence noticedSequence = new BTSequence("Player Is Noticed", WildNoticePlayerList);
             #endregion
         #endregion

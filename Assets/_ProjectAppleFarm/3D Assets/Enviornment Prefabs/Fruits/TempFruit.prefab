@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1916227323090070403}
   - component: {fileID: 1916227323090070463}
   - component: {fileID: 9085715797409768986}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TempFruit
   m_TagString: Fruit
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5250300182232784635}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

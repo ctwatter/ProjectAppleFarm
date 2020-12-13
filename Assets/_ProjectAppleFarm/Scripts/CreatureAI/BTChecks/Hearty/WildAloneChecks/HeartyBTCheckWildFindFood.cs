@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeartyBTCheckWildDroppedFood : BTLeaf
+public class HeartyBTCheckWildFindFood : BTLeaf
 {
     
-    public HeartyBTCheckWildDroppedFood(string _name, CreatureAIContext _context ) : base(_name, _context){
+    public HeartyBTCheckWildFindFood(string _name, CreatureAIContext _context ) : base(_name, _context){
         name = _name;
         context = _context;
     }
@@ -30,7 +30,7 @@ public class HeartyBTCheckWildDroppedFood : BTLeaf
             OnExit();
             return NodeState.FAILURE;
         }
-        Debug.Log("In dropped food check");
+
         int layermask = 1 << 10; //only layer 10 will be targeted
         Collider[] hitColliders = Physics.OverlapSphere(context.creatureTransform.position, context.itemDetectRange, layermask);
         GameObject closestItem = null;
@@ -39,14 +39,10 @@ public class HeartyBTCheckWildDroppedFood : BTLeaf
         {
             // Only Target Fruits
             if(hitCollider.gameObject.tag == "Fruit"){
-                Fruit foundFruit = hitCollider.gameObject.GetComponent<Fruit>();
-                // Only target fruits dropped by player
-                if(foundFruit.droppedByPlayer){
-                    var distance = Vector3.Distance(hitCollider.gameObject.transform.position, context.creatureTransform.position);
-                    if(distance < closestDistance) {
-                        closestDistance = distance;
-                        closestItem = hitCollider.gameObject;
-                    }
+                var distance = Vector3.Distance(hitCollider.gameObject.transform.position, context.creatureTransform.position);
+                if(distance < closestDistance) {
+                    closestDistance = distance;
+                    closestItem = hitCollider.gameObject;
                 }
             }  
         }
