@@ -82,7 +82,7 @@
                 },
                 {
                     "name": "heavyAttack",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "49b69718-c1ea-4d93-9d8c-58c5974ed64f",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -160,7 +160,7 @@
                     "name": "",
                     "id": "208fbb25-b1e8-438d-84c2-9196bbb94e8b",
                     "path": "<Gamepad>/buttonWest",
-                    "interactions": "Hold",
+                    "interactions": "Hold(duration=0.3)",
                     "processors": "",
                     "groups": "",
                     "action": "heavyAttack",
