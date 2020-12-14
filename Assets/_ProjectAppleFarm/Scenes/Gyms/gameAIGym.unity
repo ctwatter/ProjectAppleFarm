@@ -1406,12 +1406,12 @@ PrefabInstance:
     - target: {fileID: 5696949472820908531, guid: 89781a0e921233c4dbe368ae1e0df335,
         type: 3}
       propertyPath: UtilityPersonalities.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5696949472820908531, guid: 89781a0e921233c4dbe368ae1e0df335,
         type: 3}
       propertyPath: PowerPersonalities.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5696949472820908531, guid: 89781a0e921233c4dbe368ae1e0df335,
         type: 3}
@@ -13109,6 +13109,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   backFollowPoint: {fileID: 1100908849}
   followPoint: {fileID: 1699529896}
+  projectileSpawner: {fileID: 0}
   animator: {fileID: 0}
   isWild: 1
   isInPlayerRadius: 0

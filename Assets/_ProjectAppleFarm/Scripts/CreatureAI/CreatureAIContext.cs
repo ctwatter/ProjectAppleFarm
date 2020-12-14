@@ -19,6 +19,7 @@ public class CreatureAIContext : MonoBehaviour
     public NavMeshAgent agent;
     public GameObject backFollowPoint;
     public GameObject followPoint;
+    public GameObject projectileSpawner;
     public CreatureAnimator animator;
     
     [Header("Bools")]

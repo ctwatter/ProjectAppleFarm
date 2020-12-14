@@ -9,6 +9,8 @@ public class ProjectileScript : MonoBehaviour
     // Start is called before the first frame update
     float speed = 10;
     public float damage = 50;
+    public bool isHoming = false;
+
     void Start()
     {
         
@@ -23,14 +25,20 @@ public class ProjectileScript : MonoBehaviour
     {
         if (target != null)
         {
-            transform.LookAt(target.transform.position);
+            if(isHoming) {
+                transform.LookAt(target.transform.position);
+            }
+            
             rigidBody.velocity = (transform.rotation*Vector3.forward*speed);
         }
     }
-    public void setTarget(GameObject _target, float _speed, float _damage)
+
+    public void setTarget(GameObject _target, float _speed, float _damage, bool _isHoming)
     {
         target = _target;
+        transform.LookAt(target.transform.position);
         speed = _speed;
         damage = _damage;
+        isHoming = _isHoming;
     }
 }
