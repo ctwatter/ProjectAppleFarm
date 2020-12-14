@@ -4308,6 +4308,7 @@ MonoBehaviour:
   nearInteractable: 0
   wildCreature: {fileID: 0}
   currCreature: {fileID: 0}
+  interactableObject: {fileID: 0}
   currCreatureContext: {fileID: 0}
   currSpeed: 0
   swordCollider: {fileID: 4671041540100034836}
@@ -13163,6 +13164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 790840552}
   targetEnemy: {fileID: 0}
+  cleverItem: {fileID: 0}
   creatureTransform: {fileID: 1975994472179932230}
   rb: {fileID: 1975994472179932227}
   CD: {fileID: 1975994472179932254}
@@ -13170,15 +13172,18 @@ MonoBehaviour:
   agent: {fileID: 0}
   backFollowPoint: {fileID: 1100908849}
   followPoint: {fileID: 1699529896}
+  animator: {fileID: 0}
   isWild: 1
   isInPlayerRadius: 0
   isInPlayerTrail: 0
   isNoticed: 0
   isAbilityTriggered: 0
   wanderIdling: 0
+  cleverIgnoreItems: 0
   playerSpeedToScare: 0.3
   lastTriggeredAbility: 0
   enemyDetectRange: 20
+  itemDetectRange: 0
   wanderRadius: 12
   wanderIdleDuration: 0
   wanderIdleTimer: 0
@@ -13197,9 +13202,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   personalities:
-  - {fileID: 11400000, guid: ca8d7d2eac5f400499a674441ef4da95, type: 2}
-  - {fileID: 11400000, guid: 8dc46e5aba041c54bb127a72b22129cd, type: 2}
-  DefaultPersonality: {fileID: 11400000, guid: 6c35431185c976148838ffe95c22b0f1, type: 2}
+  - {fileID: 11400000, guid: 66914ed098116cf45bccb024091206d6, type: 2}
+  - {fileID: 11400000, guid: 66914ed098116cf45bccb024091206d6, type: 2}
+  DefaultPersonality: {fileID: 11400000, guid: 66914ed098116cf45bccb024091206d6, type: 2}
+  Evaluate: 0
 --- !u!114 &1975994472179932254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13220,7 +13226,6 @@ MonoBehaviour:
   dexterity: 0
   moveSpeed: 8
   personalities: []
-  CreatureType: 0
   abilities:
   - {fileID: 11400000, guid: 6c4f0baccf5292e44b5dedd5cf8f4119, type: 2}
   - {fileID: 11400000, guid: 6c4f0baccf5292e44b5dedd5cf8f4119, type: 2}

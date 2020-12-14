@@ -16,6 +16,4 @@ public class PlayerInventory : ScriptableObject
     {
         inventory.itemList.RemoveAll(x => x.itemName == name);
     }
-
-
 }
