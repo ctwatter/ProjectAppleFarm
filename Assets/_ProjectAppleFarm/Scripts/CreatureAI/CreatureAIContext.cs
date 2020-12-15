@@ -36,6 +36,8 @@ public class CreatureAIContext : MonoBehaviour
     public float wanderIdleTimer;
     public Vector3 wanderDestination;
     public Vector3 wildStartingLocation;
+    public float stealDuration;
+    public float stealTimer;
 
 
     #endregion
@@ -54,6 +56,8 @@ public class CreatureAIContext : MonoBehaviour
             test.generateStats();
             CD = test.dataOut;
         }
+
+        resetStealTimer();
     }
 
     private void FixedUpdate() {
@@ -72,5 +76,10 @@ public class CreatureAIContext : MonoBehaviour
     public void doLookAt(Vector3 position){
         creatureTransform.transform.LookAt(position, Vector3.up);
         rb.velocity = (creatureTransform.transform.rotation * Vector3.forward * CD.moveSpeed);
+    }
+
+    public void resetStealTimer() {
+        stealTimer = 0;
+        stealDuration = Random.Range(2f, 3f);
     }
 }
