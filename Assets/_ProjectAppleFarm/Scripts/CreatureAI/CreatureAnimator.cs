@@ -10,7 +10,6 @@ public class CreatureAnimator : MonoBehaviour
     public Animator animator => model.GetComponent<Animator>();
 
     public void Move(Vector3 moveSpeed) {
-        Debug.Log(moveSpeed.magnitude);
         if(moveSpeed.magnitude > 0){
             animator.SetBool("Move", true);
         }
@@ -23,5 +22,14 @@ public class CreatureAnimator : MonoBehaviour
     }
     public void Attack1(){
         animator.SetTrigger("Attack1");
+    }
+    public void LayDown(){
+        animator.SetTrigger("LayDown");
+    }
+    public void Sit(){
+        animator.SetTrigger("Sit");
+    }
+    public void Wave(){
+        animator.SetTrigger("Wave");
     }
 }
