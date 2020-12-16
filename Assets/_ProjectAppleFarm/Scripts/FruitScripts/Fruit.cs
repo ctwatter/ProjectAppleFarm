@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Fruit : MonoBehaviour
 {
+    public Item item;
+    
     Fruit(bool playerDropped){
         droppedByPlayer = playerDropped;
     }
