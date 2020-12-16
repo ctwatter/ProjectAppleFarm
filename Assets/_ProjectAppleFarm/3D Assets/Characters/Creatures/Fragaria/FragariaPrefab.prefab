@@ -683,6 +683,7 @@ MonoBehaviour:
   followPoint: {fileID: 0}
   projectileSpawner: {fileID: 372912646155600726}
   animator: {fileID: 0}
+  TMProObj: {fileID: 0}
   isWild: 1
   isInPlayerRadius: 0
   isInPlayerTrail: 0

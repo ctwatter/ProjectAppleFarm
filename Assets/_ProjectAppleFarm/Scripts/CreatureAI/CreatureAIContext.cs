@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 [System.Serializable]
 public class CreatureAIContext : MonoBehaviour
@@ -21,6 +22,8 @@ public class CreatureAIContext : MonoBehaviour
     public GameObject followPoint;
     public GameObject projectileSpawner;
     public CreatureAnimator animator;
+    
+
     
     [Header("Bools")]
     public bool isWild;
@@ -43,6 +46,8 @@ public class CreatureAIContext : MonoBehaviour
     public Vector3 wildStartingLocation;
 
 
+    private int debugNumber;
+    private CreatureDebugText debugText;
     #endregion
 
     private void Awake()
@@ -55,6 +60,13 @@ public class CreatureAIContext : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         followPoint = GameObject.FindGameObjectWithTag("FrontFollowPoint");
         backFollowPoint = GameObject.FindGameObjectWithTag("BackFollowPoint");
+        GameObject temp = GameObject.FindGameObjectWithTag("CreatureDebugText");
+        debugText = temp.GetComponent<CreatureDebugText>();
+        debugText.creaturesDebug.Add("");
+        debugNumber = debugText.creaturesDebug.Count - 1;
+        if(isWild){
+            lastTriggeredAbility = 0;
+        }
     }
 
     public void GetActiveCreatureData(){
@@ -77,5 +89,9 @@ public class CreatureAIContext : MonoBehaviour
     public void doLookAt(Vector3 position){
         creatureTransform.transform.LookAt(position, Vector3.up);
         rb.velocity = (creatureTransform.transform.rotation * Vector3.forward * CD.moveSpeed);
+    }
+
+    public void updateDebugText(string name) {
+        debugText.creaturesDebug[debugNumber] = gameObject.name + " : " + name + "\n";
     }
 }

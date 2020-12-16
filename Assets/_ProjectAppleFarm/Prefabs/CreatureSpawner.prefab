@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88117fa94187f0b4498b844794902b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PowerPersonalities: []
+  PowerPersonalities:
+  - {fileID: 0}
   UtilityPersonalities: []
   DexterityPersonalities: []
   creatureTypes:

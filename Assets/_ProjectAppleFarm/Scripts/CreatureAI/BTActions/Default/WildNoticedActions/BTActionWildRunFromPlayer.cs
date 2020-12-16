@@ -60,6 +60,7 @@ public class BTActionWildRunFromPlayer : BTLeaf
         }
         else {
             // Still trying to get to player
+            context.updateDebugText(name);
             return NodeState.RUNNING;
         }
     }
