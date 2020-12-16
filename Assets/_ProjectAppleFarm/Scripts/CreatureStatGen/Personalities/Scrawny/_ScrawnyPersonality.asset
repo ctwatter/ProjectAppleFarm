@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d844b5790621148a60a32fa8c6c23f, type: 3}
   m_Name: _ScrawnyPersonality
   m_EditorClassIdentifier: 
-  personalityName: 
-  basePercentage: 1
-  maxPercentage: 1
+  personalityName: Scrawny
+  basePercentage: 0.4
+  maxPercentage: 0.1
   statModType1: 0
   statModifierAmount1: 0
   statModType2: 0

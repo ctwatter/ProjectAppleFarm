@@ -12,25 +12,25 @@ public class EnergeticWildAlone : BTSubtree
 
             #region wild enemies nearby
                 List<BTnode> WildEnemiesList = new List<BTnode>();
-                BTCheckWildEnemiesInRange wildEnemies = new BTCheckWildEnemiesInRange("Are Enemies Nearby?", context);
-                EnergeticBTActionWildRunFromEnemies wildRunEnemy = new EnergeticBTActionWildRunFromEnemies("Run From Enemies", context);
+                BTCheckWildEnemiesInRange wildEnemies = new BTCheckWildEnemiesInRange("ENERGETIC Are Enemies Nearby?", context);
+                EnergeticBTActionWildRunFromEnemies wildRunEnemy = new EnergeticBTActionWildRunFromEnemies("ENERGETIC Run From Enemies", context);
                 WildEnemiesList.Add(wildEnemies);
                 WildEnemiesList.Add(wildRunEnemy);
-                BTSequence wildEnemySequence = new BTSequence("Wild Enemies Nearby", WildEnemiesList);
+                BTSequence wildEnemySequence = new BTSequence("ENERGETIC Wild Enemies Nearby", WildEnemiesList);
             #endregion
 
             #region wild wander
                 List<BTnode> WildWanderList = new List<BTnode>();
-                EnergeticBTActionWildWanderInLocation wildWander = new EnergeticBTActionWildWanderInLocation("Wander", context);
-                EnergeticBTActionWildWanderIdle wildWanderIdle = new EnergeticBTActionWildWanderIdle("Wander Idle", context);
+                EnergeticBTActionWildWanderInLocation wildWander = new EnergeticBTActionWildWanderInLocation("ENERGETIC Wander", context);
+                EnergeticBTActionWildWanderIdle wildWanderIdle = new EnergeticBTActionWildWanderIdle("ENERGETIC Wander Idle", context);
                 WildWanderList.Add(wildWander);
                 WildWanderList.Add(wildWanderIdle);
-                BTSequence wildWanderSequence = new BTSequence("Wild Wander", WildWanderList);
+                BTSelector wildWanderSequence = new BTSelector("ENERGETIC Wild Wander", WildWanderList);
             #endregion
 
             WildNoPlayerList.Add(wildEnemySequence);
             WildNoPlayerList.Add(wildWanderSequence);
-            BTSelector wildNoPlayerSelector = new BTSelector("Wild No Player", WildNoPlayerList);
+            BTSelector wildNoPlayerSelector = new BTSelector("ENERGETIC Wild No Player", WildNoPlayerList);
         #endregion
         return wildNoPlayerSelector;
     }

@@ -44,9 +44,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PowerPersonalities:
-  - {fileID: 0}
-  UtilityPersonalities: []
-  DexterityPersonalities: []
+  - {fileID: 11400000, guid: e14138f7ee8c2ed40a88e3c9c9068975, type: 2}
+  - {fileID: 11400000, guid: ca8d7d2eac5f400499a674441ef4da95, type: 2}
+  - {fileID: 11400000, guid: 8dc46e5aba041c54bb127a72b22129cd, type: 2}
+  - {fileID: 11400000, guid: c3369252f3bca7945aa02d17a8399478, type: 2}
+  - {fileID: 11400000, guid: b1435a46e5103ef49ab3f5c6cead54e5, type: 2}
+  UtilityPersonalities:
+  - {fileID: 11400000, guid: d392baad254c5e04798165134794e841, type: 2}
+  - {fileID: 11400000, guid: 5247f586b474351449c2477bbdbffb4b, type: 2}
+  DexterityPersonalities:
+  - {fileID: 11400000, guid: 075b7fceffb88da41a7e7a21274cca4d, type: 2}
+  - {fileID: 11400000, guid: 66914ed098116cf45bccb024091206d6, type: 2}
   creatureTypes:
   - {fileID: 11400000, guid: 41fdbc17e7748244d888642ae12b9e4c, type: 2}
   spawnPoint: {fileID: 5696949472820908532}

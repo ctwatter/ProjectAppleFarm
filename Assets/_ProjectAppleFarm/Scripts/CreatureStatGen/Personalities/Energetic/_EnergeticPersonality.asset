@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   personalityName: Energetic
   basePercentage: 0.1
-  maxPercentage: 0.2
+  maxPercentage: 0.3
   statModType1: 2
   statModifierAmount1: 1.6
   statModType2: 0

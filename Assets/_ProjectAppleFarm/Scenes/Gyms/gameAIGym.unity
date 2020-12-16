@@ -1403,28 +1403,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreatureSpawner
       objectReference: {fileID: 0}
-    - target: {fileID: 5696949472820908531, guid: 89781a0e921233c4dbe368ae1e0df335,
-        type: 3}
-      propertyPath: UtilityPersonalities.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5696949472820908531, guid: 89781a0e921233c4dbe368ae1e0df335,
-        type: 3}
-      propertyPath: PowerPersonalities.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5696949472820908531, guid: 89781a0e921233c4dbe368ae1e0df335,
-        type: 3}
-      propertyPath: UtilityPersonalities.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: d392baad254c5e04798165134794e841,
-        type: 2}
-    - target: {fileID: 5696949472820908531, guid: 89781a0e921233c4dbe368ae1e0df335,
-        type: 3}
-      propertyPath: PowerPersonalities.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: b1435a46e5103ef49ab3f5c6cead54e5,
-        type: 2}
     - target: {fileID: 5696949472820908532, guid: 89781a0e921233c4dbe368ae1e0df335,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2112,7 +2090,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -192.83, y: -197.99998}
+  m_AnchoredPosition: {x: -208, y: -173}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &467105025
@@ -4274,6 +4252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isoMovement: 1
+  fruit: {fileID: 0}
   isAttackAnim: 0
   isFollowThroughAnim: 0
   speed: 12
@@ -4289,6 +4268,7 @@ MonoBehaviour:
   playerBasicAttack: 0
   playerDash: 0
   playerInteract: 0
+  playerHeavyAttack: 0
   nearInteractable: 0
   wildCreature: {fileID: 0}
   currCreature: {fileID: 0}
@@ -4297,6 +4277,8 @@ MonoBehaviour:
   currSpeed: 0
   swordCollider: {fileID: 4671041540100034836}
   isHit: 0
+  heavyChargeVfx: {fileID: 0}
+  heavyHitVfx: {fileID: 0}
 --- !u!136 &790840559
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6379,7 +6361,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -234.7, y: -198}
+  m_AnchoredPosition: {x: -278, y: -172}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1177411088
@@ -8317,7 +8299,6 @@ CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
-
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654263750}
   m_CullTransparentMesh: 0
@@ -13275,6 +13256,7 @@ MonoBehaviour:
   player: {fileID: 790840552}
   targetEnemy: {fileID: 0}
   cleverItem: {fileID: 0}
+  foundFood: {fileID: 0}
   creatureTransform: {fileID: 1975994472179932230}
   rb: {fileID: 1975994472179932227}
   CD: {fileID: 1975994472179932254}
@@ -13300,6 +13282,8 @@ MonoBehaviour:
   wanderIdleTimer: 0
   wanderDestination: {x: 0, y: 0, z: 0}
   wildStartingLocation: {x: 0, y: 0, z: 0}
+  stealDuration: 0
+  stealTimer: 0
 --- !u!114 &1975994472179932253
 MonoBehaviour:
   m_ObjectHideFlags: 0

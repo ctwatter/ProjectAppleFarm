@@ -10,6 +10,11 @@ public class CreatureSpawner : MonoBehaviour
 
     public List<creatureData> creatureTypes = new List<creatureData>();
 
+
+    [ContextMenuItem("SpawnCreature", "SpawnCreature")]
+    [SerializeField]
+    private float test;
+    
     public Transform spawnPoint;
 
     CreatureStatGen statGen => new CreatureStatGen();
@@ -17,7 +22,6 @@ public class CreatureSpawner : MonoBehaviour
     private void Awake() {
         SpawnCreature();
     }
-
 
     public void SpawnCreature(){
         //pick random creature and spawn it in the world.
