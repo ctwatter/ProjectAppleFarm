@@ -17,9 +17,9 @@ public class CreatureStatGen
 
     List<Personality> finalPersonalities = new List<Personality>();
 
-    List<Personality> PowerPersonalities = new List<Personality>();
-    List<Personality> UtilityPersonalities = new List<Personality>();
-    List<Personality> DexterityPersonalities = new List<Personality>();
+    public List<Personality> PowerPersonalities = new List<Personality>();
+    public List<Personality> UtilityPersonalities = new List<Personality>();
+    public List<Personality> DexterityPersonalities = new List<Personality>();
     
     //Personality example. make a bunch of these, put them all in a list and do some logic :)
                                 //Personality( _name, _statModType, _basePercentage, _maxPercentage, _statModifierAmount ){
@@ -54,27 +54,27 @@ public class CreatureStatGen
         }
     }
 
-    public void generateStats(){
-        initPersonalities();
+    // public void generateStats(){
+    //     initPersonalities();
 
-        life = Random.Range(dataIn.lifeRange.x, dataIn.lifeRange.y);
-        power = Random.Range(dataIn.powerRange.x, dataIn.powerRange.y);
-        utility = Random.Range(dataIn.utilityRange.x, dataIn.utilityRange.y);
-        dexterity = Random.Range(dataIn.dexterityRange.x, dataIn.dexterityRange.y);
+    //     life = Random.Range(dataIn.lifeRange.x, dataIn.lifeRange.y);
+    //     power = Random.Range(dataIn.powerRange.x, dataIn.powerRange.y);
+    //     utility = Random.Range(dataIn.utilityRange.x, dataIn.utilityRange.y);
+    //     dexterity = Random.Range(dataIn.dexterityRange.x, dataIn.dexterityRange.y);
 
-        choosePersonalities();
+    //     choosePersonalities();
 
-        dataOut.maxLife = life;
-        dataOut.power = (int) power;
-        dataOut.utility = (int) utility;
-        dataOut.dexterity = (int) dexterity;
-        dataOut.personalities = finalPersonalities;
-        dataOut.moveSpeed = dataIn.moveSpeed;
+    //     dataOut.maxLife = life;
+    //     dataOut.power = (int) power;
+    //     dataOut.utility = (int) utility;
+    //     dataOut.dexterity = (int) dexterity;
+    //     dataOut.personalities = finalPersonalities;
+    //     dataOut.moveSpeed = dataIn.moveSpeed;
 
-        chooseAbilities(); //pick moves from list of moves;
+    //     chooseAbilities(); //pick moves from list of moves;
 
-        dataOut.ready = true;
-    }
+    //     dataOut.ready = true;
+    // }
 
     void chooseAbilities() {
 
@@ -82,8 +82,3 @@ public class CreatureStatGen
 
 }
 
-
-
-public enum statModifierType {
-    POWER, UTILITY, DEXTERITY, LIFE, BONDRATE, NONE
-}

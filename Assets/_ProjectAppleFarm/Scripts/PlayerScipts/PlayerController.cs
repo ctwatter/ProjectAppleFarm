@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isoMovement = true;
 
-
+    public GameObject fruit;
     public PlayerStateMachine playerStateMachine => GetComponent<PlayerStateMachine>();
     public PlayerAnimator playerAnimator => GetComponent<PlayerAnimator>();
 
@@ -37,13 +37,19 @@ public class PlayerController : MonoBehaviour
     public bool playerBasicAttack;
     public bool playerDash;
     public bool playerInteract;
+    public bool playerHeavyAttack;
     public bool nearInteractable = false;
     public GameObject wildCreature = null;
     public GameObject currCreature;
+    public GameObject interactableObject;
     public CreatureAIContext currCreatureContext;
     public float currSpeed;
     public CapsuleCollider swordCollider; 
     public bool isHit;
+
+    public ParticleSystem heavyChargeVfx;
+    public ParticleSystem heavyHitVfx;
+
 
 
 
@@ -59,6 +65,7 @@ public class PlayerController : MonoBehaviour
             {typeof(BasicHitState_1), new BasicHitState_1(this)},
             {typeof(BasicHitState_2), new BasicHitState_2(this)},
             {typeof(BasicHitState_3), new BasicHitState_3(this)},
+            {typeof(HeavyChargeState), new HeavyChargeState(this)},  
             {typeof(HeavyHitState), new HeavyHitState(this)},            
             {typeof(PlayerDashState), new PlayerDashState(this)},
             {typeof(PlayerIsHit), new PlayerIsHit(this)},
@@ -148,7 +155,12 @@ public class PlayerController : MonoBehaviour
     void OnInteract(){ //pressing dash button       
         if(nearInteractable) {
             playerInteract = true;
-            if(wildCreature != null){
+            if(interactableObject != null){
+                Debug.Log("picked up item");
+                Destroy(interactableObject);
+                nearInteractable = false;
+            }
+            else if (wildCreature != null) {
                 wildCreature.GetComponent<CreatureAIContext>().isWild = false;
                 currCreature = wildCreature;
                 currCreatureContext = currCreature.GetComponent<CreatureAIContext>();
@@ -173,8 +185,22 @@ public class PlayerController : MonoBehaviour
                  
     }
 
+    void OnFruitSpawn(){
+        var temp = Instantiate(fruit, transform.position, Quaternion.identity);
+        temp.GetComponent<Fruit>().droppedByPlayer = true;
+    }
+
     void OnAttack1(){
         playerBasicAttack = true;
+    }
+
+    void OnHeavyAttack(InputValue value){
+        
+        float val = value.Get<float>();
+
+        if(val == 1) playerHeavyAttack = true;
+        else playerHeavyAttack = false;
+        
     }
 
     //********Insert function for heavy attack button*******

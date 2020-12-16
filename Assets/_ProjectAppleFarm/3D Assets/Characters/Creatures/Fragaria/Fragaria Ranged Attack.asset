@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14719212dd5e03341976e7147c01d4e5, type: 3}
   m_Name: Fragaria Ranged Attack
   m_EditorClassIdentifier: 
+  maxDistanceToEnemy: 10
   projectileSpeed: 10
   projectile: {fileID: 573035498810555202, guid: bb83add4b79bde14f9153a00f2c847af,
     type: 3}
   anims: {fileID: 0}
   baseDmg: 50
+  isHoming: 1

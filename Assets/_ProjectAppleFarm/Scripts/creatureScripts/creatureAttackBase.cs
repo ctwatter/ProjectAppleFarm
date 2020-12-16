@@ -6,8 +6,6 @@ using UnityEngine;
 public class creatureAttackBase : ScriptableObject
 {
     
-
-
 }
 
 

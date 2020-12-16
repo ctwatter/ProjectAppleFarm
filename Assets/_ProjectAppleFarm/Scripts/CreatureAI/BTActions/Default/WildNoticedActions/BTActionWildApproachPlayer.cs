@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class BTActionWildApproachPlayer : BTLeaf
 {
     private NavMeshAgent agent;
-    private float moveSpeed = 2f;
+    private float moveSpeed = 10f;
     private float angularSpeed = 720f; //deg/s
     private float acceleration = 100f; //max accel units/sec^2
 
@@ -56,6 +56,7 @@ public class BTActionWildApproachPlayer : BTLeaf
             return NodeState.SUCCESS;
         } else{
             // Still trying to get to player
+            context.updateDebugText(name);
             return NodeState.RUNNING;
         }
         
