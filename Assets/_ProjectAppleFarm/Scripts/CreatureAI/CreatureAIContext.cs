@@ -45,6 +45,8 @@ public class CreatureAIContext : MonoBehaviour
     public float wanderIdleTimer;
     public Vector3 wanderDestination;
     public Vector3 wildStartingLocation;
+    public float stealDuration;
+    public float stealTimer;
 
 
     private int debugNumber;
@@ -68,6 +70,8 @@ public class CreatureAIContext : MonoBehaviour
         if(isWild){
             lastTriggeredAbility = 0;
         }
+
+        resetStealTimer();
     }
 
     public void GetActiveCreatureData(){
@@ -92,6 +96,12 @@ public class CreatureAIContext : MonoBehaviour
         rb.velocity = (creatureTransform.transform.rotation * Vector3.forward * CD.moveSpeed);
     }
 
+
+    public void resetStealTimer() {
+        stealTimer = 0;
+        stealDuration = Random.Range(2f, 3f);
+    }
+    
     public void updateDebugText(string name) {
         debugText.creaturesDebug[debugNumber] = gameObject.name + " : " + name + "\n";
     }
