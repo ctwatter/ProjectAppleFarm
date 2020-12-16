@@ -7,6 +7,10 @@ TagManager:
   - CaptCreature
   - Enemy
   - Weapon
+  - FruitTree
+  - Fruit
+  - FrontFollowPoint
+  - BackFollowPoint
   layers:
   - Default
   - TransparentFX
@@ -18,7 +22,7 @@ TagManager:
   - 
   - Enemy
   - Creature
-  - 
+  - Interesting Item
   - 
   - 
   - 
