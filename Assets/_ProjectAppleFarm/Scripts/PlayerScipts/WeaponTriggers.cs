@@ -26,9 +26,8 @@ public class WeaponTriggers : MonoBehaviour
                 Debug.Log("Default Damage");
                 other.gameObject.GetComponent<EnemyStats>().takeDamage(playerStats.attack1Damage);
             }
-        } else if(other.gameObject.tag == "FruitTree"){
-            print("Hit tree with sword");
-            other.gameObject.GetComponent<FruitTree>().dropFruit();
+            
+            
         }
     }
 }

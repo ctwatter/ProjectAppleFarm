@@ -34,11 +34,6 @@ public class PlayerIdleState : PlayerBaseState
             //playerController.playerBasicAttack = false;
             return(typeof(BasicHitState_0));
         }
-        if(playerController.playerHeavyAttack) {
-            //playerController.playerBasicAttack = false;
-            return(typeof(HeavyChargeState));
-        }
-
        
         //do idle anim
         return null;

@@ -8,9 +8,6 @@ using UnityEngine;
 public class creatureData : ScriptableObject
 {
 
-
-    public GameObject creaturePrefab;
-
     public float maxLife;
     public int level; //??
 
@@ -29,10 +26,19 @@ public class creatureData : ScriptableObject
     public Vector2 dexterityRange = new Vector2(10, 30); //dexterity is place holder??
 
 
+    public List<Personality> personalities = new List<Personality>();
+    public List<creatureAttackBase> creatureAttacks = new List<creatureAttackBase>();
 
-    public List<creatureAttackBase> creatureAttacks;
 
+    public CreatureType CreatureType;
+    public creatureAttackBase attack1;
+    public creatureAttackBase attack2;
 
 }
 
-
+public enum CreatureType { //Temp creature types
+    Fire,
+    Water,
+    Earth,
+    Lightning
+};

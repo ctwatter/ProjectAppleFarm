@@ -26,7 +26,7 @@ public class Personality : ScriptableObject
 
     public bool calcChance(float roll, float minRoll, float MaxRoll) {
         float chance = linearMap(roll, minRoll, MaxRoll, basePercentage, maxPercentage);
-        if (chance >= Random.Range(0f,1f)){
+        if (chance < Random.Range(0f,1f)){
             return true;
         } else {
             return false;
