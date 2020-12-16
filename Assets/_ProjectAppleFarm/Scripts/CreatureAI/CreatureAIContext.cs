@@ -13,6 +13,7 @@ public class CreatureAIContext : MonoBehaviour
     public GameObject player;
     public GameObject targetEnemy;
     public GameObject cleverItem; //interesting items, only for clever creatures
+    public GameObject foundFood; //Used in Hearty personality to find food
     public Transform creatureTransform;
     public Rigidbody rb;
     public ActiveCreatureData CD;

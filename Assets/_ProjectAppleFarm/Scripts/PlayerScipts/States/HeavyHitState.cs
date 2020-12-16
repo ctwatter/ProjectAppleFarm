@@ -11,6 +11,7 @@ public class HeavyHitState : PlayerBaseState
     private PlayerController playerController;
     public PlayerAnimator playerAnimator => playerController.playerAnimator;
     public CapsuleCollider swordCollider; 
+    //public ParticleSystem hitVfx;
 
 
     public HeavyHitState(PlayerController _playerController) : base(_playerController.gameObject) {
@@ -20,43 +21,32 @@ public class HeavyHitState : PlayerBaseState
 
     public override void Enter(){
       
-            playerController.playerBasicAttack = false;
-            playerController.swordCollider.enabled = true;
+        playerController.playerHeavyAttack= false;
+        playerController.swordCollider.enabled = true;
 
-            //playerAnimator.Attack2();
-            //trigger start of charge animation
-            //draw aoe guide
-
+        //Debug.Log("heavy hit state");
+        playerController.heavyHitVfx.Play();
             
 
     }
 
     public override Type Tick() {
         //Debug.Log("Attack State");
-        if(playerController.playerDash)
-        {
-            playerAnimator.resetAttackAnim();
-            swordCollider.enabled = false;
-            return typeof(PlayerDashState);
-        }
-        if(!playerController.getIsAttackAnim())
-        {
-            
-            playerAnimator.resetAttackAnim();
 
-            swordCollider.enabled = false;
-
-            playerAnimator.SetRun(false);
-            return typeof(PlayerIdleState);
-        } 
-        //disable movement?
-        //trigger attack animation
-        //wait for animation cue and
-        //apply hitbox on area
-        //
-        //on animation done enable movement/
+        //return typeof(PlayerIdleState);
         
-        //do idle anim
+        return typeof(PlayerIdleState);
+        // if(!playerController.getIsAttackAnim())
+        // {
+            
+        //     playerAnimator.resetAttackAnim();
+
+        //     swordCollider.enabled = false;
+
+        //     playerAnimator.SetRun(false);
+        //     return typeof(PlayerIdleState);
+        // } 
+      
         return null;
     }
 
