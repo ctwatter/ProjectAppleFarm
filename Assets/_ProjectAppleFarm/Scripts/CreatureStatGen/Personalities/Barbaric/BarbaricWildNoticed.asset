@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48bf081b392462843be187e35967dc10, type: 3}
-  m_Name: BarbaricAbility
+  m_Name: BarbaricWildNoticed
   m_EditorClassIdentifier: 

@@ -9,6 +9,7 @@ TagManager:
   - Weapon
   - FrontFollowPoint
   - BackFollowPoint
+  - CreatureDebugText
   layers:
   - Default
   - TransparentFX

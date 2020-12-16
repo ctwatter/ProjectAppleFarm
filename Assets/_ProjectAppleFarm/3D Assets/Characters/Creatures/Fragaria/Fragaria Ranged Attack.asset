@@ -18,3 +18,4 @@ MonoBehaviour:
     type: 3}
   anims: {fileID: 0}
   baseDmg: 50
+  isHoming: 1
