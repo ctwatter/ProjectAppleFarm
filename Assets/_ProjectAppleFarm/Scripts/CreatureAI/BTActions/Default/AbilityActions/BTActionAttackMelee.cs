@@ -16,7 +16,7 @@ public class BTActionAttackMelee : BTLeaf
         ranOnEnter = true;
         attack = (creatureAttackMelee) context.CD.abilities[context.lastTriggeredAbility];
         //Play amim
-   
+        context.animator.Attack1();
     }
 
     protected override void OnExit()

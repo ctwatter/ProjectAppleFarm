@@ -24,6 +24,7 @@ public class CreatureAI : MonoBehaviour
     private void Update() {
         if(Evaluate){
             behaviorTree.Evaluate();
+            context.animator.Move(context.agent.velocity);
         }
     }
 
