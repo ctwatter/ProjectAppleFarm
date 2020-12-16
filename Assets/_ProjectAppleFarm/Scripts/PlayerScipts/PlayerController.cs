@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public bool nearInteractable = false;
     public GameObject wildCreature = null;
     public GameObject currCreature;
+    public GameObject interactableObject;
     public CreatureAIContext currCreatureContext;
     public float currSpeed;
     public CapsuleCollider swordCollider; 
@@ -148,7 +149,12 @@ public class PlayerController : MonoBehaviour
     void OnInteract(){ //pressing dash button       
         if(nearInteractable) {
             playerInteract = true;
-            if(wildCreature != null){
+            if(interactableObject != null){
+                Debug.Log("picked up item");
+                Destroy(interactableObject);
+                nearInteractable = false;
+            }
+            else if (wildCreature != null) {
                 wildCreature.GetComponent<CreatureAIContext>().isWild = false;
                 currCreature = wildCreature;
                 currCreatureContext = currCreature.GetComponent<CreatureAIContext>();

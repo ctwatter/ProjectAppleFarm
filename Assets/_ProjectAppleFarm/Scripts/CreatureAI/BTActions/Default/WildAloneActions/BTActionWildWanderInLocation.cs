@@ -68,6 +68,7 @@ public class BTActionWildWanderInLocation : BTLeaf
             return NodeState.SUCCESS;
         } else {
             // still wandering
+            context.updateDebugText(name);
             return NodeState.RUNNING;
         }
     }

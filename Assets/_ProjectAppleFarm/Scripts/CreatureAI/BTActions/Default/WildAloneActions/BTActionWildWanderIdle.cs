@@ -37,6 +37,7 @@ public class BTActionWildWanderIdle : BTLeaf
             OnExit();
             return NodeState.SUCCESS;
         }
+        context.updateDebugText(name);
         return NodeState.RUNNING;
     }
 }

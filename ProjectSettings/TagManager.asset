@@ -7,6 +7,9 @@ TagManager:
   - CaptCreature
   - Enemy
   - Weapon
+  - FrontFollowPoint
+  - BackFollowPoint
+  - CreatureDebugText
   layers:
   - Default
   - TransparentFX
@@ -18,7 +21,7 @@ TagManager:
   - 
   - Enemy
   - Creature
-  - 
+  - Interesting Item
   - 
   - 
   - 
