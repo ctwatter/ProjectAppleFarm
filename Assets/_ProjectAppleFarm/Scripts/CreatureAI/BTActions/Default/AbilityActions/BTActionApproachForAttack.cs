@@ -7,8 +7,9 @@ public class BTActionApproachForAttack : BTLeaf
 {
 
     private NavMeshAgent agent;
-     creatureAttackMelee attack;
+    creatureAttackBase attack;
     private float moveSpeed = 30f;
+    private float maxDist;
 
     public BTActionApproachForAttack(string _name, CreatureAIContext _context ) : base(_name, _context){
         name = _name;
@@ -19,8 +20,15 @@ public class BTActionApproachForAttack : BTLeaf
     protected override void OnEnter()
     {
 
-        ranOnEnter = true;
-        attack = (creatureAttackMelee) context.CD.abilities[context.lastTriggeredAbility];
+        ranOnEnter = true; 
+        if(context.CD.abilities[context.lastTriggeredAbility] is creatureAttackMelee) {
+            creatureAttackMelee _attack = (creatureAttackMelee) context.CD.abilities[context.lastTriggeredAbility];
+            maxDist = _attack.maxDistanceToEnemy;
+           
+        } else if(context.CD.abilities[context.lastTriggeredAbility] is creatureAttackRanged) {
+            creatureAttackRanged _attack = (creatureAttackRanged) context.CD.abilities[context.lastTriggeredAbility];   
+            maxDist = _attack.maxDistanceToEnemy;
+        }
         agent.speed = moveSpeed;
         // agent.stoppingDistance = attack.maxDistanceToEnemy;
     }
@@ -30,6 +38,7 @@ public class BTActionApproachForAttack : BTLeaf
         ranOnEnter = false;
         agent.speed = context.CD.moveSpeed;
         agent.stoppingDistance = 1f;
+        agent.ResetPath();
     }
 
     public override NodeState Evaluate() {
@@ -37,17 +46,18 @@ public class BTActionApproachForAttack : BTLeaf
             OnEnter();
         }
 
-
+        Debug.Log("APROACH FOR ATTACK");
         agent.destination = context.targetEnemy.transform.position;
         float distance = Vector3.Distance(context.creatureTransform.position, context.targetEnemy.transform.position);
         
         //Debug.Log("Distance : " + distance + " maxDist : " + attack.maxDistanceToEnemy);
-        if(distance < attack.maxDistanceToEnemy){
+        if(distance < maxDist){
             // Made it to player
             OnExit();
             return NodeState.SUCCESS;
         } else{
             // Still trying to get to player
+            context.updateDebugText(name);
             return NodeState.RUNNING;
         }
     }

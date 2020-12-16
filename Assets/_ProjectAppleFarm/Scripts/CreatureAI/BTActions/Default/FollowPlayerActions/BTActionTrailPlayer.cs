@@ -60,6 +60,7 @@ public class BTActionTrailPlayer : BTLeaf
             return NodeState.SUCCESS;
         } else{
             // Still trying to get to player
+            context.updateDebugText(name);
             return NodeState.RUNNING;
         }
     }

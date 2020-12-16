@@ -20,9 +20,9 @@ public class BTCheckDistanceToTarget : BTChecker
             creatureAttackMelee attack = (creatureAttackMelee) context.CD.abilities[context.lastTriggeredAbility];
             Debug.Log("Ability is melee, now checking distance : " + attack.maxDistanceToEnemy);
             if (distance < attack.maxDistanceToEnemy) return NodeState.FAILURE; 
-        } else if(context.CD.abilities[context.lastTriggeredAbility] is enemyAttackRanged) {
+        } else if(context.CD.abilities[context.lastTriggeredAbility] is creatureAttackRanged) {
             creatureAttackRanged attack = (creatureAttackRanged) context.CD.abilities[context.lastTriggeredAbility];
-            if (distance < attack.maxRange) return NodeState.FAILURE; 
+            if (distance < attack.maxDistanceToEnemy) return NodeState.FAILURE; 
         }
         
         return NodeState.SUCCESS;

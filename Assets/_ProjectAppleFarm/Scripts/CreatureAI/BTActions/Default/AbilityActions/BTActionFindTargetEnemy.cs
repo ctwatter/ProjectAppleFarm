@@ -13,8 +13,6 @@ public class BTActionFindTargetEnemy : BTLeaf
     protected override void OnEnter()
     {
         ranOnEnter = true;
-        //set agent movespeed to faster
-        //
     }
 
     protected override void OnExit()
@@ -29,7 +27,6 @@ public class BTActionFindTargetEnemy : BTLeaf
         Debug.Log("FINDING TARGET ENEMIES");
         int layermask = 1 << 8; //only layer 8 will be targeted
         Collider[] hitColliders = Physics.OverlapSphere(context.creatureTransform.position, context.enemyDetectRange, layermask);
-        List<GameObject> enemies = new List<GameObject>();
         GameObject closestEnemy = null;
         float closestDistance = 100;
         foreach (var hitCollider in hitColliders)
@@ -44,7 +41,7 @@ public class BTActionFindTargetEnemy : BTLeaf
         }
         if(closestEnemy != null) {
             context.targetEnemy = closestEnemy;
-            //Debug.Log("HIT ENEMY" + context.targetEnemy);
+            OnExit();
             return NodeState.SUCCESS;
 
         }

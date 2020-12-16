@@ -9,25 +9,34 @@ public class CreatureAI : MonoBehaviour
     public List<Personality> personalities = new List<Personality>();
     public Personality DefaultPersonality;
 
+    public bool Evaluate = false;
+
     private void Start()
     {
         context = GetComponent<CreatureAIContext>();
-        BuildBT();
+        //BuildBT();
+    }
+
+    private void Awake() {
+        context = GetComponent<CreatureAIContext>();
     }
 
     private void Update() {
-        behaviorTree.Evaluate();
-        
+        if(Evaluate){
+            behaviorTree.Evaluate();
+        }
     }
 
 
     private void FixedUpdate() {
         //behaviorTree.Evaluate();
     }
+
+
     //build the behavior tree for the creature
-    private void BuildBT() 
+    public void BuildBT() 
     {
-        //personalities = context.CD.personalities;
+        personalities = context.CD.personalities;
         List<BTnode> RootList = new List<BTnode>();
 
         #region BONDED FOLLOW PLAYER
@@ -114,12 +123,7 @@ public class CreatureAI : MonoBehaviour
             BTSelector _root = new BTSelector("Root", RootList);
         #endregion
         behaviorTree = _root;
+        Evaluate = true;
     }
-
-    private void wildCreatureNoPlayerSubtree(){ 
-   
-    }
-
-
 
 }

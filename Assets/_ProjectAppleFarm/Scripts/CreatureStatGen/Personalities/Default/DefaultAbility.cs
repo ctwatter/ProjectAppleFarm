@@ -35,7 +35,7 @@ public class DefaultAbility : BTSubtree
                             MeleeApproachSelectorList.Add(invertApproachForAttack);
                             MeleeApproachSelectorList.Add(attackMelee);
                             
-                            BTSelector MeleeApproachAttackSequence = new BTSelector("Melee Approach / Attack Sequence", MeleeApproachSelectorList);
+                            BTSelector MeleeApproachAttackSelector = new BTSelector("Melee Approach / Attack Sequence", MeleeApproachSelectorList);
                         #endregion
 
 
@@ -43,7 +43,7 @@ public class DefaultAbility : BTSubtree
                         
                         MeleeAbilitySequenceList.Add(ifAbilityIsMelee);
                         MeleeAbilitySequenceList.Add(TargetExistsSelector);
-                        MeleeAbilitySequenceList.Add(MeleeApproachAttackSequence);
+                        MeleeAbilitySequenceList.Add(MeleeApproachAttackSelector);
                         //MeleeAbilitySequenceList.Add(MeleeAttackSequence);
                         //MeleeAbilitySequenceList.Add(AbilityFailsafe);
                         BTSequence MeleeAbilitySequence = new BTSequence("Melee Ability Sequence", MeleeAbilitySequenceList);
@@ -51,30 +51,46 @@ public class DefaultAbility : BTSubtree
                     #endregion
 
                     #region RangedAbilitySequence
-
+                        List<BTnode> RangedAbilitySequenceList = new List<BTnode>();
                         #region if target already exists selector
-                        
+                            //using same targetExistsSelector from melee
                         #endregion 
 
                         #region Approach/Attack sequence
-                        
-                        #endregion
+                            List<BTnode> RangedApproachSelectorList = new List<BTnode>();
+                            //using same invertApproachForAttack node
+                            BTActionAttackRanged attackRanged = new BTActionAttackRanged("Ranged Attack", context);
+                            RangedApproachSelectorList.Add(invertApproachForAttack);
+                            RangedApproachSelectorList.Add(attackRanged);
 
+                            BTSelector RangedApproachAttackSelector = new BTSelector("Ranged Approach / Attack Seelector", RangedApproachSelectorList);
+                        #endregion
+                        BTCheckIfAbilityIsRanged ifAbilityIsRanged = new BTCheckIfAbilityIsRanged("Check if ability is ranged", context);
+
+                        RangedAbilitySequenceList.Add(ifAbilityIsRanged);
+                        RangedAbilitySequenceList.Add(TargetExistsSelector);
+                        RangedAbilitySequenceList.Add(RangedApproachAttackSelector);
+
+                        BTSequence RangedAbilitySequence = new BTSequence("Ranged Ability Sequence", RangedAbilitySequenceList);
                     #endregion
 
                     #region UtilityAbilitySequence
+                        List<BTnode> UtilityAblitySequenceList = new List<BTnode>();
 
-                        #region if target already exists selector
+                        BTCheckIfAbilityIsUtility ifAbilityIsUtility = new BTCheckIfAbilityIsUtility("Check if ability is utility", context);
+                        //MAKE UTILITY ABLITY CAST
+
+                        UtilityAblitySequenceList.Add(ifAbilityIsUtility);
+                        //add action
+
+                        BTSequence UtilityAbilitySequence = new BTSequence("Utility Ability Sequence", UtilityAblitySequenceList);
+
                         
-                        #endregion 
-
-                        #region Approach/Attack sequence
-                        
-                        #endregion
-
                     #endregion
                     
                     AbilitySelectorList.Add(MeleeAbilitySequence);
+                    AbilitySelectorList.Add(RangedAbilitySequence);
+                    //AbilitySelectorList.Add(UtilityAbilitySequence);
                     AbilitySelectorList.Add(AbilityFailsafe);
 
                     BTSelector AbilitySelector = new BTSelector("Ability Selector", AbilitySelectorList);

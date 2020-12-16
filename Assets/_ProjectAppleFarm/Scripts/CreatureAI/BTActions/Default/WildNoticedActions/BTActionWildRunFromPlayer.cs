@@ -42,6 +42,7 @@ public class BTActionWildRunFromPlayer : BTLeaf
         if(!ranOnEnter){
             OnEnter();
         }
+        Debug.Log("Running from player");
         //Vector3 desiredLook = new Vector3(context.player.transform.position.x, context.creatureTransform.transform.position.y, context.player.transform.position.z);
         //context.doLookAt(desiredLook);
         //context.doMovement(context.CD.moveSpeed);
@@ -49,7 +50,7 @@ public class BTActionWildRunFromPlayer : BTLeaf
         Vector3 position_difference = context.creatureTransform.position - context.player.transform.position;
         position_difference.Normalize();
         agent.destination = context.creatureTransform.position + position_difference * 10;
-
+        
         if(Vector3.Distance(context.player.transform.position, context.creatureTransform.position) > 10){
             // creature escaped player
             OnExit();
@@ -60,6 +61,7 @@ public class BTActionWildRunFromPlayer : BTLeaf
         }
         else {
             // Still trying to get to player
+            context.updateDebugText(name);
             return NodeState.RUNNING;
         }
     }
