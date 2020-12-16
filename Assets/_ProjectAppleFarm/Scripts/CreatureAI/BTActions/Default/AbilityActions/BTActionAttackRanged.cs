@@ -15,7 +15,7 @@ public class BTActionAttackRanged : BTLeaf
         ranOnEnter = true;
         attack = (creatureAttackRanged) context.CD.abilities[context.lastTriggeredAbility];
         //Play amim
-   
+        context.animator.Attack1();
     }
 
     protected override void OnExit()

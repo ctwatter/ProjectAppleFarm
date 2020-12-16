@@ -13,7 +13,7 @@ public class BTActionItemAlertPlayer : BTLeaf
     protected override void OnEnter()
     {
         ranOnEnter = true;
-        context.animator.Jump();
+        context.animator.Wave();
     }
 
     protected override void OnExit()
