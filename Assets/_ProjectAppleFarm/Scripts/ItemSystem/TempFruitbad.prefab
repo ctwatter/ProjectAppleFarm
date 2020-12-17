@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 1303514864078101887}
   - component: {fileID: 1303514864078101827}
   - component: {fileID: 8545086771124031718}
-  m_Layer: 0
+  - component: {fileID: -2865462594888330798}
+  m_Layer: 10
   m_Name: TempFruit
   m_TagString: Fruit
   m_Icon: {fileID: 0}
@@ -124,3 +125,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 70e375df769835c4f8dff8f0e3ac78ce, type: 2}
+  droppedByPlayer: 0
+--- !u!114 &-2865462594888330798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303514864078101884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb7f3d5b9e0e0349886c8887e305cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}

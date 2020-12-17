@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: _Barbaric
   m_EditorClassIdentifier: 
   personalityName: Barbaric
-  basePercentage: 0.1
-  maxPercentage: 0.2
+  basePercentage: 1
+  maxPercentage: 1
   statModType1: 0
   statModifierAmount1: 1.8
   statModType2: 2

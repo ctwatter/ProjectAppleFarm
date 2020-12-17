@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: _LazyPersonality
   m_EditorClassIdentifier: 
   personalityName: Lazy
-  basePercentage: 0.1
-  maxPercentage: 0.2
+  basePercentage: 1
+  maxPercentage: 1
   statModType1: 2
   statModifierAmount1: 0.7
   statModType2: 0

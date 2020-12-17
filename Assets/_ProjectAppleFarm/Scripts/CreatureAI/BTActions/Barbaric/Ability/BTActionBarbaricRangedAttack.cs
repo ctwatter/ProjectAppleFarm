@@ -15,7 +15,7 @@ public class BTActionBarbaricRangedAttack : BTLeaf
         ranOnEnter = true;
         attack = (creatureAttackRanged) context.CD.abilities[context.lastTriggeredAbility];
         //Play amim
-   
+        context.animator.Attack1();
     }
 
     protected override void OnExit()
@@ -35,7 +35,8 @@ public class BTActionBarbaricRangedAttack : BTLeaf
         }
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
-        if(true) { //if animation done, have to add that 
+        if(true) { //if animation done, have to add that
+            OnExit(); 
             return NodeState.SUCCESS;
         }
         

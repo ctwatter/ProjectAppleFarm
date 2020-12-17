@@ -15,6 +15,7 @@ public class BTActionBarbaricMeleeAttack : BTLeaf
         ranOnEnter = true;
         attack = (creatureAttackMelee) context.CD.abilities[context.lastTriggeredAbility];
         //Play amim
+        context.animator.Attack1();
    
     }
 
@@ -37,6 +38,7 @@ public class BTActionBarbaricMeleeAttack : BTLeaf
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
         if(true) { //if animation done, have to add that 
+            OnExit();
             return NodeState.SUCCESS;
         }
         

@@ -16,6 +16,7 @@ public class InterestingItem : MonoBehaviour
     }
     private void Awake() {
         collider = GetComponent<Collider>();
+        //item = gameObject;
     }
 
     // Update is called once per frame

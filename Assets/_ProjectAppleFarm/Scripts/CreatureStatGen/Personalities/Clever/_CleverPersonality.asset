@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: _CleverPersonality
   m_EditorClassIdentifier: 
   personalityName: Clever
-  basePercentage: 0.1
-  maxPercentage: 0.3
+  basePercentage: 1
+  maxPercentage: 1
   statModType1: 1
   statModifierAmount1: 1.3
   statModType2: 5

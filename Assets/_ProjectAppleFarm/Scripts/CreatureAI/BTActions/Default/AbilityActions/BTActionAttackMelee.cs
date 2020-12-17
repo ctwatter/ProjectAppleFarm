@@ -35,6 +35,7 @@ public class BTActionAttackMelee : BTLeaf
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
         if(true) { //if animation done, have to add that 
+            OnExit();
             return NodeState.SUCCESS;
         }
         

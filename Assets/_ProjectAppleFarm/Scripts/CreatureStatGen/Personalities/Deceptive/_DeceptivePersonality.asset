@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: _DeceptivePersonality
   m_EditorClassIdentifier: 
   personalityName: Deceptive
-  basePercentage: 0.01
-  maxPercentage: 0.2
+  basePercentage: 1
+  maxPercentage: 1
   statModType1: 1
   statModifierAmount1: 0
   statModType2: 5

@@ -38,7 +38,7 @@ public class BTActionWildWanderInLocation : BTLeaf
             if (NavMesh.SamplePosition(context.wanderDestination, out hit, context.wanderRadius, NavMesh.AllAreas))
                 context.wanderDestination = hit.position;
         }
-        Debug.Log(Vector3.Distance(context.wanderDestination, context.creatureTransform.position));
+        //Debug.Log(Vector3.Distance(context.wanderDestination, context.creatureTransform.position));
     }
 
     protected override void OnExit()
