@@ -711,7 +711,7 @@ MonoBehaviour:
   isAbilityTriggered: 0
   wanderIdling: 0
   cleverIgnoreItems: 0
-  playerSpeedToScare: 0.07
+  playerSpeedToScare: 0.9
   lastTriggeredAbility: 0
   enemyDetectRange: 20
   itemDetectRange: 10

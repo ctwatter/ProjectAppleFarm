@@ -28,7 +28,7 @@ public class BTActionAttackRanged : BTLeaf
             OnEnter();
         }
         
-        Debug.Log("ATTACK RANGED");
+        //Debug.Log("ATTACK RANGED");
         context.projectileSpawner.GetComponent<ProjectileSpawner>().SpawnProjectile(attack.projectile, context.targetEnemy, attack.projectileSpeed, attack.baseDmg, attack.isHoming);
         
         context.targetEnemy = null;

@@ -24,7 +24,7 @@ public class CreatureAnimator : MonoBehaviour
         animator.SetTrigger("Attack1");
     }
     public void LayDown(){
-        animator.SetTrigger("LayDown");
+        animator.SetTrigger("Lay Down");
     }
     public void Sit(){
         animator.SetTrigger("Sit");

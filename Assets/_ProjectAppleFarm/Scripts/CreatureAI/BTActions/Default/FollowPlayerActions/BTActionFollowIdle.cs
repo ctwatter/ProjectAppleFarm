@@ -22,7 +22,7 @@ public class BTActionFollowIdle : BTLeaf
 
     public override NodeState Evaluate()
     {
-        Debug.Log("In Follow Idle");
+        //Debug.Log("In Follow Idle");
         context.doMovement(0);
         context.cleverIgnoreItems = false;
         //honestly this took me like 2 years to figure out how tf do people do this

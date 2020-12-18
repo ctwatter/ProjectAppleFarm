@@ -36,7 +36,7 @@ public class BTActionTrailPlayer : BTLeaf
         ranOnEnter = false;
         context.doMovement(0f);
         agent.ResetPath();
-        Debug.Log("Exiting Trail");
+        //Debug.Log("Exiting Trail");
     }
 
     public override NodeState Evaluate()

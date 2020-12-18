@@ -46,7 +46,7 @@ public class BTActionApproachForAttack : BTLeaf
             OnEnter();
         }
 
-        Debug.Log("APROACH FOR ATTACK");
+        //Debug.Log("APROACH FOR ATTACK");
         agent.destination = context.targetEnemy.transform.position;
         float distance = Vector3.Distance(context.creatureTransform.position, context.targetEnemy.transform.position);
         

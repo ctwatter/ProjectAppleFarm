@@ -16,6 +16,7 @@ public class LazyBTActionWildWanderIdle : BTLeaf
         context.wanderIdleTimer = 0;
         context.wanderIdling = true;
         context.wanderIdleDuration = Random.Range(4f, 6f);
+        context.animator.LayDown();
     }
 
     protected override void OnExit()

@@ -42,7 +42,7 @@ public class BTActionWildRunFromPlayer : BTLeaf
         if(!ranOnEnter){
             OnEnter();
         }
-        Debug.Log("Running from player");
+        //Debug.Log("Running from player");
         //Vector3 desiredLook = new Vector3(context.player.transform.position.x, context.creatureTransform.transform.position.y, context.player.transform.position.z);
         //context.doLookAt(desiredLook);
         //context.doMovement(context.CD.moveSpeed);

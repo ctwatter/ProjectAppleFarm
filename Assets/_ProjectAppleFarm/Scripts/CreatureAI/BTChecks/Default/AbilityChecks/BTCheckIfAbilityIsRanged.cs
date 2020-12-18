@@ -14,7 +14,7 @@ public class BTCheckIfAbilityIsRanged : BTChecker
     {
         if(context.lastTriggeredAbility >= 0){
             if(context.CD.abilities[context.lastTriggeredAbility] is creatureAttackRanged){
-                Debug.Log("Ability is ranged");
+                //Debug.Log("Ability is ranged");
                 return NodeState.SUCCESS;
             }
         }

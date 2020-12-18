@@ -21,7 +21,7 @@ public class BTActionFollowTP : BTLeaf
 
     public override NodeState Evaluate()
     {
-        context.creatureTransform.position = context.player.transform.position;
+        context.creatureTransform.position = context.backFollowPoint.transform.position;
         return NodeState.SUCCESS;
     }
 

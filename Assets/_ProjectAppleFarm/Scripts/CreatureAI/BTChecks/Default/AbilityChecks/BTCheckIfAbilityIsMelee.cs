@@ -14,9 +14,9 @@ public class BTCheckIfAbilityIsMelee : BTChecker
     public override NodeState Evaluate()
     {
         if(context.lastTriggeredAbility >= 0){
-            Debug.Log("Checking if ability is melee");
+            //Debug.Log("Checking if ability is melee");
             if(context.CD.abilities[context.lastTriggeredAbility] is creatureAttackMelee){
-                Debug.Log("Ability is Melee");
+               //Debug.Log("Ability is Melee");
                 return NodeState.SUCCESS;
             }
         }
