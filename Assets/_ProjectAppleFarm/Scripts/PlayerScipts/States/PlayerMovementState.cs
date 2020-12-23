@@ -9,6 +9,7 @@ namespace PlayerState
     public class Movement : State
     {
         // Set fields here
+        public parent = PlayerState.Input;
 
         public override void OnStateEnter()
         {
