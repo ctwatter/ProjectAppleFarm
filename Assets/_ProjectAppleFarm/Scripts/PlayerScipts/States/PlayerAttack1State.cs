@@ -15,7 +15,7 @@ public class PlayerAttack1State : PlayerBaseState
 
     private PlayerController playerController;
     private PlayerStats playerStats; 
-    public PlayerAnimator playerAnimator => playerController.playerAnimator;
+    public PlayerAnimator playerAnimator => playerController.animator;
     //gets the swords collider, currently is a capsule
     public CapsuleCollider swordCollider; 
 

@@ -4,47 +4,69 @@ using UnityEngine;
 using System;
 using System.Linq;
 
+namespace PlayerState
+{
+    public abstract class State
+    {
+        public PlayerStateMachine fsm { get; set; }
+        public PlayerController player { get; set; }
+        public PlayerAnimator animator => player.animator;
+
+        private State parent;
+
+        public virtual void OnStateEnter() { }
+        public virtual void OnStateUpdate() { }
+        public virtual void OnStateFixedUpdate() { }
+        public virtual void OnStateExit() { }
+
+        public void OnParentStateUpdate()
+        {
+            parent?.OnParentStateUpdate();
+            OnStateUpdate();
+        }
+        public void OnParentStateFixedUpdate()
+        {
+            parent?.OnParentStateFixedUpdate();
+            OnStateFixedUpdate();
+        }
+
+    }
+}
+
 public class PlayerStateMachine : MonoBehaviour
 {
+    public PlayerController player;
 
+    [Header("States")]
+    public PlayerState.Input inputState = new PlayerState.Input();
+    public PlayerState.IdleMove idleMoveState = new PlayerState.IdleMove();
 
-    private Dictionary<Type, PlayerBaseState> availableStates;
+    public PlayerState.State currentState { get; private set; }
 
-    public PlayerBaseState currState {get; private set; }
-    public event Action<PlayerBaseState> OnStateChanged;
+    private void Start()
+    {
+        player = GetComponent<PlayerController>();
 
-    public void SetStates(Dictionary<Type, PlayerBaseState> states){
-        availableStates = states;
+        SetState(inputState);
     }
 
-    private void Update() {
-        if(currState == null) {
-            currState = availableStates.Values.First(); //first state is default
-        }
+    public void SetState( PlayerState.State state )
+    {
+        currentState?.OnStateExit();
         
-        var nextState = currState?.Tick();
-
-        if(nextState != null && nextState != currState?.GetType()) {
-            SwitchToNewState(nextState);
-        }
-
+        currentState = state;
+        currentState.fsm = this;
+        currentState.player = player;
+        currentState.OnStateEnter();
     }
 
-
-    private void LateUpdate() {
-        currState?.PhysicsTick();
+    private void Update()
+    {
+        currentState.OnParentStateUpdate();
     }
 
-    private void FixedUpdate() {
-        
-        //currState?.PhysicsTick();
-    }
-
-    private void SwitchToNewState(Type nextState){
-        
-        currState.Exit();
-        currState = availableStates[nextState];
-        currState.Enter();
-        OnStateChanged?.Invoke(currState); //??
+    private void FixedUpdate()
+    {
+        currentState.OnParentStateFixedUpdate();
     }
 }

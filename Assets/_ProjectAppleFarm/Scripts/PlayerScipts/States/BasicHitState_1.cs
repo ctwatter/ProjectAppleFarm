@@ -14,7 +14,7 @@ public class BasicHitState_1 : PlayerBaseState
     // public float maxComboDelay;
 
     private PlayerController playerController;
-    public PlayerAnimator playerAnimator => playerController.playerAnimator;
+    public PlayerAnimator playerAnimator => playerController.animator;
 
     public CapsuleCollider swordCollider; 
 

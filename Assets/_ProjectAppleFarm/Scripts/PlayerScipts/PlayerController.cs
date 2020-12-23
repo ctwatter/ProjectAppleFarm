@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject fruit;
     public PlayerStateMachine playerStateMachine => GetComponent<PlayerStateMachine>();
-    public PlayerAnimator playerAnimator => GetComponent<PlayerAnimator>();
+    public PlayerAnimator animator => GetComponent<PlayerAnimator>();
 
     public bool isAttackAnim = false; 
     public bool isFollowThroughAnim = false;
@@ -50,28 +50,6 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem heavyChargeVfx;
     public ParticleSystem heavyHitVfx;
 
-
-
-
-
-    private void Awake() {
-        InitializeStateMachine();
-    }
-
-    private void InitializeStateMachine(){
-         var states = new Dictionary<Type, PlayerBaseState>(){
-            {typeof(PlayerIdleState), new PlayerIdleState(this)},
-            {typeof(BasicHitState_0), new BasicHitState_0(this)},
-            {typeof(BasicHitState_1), new BasicHitState_1(this)},
-            {typeof(BasicHitState_2), new BasicHitState_2(this)},
-            {typeof(BasicHitState_3), new BasicHitState_3(this)},
-            {typeof(HeavyChargeState), new HeavyChargeState(this)},  
-            {typeof(HeavyHitState), new HeavyHitState(this)},            
-            {typeof(PlayerDashState), new PlayerDashState(this)},
-            {typeof(PlayerIsHit), new PlayerIsHit(this)},
-        };
-        GetComponent<PlayerStateMachine>().SetStates(states);
-    }
     
     void Start()
     {
@@ -122,7 +100,7 @@ public class PlayerController : MonoBehaviour
 
     
 
-        playerAnimator.Move(movementVector);
+        animator.Move(movementVector);
     }
 
     public void doRotation(float rotationModifier){

@@ -14,7 +14,7 @@ public class PlayerIsHit : PlayerBaseState
 
     public override void Enter(){
         //enter anim
-        player.playerAnimator.animator.SetTrigger("isHit");
+        player.animator.animator.SetTrigger("isHit");
     }
 
     public override Type Tick() {
@@ -25,7 +25,7 @@ public class PlayerIsHit : PlayerBaseState
         }
         //wait till end of animation, return to idle
         //maybe check how many times has been triggered in succession?
-        if(!player.playerAnimator.animator.GetCurrentAnimatorStateInfo(0).IsTag("isHit"))
+        if(!player.animator.animator.GetCurrentAnimatorStateInfo(0).IsTag("isHit"))
         {
             //Debug.Log("End Player hit state");
             

@@ -8,7 +8,7 @@ public class PlayerDashState : PlayerBaseState
 {
     float startTime = 0;
     private PlayerController playerController;
-    public PlayerAnimator playerAnimator => playerController.playerAnimator;
+    public PlayerAnimator playerAnimator => playerController.animator;
     public Vector3 startRotation;
     
 

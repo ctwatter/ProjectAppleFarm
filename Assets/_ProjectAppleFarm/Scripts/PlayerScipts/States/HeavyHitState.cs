@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 public class HeavyHitState : PlayerBaseState
 {
     private PlayerController playerController;
-    public PlayerAnimator playerAnimator => playerController.playerAnimator;
+    public PlayerAnimator playerAnimator => playerController.animator;
     public CapsuleCollider swordCollider; 
     //public ParticleSystem hitVfx;
 
