@@ -11,12 +11,12 @@ namespace PlayerState
         // Set fields here
         public Movement()
         {
-            SetParent( player.inputState );
+            SetParent( fsm.inputState );
         }
 
         public override void OnStateEnter()
         {
-            SetState( player.idleMoveState );
+            SetState( fsm.idleMoveState );
         }
 
         public override void OnStateUpdate()

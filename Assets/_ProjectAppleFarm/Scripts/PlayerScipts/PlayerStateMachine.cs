@@ -58,6 +58,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     [Header("States")]
     public PlayerState.Input inputState = new PlayerState.Input();
+    public PlayerState.Movement movementState = new PlayerState.Movement();
     public PlayerState.IdleMove idleMoveState = new PlayerState.IdleMove();
 
     public PlayerState.State currentState { get; private set; }
