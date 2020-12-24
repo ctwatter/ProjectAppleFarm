@@ -3,23 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public abstract class PlayerBaseState
+namespace PlayerState
 {
-    protected PlayerBaseState(GameObject gameObject)
+    public abstract class State
     {
-        this.gameObject = gameObject;
-        this.transform = gameObject.transform;
+        public PlayerStateMachine fsm { get; set; }
+        public PlayerController player { get; set; }
+        public PlayerAnimator animator => player.animator;
+
+        private State parent;
+
+        public State( PlayerStateMachine _fsm )
+        {
+            fsm = _fsm;
+            player = fsm.player;
+        }
+
+        public virtual void OnStateEnter() { }
+        public virtual void OnStateUpdate() { }
+        public virtual void OnStateFixedUpdate() { }
+        public virtual void OnStateExit() { }
+
+        public void SetParent( State state )
+        {
+            parent = state;
+        }
+
+        public void SetState( State state )
+        {
+            OnParentStateExit();
+            fsm.SetState( state );
+        }
+
+        public void OnParentStateUpdate()
+        {
+            parent?.OnParentStateUpdate();
+            OnStateUpdate();
+        }
+        public void OnParentStateFixedUpdate()
+        {
+            parent?.OnParentStateFixedUpdate();
+            OnStateFixedUpdate();
+        }
+        private void OnParentStateExit()
+        {
+            OnStateExit();
+            if ( fsm.currentState != this )
+            {
+                parent?.OnParentStateExit();
+            }
+        }
+
     }
-
-    protected GameObject gameObject;
-    protected Transform transform;
-
-
-    
-    public abstract Type Tick();
-    public abstract void PhysicsTick();
-
-    public abstract void Enter();
-    public abstract void Exit();
-
 }

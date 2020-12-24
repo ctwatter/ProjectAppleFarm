@@ -8,7 +8,7 @@ namespace PlayerState
     [Serializable]
     public class IdleMove : State
     {
-        // Set fields here
+        public IdleMove( PlayerStateMachine _fsm ) : base( _fsm ) {}
 
         public override void OnStateEnter()
         {

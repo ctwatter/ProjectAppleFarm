@@ -9,7 +9,7 @@ namespace PlayerState
     public class Movement : State
     {
         // Set fields here
-        public Movement()
+        public Movement( PlayerStateMachine _fsm ) : base( _fsm )
         {
             SetParent( fsm.inputState );
         }

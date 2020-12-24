@@ -8,7 +8,7 @@ namespace PlayerState
     [Serializable]
     public class Input : State
     {
-        // Set fields here
+        public Input( PlayerStateMachine _fsm ) : base( _fsm ) {}
 
         public override void OnStateEnter()
         {
