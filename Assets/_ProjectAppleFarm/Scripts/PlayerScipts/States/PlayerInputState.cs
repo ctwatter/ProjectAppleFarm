@@ -12,7 +12,7 @@ namespace PlayerState
 
         public override void OnStateEnter()
         {
-            fsm.SetState( player.movementState );
+            SetState( player.movementState );
         }
 
         public override void OnStateUpdate()
@@ -21,7 +21,7 @@ namespace PlayerState
             {
                 player.isHit = false;
 
-                fsm.SetState( player.hitState );
+                SetState( player.hitState );
                 return;
             }
         }

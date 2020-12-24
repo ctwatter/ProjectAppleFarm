@@ -16,11 +16,11 @@ public class WeaponTriggers : MonoBehaviour
         if(other.gameObject.tag == "Enemy")
         {
             // Check which attack state we're in to determine damage
-            if(playerStateMachine.currState is BasicHitState_0){
+            if(playerStateMachine.currentState is BasicHitState_0){
                 other.gameObject.GetComponent<EnemyStats>().takeDamage(playerStats.attack1Damage);
-            } else if(playerStateMachine.currState is BasicHitState_1){
+            } else if(playerStateMachine.currentState is BasicHitState_1){
                 other.gameObject.GetComponent<EnemyStats>().takeDamage(playerStats.attack2Damage);
-            } else if(playerStateMachine.currState is BasicHitState_2){
+            } else if(playerStateMachine.currentState is BasicHitState_2){
                 other.gameObject.GetComponent<EnemyStats>().takeDamage(playerStats.attack3Damage);
             } else{
                 Debug.Log("Default Damage");

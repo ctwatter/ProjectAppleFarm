@@ -19,7 +19,12 @@ namespace PlayerState
         public virtual void OnStateFixedUpdate() { }
         public virtual void OnStateExit() { }
 
-        private void SetState( State state )
+        public void SetParent( State state )
+        {
+            parent = state;
+        }
+
+        public void SetState( State state )
         {
             OnParentStateExit();
             fsm.SetState( state );

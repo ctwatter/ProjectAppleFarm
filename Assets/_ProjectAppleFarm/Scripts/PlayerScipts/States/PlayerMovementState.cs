@@ -9,11 +9,14 @@ namespace PlayerState
     public class Movement : State
     {
         // Set fields here
-        public parent = PlayerState.Input;
+        public Movement()
+        {
+            SetParent( player.inputState );
+        }
 
         public override void OnStateEnter()
         {
-            fsm.SetState( player.idleMoveState );
+            SetState( player.idleMoveState );
         }
 
         public override void OnStateUpdate()
