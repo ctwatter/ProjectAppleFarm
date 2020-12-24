@@ -19,6 +19,12 @@ namespace PlayerState
         public virtual void OnStateFixedUpdate() { }
         public virtual void OnStateExit() { }
 
+        private void SetState( State state )
+        {
+            OnParentStateExit();
+            fsm.SetState( state );
+        }
+
         public void OnParentStateUpdate()
         {
             parent?.OnParentStateUpdate();
@@ -28,6 +34,14 @@ namespace PlayerState
         {
             parent?.OnParentStateFixedUpdate();
             OnStateFixedUpdate();
+        }
+        private void OnParentStateExit()
+        {
+            OnStateExit();
+            if ( fsm.currentState != this )
+            {
+                parent?.OnParentStateExit();
+            }
         }
 
     }
@@ -51,9 +65,7 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     public void SetState( PlayerState.State state )
-    {
-        currentState?.OnStateExit();
-        
+    {        
         currentState = state;
         currentState.fsm = this;
         currentState.player = player;
