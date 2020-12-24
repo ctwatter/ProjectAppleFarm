@@ -7,16 +7,19 @@ public class PlayerStateMachine : MonoBehaviour
 {
     public PlayerController player;
 
-    [Header("States")]
-    public PlayerState.Input inputState = new PlayerState.Input( this );
-    public PlayerState.Movement movementState = new PlayerState.Movement( this );
-    public PlayerState.IdleMove idleMoveState = new PlayerState.IdleMove( this );
+    public PlayerState.Input inputState;
+    public PlayerState.Movement movementState;
+    public PlayerState.IdleMove idleMoveState;
 
     public PlayerState.State currentState { get; private set; }
 
     private void Start()
     {
         player = GetComponent<PlayerController>();
+
+        inputState = new PlayerState.Input( this );
+        movementState = new PlayerState.Movement( this );
+        idleMoveState = new PlayerState.IdleMove( this );
 
         SetState(inputState);
     }
