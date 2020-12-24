@@ -6,22 +6,27 @@ using System;
 namespace PlayerState
 {
     [Serializable]
-    public class Movement : State
+    public class Test6 : State
     {
         // Set fields here
-        public Movement( PlayerStateMachine _fsm ) : base( _fsm )
+        public Test6( PlayerStateMachine _fsm ) : base( _fsm )
         {
-            parent = fsm.inputState;
+            parent = fsm.Test2;
         }
 
         public override void OnStateEnter()
         {
-            SetDefaultState( fsm.idleMoveState );
+            //SetState( fsm.idleMoveState );
+            Debug.Log("Entering state 6");
         }
 
         public override void OnStateUpdate()
         {
-            
+            if(player.playerBasicAttack)
+            {
+                player.playerBasicAttack = false;
+                SetState(fsm.Test4);
+            }
         }
 
         public override void OnStateFixedUpdate()
@@ -31,7 +36,7 @@ namespace PlayerState
 
         public override void OnStateExit()
         {
-            
+            Debug.Log("Exiting state 6");
         }
     }
 }

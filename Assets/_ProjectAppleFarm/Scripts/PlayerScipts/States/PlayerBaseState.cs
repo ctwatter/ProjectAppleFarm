@@ -11,7 +11,8 @@ namespace PlayerState
         public PlayerController player { get; set; }
         public PlayerAnimator animator => player.animator;
 
-        private State parent;
+        protected string name;
+        protected State parent;
 
         public State( PlayerStateMachine _fsm )
         {
@@ -24,14 +25,17 @@ namespace PlayerState
         public virtual void OnStateFixedUpdate() { }
         public virtual void OnStateExit() { }
 
-        public void SetParent( State state )
-        {
-            parent = state;
-        }
-
         public void SetState( State state )
         {
-            OnParentStateExit();
+            fsm.transitionExitState = this;
+
+            fsm.currentState.OnParentStateExit();
+            fsm.SetState( state );
+        }
+
+        // Used for default states to skip exit function
+        public void SetDefaultState( State state )
+        {
             fsm.SetState( state );
         }
 
@@ -48,7 +52,7 @@ namespace PlayerState
         private void OnParentStateExit()
         {
             OnStateExit();
-            if ( fsm.currentState != this )
+            if ( !fsm.transitionExitState.Equals(this) )
             {
                 parent?.OnParentStateExit();
             }

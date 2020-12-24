@@ -12,7 +12,7 @@ namespace PlayerState
 
         public override void OnStateEnter()
         {
-            SetState( fsm.movementState );
+            SetDefaultState( fsm.movementState );
         }
 
         public override void OnStateUpdate()

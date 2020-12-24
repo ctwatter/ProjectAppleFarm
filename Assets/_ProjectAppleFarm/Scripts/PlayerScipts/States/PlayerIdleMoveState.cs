@@ -8,7 +8,9 @@ namespace PlayerState
     [Serializable]
     public class IdleMove : State
     {
-        public IdleMove( PlayerStateMachine _fsm ) : base( _fsm ) {}
+        public IdleMove( PlayerStateMachine _fsm ) : base( _fsm ) {
+            parent = fsm.movementState;
+        }
 
         public override void OnStateEnter()
         {

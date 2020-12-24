@@ -6,17 +6,18 @@ using System;
 namespace PlayerState
 {
     [Serializable]
-    public class Movement : State
+    public class Test3 : State
     {
         // Set fields here
-        public Movement( PlayerStateMachine _fsm ) : base( _fsm )
+        public Test3( PlayerStateMachine _fsm ) : base( _fsm )
         {
-            parent = fsm.inputState;
+            parent = fsm.Test1;
         }
 
         public override void OnStateEnter()
         {
-            SetDefaultState( fsm.idleMoveState );
+            Debug.Log("Entering Test3");
+            SetDefaultState( fsm.Test4 );
         }
 
         public override void OnStateUpdate()
@@ -31,7 +32,7 @@ namespace PlayerState
 
         public override void OnStateExit()
         {
-            
+            Debug.Log("Exiting Test3");
         }
     }
 }
