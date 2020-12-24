@@ -8,7 +8,6 @@ namespace PlayerState
     [Serializable]
     public class Movement : State
     {
-        // Set fields here
         public Movement( PlayerStateMachine _fsm ) : base( _fsm )
         {
             parent = fsm.inputState;

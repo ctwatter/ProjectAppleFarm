@@ -8,7 +8,6 @@ namespace PlayerState
     [Serializable]
     public class Test6 : State
     {
-        // Set fields here
         public Test6( PlayerStateMachine _fsm ) : base( _fsm )
         {
             parent = fsm.Test2;
