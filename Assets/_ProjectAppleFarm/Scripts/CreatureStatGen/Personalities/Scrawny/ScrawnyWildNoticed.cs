@@ -11,7 +11,7 @@ public class ScrawnyWildNoticed : BTSubtree
             #region wild player scary
                 List<BTNode> WildPlayerScaryList = new List<BTNode>();
                 BTCheckWildPlayerMoving playerMoving = new BTCheckWildPlayerMoving("Player Moving", context);
-                BTActionWildRunFromPlayer runFromPlayer = new BTActionWildRunFromPlayer("Run From Player", context);
+                CActionWildRunFromPlayer runFromPlayer = new CActionWildRunFromPlayer("Run From Player", context);
                 WildPlayerScaryList.Add(playerMoving);
                 WildPlayerScaryList.Add(runFromPlayer);
                 BTSequence playerScarySequence = new BTSequence("Is Player Scary", WildPlayerScaryList);
@@ -19,8 +19,8 @@ public class ScrawnyWildNoticed : BTSubtree
 
             #region wild approach player
                 List<BTNode> WildApproachPlayerList = new List<BTNode>();
-                BTActionWildApproachPlayer approachPlayer = new BTActionWildApproachPlayer("Approach Player", context);
-                BTActionFollowIdle followIdle = new BTActionFollowIdle("Follow Idle", context);
+                CActionWildApproachPlayer approachPlayer = new CActionWildApproachPlayer("Approach Player", context);
+                CActionFollowIdle followIdle = new CActionFollowIdle("Follow Idle", context);
                 WildApproachPlayerList.Add(playerScarySequence);
                 WildApproachPlayerList.Add(approachPlayer);
                 WildApproachPlayerList.Add(followIdle);

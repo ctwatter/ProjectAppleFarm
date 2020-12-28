@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTActionWildWanderIdle : BTLeaf
+public class CActionWildWanderIdle : BTLeaf
 {
-    public BTActionWildWanderIdle(string _name, CreatureAIContext _context) : base(_name, _context) {
+    public CActionWildWanderIdle(string _name, CreatureAIContext _context) : base(_name, _context) {
         name = _name;
         context = _context;
     }

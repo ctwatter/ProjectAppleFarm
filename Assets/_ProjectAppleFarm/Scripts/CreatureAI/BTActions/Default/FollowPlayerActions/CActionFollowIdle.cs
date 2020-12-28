@@ -1,10 +1,11 @@
+// Enrico
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTActionFollowTP : BTLeaf
+public class CActionFollowIdle : BTLeaf
 {
-    public BTActionFollowTP(string _name, CreatureAIContext _context) : base(_name, _context) {
+    public CActionFollowIdle(string _name, CreatureAIContext _context) : base(_name, _context) {
         name = _name;
         context = _context;
     }
@@ -21,9 +22,10 @@ public class BTActionFollowTP : BTLeaf
 
     public override NodeState Evaluate()
     {
-        context.creatureTransform.position = context.backFollowPoint.transform.position;
+        //Debug.Log("In Follow Idle");
+        context.doMovement(0);
+        context.cleverIgnoreItems = false;
+        //honestly this took me like 2 years to figure out how tf do people do this
         return NodeState.SUCCESS;
     }
-
-
 }

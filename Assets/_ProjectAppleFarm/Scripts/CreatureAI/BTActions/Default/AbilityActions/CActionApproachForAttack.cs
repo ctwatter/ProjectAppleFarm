@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BTActionApproachForAttack : BTLeaf
+public class CActionApproachForAttack : BTLeaf
 {
 
     private NavMeshAgent agent;
@@ -11,7 +11,7 @@ public class BTActionApproachForAttack : BTLeaf
     private float moveSpeed = 30f;
     private float maxDist;
 
-    public BTActionApproachForAttack(string _name, CreatureAIContext _context ) : base(_name, _context){
+    public CActionApproachForAttack(string _name, CreatureAIContext _context ) : base(_name, _context){
         name = _name;
         context = _context;
         agent = context.agent;

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTActionFindTargetEnemy : BTLeaf
+public class CActionFindTargetEnemy : BTLeaf
 {
     
-    public BTActionFindTargetEnemy(string _name, CreatureAIContext _context ) : base(_name, _context){
+    public CActionFindTargetEnemy(string _name, CreatureAIContext _context ) : base(_name, _context){
         name = _name;
         context = _context;
     }

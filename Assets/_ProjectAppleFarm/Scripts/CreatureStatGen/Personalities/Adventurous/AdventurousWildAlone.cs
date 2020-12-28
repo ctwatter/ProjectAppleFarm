@@ -13,7 +13,7 @@ public class AdventurousWildAlone : BTSubtree
             #region wild enemies nearby
                 List<BTNode> WildEnemiesList = new List<BTNode>();
                 AdventurousBTCheckWildEnemiesInRange wildEnemies = new AdventurousBTCheckWildEnemiesInRange("Are Enemies Nearby?", context);
-                BTActionWildRunFromEnemies wildRunEnemy = new BTActionWildRunFromEnemies("Run From Enemies", context);
+                CActionWildRunFromEnemies wildRunEnemy = new CActionWildRunFromEnemies("Run From Enemies", context);
                 WildEnemiesList.Add(wildEnemies);
                 WildEnemiesList.Add(wildRunEnemy);
                 BTSequence wildEnemySequence = new BTSequence("Wild Enemies Nearby", WildEnemiesList);
@@ -22,7 +22,7 @@ public class AdventurousWildAlone : BTSubtree
             #region wild wander
                 List<BTNode> WildWanderList = new List<BTNode>();
                 AdventurousBTActionWildWanderInLocation wildWander = new AdventurousBTActionWildWanderInLocation("Wander", context);
-                BTActionWildWanderIdle wildWanderIdle = new BTActionWildWanderIdle("Wander Idle", context);
+                CActionWildWanderIdle wildWanderIdle = new CActionWildWanderIdle("Wander Idle", context);
                 WildWanderList.Add(wildWander);
                 WildWanderList.Add(wildWanderIdle);
                 BTSelector wildWanderSelector = new BTSelector("Wild Wander", WildWanderList);

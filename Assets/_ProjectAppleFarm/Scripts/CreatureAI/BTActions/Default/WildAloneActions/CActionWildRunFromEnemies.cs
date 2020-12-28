@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BTActionWildRunFromEnemies : BTLeaf
+public class CActionWildRunFromEnemies : BTLeaf
 {
     private NavMeshAgent agent;
     private float moveSpeed = 5f;
     private float angularSpeed = 720f; //deg/s
     private float acceleration = 100f; //max accel units/sec^2
 
-    public BTActionWildRunFromEnemies(string _name, CreatureAIContext _context) : base(_name, _context) {
+    public CActionWildRunFromEnemies(string _name, CreatureAIContext _context) : base(_name, _context) {
         name = _name;
         context = _context;
 

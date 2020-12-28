@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTActionBarbaricMeleeAttack : BTLeaf
+public class CActionBarbaricMeleeAttack : BTLeaf
 {
     creatureAttackMelee attack;
-    public BTActionBarbaricMeleeAttack(string _name, CreatureAIContext _context ) : base(_name, _context){
+    public CActionBarbaricMeleeAttack(string _name, CreatureAIContext _context ) : base(_name, _context){
         name = _name;
         context = _context;
     }
