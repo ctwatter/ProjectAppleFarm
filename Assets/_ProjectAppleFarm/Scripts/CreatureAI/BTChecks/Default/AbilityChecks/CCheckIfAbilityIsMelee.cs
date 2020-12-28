@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BTCheckIfAbilityIsMelee : BTChecker
+public class CCheckIfAbilityIsMelee : BTChecker
 {
-    public BTCheckIfAbilityIsMelee(string _name, CreatureAIContext _context) : base(_name, _context)
+    public CCheckIfAbilityIsMelee(string _name, CreatureAIContext _context) : base(_name, _context)
     {
         name = _name;
         context = _context;

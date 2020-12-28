@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTCheckPlayerTriggeredAbility : BTChecker
+public class CCheckPlayerTriggeredAbility : BTChecker
 {
-    public BTCheckPlayerTriggeredAbility(string _name, CreatureAIContext _context) : base(_name, _context)
+    public CCheckPlayerTriggeredAbility(string _name, CreatureAIContext _context) : base(_name, _context)
     {
         name = _name;
         context = _context;

@@ -12,7 +12,7 @@ public class EnergeticWildAlone : BTSubtree
 
             #region wild enemies nearby
                 List<BTNode> WildEnemiesList = new List<BTNode>();
-                BTCheckWildEnemiesInRange wildEnemies = new BTCheckWildEnemiesInRange("ENERGETIC Are Enemies Nearby?", context);
+                CCheckWildEnemiesInRange wildEnemies = new CCheckWildEnemiesInRange("ENERGETIC Are Enemies Nearby?", context);
                 EnergeticBTActionWildRunFromEnemies wildRunEnemy = new EnergeticBTActionWildRunFromEnemies("ENERGETIC Run From Enemies", context);
                 WildEnemiesList.Add(wildEnemies);
                 WildEnemiesList.Add(wildRunEnemy);

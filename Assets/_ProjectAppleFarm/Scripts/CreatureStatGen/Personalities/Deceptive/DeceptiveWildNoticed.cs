@@ -19,7 +19,7 @@ public class DeceptiveWildNoticed : BTSubtree
 
             #region wild notice player
                 List<BTNode> WildNoticePlayerList = new List<BTNode>();
-                BTCheckWildPlayerInRadius playerNoticed = new BTCheckWildPlayerInRadius("Is Player Noticed", context);
+                CCheckWildPlayerInRadius playerNoticed = new CCheckWildPlayerInRadius("Is Player Noticed", context);
                 WildNoticePlayerList.Add(playerNoticed);
                 WildNoticePlayerList.Add(approachPlayerSelector);
                 BTSequence noticedSequence = new BTSequence("Player Is Noticed", WildNoticePlayerList);

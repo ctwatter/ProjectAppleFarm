@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //maybe rename this class?
-public class BTCheckDistanceToTarget : BTChecker
+public class CCheckDistanceToTarget : BTChecker
 {
-    public BTCheckDistanceToTarget(string _name, CreatureAIContext _context) : base(_name, _context)
+    public CCheckDistanceToTarget(string _name, CreatureAIContext _context) : base(_name, _context)
     {
         name = _name;
         context = _context;

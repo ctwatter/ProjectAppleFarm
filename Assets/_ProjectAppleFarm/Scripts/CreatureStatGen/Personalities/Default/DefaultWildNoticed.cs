@@ -10,7 +10,7 @@ public class DefaultWildNoticed : BTSubtree
         #region WILD PLAYER
             #region wild player scary
                 List<BTNode> WildPlayerScaryList = new List<BTNode>();
-                BTCheckWildPlayerScary playerScary = new BTCheckWildPlayerScary("Player Scary", context);
+                CCheckWildPlayerScary playerScary = new CCheckWildPlayerScary("Player Scary", context);
                 CActionWildRunFromPlayer runFromPlayer = new CActionWildRunFromPlayer("Run From Player", context);
                 WildPlayerScaryList.Add(playerScary);
                 WildPlayerScaryList.Add(runFromPlayer);
@@ -29,7 +29,7 @@ public class DefaultWildNoticed : BTSubtree
 
             #region wild notice player
                 List<BTNode> WildNoticePlayerList = new List<BTNode>();
-                BTCheckWildPlayerInRadius playerNoticed = new BTCheckWildPlayerInRadius("Is Player Noticed", context);
+                CCheckWildPlayerInRadius playerNoticed = new CCheckWildPlayerInRadius("Is Player Noticed", context);
                 WildNoticePlayerList.Add(playerNoticed);
                 WildNoticePlayerList.Add(approachPlayerSelector);
                 BTSequence noticedSequence = new BTSequence("Player Is Noticed", WildNoticePlayerList);

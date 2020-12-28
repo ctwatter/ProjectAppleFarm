@@ -23,7 +23,7 @@ public class CleverFollowPlayer : BTSubtree
 
             #region bonded follow idle sequence
                 List<BTNode> BondedIdleFollowList = new List<BTNode>();
-                BTCheckInPlayerRadius inRadius = new BTCheckInPlayerRadius("In Player Radius", context);
+                CCheckInPlayerRadius inRadius = new CCheckInPlayerRadius("In Player Radius", context);
                 CActionFollowIdle followIdle = new CActionFollowIdle("Follow Idle", context);
                 BondedIdleFollowList.Add(inRadius);
                 BondedIdleFollowList.Add(followIdle);
@@ -32,7 +32,7 @@ public class CleverFollowPlayer : BTSubtree
 
             #region bonded trail player sequence
                 List<BTNode> BondedTrailPlayerList = new List<BTNode>();
-                BTCheckInPlayerTrail inTrail = new BTCheckInPlayerTrail("In Player Trail", context);
+                CCheckInPlayerTrail inTrail = new CCheckInPlayerTrail("In Player Trail", context);
                 CActionTrailPlayer trailPlayer = new CActionTrailPlayer("Trail Player", context);
                 BondedTrailPlayerList.Add(inTrail);
                 BondedTrailPlayerList.Add(trailPlayer);

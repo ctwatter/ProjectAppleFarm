@@ -17,7 +17,7 @@ public class DefaultAbility : BTSubtree
                         List<BTNode> MeleeAbilitySequenceList = new List<BTNode>();
                         #region if target already exists selector
                             List<BTNode> TargetExistsSelectorList = new List<BTNode>();
-                            BTCheckIfTargetExists checkIfTargetExists = new BTCheckIfTargetExists("Check if enemy already targeted", context);
+                            CCheckIfTargetExists checkIfTargetExists = new CCheckIfTargetExists("Check if enemy already targeted", context);
                             CActionFindTargetEnemy findTargetEnemy = new CActionFindTargetEnemy("Find Closest Enemy in Range", context);
                             TargetExistsSelectorList.Add(checkIfTargetExists);
                             TargetExistsSelectorList.Add(findTargetEnemy);
@@ -39,7 +39,7 @@ public class DefaultAbility : BTSubtree
                         #endregion
 
 
-                        BTCheckIfAbilityIsMelee ifAbilityIsMelee = new BTCheckIfAbilityIsMelee("check if ability is melee", context);
+                        CCheckIfAbilityIsMelee ifAbilityIsMelee = new CCheckIfAbilityIsMelee("check if ability is melee", context);
                         
                         MeleeAbilitySequenceList.Add(ifAbilityIsMelee);
                         MeleeAbilitySequenceList.Add(TargetExistsSelector);
@@ -65,7 +65,7 @@ public class DefaultAbility : BTSubtree
 
                             BTSelector RangedApproachAttackSelector = new BTSelector("Ranged Approach / Attack Seelector", RangedApproachSelectorList);
                         #endregion
-                        BTCheckIfAbilityIsRanged ifAbilityIsRanged = new BTCheckIfAbilityIsRanged("Check if ability is ranged", context);
+                        CCheckIfAbilityIsRanged ifAbilityIsRanged = new CCheckIfAbilityIsRanged("Check if ability is ranged", context);
 
                         RangedAbilitySequenceList.Add(ifAbilityIsRanged);
                         RangedAbilitySequenceList.Add(TargetExistsSelector);
@@ -77,7 +77,7 @@ public class DefaultAbility : BTSubtree
                     #region UtilityAbilitySequence
                         List<BTNode> UtilityAblitySequenceList = new List<BTNode>();
 
-                        BTCheckIfAbilityIsUtility ifAbilityIsUtility = new BTCheckIfAbilityIsUtility("Check if ability is utility", context);
+                        CCheckIfAbilityIsUtility ifAbilityIsUtility = new CCheckIfAbilityIsUtility("Check if ability is utility", context);
                         //MAKE UTILITY ABLITY CAST
 
                         UtilityAblitySequenceList.Add(ifAbilityIsUtility);
@@ -95,7 +95,7 @@ public class DefaultAbility : BTSubtree
 
                     BTSelector AbilitySelector = new BTSelector("Ability Selector", AbilitySelectorList);
                 #endregion
-                BTCheckPlayerTriggeredAbility ifPlayerTriggeredAbility = new BTCheckPlayerTriggeredAbility("if player triggered ability", context);
+                CCheckPlayerTriggeredAbility ifPlayerTriggeredAbility = new CCheckPlayerTriggeredAbility("if player triggered ability", context);
                 AbilityTriggeredSequenceList.Add(ifPlayerTriggeredAbility);
                 AbilityTriggeredSequenceList.Add(AbilitySelector);
 
