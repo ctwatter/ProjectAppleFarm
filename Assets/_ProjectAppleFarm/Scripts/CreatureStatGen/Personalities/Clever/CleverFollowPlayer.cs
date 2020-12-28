@@ -24,7 +24,7 @@ public class CleverFollowPlayer : BTSubtree
             #region bonded follow idle sequence
                 List<BTNode> BondedIdleFollowList = new List<BTNode>();
                 BTCheckInPlayerRadius inRadius = new BTCheckInPlayerRadius("In Player Radius", context);
-                BTActionFollowIdle followIdle = new BTActionFollowIdle("Follow Idle", context);
+                CActionFollowIdle followIdle = new CActionFollowIdle("Follow Idle", context);
                 BondedIdleFollowList.Add(inRadius);
                 BondedIdleFollowList.Add(followIdle);
                 BTSequence followPlayerIdle = new BTSequence("Follow Player Idle", BondedIdleFollowList);
@@ -33,7 +33,7 @@ public class CleverFollowPlayer : BTSubtree
             #region bonded trail player sequence
                 List<BTNode> BondedTrailPlayerList = new List<BTNode>();
                 BTCheckInPlayerTrail inTrail = new BTCheckInPlayerTrail("In Player Trail", context);
-                BTActionTrailPlayer trailPlayer = new BTActionTrailPlayer("Trail Player", context);
+                CActionTrailPlayer trailPlayer = new CActionTrailPlayer("Trail Player", context);
                 BondedTrailPlayerList.Add(inTrail);
                 BondedTrailPlayerList.Add(trailPlayer);
                 BTSequence followPlayerTrail = new BTSequence("Follow Player Trail", BondedTrailPlayerList);
@@ -41,8 +41,8 @@ public class CleverFollowPlayer : BTSubtree
             
             #region bonded get closer to player selector
                 List<BTNode> BondedGetCloserToPlayerList = new List<BTNode>();
-                BTActionFollowPlayer followPlayerAction = new BTActionFollowPlayer("Follow Player", context);
-                BTActionFollowTP followPlayerTP = new BTActionFollowTP("Follow Player TP", context);
+                CActionFollowPlayer followPlayerAction = new CActionFollowPlayer("Follow Player", context);
+                CActionFollowTP followPlayerTP = new CActionFollowTP("Follow Player TP", context);
                 BondedGetCloserToPlayerList.Add(followPlayerAction);
                 BondedGetCloserToPlayerList.Add(followPlayerTP);
                 BTSelector followPlayerSelector = new BTSelector("Get Closer To Player", BondedGetCloserToPlayerList);

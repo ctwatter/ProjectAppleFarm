@@ -12,13 +12,13 @@ public class DefaultAbility : BTSubtree
 
                 #region Ability Selector
                     List<BTNode> AbilitySelectorList = new List<BTNode>();
-                    BTActionAbilityFail AbilityFailsafe = new BTActionAbilityFail("Ability Failsafe", context);
+                    CActionAbilityFail AbilityFailsafe = new CActionAbilityFail("Ability Failsafe", context);
                     #region MeleeAbilitySequence
                         List<BTNode> MeleeAbilitySequenceList = new List<BTNode>();
                         #region if target already exists selector
                             List<BTNode> TargetExistsSelectorList = new List<BTNode>();
                             BTCheckIfTargetExists checkIfTargetExists = new BTCheckIfTargetExists("Check if enemy already targeted", context);
-                            BTActionFindTargetEnemy findTargetEnemy = new BTActionFindTargetEnemy("Find Closest Enemy in Range", context);
+                            CActionFindTargetEnemy findTargetEnemy = new CActionFindTargetEnemy("Find Closest Enemy in Range", context);
                             TargetExistsSelectorList.Add(checkIfTargetExists);
                             TargetExistsSelectorList.Add(findTargetEnemy);
 
@@ -28,9 +28,9 @@ public class DefaultAbility : BTSubtree
                         #region Approach sequence
                             List<BTNode> MeleeApproachSelectorList = new List<BTNode>();
                             //BTCheckDistanceToTarget checkIfDistanceToTarget = new BTCheckDistanceToTarget("Check if in range for attack", context);
-                            BTActionApproachForAttack approachForAttack = new BTActionApproachForAttack("Approach for attack", context);
+                            CActionApproachForAttack approachForAttack = new CActionApproachForAttack("Approach for attack", context);
                             BTInverter invertApproachForAttack = new BTInverter("Invert Approach for Attack", approachForAttack);
-                            BTActionAttackMelee attackMelee = new BTActionAttackMelee("Melee Attack", context);
+                            CActionAttackMelee attackMelee = new CActionAttackMelee("Melee Attack", context);
                             //MeleeApproachSequenceList.Add(checkIfDistanceToTarget);
                             MeleeApproachSelectorList.Add(invertApproachForAttack);
                             MeleeApproachSelectorList.Add(attackMelee);
@@ -59,7 +59,7 @@ public class DefaultAbility : BTSubtree
                         #region Approach/Attack sequence
                             List<BTNode> RangedApproachSelectorList = new List<BTNode>();
                             //using same invertApproachForAttack node
-                            BTActionAttackRanged attackRanged = new BTActionAttackRanged("Ranged Attack", context);
+                            CActionAttackRanged attackRanged = new CActionAttackRanged("Ranged Attack", context);
                             RangedApproachSelectorList.Add(invertApproachForAttack);
                             RangedApproachSelectorList.Add(attackRanged);
 

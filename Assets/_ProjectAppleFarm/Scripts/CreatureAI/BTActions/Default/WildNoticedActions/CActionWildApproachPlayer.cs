@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BTActionWildApproachPlayer : BTLeaf
+public class CActionWildApproachPlayer : BTLeaf
 {
     private NavMeshAgent agent;
     private float moveSpeed = 10f;
     private float angularSpeed = 720f; //deg/s
     private float acceleration = 100f; //max accel units/sec^2
 
-    public BTActionWildApproachPlayer(string _name, CreatureAIContext _context) : base(_name, _context) {
+    public CActionWildApproachPlayer(string _name, CreatureAIContext _context) : base(_name, _context) {
         name = _name;
         context = _context;
 

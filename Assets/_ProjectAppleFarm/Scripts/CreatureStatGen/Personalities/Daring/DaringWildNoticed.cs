@@ -12,7 +12,7 @@ public class DaringWildNoticed : BTSubtree
             #region wild approach player
                 List<BTNode> WildApproachPlayerList = new List<BTNode>();
                 DaringBTActionWildApproachPlayer approachPlayer = new DaringBTActionWildApproachPlayer("Approach Player", context);
-                BTActionFollowIdle followIdle = new BTActionFollowIdle("Follow Idle", context);
+                CActionFollowIdle followIdle = new CActionFollowIdle("Follow Idle", context);
                 WildApproachPlayerList.Add(approachPlayer);
                 WildApproachPlayerList.Add(followIdle);
                 BTSelector approachPlayerSelector = new BTSelector("Run/Approach Player", WildApproachPlayerList);

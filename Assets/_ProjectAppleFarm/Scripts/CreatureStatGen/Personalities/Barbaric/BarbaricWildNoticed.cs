@@ -15,7 +15,7 @@ public class BarbaricWildNoticed : BTSubtree
                 #region if target already exists selector
                     List<BTNode> TargetExistsSelectorList = new List<BTNode>();
                     BTCheckIfTargetExists checkIfTargetExists = new BTCheckIfTargetExists("Check if enemy already targeted", context);
-                    BTActionFindTargetEnemy findTargetEnemy = new BTActionFindTargetEnemy("Find Closest Enemy in Range", context);
+                    CActionFindTargetEnemy findTargetEnemy = new CActionFindTargetEnemy("Find Closest Enemy in Range", context);
                     TargetExistsSelectorList.Add(checkIfTargetExists);
                     TargetExistsSelectorList.Add(findTargetEnemy);
 
@@ -30,9 +30,9 @@ public class BarbaricWildNoticed : BTSubtree
                         #region Melee Approach selector
                             List<BTNode> MeleeApproachSelectorList = new List<BTNode>();
                             //BTCheckDistanceToTarget checkIfDistanceToTarget = new BTCheckDistanceToTarget("Check if in range for attack", context);
-                            BTActionApproachForAttack approachForAttack = new BTActionApproachForAttack("Approach for attack", context);
+                            CActionApproachForAttack approachForAttack = new CActionApproachForAttack("Approach for attack", context);
                             BTInverter invertApproachForAttack = new BTInverter("Invert Approach for Attack", approachForAttack);
-                            BTActionAttackMelee attackMelee = new BTActionAttackMelee("Melee Attack", context);
+                            CActionAttackMelee attackMelee = new CActionAttackMelee("Melee Attack", context);
                             //MeleeApproachSequenceList.Add(checkIfDistanceToTarget);
                             MeleeApproachSelectorList.Add(invertApproachForAttack);
                             MeleeApproachSelectorList.Add(attackMelee);
@@ -52,7 +52,7 @@ public class BarbaricWildNoticed : BTSubtree
                         #region Ranged Approach selector
                             List<BTNode> RangedApproachSelectorList = new List<BTNode>();
                             //using same invertApproachForAttack node
-                            BTActionAttackRanged attackRanged = new BTActionAttackRanged("Ranged Attack", context);
+                            CActionAttackRanged attackRanged = new CActionAttackRanged("Ranged Attack", context);
                             RangedApproachSelectorList.Add(invertApproachForAttack);
                             RangedApproachSelectorList.Add(attackRanged);
 
@@ -82,8 +82,8 @@ public class BarbaricWildNoticed : BTSubtree
 
             #region wild approach player
                 List<BTNode> WildApproachPlayerList = new List<BTNode>();
-                BTActionWildApproachPlayer approachPlayer = new BTActionWildApproachPlayer("Approach Player", context);
-                BTActionFollowIdle followIdle = new BTActionFollowIdle("Follow Idle", context);
+                CActionWildApproachPlayer approachPlayer = new CActionWildApproachPlayer("Approach Player", context);
+                CActionFollowIdle followIdle = new CActionFollowIdle("Follow Idle", context);
                 WildApproachPlayerList.Add(AttackEnemySequence);
                 WildApproachPlayerList.Add(approachPlayer);
                 WildApproachPlayerList.Add(followIdle);

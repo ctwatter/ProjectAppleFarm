@@ -10,8 +10,8 @@ public class DeceptiveWildNoticed : BTSubtree
         #region WILD PLAYER
             #region wild approach player
                 List<BTNode> WildApproachPlayerList = new List<BTNode>();
-                BTActionWildApproachPlayer approachPlayer = new BTActionWildApproachPlayer("Approach Player", context);
-                BTActionFollowIdle followIdle = new BTActionFollowIdle("Follow Idle", context);
+                CActionWildApproachPlayer approachPlayer = new CActionWildApproachPlayer("Approach Player", context);
+                CActionFollowIdle followIdle = new CActionFollowIdle("Follow Idle", context);
                 WildApproachPlayerList.Add(approachPlayer);
                 WildApproachPlayerList.Add(followIdle);
                 BTSelector approachPlayerSelector = new BTSelector("Run/Approach Player", WildApproachPlayerList);

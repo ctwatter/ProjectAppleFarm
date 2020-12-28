@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTActionAttackRanged : BTLeaf
+public class CActionAttackMelee : BTLeaf
 {
-    creatureAttackRanged attack;
-    public BTActionAttackRanged(string _name, CreatureAIContext _context ) : base(_name, _context){
+
+    creatureAttackMelee attack;
+    public CActionAttackMelee(string _name, CreatureAIContext _context ) : base(_name, _context){
         name = _name;
         context = _context;
     }
@@ -13,7 +14,7 @@ public class BTActionAttackRanged : BTLeaf
     protected override void OnEnter()
     {
         ranOnEnter = true;
-        attack = (creatureAttackRanged) context.CD.abilities[context.lastTriggeredAbility];
+        attack = (creatureAttackMelee) context.CD.abilities[context.lastTriggeredAbility];
         //Play amim
         context.animator.Attack1();
     }
@@ -28,9 +29,9 @@ public class BTActionAttackRanged : BTLeaf
             OnEnter();
         }
         
-        //Debug.Log("ATTACK RANGED");
-        context.projectileSpawner.GetComponent<ProjectileSpawner>().SpawnProjectile(attack.projectile, context.targetEnemy, attack.projectileSpeed, attack.baseDmg, attack.isHoming);
         
+
+        context.targetEnemy.GetComponent<EnemyStats>().takeDamage(attack.baseDmg);
         context.targetEnemy = null;
         context.isAbilityTriggered = false;
         if(true) { //if animation done, have to add that 
@@ -40,4 +41,5 @@ public class BTActionAttackRanged : BTLeaf
         
 
     }
+
 }

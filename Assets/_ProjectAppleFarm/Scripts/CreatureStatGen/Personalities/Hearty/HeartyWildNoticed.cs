@@ -20,8 +20,8 @@ public class HeartyWildNoticed : BTSubtree
 
             #region wild player scary
                 List<BTNode> WildPlayerScaryList = new List<BTNode>();
-                BTActionWildRunFromPlayer runFromPlayer = new BTActionWildRunFromPlayer("Run From Player", context);
-                BTActionFollowIdle followIdle = new BTActionFollowIdle("Follow Idle", context);
+                CActionWildRunFromPlayer runFromPlayer = new CActionWildRunFromPlayer("Run From Player", context);
+                CActionFollowIdle followIdle = new CActionFollowIdle("Follow Idle", context);
                 WildPlayerScaryList.Add(droppedFoodSequence);
                 WildPlayerScaryList.Add(runFromPlayer);
                 WildPlayerScaryList.Add(followIdle);

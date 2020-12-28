@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTActionAbilityFail : BTLeaf
+public class CActionAbilityFail : BTLeaf
 {
-    public BTActionAbilityFail(string _name, CreatureAIContext _context ) : base(_name, _context){
+    public CActionAbilityFail(string _name, CreatureAIContext _context ) : base(_name, _context){
         name = _name;
         context = _context;
     }

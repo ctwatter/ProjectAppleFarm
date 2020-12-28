@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BTActionTrailPlayer : BTLeaf
+public class CActionTrailPlayer : BTLeaf
 {
 
     private NavMeshAgent agent;
@@ -12,7 +12,7 @@ public class BTActionTrailPlayer : BTLeaf
     private float acceleration = 100f; //max accel units/sec^2
 
 
-    public BTActionTrailPlayer(string _name, CreatureAIContext _context) : base(_name, _context) {
+    public CActionTrailPlayer(string _name, CreatureAIContext _context) : base(_name, _context) {
         name = _name;
         context = _context;
 
