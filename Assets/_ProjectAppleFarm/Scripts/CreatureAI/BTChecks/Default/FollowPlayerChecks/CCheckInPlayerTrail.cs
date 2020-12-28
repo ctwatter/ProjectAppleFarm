@@ -1,12 +1,10 @@
-//Enrico
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTCheckWildPlayerInRadius : BTChecker
+public class CCheckInPlayerTrail : BTChecker
 {
-
-    public BTCheckWildPlayerInRadius(string _name, CreatureAIContext _context) : base(_name, _context)
+     public CCheckInPlayerTrail(string _name, CreatureAIContext _context) : base(_name, _context)
     {
         name = _name;
         context = _context;
@@ -14,8 +12,9 @@ public class BTCheckWildPlayerInRadius : BTChecker
 
     public override NodeState Evaluate()
     {
-        if (context.isNoticed)
+        if (context.isInPlayerTrail)
             return NodeState.SUCCESS;
         return NodeState.FAILURE;
     }
+
 }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTCheckIfAbilityIsUtility : BTChecker
+public class CCheckIfAbilityIsUtility : BTChecker
 {
-    public BTCheckIfAbilityIsUtility(string _name, CreatureAIContext _context) : base(_name, _context)
+    public CCheckIfAbilityIsUtility(string _name, CreatureAIContext _context) : base(_name, _context)
     {
         name = _name;
         context = _context;

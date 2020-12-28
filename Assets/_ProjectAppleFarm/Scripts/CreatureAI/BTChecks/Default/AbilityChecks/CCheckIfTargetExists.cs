@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTCheckIfTargetExists : BTChecker
+public class CCheckIfTargetExists : BTChecker
 {
-    public BTCheckIfTargetExists(string _name, CreatureAIContext _context) : base(_name, _context)
+    public CCheckIfTargetExists(string _name, CreatureAIContext _context) : base(_name, _context)
     {
         name = _name;
         context = _context;

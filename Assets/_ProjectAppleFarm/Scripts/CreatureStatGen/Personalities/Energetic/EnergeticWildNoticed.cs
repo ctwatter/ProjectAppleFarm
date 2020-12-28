@@ -30,7 +30,7 @@ public class EnergeticWildNoticed : BTSubtree
 
             #region wild notice player
                 List<BTNode> WildNoticePlayerList = new List<BTNode>();
-                BTCheckWildPlayerInRadius playerNoticed = new BTCheckWildPlayerInRadius("ENERGETIC Is Player Noticed", context);
+                CCheckWildPlayerInRadius playerNoticed = new CCheckWildPlayerInRadius("ENERGETIC Is Player Noticed", context);
                 WildNoticePlayerList.Add(playerNoticed);
                 WildNoticePlayerList.Add(approachPlayerSelector);
                 BTSequence noticedSequence = new BTSequence("ENERGETIC Player Is Noticed", WildNoticePlayerList);

@@ -14,7 +14,7 @@ public class BarbaricWildNoticed : BTSubtree
 
                 #region if target already exists selector
                     List<BTNode> TargetExistsSelectorList = new List<BTNode>();
-                    BTCheckIfTargetExists checkIfTargetExists = new BTCheckIfTargetExists("Check if enemy already targeted", context);
+                    CCheckIfTargetExists checkIfTargetExists = new CCheckIfTargetExists("Check if enemy already targeted", context);
                     CActionFindTargetEnemy findTargetEnemy = new CActionFindTargetEnemy("Find Closest Enemy in Range", context);
                     TargetExistsSelectorList.Add(checkIfTargetExists);
                     TargetExistsSelectorList.Add(findTargetEnemy);
@@ -39,7 +39,7 @@ public class BarbaricWildNoticed : BTSubtree
                             
                             BTSelector MeleeApproachAttackSelector = new BTSelector("Melee Approach / Attack Sequence", MeleeApproachSelectorList);
                         #endregion
-                        BTCheckIfAbilityIsMelee ifAbilityIsMelee = new BTCheckIfAbilityIsMelee("check if ability is melee", context);
+                        CCheckIfAbilityIsMelee ifAbilityIsMelee = new CCheckIfAbilityIsMelee("check if ability is melee", context);
                             
                         MeleeAbilitySequenceList.Add(ifAbilityIsMelee);
                         MeleeAbilitySequenceList.Add(MeleeApproachAttackSelector);
@@ -58,7 +58,7 @@ public class BarbaricWildNoticed : BTSubtree
 
                             BTSelector RangedApproachAttackSelector = new BTSelector("Ranged Approach / Attack Seelector", RangedApproachSelectorList);
                         #endregion
-                        BTCheckIfAbilityIsRanged ifAbilityIsRanged = new BTCheckIfAbilityIsRanged("Check if ability is ranged", context);
+                        CCheckIfAbilityIsRanged ifAbilityIsRanged = new CCheckIfAbilityIsRanged("Check if ability is ranged", context);
 
                         RangedAbilitySequenceList.Add(ifAbilityIsRanged);
                         RangedAbilitySequenceList.Add(RangedApproachAttackSelector);
@@ -92,7 +92,7 @@ public class BarbaricWildNoticed : BTSubtree
 
             #region wild notice player
                 List<BTNode> WildNoticePlayerList = new List<BTNode>();
-                BTCheckWildPlayerInRadius playerNoticed = new BTCheckWildPlayerInRadius("Is Player Noticed", context);
+                CCheckWildPlayerInRadius playerNoticed = new CCheckWildPlayerInRadius("Is Player Noticed", context);
                 
                 WildNoticePlayerList.Add(playerNoticed);
                 WildNoticePlayerList.Add(approachPlayerSelector);

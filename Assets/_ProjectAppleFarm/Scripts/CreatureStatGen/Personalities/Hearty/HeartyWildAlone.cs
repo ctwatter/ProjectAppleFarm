@@ -12,7 +12,7 @@ public class HeartyWildAlone : BTSubtree
 
             #region wild enemies nearby
                 List<BTNode> WildEnemiesList = new List<BTNode>();
-                BTCheckWildEnemiesInRange wildEnemies = new BTCheckWildEnemiesInRange("Are Enemies Nearby?", context);
+                CCheckWildEnemiesInRange wildEnemies = new CCheckWildEnemiesInRange("Are Enemies Nearby?", context);
                 CActionWildRunFromEnemies wildAttackEnemy = new CActionWildRunFromEnemies("Run From Enemies", context);
                 WildEnemiesList.Add(wildEnemies);
                 WildEnemiesList.Add(wildAttackEnemy);

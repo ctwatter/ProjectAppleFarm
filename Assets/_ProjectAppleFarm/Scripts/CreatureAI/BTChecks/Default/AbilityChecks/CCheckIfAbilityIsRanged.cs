@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTCheckIfAbilityIsRanged : BTChecker
+public class CCheckIfAbilityIsRanged : BTChecker
 {
-    public BTCheckIfAbilityIsRanged(string _name, CreatureAIContext _context) : base(_name, _context)
+    public CCheckIfAbilityIsRanged(string _name, CreatureAIContext _context) : base(_name, _context)
     {
         name = _name;
         context = _context;
