@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
     public Animator animator;
 
     private void Awake() {
+        Player = GameObject.FindGameObjectWithTag("Player");
         rigidbody = GetComponent<Rigidbody>();
         spawnPoint = transform.position;
         InitializeStateMachine();

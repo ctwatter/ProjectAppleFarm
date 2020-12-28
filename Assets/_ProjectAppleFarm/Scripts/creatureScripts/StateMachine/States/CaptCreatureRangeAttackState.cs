@@ -16,20 +16,20 @@ public class CaptCreatureRangeAttackState : CapturedCreatureBaseState
 
     public override void Enter(){
         //enter anim
-        Debug.Log("creature Range attack enter");
-        captCreature.creatureAbility2 = false;
-        captCreature.animator.SetTrigger("attack2");
-        creatureAttackRanged attackInfo = captCreature.creatureData.attack2;
+        // Debug.Log("creature Range attack enter");
+        // captCreature.creatureAbility2 = false;
+        // captCreature.animator.SetTrigger("attack2");
+        // creatureAttackRanged attackInfo = captCreature.creatureData.attack2;
         
-        int layermask = 1 << 8; //only layer 8 will be targeted
-        Collider[] hitColliders = Physics.OverlapSphere(captCreature.transform.position, 20f, layermask);
-        foreach (var hitCollider in hitColliders)
-        { 
-            Debug.Log("HIT ENEMY");
-            GameObject projectile = captCreature.spawnProjectile(attackInfo.projectile);
-            projectile.GetComponent<ProjectileScript>().setTarget(hitCollider.gameObject, attackInfo.projectileSpeed, attackInfo.baseDmg);
-            break;
-        }
+        // int layermask = 1 << 8; //only layer 8 will be targeted
+        // Collider[] hitColliders = Physics.OverlapSphere(captCreature.transform.position, 20f, layermask);
+        // foreach (var hitCollider in hitColliders)
+        // { 
+        //     Debug.Log("HIT ENEMY");
+        //     GameObject projectile = captCreature.spawnProjectile(attackInfo.projectile);
+        //     projectile.GetComponent<ProjectileScript>().setTarget(hitCollider.gameObject, attackInfo.projectileSpeed, attackInfo.baseDmg);
+        //     break;
+        // }
        
     }
 

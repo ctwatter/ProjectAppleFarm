@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Nicrom.meta
 guid: 87c7d8a30168a214cb0e8d16f3cd8308
+=======
+guid: f33bc3b3cdf688e45abf5f2056ef8461
+>>>>>>> origin/spawning-creature-with-random-personality:Assets/_ProjectAppleFarm/Scripts/CreatureAI/BTChecks/Scrawny.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

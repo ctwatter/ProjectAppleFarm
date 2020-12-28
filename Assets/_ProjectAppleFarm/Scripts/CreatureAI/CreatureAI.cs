@@ -6,62 +6,125 @@ public class CreatureAI : MonoBehaviour
 {
     public BTnode behaviorTree;
     private CreatureAIContext context;
+    public List<Personality> personalities = new List<Personality>();
+    public Personality DefaultPersonality;
+
+    public bool Evaluate = false;
 
     private void Start()
     {
         context = GetComponent<CreatureAIContext>();
-        BuildBT();
+        //BuildBT();
+    }
+
+    private void Awake() {
+        context = GetComponent<CreatureAIContext>();
     }
 
     private void Update() {
-        behaviorTree.Evaluate();
-        
+        if(Evaluate){
+            behaviorTree.Evaluate();
+            context.animator.Move(context.agent.velocity);
+        }
     }
 
 
     private void FixedUpdate() {
         //behaviorTree.Evaluate();
     }
+
+
     //build the behavior tree for the creature
-    private void BuildBT() 
+    public void BuildBT() 
     {
-        List<BTnode> BondedFollowPlayer = new List<BTnode>();
-        
-        #region bonded follow idle sequence
-        List<BTnode> BondedIdleFollowList = new List<BTnode>();
-        BTCheckInPlayerRadius inRadius = new BTCheckInPlayerRadius("In Player Radius", context);
-        BTActionFollowIdle followIdle = new BTActionFollowIdle("Follow Idle", context);
-        BondedIdleFollowList.Add(inRadius);
-        BondedIdleFollowList.Add(followIdle);
-        BTSequence followPlayerIdle = new BTSequence("Follow Player Idle", BondedIdleFollowList);
+        personalities = context.CD.personalities;
+        List<BTnode> RootList = new List<BTnode>();
+
+        #region BONDED FOLLOW PLAYER
+            BTSelector FollowPlayer = null;
+            foreach( Personality p in personalities){
+                if(p.FollowPlayerTree != null){
+                    FollowPlayer = p.FollowPlayerTree.BuildSelectorSubtree(context);
+                }  
+            }
+            if(FollowPlayer == null){
+                FollowPlayer = DefaultPersonality.FollowPlayerTree.BuildSelectorSubtree(context);
+            }
         #endregion
 
-        #region bonded trail player sequence
-        List<BTnode> BondedTrailPlayerList = new List<BTnode>();
-        BTCheckInPlayerTrail inTrail = new BTCheckInPlayerTrail("In Player Trail", context);
-        BTActionTrailPlayer trailPlayer = new BTActionTrailPlayer("Trail Player", context);
-        BondedTrailPlayerList.Add(inTrail);
-        BondedTrailPlayerList.Add(trailPlayer);
-        BTSequence followPlayerTrail = new BTSequence("Follow Player Trail", BondedTrailPlayerList);
+        #region CREATURE ABILITIES
+            BTSequence Ability = null;
+            foreach( Personality p in personalities){
+                if(p.AbilityTree != null){
+                    Ability = p.AbilityTree.BuildSequenceSubtree(context);
+                }  
+            }
+            if(Ability == null){
+                Ability = DefaultPersonality.AbilityTree.BuildSequenceSubtree(context);
+            }
         #endregion
 
-        #region bonded get closer to player selector
-        List<BTnode> BondedGetCloserToPlayerList = new List<BTnode>();
-        BTActionFollowPlayer followPlayerAction = new BTActionFollowPlayer("Follow Player", context);
-        BTActionFollowTP followPlayerTP = new BTActionFollowTP("Follow Player TP", context);
-        BondedGetCloserToPlayerList.Add(followPlayerAction);
-        BondedGetCloserToPlayerList.Add(followPlayerTP);
-        BTSelector followPlayerSelector = new BTSelector("Get Closer To Player", BondedGetCloserToPlayerList);
+
+        #region WILD PLAYER
+            BTSequence wildNoticed = null;
+            foreach( Personality p in personalities){
+                if(p.WildNoticed != null){
+                    wildNoticed = p.WildNoticed.BuildSequenceSubtree(context);
+                }  
+            }
+            if(wildNoticed == null){
+                wildNoticed = DefaultPersonality.WildNoticed.BuildSequenceSubtree(context);
+            }
         #endregion
-        
-        
-        BondedFollowPlayer.Add(followPlayerIdle);
-        BondedFollowPlayer.Add(followPlayerTrail);
-        BondedFollowPlayer.Add(followPlayerSelector);
 
-        BTSelector _root = new BTSelector("Root", BondedFollowPlayer);
+        //add this section later
+        #region WILD NO PLAYER
+            BTSelector wildAlone = null;
+            foreach( Personality p in personalities){
+                if(p.WildAlone != null){
+                    wildAlone = p.WildAlone.BuildSelectorSubtree(context);
+                }  
+            }
+            if(wildAlone == null){
+                wildAlone = DefaultPersonality.WildAlone.BuildSelectorSubtree(context);
+            }
+        #endregion
 
+        #region IS CREATURE WILD
+            #region creature is wild
+                List<BTnode> CreatureIsWildList = new List<BTnode>();
+                CreatureIsWildList.Add(wildNoticed);
+                //be sure to add the no player section later
+                CreatureIsWildList.Add(wildAlone); //placeholder for wild w/ no player section
+
+                BTSelector creatureIsWildSelector = new BTSelector("Creature Is Wild", CreatureIsWildList);
+            #endregion
+
+            #region is creature wild
+                List<BTnode> IsCreatureWildList = new List<BTnode>();
+                BTCheckIsWild isWild = new BTCheckIsWild("Is Wild?", context);
+                IsCreatureWildList.Add(isWild);
+                IsCreatureWildList.Add(creatureIsWildSelector);
+                BTSequence isCreatureWildSequence = new BTSequence("Is Creature Wild?", IsCreatureWildList);
+            #endregion
+        #endregion
+
+        #region creature isnt wild selector
+            List<BTnode> CreatureIsntWildSelectorList = new List<BTnode>();
+            CreatureIsntWildSelectorList.Add(Ability);
+            CreatureIsntWildSelectorList.Add(FollowPlayer);
+
+            BTSelector CreatureIsntWildSelector = new BTSelector("Creature isnt Wild Selector", CreatureIsntWildSelectorList);
+        #endregion
+
+        #region ROOT
+            RootList.Add(isCreatureWildSequence);
+            RootList.Add(CreatureIsntWildSelector);
+
+            BTSelector _root = new BTSelector("Root", RootList);
+        #endregion
         behaviorTree = _root;
+        Evaluate = true;
     }
 
 }

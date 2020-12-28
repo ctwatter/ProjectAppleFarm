@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d844b5790621148a60a32fa8c6c23f, type: 3}
+  m_Name: _DefaultPersonality
+  m_EditorClassIdentifier: 
+  personalityName: Default Personality
+  basePercentage: 0
+  maxPercentage: 0
+  statModType1: 5
+  statModifierAmount1: 0
+  statModType2: 5
+  statModifierAmount2: 0
+  WildNoticed: {fileID: 11400000, guid: 436d8e0fb60298c42bab940a4e912412, type: 2}
+  WildAlone: {fileID: 11400000, guid: 7946076afb1869d4ea0ff2ec1b955440, type: 2}
+  AbilityTree: {fileID: 11400000, guid: 49eda193721735b4d883e613ac60741c, type: 2}
+  FollowPlayerTree: {fileID: 11400000, guid: c3c34619d23022d43abff4fe6e444dc5, type: 2}

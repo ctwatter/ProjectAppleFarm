@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isoMovement = true;
 
-
+    public GameObject fruit;
     public PlayerStateMachine playerStateMachine => GetComponent<PlayerStateMachine>();
     public PlayerAnimator playerAnimator => GetComponent<PlayerAnimator>();
 
@@ -40,6 +40,9 @@ public class PlayerController : MonoBehaviour
     public bool playerHeavyAttack;
     public bool nearInteractable = false;
     public GameObject wildCreature = null;
+    public GameObject currCreature;
+    public GameObject interactableObject;
+    public CreatureAIContext currCreatureContext;
     public float currSpeed;
     public CapsuleCollider swordCollider; 
     public bool isHit;
@@ -152,8 +155,16 @@ public class PlayerController : MonoBehaviour
     void OnInteract(){ //pressing dash button       
         if(nearInteractable) {
             playerInteract = true;
-            if(wildCreature != null){
-                wildCreature.GetComponent<wildCreature>().befriend();
+            if(interactableObject != null){
+                Debug.Log("picked up item");
+                Destroy(interactableObject);
+                nearInteractable = false;
+            }
+            else if (wildCreature != null) {
+                wildCreature.GetComponent<CreatureAIContext>().isWild = false;
+                currCreature = wildCreature;
+                currCreatureContext = currCreature.GetComponent<CreatureAIContext>();
+                //FIX LATER --- NEED TO DISABLE NOTICE/INTERACT COLLIDERS
                 nearInteractable = false;
             }
         } else {
@@ -174,6 +185,11 @@ public class PlayerController : MonoBehaviour
                  
     }
 
+    void OnFruitSpawn(){
+        var temp = Instantiate(fruit, transform.position, Quaternion.identity);
+        temp.GetComponent<Fruit>().droppedByPlayer = true;
+    }
+
     void OnAttack1(){
         playerBasicAttack = true;
     }
@@ -188,6 +204,17 @@ public class PlayerController : MonoBehaviour
     }
 
     //********Insert function for heavy attack button*******
+
+    void OnAttack2(){
+        currCreatureContext.isAbilityTriggered = true;
+        currCreatureContext.lastTriggeredAbility = 0;
+    }  
+    void OnAttack3(){
+        currCreatureContext.isAbilityTriggered = true;
+        currCreatureContext.lastTriggeredAbility = 1;
+    }
+
+
 
     public bool getIsAttackAnim()
     {
