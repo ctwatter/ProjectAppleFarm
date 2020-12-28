@@ -2,11 +2,11 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public class BTPersist: BTnode
+public class BTPersist: BTNode
 {
-    protected BTnode node;
+    protected BTNode node;
 
-    public BTPersist(string _name, BTnode node) : base(_name) {
+    public BTPersist(string _name, BTNode node) : base(_name) {
         name = _name;
         this.node = node;
     }

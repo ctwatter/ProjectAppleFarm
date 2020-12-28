@@ -10,7 +10,7 @@ public class EnergeticWildNoticed : BTSubtree
         //DEFAULT BT SUBTREE
         #region WILD PLAYER
             #region wild player scary
-                List<BTnode> WildPlayerScaryList = new List<BTnode>();
+                List<BTNode> WildPlayerScaryList = new List<BTNode>();
                 EnergeticBTCheckWildPlayerScary playerScary = new EnergeticBTCheckWildPlayerScary("ENERGETIC Player Scary", context);
                 EnergeticBTActionWildRunFromPlayer runFromPlayer = new EnergeticBTActionWildRunFromPlayer("ENERGETIC Run From Player", context);
                 WildPlayerScaryList.Add(playerScary);
@@ -19,7 +19,7 @@ public class EnergeticWildNoticed : BTSubtree
             #endregion
 
             #region wild approach player
-                List<BTnode> WildApproachPlayerList = new List<BTnode>();
+                List<BTNode> WildApproachPlayerList = new List<BTNode>();
                 EnergeticBTActionWildWanderInLocation wildWander = new EnergeticBTActionWildWanderInLocation("ENERGETIC Wander", context);
                 EnergeticBTActionWildWanderIdle wildWanderIdle = new EnergeticBTActionWildWanderIdle("ENERGETIC Wander Idle", context);
                 WildApproachPlayerList.Add(playerScarySequence);
@@ -29,7 +29,7 @@ public class EnergeticWildNoticed : BTSubtree
             #endregion
 
             #region wild notice player
-                List<BTnode> WildNoticePlayerList = new List<BTnode>();
+                List<BTNode> WildNoticePlayerList = new List<BTNode>();
                 BTCheckWildPlayerInRadius playerNoticed = new BTCheckWildPlayerInRadius("ENERGETIC Is Player Noticed", context);
                 WildNoticePlayerList.Add(playerNoticed);
                 WildNoticePlayerList.Add(approachPlayerSelector);

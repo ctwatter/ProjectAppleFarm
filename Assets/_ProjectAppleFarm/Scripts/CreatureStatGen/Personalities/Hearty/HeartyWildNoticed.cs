@@ -10,7 +10,7 @@ public class HeartyWildNoticed : BTSubtree
         #region WILD PLAYER
 
             #region wild player dropped food
-                List<BTnode> WildDroppedFoodList = new List<BTnode>();
+                List<BTNode> WildDroppedFoodList = new List<BTNode>();
                 HeartyBTCheckWildDroppedFood droppedFood = new HeartyBTCheckWildDroppedFood("Player Dropped Food", context);
                 HeartyBTActionWildApproachDroppedFood approachDroppedFood = new HeartyBTActionWildApproachDroppedFood("Approach Dropped Food", context);
                 WildDroppedFoodList.Add(droppedFood);
@@ -19,7 +19,7 @@ public class HeartyWildNoticed : BTSubtree
             #endregion
 
             #region wild player scary
-                List<BTnode> WildPlayerScaryList = new List<BTnode>();
+                List<BTNode> WildPlayerScaryList = new List<BTNode>();
                 BTActionWildRunFromPlayer runFromPlayer = new BTActionWildRunFromPlayer("Run From Player", context);
                 BTActionFollowIdle followIdle = new BTActionFollowIdle("Follow Idle", context);
                 WildPlayerScaryList.Add(droppedFoodSequence);
@@ -29,7 +29,7 @@ public class HeartyWildNoticed : BTSubtree
             #endregion
 
             #region wild notice player
-                List<BTnode> WildNoticePlayerList = new List<BTnode>();
+                List<BTNode> WildNoticePlayerList = new List<BTNode>();
                 BTCheckWildPlayerInRadius playerNoticed = new BTCheckWildPlayerInRadius("Is Player Noticed", context);
                 WildNoticePlayerList.Add(playerNoticed);
                 WildNoticePlayerList.Add(approachFoodSelector);

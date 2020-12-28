@@ -2,11 +2,11 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public class BTFailure: BTnode
+public class BTFailure: BTNode
 {
-    protected BTnode node;
+    protected BTNode node;
 
-    public BTFailure(string _name, BTnode node) : base(_name) {
+    public BTFailure(string _name, BTNode node) : base(_name) {
         name = _name;
         this.node = node;
     }

@@ -8,10 +8,10 @@ public class EnergeticWildAlone : BTSubtree
 {
     public override BTSelector BuildSelectorSubtree(CreatureAIContext context) {
         #region WILD NO PLAYER
-            List<BTnode> WildNoPlayerList = new List<BTnode>();
+            List<BTNode> WildNoPlayerList = new List<BTNode>();
 
             #region wild enemies nearby
-                List<BTnode> WildEnemiesList = new List<BTnode>();
+                List<BTNode> WildEnemiesList = new List<BTNode>();
                 BTCheckWildEnemiesInRange wildEnemies = new BTCheckWildEnemiesInRange("ENERGETIC Are Enemies Nearby?", context);
                 EnergeticBTActionWildRunFromEnemies wildRunEnemy = new EnergeticBTActionWildRunFromEnemies("ENERGETIC Run From Enemies", context);
                 WildEnemiesList.Add(wildEnemies);
@@ -20,7 +20,7 @@ public class EnergeticWildAlone : BTSubtree
             #endregion
 
             #region wild wander
-                List<BTnode> WildWanderList = new List<BTnode>();
+                List<BTNode> WildWanderList = new List<BTNode>();
                 EnergeticBTActionWildWanderInLocation wildWander = new EnergeticBTActionWildWanderInLocation("ENERGETIC Wander", context);
                 EnergeticBTActionWildWanderIdle wildWanderIdle = new EnergeticBTActionWildWanderIdle("ENERGETIC Wander Idle", context);
                 WildWanderList.Add(wildWander);

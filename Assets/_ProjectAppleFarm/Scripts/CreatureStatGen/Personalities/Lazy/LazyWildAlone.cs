@@ -8,10 +8,10 @@ public class LazyWildAlone : BTSubtree
 {
     public override BTSelector BuildSelectorSubtree(CreatureAIContext context) {
         #region WILD NO PLAYER
-            List<BTnode> WildNoPlayerList = new List<BTnode>();
+            List<BTNode> WildNoPlayerList = new List<BTNode>();
 
             #region wild enemies nearby
-                List<BTnode> WildEnemiesList = new List<BTnode>();
+                List<BTNode> WildEnemiesList = new List<BTNode>();
                 LazyBTCheckWildEnemiesInRange wildEnemies = new LazyBTCheckWildEnemiesInRange("Are Enemies Nearby?", context);
                 LazyBTActionWildRunFromEnemies wildRunEnemy = new LazyBTActionWildRunFromEnemies("Run From Enemies", context);
                 WildEnemiesList.Add(wildEnemies);
@@ -20,7 +20,7 @@ public class LazyWildAlone : BTSubtree
             #endregion
 
             #region wild wander
-                List<BTnode> WildWanderList = new List<BTnode>();
+                List<BTNode> WildWanderList = new List<BTNode>();
                 LazyBTActionWildWanderIdle wildWanderIdle = new LazyBTActionWildWanderIdle("Wander Idle", context);
                 LazyBTActionWildWanderInLocation wildWander = new LazyBTActionWildWanderInLocation("Wander", context);
                 WildWanderList.Add(wildWanderIdle);

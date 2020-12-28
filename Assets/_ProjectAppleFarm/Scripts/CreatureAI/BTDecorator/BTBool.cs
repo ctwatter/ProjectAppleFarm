@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTBool : BTnode
+public class BTBool : BTNode
 {
-    protected BTnode node;
+    protected BTNode node;
     bool toCheck;
 
-    public BTBool(string _name, bool _toCheck, BTnode node) : base(_name) {
+    public BTBool(string _name, bool _toCheck, BTNode node) : base(_name) {
         name = _name;
         this.node = node;
         toCheck = _toCheck;

@@ -5,11 +5,11 @@ using UnityEngine;
 
 
 [System.Serializable]
-public abstract class BTnode //not a monobehavior, should never be on a object.
+public abstract class BTNode //not a monobehavior, should never be on a object.
 {
     protected string name; //storing name for debuging purposes
 
-    protected BTnode(string _name){  //constructor that takes in name, protected so you can overwrite, and also call back to.
+    protected BTNode(string _name){  //constructor that takes in name, protected so you can overwrite, and also call back to.
         name = _name;
     }
 

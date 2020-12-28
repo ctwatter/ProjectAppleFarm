@@ -2,11 +2,11 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public class BTUntilSucceed : BTnode
+public class BTUntilSucceed : BTNode
 {
-    protected BTnode node;
+    protected BTNode node;
     
-    public BTUntilSucceed(string _name, BTnode node) : base(_name) {
+    public BTUntilSucceed(string _name, BTNode node) : base(_name) {
         name = _name;
         this.node = node;
     }

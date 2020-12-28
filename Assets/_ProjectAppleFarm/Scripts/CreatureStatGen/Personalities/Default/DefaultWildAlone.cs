@@ -7,10 +7,10 @@ public class DefaultWildAlone : BTSubtree
 {
     public override BTSelector BuildSelectorSubtree(CreatureAIContext context) {
         #region WILD NO PLAYER
-            List<BTnode> WildNoPlayerList = new List<BTnode>();
+            List<BTNode> WildNoPlayerList = new List<BTNode>();
 
             #region wild enemies nearby
-                List<BTnode> WildEnemiesList = new List<BTnode>();
+                List<BTNode> WildEnemiesList = new List<BTNode>();
                 BTCheckWildEnemiesInRange wildEnemies = new BTCheckWildEnemiesInRange("Are Enemies Nearby?", context);
                 BTActionWildRunFromEnemies wildRunEnemy = new BTActionWildRunFromEnemies("Run From Enemies", context);
                 WildEnemiesList.Add(wildEnemies);
@@ -19,7 +19,7 @@ public class DefaultWildAlone : BTSubtree
             #endregion
 
             #region wild wander
-                List<BTnode> WildWanderList = new List<BTnode>();
+                List<BTNode> WildWanderList = new List<BTNode>();
                 BTActionWildWanderInLocation wildWander = new BTActionWildWanderInLocation("Wander", context);
                 BTActionWildWanderIdle wildWanderIdle = new BTActionWildWanderIdle("Wander Idle", context);
                 WildWanderList.Add(wildWander);

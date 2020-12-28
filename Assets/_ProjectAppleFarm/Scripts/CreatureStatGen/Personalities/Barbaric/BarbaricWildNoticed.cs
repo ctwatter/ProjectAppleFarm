@@ -10,10 +10,10 @@ public class BarbaricWildNoticed : BTSubtree
         #region WILD PLAYER
 
             #region wild attack enemy
-                List<BTnode> AttackEnemySequenceList = new List<BTnode>();
+                List<BTNode> AttackEnemySequenceList = new List<BTNode>();
 
                 #region if target already exists selector
-                    List<BTnode> TargetExistsSelectorList = new List<BTnode>();
+                    List<BTNode> TargetExistsSelectorList = new List<BTNode>();
                     BTCheckIfTargetExists checkIfTargetExists = new BTCheckIfTargetExists("Check if enemy already targeted", context);
                     BTActionFindTargetEnemy findTargetEnemy = new BTActionFindTargetEnemy("Find Closest Enemy in Range", context);
                     TargetExistsSelectorList.Add(checkIfTargetExists);
@@ -23,12 +23,12 @@ public class BarbaricWildNoticed : BTSubtree
                 #endregion 
 
                 #region attack selector
-                    List<BTnode> AttackSelectorList = new List<BTnode>();
+                    List<BTNode> AttackSelectorList = new List<BTNode>();
 
                     #region melee Sequence
-                        List<BTnode> MeleeAbilitySequenceList = new List<BTnode>();
+                        List<BTNode> MeleeAbilitySequenceList = new List<BTNode>();
                         #region Melee Approach selector
-                            List<BTnode> MeleeApproachSelectorList = new List<BTnode>();
+                            List<BTNode> MeleeApproachSelectorList = new List<BTNode>();
                             //BTCheckDistanceToTarget checkIfDistanceToTarget = new BTCheckDistanceToTarget("Check if in range for attack", context);
                             BTActionApproachForAttack approachForAttack = new BTActionApproachForAttack("Approach for attack", context);
                             BTInverter invertApproachForAttack = new BTInverter("Invert Approach for Attack", approachForAttack);
@@ -48,9 +48,9 @@ public class BarbaricWildNoticed : BTSubtree
                     #endregion
 
                     #region ranged sequence
-                        List<BTnode> RangedAbilitySequenceList = new List<BTnode>();
+                        List<BTNode> RangedAbilitySequenceList = new List<BTNode>();
                         #region Ranged Approach selector
-                            List<BTnode> RangedApproachSelectorList = new List<BTnode>();
+                            List<BTNode> RangedApproachSelectorList = new List<BTNode>();
                             //using same invertApproachForAttack node
                             BTActionAttackRanged attackRanged = new BTActionAttackRanged("Ranged Attack", context);
                             RangedApproachSelectorList.Add(invertApproachForAttack);
@@ -81,7 +81,7 @@ public class BarbaricWildNoticed : BTSubtree
             #endregion
 
             #region wild approach player
-                List<BTnode> WildApproachPlayerList = new List<BTnode>();
+                List<BTNode> WildApproachPlayerList = new List<BTNode>();
                 BTActionWildApproachPlayer approachPlayer = new BTActionWildApproachPlayer("Approach Player", context);
                 BTActionFollowIdle followIdle = new BTActionFollowIdle("Follow Idle", context);
                 WildApproachPlayerList.Add(AttackEnemySequence);
@@ -91,7 +91,7 @@ public class BarbaricWildNoticed : BTSubtree
             #endregion
 
             #region wild notice player
-                List<BTnode> WildNoticePlayerList = new List<BTnode>();
+                List<BTNode> WildNoticePlayerList = new List<BTNode>();
                 BTCheckWildPlayerInRadius playerNoticed = new BTCheckWildPlayerInRadius("Is Player Noticed", context);
                 
                 WildNoticePlayerList.Add(playerNoticed);

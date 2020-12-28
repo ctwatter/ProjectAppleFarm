@@ -10,7 +10,7 @@ public class LazyWildNoticed : BTSubtree
         //DEFAULT BT SUBTREE
         #region WILD PLAYER
             #region wild player scary
-                List<BTnode> WildPlayerScaryList = new List<BTnode>();
+                List<BTNode> WildPlayerScaryList = new List<BTNode>();
                 LazyBTCheckWildPlayerScary playerScary = new LazyBTCheckWildPlayerScary("Player Scary", context);
                 LazyBTActionWildRunFromPlayer runFromPlayer = new LazyBTActionWildRunFromPlayer("Run From Player", context);
                 WildPlayerScaryList.Add(playerScary);
@@ -19,7 +19,7 @@ public class LazyWildNoticed : BTSubtree
             #endregion
 
             #region wild approach player
-                List<BTnode> WildApproachPlayerList = new List<BTnode>();
+                List<BTNode> WildApproachPlayerList = new List<BTNode>();
                 LazyBTActionWildApproachPlayer approachPlayer = new LazyBTActionWildApproachPlayer("Approach Player", context);
                 LazyBTActionWildWanderIdle wildWanderIdle = new LazyBTActionWildWanderIdle("Wander Idle", context);
                 WildApproachPlayerList.Add(playerScarySequence);
@@ -29,7 +29,7 @@ public class LazyWildNoticed : BTSubtree
             #endregion
 
             #region wild notice player
-                List<BTnode> WildNoticePlayerList = new List<BTnode>();
+                List<BTNode> WildNoticePlayerList = new List<BTNode>();
                 BTCheckWildPlayerInRadius playerNoticed = new BTCheckWildPlayerInRadius("Is Player Noticed", context);
                 WildNoticePlayerList.Add(playerNoticed);
                 WildNoticePlayerList.Add(approachPlayerSelector);

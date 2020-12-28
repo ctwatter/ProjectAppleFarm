@@ -8,10 +8,10 @@ public class HeartyWildAlone : BTSubtree
 {
     public override BTSelector BuildSelectorSubtree(CreatureAIContext context) {
         #region WILD NO PLAYER
-            List<BTnode> WildNoPlayerList = new List<BTnode>();
+            List<BTNode> WildNoPlayerList = new List<BTNode>();
 
             #region wild enemies nearby
-                List<BTnode> WildEnemiesList = new List<BTnode>();
+                List<BTNode> WildEnemiesList = new List<BTNode>();
                 BTCheckWildEnemiesInRange wildEnemies = new BTCheckWildEnemiesInRange("Are Enemies Nearby?", context);
                 BTActionWildRunFromEnemies wildAttackEnemy = new BTActionWildRunFromEnemies("Run From Enemies", context);
                 WildEnemiesList.Add(wildEnemies);
@@ -20,7 +20,7 @@ public class HeartyWildAlone : BTSubtree
             #endregion
 
             #region Wild Find Food
-                List<BTnode> FindFoodList = new List<BTnode>();
+                List<BTNode> FindFoodList = new List<BTNode>();
                 HeartyBTCheckWildFindFood findFood = new HeartyBTCheckWildFindFood("Is food nearby?", context);
                 HeartyBTActionWildApproachFood getFood = new HeartyBTActionWildApproachFood("Go Eat food", context);
                 FindFoodList.Add(findFood);
@@ -29,7 +29,7 @@ public class HeartyWildAlone : BTSubtree
             #endregion
 
             #region wild wander
-                List<BTnode> WildWanderList = new List<BTnode>();
+                List<BTNode> WildWanderList = new List<BTNode>();
                 BTActionWildWanderInLocation wildWander = new BTActionWildWanderInLocation("Wander", context);
                 BTActionWildWanderIdle wildWanderIdle = new BTActionWildWanderIdle("Wander Idle", context);
                 WildWanderList.Add(findFoodSequence);
