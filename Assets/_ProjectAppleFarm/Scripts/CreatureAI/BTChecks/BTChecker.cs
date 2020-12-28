@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTChecker : BTnode
+public class BTChecker : BTNode
 {
     //bool toCheck
     protected CreatureAIContext context;

@@ -2,11 +2,11 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public class BTSucceeder: BTnode
+public class BTSucceeder: BTNode
 {
-    protected BTnode node;
+    protected BTNode node;
 
-    public BTSucceeder(string _name, BTnode node) : base(_name) {
+    public BTSucceeder(string _name, BTNode node) : base(_name) {
         name = _name;
         this.node = node;
     }

@@ -9,7 +9,7 @@ public class AdventurousWildNoticed : BTSubtree
     public override BTSequence BuildSequenceSubtree(CreatureAIContext context) {
         #region WILD PLAYER
             #region wild player scary
-                List<BTnode> WildPlayerScaryList = new List<BTnode>();
+                List<BTNode> WildPlayerScaryList = new List<BTNode>();
                 AdventurousBTCheckWildPlayerScary playerScary = new AdventurousBTCheckWildPlayerScary("Player Scary", context);
                 BTActionWildRunFromPlayer runFromPlayer = new BTActionWildRunFromPlayer("Run From Player", context);
                 WildPlayerScaryList.Add(playerScary);
@@ -18,7 +18,7 @@ public class AdventurousWildNoticed : BTSubtree
             #endregion
 
             #region wild approach player
-                List<BTnode> WildApproachPlayerList = new List<BTnode>();
+                List<BTNode> WildApproachPlayerList = new List<BTNode>();
                 BTActionWildApproachPlayer approachPlayer = new BTActionWildApproachPlayer("Approach Player", context);
                 BTActionFollowIdle followIdle = new BTActionFollowIdle("Follow Idle", context);
                 WildApproachPlayerList.Add(playerScarySequence);
@@ -28,7 +28,7 @@ public class AdventurousWildNoticed : BTSubtree
             #endregion
 
             #region wild notice player
-                List<BTnode> WildNoticePlayerList = new List<BTnode>();
+                List<BTNode> WildNoticePlayerList = new List<BTNode>();
                 BTCheckWildPlayerInRadius playerNoticed = new BTCheckWildPlayerInRadius("Is Player Noticed", context);
                 WildNoticePlayerList.Add(playerNoticed);
                 WildNoticePlayerList.Add(approachPlayerSelector);

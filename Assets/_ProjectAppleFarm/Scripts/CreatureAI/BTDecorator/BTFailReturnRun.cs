@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTFailReturnRun : BTnode
+public class BTFailReturnRun : BTNode
 {
-    protected BTnode node;
+    protected BTNode node;
     
-    public BTFailReturnRun(string _name, BTnode node) : base(_name) {
+    public BTFailReturnRun(string _name, BTNode node) : base(_name) {
         name = _name;
         this.node = node;
     }

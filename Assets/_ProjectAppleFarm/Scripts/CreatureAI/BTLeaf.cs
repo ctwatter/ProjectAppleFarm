@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BTLeaf : BTnode
+public abstract class BTLeaf : BTNode
 {
     protected CreatureAIContext context;
     protected bool ranOnEnter = false;

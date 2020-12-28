@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTInverter : BTnode
+public class BTInverter : BTNode
 {
-    protected BTnode node;
+    protected BTNode node;
     
-    public BTInverter(string _name, BTnode node) : base(_name) {
+    public BTInverter(string _name, BTNode node) : base(_name) {
         name = _name;
         this.node = node;
     }

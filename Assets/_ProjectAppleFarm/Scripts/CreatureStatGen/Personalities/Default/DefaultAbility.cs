@@ -8,15 +8,15 @@ public class DefaultAbility : BTSubtree
     public override BTSequence BuildSequenceSubtree(CreatureAIContext context) {
         #region CREATURE ABILITIES
             #region player triggered ability sequence        
-                List<BTnode> AbilityTriggeredSequenceList = new List<BTnode>();
+                List<BTNode> AbilityTriggeredSequenceList = new List<BTNode>();
 
                 #region Ability Selector
-                    List<BTnode> AbilitySelectorList = new List<BTnode>();
+                    List<BTNode> AbilitySelectorList = new List<BTNode>();
                     BTActionAbilityFail AbilityFailsafe = new BTActionAbilityFail("Ability Failsafe", context);
                     #region MeleeAbilitySequence
-                        List<BTnode> MeleeAbilitySequenceList = new List<BTnode>();
+                        List<BTNode> MeleeAbilitySequenceList = new List<BTNode>();
                         #region if target already exists selector
-                            List<BTnode> TargetExistsSelectorList = new List<BTnode>();
+                            List<BTNode> TargetExistsSelectorList = new List<BTNode>();
                             BTCheckIfTargetExists checkIfTargetExists = new BTCheckIfTargetExists("Check if enemy already targeted", context);
                             BTActionFindTargetEnemy findTargetEnemy = new BTActionFindTargetEnemy("Find Closest Enemy in Range", context);
                             TargetExistsSelectorList.Add(checkIfTargetExists);
@@ -26,7 +26,7 @@ public class DefaultAbility : BTSubtree
                         #endregion 
 
                         #region Approach sequence
-                            List<BTnode> MeleeApproachSelectorList = new List<BTnode>();
+                            List<BTNode> MeleeApproachSelectorList = new List<BTNode>();
                             //BTCheckDistanceToTarget checkIfDistanceToTarget = new BTCheckDistanceToTarget("Check if in range for attack", context);
                             BTActionApproachForAttack approachForAttack = new BTActionApproachForAttack("Approach for attack", context);
                             BTInverter invertApproachForAttack = new BTInverter("Invert Approach for Attack", approachForAttack);
@@ -51,13 +51,13 @@ public class DefaultAbility : BTSubtree
                     #endregion
 
                     #region RangedAbilitySequence
-                        List<BTnode> RangedAbilitySequenceList = new List<BTnode>();
+                        List<BTNode> RangedAbilitySequenceList = new List<BTNode>();
                         #region if target already exists selector
                             //using same targetExistsSelector from melee
                         #endregion 
 
                         #region Approach/Attack sequence
-                            List<BTnode> RangedApproachSelectorList = new List<BTnode>();
+                            List<BTNode> RangedApproachSelectorList = new List<BTNode>();
                             //using same invertApproachForAttack node
                             BTActionAttackRanged attackRanged = new BTActionAttackRanged("Ranged Attack", context);
                             RangedApproachSelectorList.Add(invertApproachForAttack);
@@ -75,7 +75,7 @@ public class DefaultAbility : BTSubtree
                     #endregion
 
                     #region UtilityAbilitySequence
-                        List<BTnode> UtilityAblitySequenceList = new List<BTnode>();
+                        List<BTNode> UtilityAblitySequenceList = new List<BTNode>();
 
                         BTCheckIfAbilityIsUtility ifAbilityIsUtility = new BTCheckIfAbilityIsUtility("Check if ability is utility", context);
                         //MAKE UTILITY ABLITY CAST

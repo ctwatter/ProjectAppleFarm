@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTSelector : BTnode
+public class BTSelector : BTNode
 {
-    protected List<BTnode> nodes = new List<BTnode>();
+    protected List<BTNode> nodes = new List<BTNode>();
     
-    public BTSelector(string _name, List<BTnode> nodes) : base(_name) {
+    public BTSelector(string _name, List<BTNode> nodes) : base(_name) {
         name = _name;
         this.nodes = nodes;
     }

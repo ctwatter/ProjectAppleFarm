@@ -10,7 +10,7 @@ public class DaringWildNoticed : BTSubtree
         //DEFAULT BT SUBTREE
         #region WILD PLAYER
             #region wild approach player
-                List<BTnode> WildApproachPlayerList = new List<BTnode>();
+                List<BTNode> WildApproachPlayerList = new List<BTNode>();
                 DaringBTActionWildApproachPlayer approachPlayer = new DaringBTActionWildApproachPlayer("Approach Player", context);
                 BTActionFollowIdle followIdle = new BTActionFollowIdle("Follow Idle", context);
                 WildApproachPlayerList.Add(approachPlayer);
@@ -19,7 +19,7 @@ public class DaringWildNoticed : BTSubtree
             #endregion
 
             #region wild notice player
-                List<BTnode> WildNoticePlayerList = new List<BTnode>();
+                List<BTNode> WildNoticePlayerList = new List<BTNode>();
                 BTCheckWildPlayerInRadius playerNoticed = new BTCheckWildPlayerInRadius("Is Player Noticed", context);
                 WildNoticePlayerList.Add(playerNoticed);
                 WildNoticePlayerList.Add(approachPlayerSelector);

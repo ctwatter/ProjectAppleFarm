@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CreatureAI : MonoBehaviour
 {
-    public BTnode behaviorTree;
+    public BTNode behaviorTree;
     private CreatureAIContext context;
     public List<Personality> personalities = new List<Personality>();
     public Personality DefaultPersonality;
@@ -38,7 +38,7 @@ public class CreatureAI : MonoBehaviour
     public void BuildBT() 
     {
         personalities = context.CD.personalities;
-        List<BTnode> RootList = new List<BTnode>();
+        List<BTNode> RootList = new List<BTNode>();
 
         #region BONDED FOLLOW PLAYER
             BTSelector FollowPlayer = null;
@@ -92,7 +92,7 @@ public class CreatureAI : MonoBehaviour
 
         #region IS CREATURE WILD
             #region creature is wild
-                List<BTnode> CreatureIsWildList = new List<BTnode>();
+                List<BTNode> CreatureIsWildList = new List<BTNode>();
                 CreatureIsWildList.Add(wildNoticed);
                 //be sure to add the no player section later
                 CreatureIsWildList.Add(wildAlone); //placeholder for wild w/ no player section
@@ -101,7 +101,7 @@ public class CreatureAI : MonoBehaviour
             #endregion
 
             #region is creature wild
-                List<BTnode> IsCreatureWildList = new List<BTnode>();
+                List<BTNode> IsCreatureWildList = new List<BTNode>();
                 BTCheckIsWild isWild = new BTCheckIsWild("Is Wild?", context);
                 IsCreatureWildList.Add(isWild);
                 IsCreatureWildList.Add(creatureIsWildSelector);
@@ -110,7 +110,7 @@ public class CreatureAI : MonoBehaviour
         #endregion
 
         #region creature isnt wild selector
-            List<BTnode> CreatureIsntWildSelectorList = new List<BTnode>();
+            List<BTNode> CreatureIsntWildSelectorList = new List<BTNode>();
             CreatureIsntWildSelectorList.Add(Ability);
             CreatureIsntWildSelectorList.Add(FollowPlayer);
 

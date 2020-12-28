@@ -8,10 +8,10 @@ public class DefaultFollowPlayer : BTSubtree
 
     public override BTSelector BuildSelectorSubtree(CreatureAIContext context) {
         #region BONDED FOLLOW PLAYER
-            List<BTnode> BondedFollowPlayer = new List<BTnode>();
+            List<BTNode> BondedFollowPlayer = new List<BTNode>();
         
             #region bonded follow idle sequence
-                List<BTnode> BondedIdleFollowList = new List<BTnode>();
+                List<BTNode> BondedIdleFollowList = new List<BTNode>();
                 BTCheckInPlayerRadius inRadius = new BTCheckInPlayerRadius("In Player Radius", context);
                 BTActionFollowIdle followIdle = new BTActionFollowIdle("Follow Idle", context);
                 BondedIdleFollowList.Add(inRadius);
@@ -20,7 +20,7 @@ public class DefaultFollowPlayer : BTSubtree
             #endregion
 
             #region bonded trail player sequence
-                List<BTnode> BondedTrailPlayerList = new List<BTnode>();
+                List<BTNode> BondedTrailPlayerList = new List<BTNode>();
                 BTCheckInPlayerTrail inTrail = new BTCheckInPlayerTrail("In Player Trail", context);
                 BTActionTrailPlayer trailPlayer = new BTActionTrailPlayer("Trail Player", context);
                 BondedTrailPlayerList.Add(inTrail);
@@ -29,7 +29,7 @@ public class DefaultFollowPlayer : BTSubtree
             #endregion
             
             #region bonded get closer to player selector
-                List<BTnode> BondedGetCloserToPlayerList = new List<BTnode>();
+                List<BTNode> BondedGetCloserToPlayerList = new List<BTNode>();
                 BTActionFollowPlayer followPlayerAction = new BTActionFollowPlayer("Follow Player", context);
                 BTActionFollowTP followPlayerTP = new BTActionFollowTP("Follow Player TP", context);
                 BondedGetCloserToPlayerList.Add(followPlayerAction);
