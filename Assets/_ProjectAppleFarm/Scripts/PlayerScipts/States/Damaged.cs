@@ -19,12 +19,25 @@ namespace PlayerState
         public override void OnStateEnter()
         {
             Debug.Log("Entering Damaged");
+            player.animator.animator.SetTrigger("isHit");
             
         }
 
         public override void OnStateUpdate()
         {
-           
+            if(player.isHit)
+            {
+                player.isHit = false;
+                SetState( fsm.Damaged);
+            }
+            //wait till end of animation, return to idle
+            //maybe check how many times has been triggered in succession?
+            if(!player.animator.animator.GetCurrentAnimatorStateInfo(0).IsTag("isHit"))
+            {
+                //Debug.Log("End Player hit state");
+                
+                SetState(fsm.IdleMove);
+            }
         }
 
         public override void OnStateFixedUpdate()
