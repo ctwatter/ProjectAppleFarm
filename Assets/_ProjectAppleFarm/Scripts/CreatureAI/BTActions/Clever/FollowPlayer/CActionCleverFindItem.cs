@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTActionFindInterestingItem : BTLeaf
+public class CActionCleverFindItem : BTLeaf
 {
     
-    public BTActionFindInterestingItem(string _name, CreatureAIContext _context ) : base(_name, _context){
+    public CActionCleverFindItem(string _name, CreatureAIContext _context ) : base(_name, _context){
         name = _name;
         context = _context;
     }

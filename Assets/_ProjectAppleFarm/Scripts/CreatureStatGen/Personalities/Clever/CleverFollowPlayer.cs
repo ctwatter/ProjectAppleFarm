@@ -12,9 +12,9 @@ public class CleverFollowPlayer : BTSubtree
         
             #region bonded clever sequence
                 List<BTNode> BondedCleverSequenceList = new List<BTNode>();
-                BTActionFindInterestingItem findItem = new BTActionFindInterestingItem("Check For Items", context);
-                BTActionApproachItem approachItem = new BTActionApproachItem("Approach Item", context);
-                BTActionItemAlertPlayer alertPlayer = new BTActionItemAlertPlayer("Alert Player", context);
+                CActionCleverFindItem findItem = new CActionCleverFindItem("Check For Items", context);
+                CActionCleverApproachItem approachItem = new CActionCleverApproachItem("Approach Item", context);
+                CActionCleverAlertPlayer alertPlayer = new CActionCleverAlertPlayer("Alert Player", context);
                 BondedCleverSequenceList.Add(findItem);
                 BondedCleverSequenceList.Add(approachItem);
                 BondedCleverSequenceList.Add(alertPlayer);

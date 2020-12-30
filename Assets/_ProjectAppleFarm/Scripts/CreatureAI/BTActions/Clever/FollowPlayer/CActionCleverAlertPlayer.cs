@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BTActionItemAlertPlayer : BTLeaf
+public class CActionCleverAlertPlayer : BTLeaf
 {
     
-    public BTActionItemAlertPlayer(string _name, CreatureAIContext _context ) : base(_name, _context){
+    public CActionCleverAlertPlayer(string _name, CreatureAIContext _context ) : base(_name, _context){
         name = _name;
         context = _context;
     }

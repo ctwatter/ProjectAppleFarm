@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BTActionApproachItem : BTLeaf
+public class CActionCleverApproachItem : BTLeaf
 {
 
     private NavMeshAgent agent;
@@ -12,7 +12,7 @@ public class BTActionApproachItem : BTLeaf
     private float acceleration = 100f; //max accel units/sec^2
 
 
-    public BTActionApproachItem(string _name, CreatureAIContext _context) : base(_name, _context) {
+    public CActionCleverApproachItem(string _name, CreatureAIContext _context) : base(_name, _context) {
         name = _name;
         context = _context;
 
