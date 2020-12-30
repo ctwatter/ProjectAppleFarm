@@ -10,36 +10,50 @@ namespace PlayerState
     [Serializable]
     public class Dash : State
     {
+        public PlayerAnimator playerAnimator => player.animator;
+
+        float startTime = 0;
+        public Vector3 startRotation;
+
         // Set fields here
         public Dash( PlayerStateMachine _fsm ) : base( _fsm )
         {
             base.name = "Dash";
-            parent = fsm.InputState;
+            parent = fsm.MovementState;
         }
 
         public override void OnStateEnter()
         {
             Debug.Log("Entering Dash");
-            //SetDefaultState( fsm.Test3 );
+
+            player.playerDash = false;
+            playerAnimator.Dash();
+            player.isDashing = true;
+
+            startTime = Time.time;
+            startRotation = player.v3Vel;
+            player.setRotation(startRotation);
+            
         }
 
         public override void OnStateUpdate()
         {
-            if(player.playerBasicAttack)
+            if(Time.time > startTime + player.dashTime)
             {
-                player.playerBasicAttack = false;
-                //SetState(fsm.Test4);
+                SetState(fsm.IdleMove);
             }
         }
 
         public override void OnStateFixedUpdate()
         {
-          
+            player.doMovement(player.dashSpeed);
+            player.setRotation(startRotation);
         }
 
         public override void OnStateExit()
         {
             Debug.Log("Exiting Dash");
+            player.isDashing = false;
         }
     }
 }

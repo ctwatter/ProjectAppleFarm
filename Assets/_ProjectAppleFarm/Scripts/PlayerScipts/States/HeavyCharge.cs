@@ -11,6 +11,12 @@ namespace PlayerState
     [Serializable]
     public class HeavyCharge : State
     {
+
+        
+        public PlayerAnimator playerAnimator => player.animator;
+        
+        ParticleSystem vfx;
+
         // Set fields here
         public HeavyCharge( PlayerStateMachine _fsm ) : base( _fsm )
         {
@@ -18,29 +24,35 @@ namespace PlayerState
             parent = fsm.InputState;
         }
 
+
+
         public override void OnStateEnter()
         {
             Debug.Log("Entering HeavyCharge");
-            //SetDefaultState( fsm.Test3 );
+            player.heavyChargeVfx.Play();
         }
+
+
 
         public override void OnStateUpdate()
         {
-            if(player.playerBasicAttack)
-            {
-                player.playerBasicAttack = false;
-                //SetState(fsm.Test4);
-            }
+            if(player.playerHeavyAttack == false) SetState(fsm.HeavySlash);
         }
+
+
 
         public override void OnStateFixedUpdate()
         {
-          
+            player.doMovement(0f);
+            player.doRotation(0f);
         }
+
+
 
         public override void OnStateExit()
         {
             Debug.Log("Exiting HeavyCharge");
+            player.heavyChargeVfx.Stop();
         }
     }
 }

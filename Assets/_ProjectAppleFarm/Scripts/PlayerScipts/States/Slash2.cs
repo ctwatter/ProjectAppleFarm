@@ -11,36 +11,66 @@ namespace PlayerState
     [Serializable]
     public class Slash2 : State
     {
-        // Set fields here
+        public PlayerAnimator playerAnimator => player.animator;
+
         public Slash2( PlayerStateMachine _fsm ) : base( _fsm )
         {
             base.name = "Slash2";
-            parent = fsm.InputState;
+            parent = fsm.ComboAttackState;
         }
+
+
 
         public override void OnStateEnter()
         {
             Debug.Log("Entering Slash2");
-            //SetDefaultState( fsm.Test3 );
+            player.playerBasicAttack = false;  
+            playerAnimator.Attack2();            
         }
+
+
 
         public override void OnStateUpdate()
         {
-            if(player.playerBasicAttack)
+            if(player.playerDash)
             {
-                player.playerBasicAttack = false;
-                //SetState(fsm.Test4);
+                playerAnimator.resetAllAttackAnims();                
+                SetState(fsm.Dash);
+            }
+
+            if(!player.getIsAttackAnim())
+            {
+                player.setIsAttackAnim(false);
+
+                if(player.playerBasicAttack)
+                {
+                    //SetState(fsm.Slash);
+                }
+
+                playerAnimator.SetRun(false);
+
+                if(!player.getIsFollowThroughAnim())
+                {
+                    playerAnimator.resetAllAttackAnims();
+                    SetState(fsm.IdleMove);
+                }
             }
         }
 
+
+
         public override void OnStateFixedUpdate()
         {
-          
+            player.doMovement(0.3f);
+            player.doRotation(0.6f);
         }
+
+
 
         public override void OnStateExit()
         {
             Debug.Log("Exiting Slash2");
+            player.playerBasicAttack = false;
         }
     }
 }

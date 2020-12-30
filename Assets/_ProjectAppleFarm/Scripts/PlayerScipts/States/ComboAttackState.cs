@@ -15,7 +15,7 @@ namespace PlayerState
 
         public override void OnStateEnter()
         {
-            SetDefaultState( fsm.IdleMove );
+            SetDefaultState( fsm.Slash0 );
         }
 
         public override void OnStateUpdate()

@@ -8,6 +8,8 @@ using UnityEngine.InputSystem;
 
 namespace PlayerState
 {
+
+    //NOT BEING USED, UNTIL 4TH ATTACK ANIM MADE
     [Serializable]
     public class Slash3 : State
     {
@@ -15,7 +17,7 @@ namespace PlayerState
         public Slash3( PlayerStateMachine _fsm ) : base( _fsm )
         {
             base.name = "Slash3";
-            parent = fsm.InputState;
+            parent = fsm.ComboAttackState;
         }
 
         public override void OnStateEnter()

@@ -19,22 +19,22 @@ namespace PlayerState
 
         public override void OnStateUpdate()
         {
-            /*
+            
             if(player.playerDash){
-                fsm.SetState( player.dashState );
+                SetState( fsm.Dash );
                 return;
             }
             if(player.playerBasicAttack) {
                 //playerController.playerBasicAttack = false;
-                fsm.SetState( player.slash0State );
+                SetState( fsm.ComboAttackState );
                 return;
             }
             if(player.playerHeavyAttack) {
                 //playerController.playerBasicAttack = false;
-                fsm.SetState( player.heavyChargeState );
+                SetState( fsm.HeavyCharge );
                 return;
             }
-            */
+            
         }
 
         public override void OnStateFixedUpdate()

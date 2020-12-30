@@ -11,31 +11,35 @@ namespace PlayerState
     [Serializable]
     public class HeavySlash : State
     {
-        // Set fields here
+        public PlayerAnimator playerAnimator => player.animator;
+
         public HeavySlash( PlayerStateMachine _fsm ) : base( _fsm )
         {
             base.name = "HeavySlash";
             parent = fsm.InputState;
         }
 
+
+
         public override void OnStateEnter()
         {
             Debug.Log("Entering HeavySlash");
-            //SetDefaultState( fsm.Test3 );
+            player.playerHeavyAttack = false;
+            player.heavyHitVfx.Play();
         }
+
+
 
         public override void OnStateUpdate()
         {
-            if(player.playerBasicAttack)
-            {
-                player.playerBasicAttack = false;
-                //SetState(fsm.Test4);
-            }
+            //maybe do after anim ends
+            SetState(fsm.IdleMove);
         }
 
         public override void OnStateFixedUpdate()
         {
-          
+            player.doMovement(0.1f);
+            player.doRotation(0.1f);
         }
 
         public override void OnStateExit()

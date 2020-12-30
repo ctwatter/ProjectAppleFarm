@@ -13,22 +13,17 @@ namespace PlayerState
         public Standby( PlayerStateMachine _fsm ) : base( _fsm )
         {
             base.name = "Standby";
-            //SetParent( fsm.inputState );
         }
 
         public override void OnStateEnter()
         {
             Debug.Log("Entering Standby");
-            //SetDefaultState( fsm.Test3 );
+           
         }
 
         public override void OnStateUpdate()
         {
-            if(player.playerBasicAttack)
-            {
-                player.playerBasicAttack = false;
-                //SetState(fsm.Test4);
-            }
+           
         }
 
         public override void OnStateFixedUpdate()

@@ -1,5 +1,4 @@
-﻿//Colin and Jamo
-// Herman for animations
+﻿//Jamo + Herman
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,36 +10,66 @@ namespace PlayerState
     [Serializable]
     public class Slash0 : State
     {
-        // Set fields here
+        public PlayerAnimator playerAnimator => player.animator;
+
         public Slash0( PlayerStateMachine _fsm ) : base( _fsm )
         {
             base.name = "Slash0";
-            parent = fsm.InputState;
+            parent = fsm.ComboAttackState;
         }
+
+
 
         public override void OnStateEnter()
         {
             Debug.Log("Entering Slash0");
-            //SetDefaultState( fsm.Test3 );
+            player.playerBasicAttack = false;  
+            playerAnimator.Attack0();            
         }
+
+
 
         public override void OnStateUpdate()
         {
-            if(player.playerBasicAttack)
+            if(player.playerDash)
             {
-                player.playerBasicAttack = false;
-                //SetState(fsm.Test4);
+                playerAnimator.resetAllAttackAnims();                
+                SetState(fsm.Dash);
+            }
+
+            if(!player.getIsAttackAnim())
+            {
+                player.setIsAttackAnim(false);
+
+                if(player.playerBasicAttack)
+                {
+                    SetState(fsm.Slash1);
+                }
+
+                playerAnimator.SetRun(false);
+
+                if(!player.getIsFollowThroughAnim())
+                {
+                    playerAnimator.resetAllAttackAnims();
+                    SetState(fsm.IdleMove);
+                }
             }
         }
 
+
+
         public override void OnStateFixedUpdate()
         {
-          
+            player.doMovement(0.3f);
+            player.doRotation(0.6f);
         }
+
+
 
         public override void OnStateExit()
         {
             Debug.Log("Exiting Slash0");
+            player.playerBasicAttack = false;
         }
     }
 }
