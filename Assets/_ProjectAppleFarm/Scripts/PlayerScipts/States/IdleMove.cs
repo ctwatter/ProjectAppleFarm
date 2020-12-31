@@ -20,16 +20,19 @@ namespace PlayerState
         public override void OnStateUpdate()
         {
             
-            if(player.playerDash){
+            if(player.playerDash)
+            {
                 SetState( fsm.Dash );
                 return;
             }
-            if(player.playerBasicAttack) {
+            if(player.playerBasicAttack) 
+            {
                 //playerController.playerBasicAttack = false;
                 SetState( fsm.ComboAttackState );
                 return;
             }
-            if(player.playerHeavyAttack) {
+            if(player.playerHeavyAttack) 
+            {
                 //playerController.playerBasicAttack = false;
                 SetState( fsm.HeavyCharge );
                 return;
