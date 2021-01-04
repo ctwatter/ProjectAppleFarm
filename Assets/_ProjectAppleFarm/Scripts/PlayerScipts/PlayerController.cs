@@ -181,7 +181,6 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    //********Insert function for heavy attack button*******
 
     void OnAttack2(){
         currCreatureContext.isAbilityTriggered = true;
