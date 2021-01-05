@@ -76,7 +76,8 @@ public class PlayerAnimator : MonoBehaviour
 
     public void Move(Vector3 movementVector)
     {
-        if (movementVector.magnitude > 0){
+        if (movementVector.magnitude > 0)
+        {
             animator.SetBool("Run", true);
         }
         else
