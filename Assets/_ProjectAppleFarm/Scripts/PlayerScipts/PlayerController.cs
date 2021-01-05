@@ -59,6 +59,20 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem heavyChargeVfx;
     public ParticleSystem heavyHitVfx;
 
+
+    [Serializable]
+    public struct HitBoxes
+    {
+        public GameObject slash0;
+        public GameObject slash1;
+        public GameObject slash2;
+        public GameObject slash3;
+        public GameObject heavy;
+
+    }
+
+    public HitBoxes hitBoxes;
+
     
     void Start()
     {

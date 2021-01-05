@@ -5,30 +5,47 @@ using UnityEngine;
 
 public class WeaponTriggers : MonoBehaviour
 {
-    private PlayerStats playerStats;
-    private PlayerStateMachine playerStateMachine;
+    private PlayerStats ps;
+    private PlayerStateMachine fsm;
     // Start is called before the first frame update
-   private void Start() {
-       playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-       playerStateMachine = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
-   }
-    private void OnTriggerEnter(Collider other) {
+    private void Start() 
+    {
+        ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        fsm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
+    }
+
+    private void OnTriggerEnter(Collider other) 
+    {
         if(other.gameObject.tag == "Enemy")
         {
-            /*
+            EnemyStats enemyStats = other.gameObject.GetComponent<EnemyStats>();
+
             // Check which attack state we're in to determine damage
-            if(playerStateMachine.currentState is BasicHitState_0){
-                other.gameObject.GetComponent<EnemyStats>().takeDamage(playerStats.attack1Damage);
-            } else if(playerStateMachine.currentState is BasicHitState_1){
-                other.gameObject.GetComponent<EnemyStats>().takeDamage(playerStats.attack2Damage);
-            } else if(playerStateMachine.currentState is BasicHitState_2){
-                other.gameObject.GetComponent<EnemyStats>().takeDamage(playerStats.attack3Damage);
-            } else{
+            if(fsm.currentState == fsm.Slash0)
+            {
+                enemyStats.takeDamage(ps.attack1Damage);
+            } 
+            else if(fsm.currentState == fsm.Slash1)
+            {
+                enemyStats.takeDamage(ps.attack2Damage);
+            } 
+            else if(fsm.currentState == fsm.Slash2)
+            {
+                enemyStats.takeDamage(ps.attack3Damage);
+            } 
+            else if(fsm.currentState == fsm.HeavySlash)
+            {
+                enemyStats.takeDamage(ps.attack3Damage);
+            } 
+            else
+            {
                 Debug.Log("Default Damage");
-                other.gameObject.GetComponent<EnemyStats>().takeDamage(playerStats.attack1Damage);
+                other.gameObject.GetComponent<EnemyStats>().takeDamage(ps.attack1Damage);
             }
-            */
-        } else if(other.gameObject.tag == "FruitTree"){
+            
+        } 
+        else if(other.gameObject.tag == "FruitTree")
+        {
             print("Hit tree with sword");
             other.gameObject.GetComponent<FruitTree>().dropFruit();
         }

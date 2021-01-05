@@ -14,6 +14,7 @@ namespace PlayerState
         {
             name = "Slash0";
             index = 0;
+            hitBox = player.hitBoxes.slash0;
         }
     }
 }

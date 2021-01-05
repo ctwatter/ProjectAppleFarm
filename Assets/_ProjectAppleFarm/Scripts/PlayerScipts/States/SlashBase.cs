@@ -12,11 +12,13 @@ namespace PlayerState
     {
         protected int index;
         protected State nextState;
+        protected GameObject hitBox;
 
         public SlashBase( PlayerStateMachine _fsm ) : base( _fsm )
         {
             name = "Slash Base";
             parent = fsm.ComboAttackState;
+            
         }
 
 
