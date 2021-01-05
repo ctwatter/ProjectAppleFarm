@@ -21,7 +21,7 @@ namespace PlayerState
 
         public override void OnStateEnter()
         {
-            player.playerHeavyAttack = false;
+            player.inputs.heavyAttack = false;
             player.heavyHitVfx.Play();
         }
 

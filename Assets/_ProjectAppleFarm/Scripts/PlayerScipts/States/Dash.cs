@@ -21,14 +21,13 @@ namespace PlayerState
 
         public override void OnStateEnter()
         {
-            // HERMAN TODO: Rename button inputs
-            player.playerDash = false;
+            player.inputs.dash = false;
             animator.Dash();
             player.isDashing = true;
 
             startTime = Time.time;
             // HERMAN TODO: Rename v3Vel
-            startRotation = player.v3Vel;
+            startRotation = player.inputs.moveDirection;
             player.setRotation(startRotation);
         }
 

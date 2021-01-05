@@ -10,33 +10,32 @@ public class PlayerAnimator : MonoBehaviour
     private Animator animator => model.GetComponent<Animator>();
     private PlayerController playerController => GetComponent<PlayerController>();
 
-    public void attackBegin()
-    {
-        playerController.setIsAttackAnim(true);
-        playerController.setIsFollowThroughAnim(true);
-    }
+    public bool isAttack { get; private set; }
+    public bool isFollowThrough { get; private set; }
 
+    // Triggered by event
     public void attackDone()
     {
-        playerController.setIsAttackAnim(false);
+        isAttack = false;
     }
 
+    // Triggered by event
     public void followThroughDone()
     {
-        playerController.setIsAttackAnim(false);
-        playerController.setIsFollowThroughAnim(false);
+        isAttack = false;
+        isFollowThrough = false;
     }
 
     public void resetAttackAnim()
     {
-        playerController.setIsAttackAnim(false);
-        playerController.setIsFollowThroughAnim(false);
+        isAttack = false;
+        isFollowThrough = false;
     }
 
     public void resetAllAttackAnims()
     {
-        playerController.setIsAttackAnim(false);
-        playerController.setIsFollowThroughAnim(false);
+        isAttack = false;
+        isFollowThrough = false;
 
         animator.ResetTrigger("Attack0");
         animator.ResetTrigger("Attack1");
@@ -45,7 +44,9 @@ public class PlayerAnimator : MonoBehaviour
 
     public void Attack( int num )
     {
-        this.attackBegin();
+        isAttack = true;
+        isFollowThrough = true;
+
         animator.SetTrigger("Attack" + num.ToString() );
     }
 
@@ -55,9 +56,10 @@ public class PlayerAnimator : MonoBehaviour
         animator.SetTrigger("isHit");
     }
 
+    // HERMAN TODO: Fill in with actual animation later
     public bool IsDamaged()
     {
-        return true;
+        return false;
     }
 
     public void Dash()

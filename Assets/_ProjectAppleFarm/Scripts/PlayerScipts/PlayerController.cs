@@ -7,16 +7,24 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public struct Inputs
+    {
+        public bool dash; //Dash and interact are used for same button press, possibly refactor?
+        public bool interact;
+        public bool basicAttack;
+        public bool heavyAttack;
+        public Vector3 moveDirection;
+        public Vector2 rawDirection;
+    }
 
+    public Inputs inputs;
+
+    public Camera camera;
     public bool isoMovement = true;
 
     public GameObject fruit;
     public PlayerStateMachine playerStateMachine => GetComponent<PlayerStateMachine>();
     public PlayerAnimator animator => GetComponent<PlayerAnimator>();
-
-    // HERMAN TODO: Do away with these variables
-    public bool isAttackAnim = false; 
-    public bool isFollowThroughAnim = false;
 
     public float speed = 1f;
     public float turnSpeed = 0.15f;
@@ -31,17 +39,14 @@ public class PlayerController : MonoBehaviour
     //****************************
 
     private Rigidbody rb;
-    private Vector2 movementVel;
+    
     private CharacterController charController;
-    public Vector3 v3Vel;
+    
     private Vector3 gravity;
 
     public float crouchModifier = 1;
-    public bool playerBasicAttack;
-    public bool playerDash;//Dash and interact are used for same button press, possibly refactor?
-    public bool playerInteract;//^
-    public bool playerHeavyAttack;
     public bool nearInteractable = false;
+    
 
     public GameObject wildCreature = null;
     public GameObject currCreature;
@@ -65,19 +70,12 @@ public class PlayerController : MonoBehaviour
 
    
 
-    public void doMovement(float movementModifier){
-        
-        if(!isDashing)
-        {
-            v3Vel = new Vector3(movementVel.x, 0, movementVel.y);
-            
-            if(isoMovement)
-            {
-                v3Vel = Quaternion.Euler(0, -45, 0) * v3Vel;
-            }
-        }
+    public void doMovement(float movementModifier)
+    {
+        // if(!isDashing)
+        // {                  
+        // }
        
-      
         if(!charController.isGrounded)
         {
             gravity += Physics.gravity * Time.deltaTime;
@@ -88,8 +86,8 @@ public class PlayerController : MonoBehaviour
         }
 
         // HERMAN TODO: Break up massive math formula into different variables
-        currSpeed = (Mathf.Abs(v3Vel.x) + Mathf.Abs(v3Vel.z)) / 2 * speed * Time.deltaTime * movementModifier * crouchModifier;
-        var movementVector = v3Vel * speed * Time.deltaTime * movementModifier * crouchModifier;
+        currSpeed = (Mathf.Abs(inputs.moveDirection.x) + Mathf.Abs(inputs.moveDirection.z)) / 2 * speed * Time.deltaTime * movementModifier * crouchModifier;
+        var movementVector = inputs.moveDirection * speed * Time.deltaTime * movementModifier * crouchModifier;
         charController.Move(movementVector);
         charController.Move(gravity * Time.deltaTime);
 
@@ -98,16 +96,9 @@ public class PlayerController : MonoBehaviour
 
     public void doRotation(float rotationModifier)
     {
-        v3Vel = new Vector3(movementVel.x, 0, movementVel.y);
-
-        if(movementVel != Vector2.zero)
+        if(inputs.rawDirection != Vector2.zero)
         {
-            if(isoMovement)
-            {
-                // HERMAN TODO: make consistent with camera; not hardcoded angle
-                v3Vel = Quaternion.Euler(0, -45, 0) * v3Vel;
-            }
-            transform.forward = Vector3.Slerp(transform.forward, v3Vel, Time.deltaTime * turnSpeed * rotationModifier);
+            transform.forward = Vector3.Slerp(transform.forward, inputs.moveDirection, Time.deltaTime * turnSpeed * rotationModifier);
         }
     }
 
@@ -116,27 +107,34 @@ public class PlayerController : MonoBehaviour
         transform.forward = vec;
     }
 
-    void OnMovement(InputValue value)
+    //********* INPUT FUNCTIONS **********
+    private void OnMovement(InputValue value)
     {
         //Debug.Log(value.Get<Vector2>());
-        movementVel = value.Get<Vector2>();
-        movementVel.Normalize();
+        inputs.rawDirection = value.Get<Vector2>();
+        inputs.rawDirection.Normalize();
+
+        inputs.moveDirection = new Vector3(inputs.rawDirection.x, 0, inputs.rawDirection.y);
+
+        if(isoMovement)
+        {
+            inputs.moveDirection = Quaternion.Euler(0, camera.transform.eulerAngles.y, 0) * inputs.moveDirection;
+        }
         
     }
 
     
 
-    //********* INPUT FUNCTIONS **********
     //by Jamo
-    void OnInteract() //pressing dash button  
+    private void OnInteract() //pressing dash button  
     {     
         //If near something interactable, this overides the dash
         if(nearInteractable)
         {
-            playerInteract = true;
+            inputs.interact = true;
             if(interactableObject != null)
             {
-                Debug.Log("picked up item");
+                //Debug.Log("picked up item");
                 Destroy(interactableObject);
                 nearInteractable = false;
             }
@@ -156,12 +154,12 @@ public class PlayerController : MonoBehaviour
                 //takes dash start time
                 dashStart = Time.time;
                 dashCount++;
-                playerDash = true;
+                inputs.dash = true;
             }
             else if(dashCount >= 1 )//if you have dashed once and are not past delay, you can dash a second time
             {
                 dashCount = 0;
-                playerDash = true;          
+                inputs.dash = true;          
                 
             }   
         }                 
@@ -169,25 +167,25 @@ public class PlayerController : MonoBehaviour
 
    
     //Slash (X)
-    void OnAttack1()
+    private void OnAttack1()
     {
-        playerBasicAttack = true;
+        inputs.basicAttack = true;
     }
 
 
     //Holding X
-    void OnHeavyAttack(InputValue value)
+    private void OnHeavyAttack(InputValue value)
     {
         float val = value.Get<float>();
 
-        if(val == 1) playerHeavyAttack = true;
-        else playerHeavyAttack = false;
+        if(val == 1) inputs.heavyAttack = true;
+        else inputs.heavyAttack = false;
         
     }
 
 
     //creature ability 1 (Y)
-    void OnAttack2()
+    private void OnAttack2()
     {
         currCreatureContext.isAbilityTriggered = true;
         currCreatureContext.lastTriggeredAbility = 0;
@@ -195,7 +193,7 @@ public class PlayerController : MonoBehaviour
 
 
     //creature ability 2 (B)
-    void OnAttack3()
+    private void OnAttack3()
     {
         currCreatureContext.isAbilityTriggered = true;
         currCreatureContext.lastTriggeredAbility = 1;
@@ -203,36 +201,19 @@ public class PlayerController : MonoBehaviour
     
     //*********** END INPUT FXNS **************************
 
-
-    public bool getIsAttackAnim()
+    private void OnCrouch()
     {
-        return isAttackAnim;
-    }
-
-    public void setIsAttackAnim(bool state)
-    {
-        isAttackAnim = state;
-    }
-
-    public bool getIsFollowThroughAnim()
-    {
-        return isFollowThroughAnim;
-    }
-
-    public void setIsFollowThroughAnim(bool state)
-    {
-        isFollowThroughAnim = state;
-    }
-
-    void OnCrouch() {
-        if(crouchModifier == 1f){
+        if(crouchModifier == 1f)
+        {
             crouchModifier = .5f;
-        } else {
+        }
+        else
+        {
             crouchModifier = 1f;
         }
     }
 
-     void OnFruitSpawn()
+    private void OnFruitSpawn()
     {
         var temp = Instantiate(fruit, transform.position, Quaternion.identity);
         temp.GetComponent<Fruit>().droppedByPlayer = true;

@@ -40,7 +40,7 @@ namespace PlayerState
 
         public override void OnStateEnter()
         {
-            player.playerBasicAttack = false;  
+            player.inputs.basicAttack = false;  
             nextState = GetNextState();
             
             animator.Attack( index );
@@ -50,13 +50,11 @@ namespace PlayerState
 
         public override void OnStateUpdate()
         {
-            if(!player.getIsAttackAnim())
+            if(!animator.isAttack)
             {
-                player.setIsAttackAnim(false);
-
                 if( nextState != null )
                 {
-                    if(player.playerBasicAttack)
+                    if(player.inputs.basicAttack)
                     {
                         SetState( nextState );
                         return;
@@ -65,7 +63,7 @@ namespace PlayerState
                 
                 animator.SetRun(false);
 
-                if(!player.getIsFollowThroughAnim())
+                if(!animator.isFollowThrough)
                 {
                     animator.resetAllAttackAnims();
 
@@ -87,7 +85,7 @@ namespace PlayerState
 
         public override void OnStateExit()
         {
-            player.playerBasicAttack = false;
+            player.inputs.basicAttack = false;
         }
     }
 }

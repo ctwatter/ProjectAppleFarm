@@ -21,7 +21,7 @@ namespace PlayerState
 
         public override void OnStateUpdate()
         {
-            if(player.playerDash)
+            if(player.inputs.dash)
             {
                 SetState( fsm.Dash );
                 return;

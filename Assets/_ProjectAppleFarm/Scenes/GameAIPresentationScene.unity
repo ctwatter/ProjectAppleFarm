@@ -10125,9 +10125,9 @@ MonoBehaviour:
   attack3Damage: 12
   defense: 10
   speed: 0
-  slider: {fileID: 0}
-  maxHealthUI: {fileID: 0}
-  currHealthUI: {fileID: 0}
+  slider: {fileID: 1363494326}
+  maxHealthUI: {fileID: 328006245}
+  currHealthUI: {fileID: 1409679466}
 --- !u!114 &1124718495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10140,6 +10140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00ca78bbe1fbf34babc4837259cdd63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!143 &1124718496
 CharacterController:
   m_ObjectHideFlags: 0
@@ -10214,10 +10215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3069e17086869241ba840a479e6d2a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 567704657}
   isoMovement: 1
   fruit: {fileID: 1916227323090070400, guid: ed22165a95eba51408a3b233e9023352, type: 3}
-  isAttackAnim: 0
-  isFollowThroughAnim: 0
   speed: 12
   turnSpeed: 10
   dashSpeed: 3
@@ -10226,12 +10226,7 @@ MonoBehaviour:
   dashStart: 2
   dashCount: 0
   isDashing: 0
-  v3Vel: {x: 0, y: 0, z: 0}
   crouchModifier: 1
-  playerBasicAttack: 0
-  playerDash: 0
-  playerInteract: 0
-  playerHeavyAttack: 0
   nearInteractable: 0
   wildCreature: {fileID: 0}
   currCreature: {fileID: 0}
