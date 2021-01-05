@@ -10,6 +10,7 @@ namespace PlayerState
     {
         public MovementState( PlayerStateMachine _fsm ) : base( _fsm )
         {
+            name = "Movement";
             parent = fsm.InputState;
         }
 

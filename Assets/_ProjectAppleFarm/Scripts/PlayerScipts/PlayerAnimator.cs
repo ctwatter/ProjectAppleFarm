@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     public GameObject model;
-    public Animator animator => model.GetComponent<Animator>();
+    private Animator animator => model.GetComponent<Animator>();
     private PlayerController playerController => GetComponent<PlayerController>();
 
     public void attackBegin()
@@ -59,6 +59,17 @@ public class PlayerAnimator : MonoBehaviour
     {
         this.attackBegin();
         animator.SetTrigger("Attack2");
+    }
+
+    public void SetDamaged()
+    {
+        // HERMAN TODO: Fill in actual animation later
+        animator.SetTrigger("isHit");
+    }
+
+    public bool IsDamaged()
+    {
+        return true;
     }
 
     public void Dash()

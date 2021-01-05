@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public PlayerStateMachine playerStateMachine => GetComponent<PlayerStateMachine>();
     public PlayerAnimator animator => GetComponent<PlayerAnimator>();
 
+    // HERMAN TODO: Do away with these variables
     public bool isAttackAnim = false; 
     public bool isFollowThroughAnim = false;
 
@@ -27,11 +28,11 @@ public class PlayerController : MonoBehaviour
     public int dashCount = 0;
     public bool isDashing = false;
 
-    Rigidbody rb;
-    Vector2 movementVel;
-    CharacterController charController;
+    private Rigidbody rb;
+    private Vector2 movementVel;
+    private CharacterController charController;
     public Vector3 v3Vel;
-    Vector3 gravity;
+    private Vector3 gravity;
 
     public float crouchModifier = 1;
     public bool playerBasicAttack;
@@ -80,7 +81,8 @@ public class PlayerController : MonoBehaviour
         {
             v3Vel = new Vector3(movementVel.x, 0, movementVel.y);
             
-            if(isoMovement){
+            if(isoMovement)
+            {
                 v3Vel = Quaternion.Euler(0, -45, 0) * v3Vel;
             }
         }
@@ -88,11 +90,16 @@ public class PlayerController : MonoBehaviour
       
         
 
-        if(!charController.isGrounded) {
+        if(!charController.isGrounded)
+        {
             gravity += Physics.gravity * Time.deltaTime;
-        } else{
+        }
+        else
+        {
             gravity = Vector3.zero;
         }
+
+        // HERMAN TODO: Break up massive math formula into different variables
         currSpeed = (Mathf.Abs(v3Vel.x) + Mathf.Abs(v3Vel.z)) / 2 * speed * Time.deltaTime * movementModifier * crouchModifier;
         var movementVector = v3Vel * speed * Time.deltaTime * movementModifier * crouchModifier;
         charController.Move(movementVector);
@@ -103,13 +110,17 @@ public class PlayerController : MonoBehaviour
         animator.Move(movementVector);
     }
 
-    public void doRotation(float rotationModifier){
+    public void doRotation(float rotationModifier)
+    {
         v3Vel = new Vector3(movementVel.x, 0, movementVel.y);
 
         
 
-        if(movementVel != Vector2.zero) {
-            if(isoMovement){
+        if(movementVel != Vector2.zero)
+        {
+            if(isoMovement)
+            {
+                // HERMAN TODO: make consistent with camera; not hardcoded angle
                 v3Vel = Quaternion.Euler(0, -45, 0) * v3Vel;
             }
             transform.forward = Vector3.Slerp(transform.forward, v3Vel, Time.deltaTime * turnSpeed * rotationModifier);
@@ -121,7 +132,8 @@ public class PlayerController : MonoBehaviour
         transform.forward = vec;
     }
 
-    void OnMovement(InputValue value){
+    void OnMovement(InputValue value)
+    {
         //Debug.Log(value.Get<Vector2>());
         movementVel = value.Get<Vector2>();
         movementVel.Normalize();
@@ -130,22 +142,28 @@ public class PlayerController : MonoBehaviour
 
     //by Jamo
     //allow for no more than two dashes in rapid succession
-    void OnInteract(){ //pressing dash button       
-        if(nearInteractable) {
+    void OnInteract() //pressing dash button  
+    {     
+        if(nearInteractable)
+        {
             playerInteract = true;
-            if(interactableObject != null){
+            if(interactableObject != null)
+            {
                 Debug.Log("picked up item");
                 Destroy(interactableObject);
                 nearInteractable = false;
             }
-            else if (wildCreature != null) {
+            else if (wildCreature != null)
+            {
                 wildCreature.GetComponent<CreatureAIContext>().isWild = false;
                 currCreature = wildCreature;
                 currCreatureContext = currCreature.GetComponent<CreatureAIContext>();
                 //FIX LATER --- NEED TO DISABLE NOTICE/INTERACT COLLIDERS
                 nearInteractable = false;
             }
-        } else {
+        }
+        else
+        {
             if(Time.time > dashStart + dashDelay)//cant dash until more time than dash delay has elapsed,
             {
                 //takes dash start time
@@ -163,17 +181,19 @@ public class PlayerController : MonoBehaviour
                  
     }
 
-    void OnFruitSpawn(){
+    void OnFruitSpawn()
+    {
         var temp = Instantiate(fruit, transform.position, Quaternion.identity);
         temp.GetComponent<Fruit>().droppedByPlayer = true;
     }
 
-    void OnAttack1(){
+    void OnAttack1()
+    {
         playerBasicAttack = true;
     }
 
-    void OnHeavyAttack(InputValue value){
-        
+    void OnHeavyAttack(InputValue value)
+    {
         float val = value.Get<float>();
 
         if(val == 1) playerHeavyAttack = true;
@@ -182,11 +202,13 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void OnAttack2(){
+    void OnAttack2()
+    {
         currCreatureContext.isAbilityTriggered = true;
         currCreatureContext.lastTriggeredAbility = 0;
     }  
-    void OnAttack3(){
+    void OnAttack3()
+    {
         currCreatureContext.isAbilityTriggered = true;
         currCreatureContext.lastTriggeredAbility = 1;
     }

@@ -10,6 +10,7 @@ namespace PlayerState
     {
         public ComboAttackState( PlayerStateMachine _fsm ) : base( _fsm )
         {
+            name = "Combo Attack";
             parent = fsm.InputState;
         }
 
