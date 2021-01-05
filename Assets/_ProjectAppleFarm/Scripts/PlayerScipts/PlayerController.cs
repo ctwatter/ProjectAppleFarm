@@ -21,12 +21,14 @@ public class PlayerController : MonoBehaviour
     public float speed = 1f;
     public float turnSpeed = 0.15f;
 
+    //*******Dash Variables*******
     public float dashSpeed;
     public float dashTime;
     public float dashDelay = 1.2f;
     public float dashStart = 2;
     public int dashCount = 0;
     public bool isDashing = false;
+    //****************************
 
     private Rigidbody rb;
     private Vector2 movementVel;
@@ -36,10 +38,11 @@ public class PlayerController : MonoBehaviour
 
     public float crouchModifier = 1;
     public bool playerBasicAttack;
-    public bool playerDash;
-    public bool playerInteract;
+    public bool playerDash;//Dash and interact are used for same button press, possibly refactor?
+    public bool playerInteract;//^
     public bool playerHeavyAttack;
     public bool nearInteractable = false;
+
     public GameObject wildCreature = null;
     public GameObject currCreature;
     public GameObject interactableObject;
@@ -60,20 +63,7 @@ public class PlayerController : MonoBehaviour
        
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        //character controller 
-        //doMovement(1f);
-        //doRotation(1f);
-        //manual movement
-        // rb.velocity = new Vector3(movementVel.x * speed, rb.velocity.y, movementVel.y * speed );
-        // // Quaternion lookRot = new Quaternion(Quaternion.LookRotation(movementVel).x ,Quaternion.LookRotation(movementVel).y ,0, Quaternion.LookRotation(movementVel).w);
-        // // transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, turnSpeed);
-        // if(rb.velocity != Vector3.zero)
-        //     transform.rotation = Quaternion.LookRotation(rb.velocity);
-    }
-
+   
 
     public void doMovement(float movementModifier){
         
@@ -88,8 +78,6 @@ public class PlayerController : MonoBehaviour
         }
        
       
-        
-
         if(!charController.isGrounded)
         {
             gravity += Physics.gravity * Time.deltaTime;
@@ -105,16 +93,12 @@ public class PlayerController : MonoBehaviour
         charController.Move(movementVector);
         charController.Move(gravity * Time.deltaTime);
 
-    
-
         animator.Move(movementVector);
     }
 
     public void doRotation(float rotationModifier)
     {
         v3Vel = new Vector3(movementVel.x, 0, movementVel.y);
-
-        
 
         if(movementVel != Vector2.zero)
         {
@@ -140,10 +124,13 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    
+
+    //********* INPUT FUNCTIONS **********
     //by Jamo
-    //allow for no more than two dashes in rapid succession
     void OnInteract() //pressing dash button  
     {     
+        //If near something interactable, this overides the dash
         if(nearInteractable)
         {
             playerInteract = true;
@@ -162,7 +149,7 @@ public class PlayerController : MonoBehaviour
                 nearInteractable = false;
             }
         }
-        else
+        else//Not near interactable, dash instead
         {
             if(Time.time > dashStart + dashDelay)//cant dash until more time than dash delay has elapsed,
             {
@@ -177,21 +164,18 @@ public class PlayerController : MonoBehaviour
                 playerDash = true;          
                 
             }   
-        }
-                 
+        }                 
     }
 
-    void OnFruitSpawn()
-    {
-        var temp = Instantiate(fruit, transform.position, Quaternion.identity);
-        temp.GetComponent<Fruit>().droppedByPlayer = true;
-    }
-
+   
+    //Slash (X)
     void OnAttack1()
     {
         playerBasicAttack = true;
     }
 
+
+    //Holding X
     void OnHeavyAttack(InputValue value)
     {
         float val = value.Get<float>();
@@ -202,17 +186,22 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    //creature ability 1 (Y)
     void OnAttack2()
     {
         currCreatureContext.isAbilityTriggered = true;
         currCreatureContext.lastTriggeredAbility = 0;
     }  
+
+
+    //creature ability 2 (B)
     void OnAttack3()
     {
         currCreatureContext.isAbilityTriggered = true;
         currCreatureContext.lastTriggeredAbility = 1;
     }
-
+    
+    //*********** END INPUT FXNS **************************
 
 
     public bool getIsAttackAnim()
@@ -241,6 +230,12 @@ public class PlayerController : MonoBehaviour
         } else {
             crouchModifier = 1f;
         }
+    }
+
+     void OnFruitSpawn()
+    {
+        var temp = Instantiate(fruit, transform.position, Quaternion.identity);
+        temp.GetComponent<Fruit>().droppedByPlayer = true;
     }
     
 }
