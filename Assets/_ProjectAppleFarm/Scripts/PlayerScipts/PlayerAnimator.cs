@@ -43,22 +43,10 @@ public class PlayerAnimator : MonoBehaviour
         animator.ResetTrigger("Attack2");
     }
 
-    public void Attack0()
+    public void Attack( int num )
     {
         this.attackBegin();
-        animator.SetTrigger("Attack0");
-    }
-
-    public void Attack1()
-    {
-        this.attackBegin();
-        animator.SetTrigger("Attack1");
-    }
-
-    public void Attack2()
-    {
-        this.attackBegin();
-        animator.SetTrigger("Attack2");
+        animator.SetTrigger("Attack" + num.ToString() );
     }
 
     public void SetDamaged()
