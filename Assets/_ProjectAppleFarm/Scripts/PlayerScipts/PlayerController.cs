@@ -23,13 +23,14 @@ public class PlayerController : MonoBehaviour
     public bool isoMovement = true;
 
     public GameObject fruit;
-    public PlayerStateMachine playerStateMachine => GetComponent<PlayerStateMachine>();
+    public PlayerStateMachine fsm => GetComponent<PlayerStateMachine>();
     public PlayerAnimator animator => GetComponent<PlayerAnimator>();
 
     public float speed = 1f;
     public float turnSpeed = 0.15f;
 
     //*******Dash Variables*******
+    public Vector3 facingDirection;
     public float dashSpeed;
     public float dashTime;
     public float dashDelay = 1.2f;
@@ -86,10 +87,6 @@ public class PlayerController : MonoBehaviour
 
     public void doMovement(float movementModifier)
     {
-        // if(!isDashing)
-        // {                  
-        // }
-       
         if(!charController.isGrounded)
         {
             gravity += Physics.gravity * Time.deltaTime;
@@ -130,10 +127,13 @@ public class PlayerController : MonoBehaviour
 
         inputs.moveDirection = new Vector3(inputs.rawDirection.x, 0, inputs.rawDirection.y);
 
+
         if(isoMovement)
         {
             inputs.moveDirection = Quaternion.Euler(0, camera.transform.eulerAngles.y, 0) * inputs.moveDirection;
         }
+
+        if(inputs.moveDirection != Vector3.zero) facingDirection = inputs.moveDirection;
         
     }
 

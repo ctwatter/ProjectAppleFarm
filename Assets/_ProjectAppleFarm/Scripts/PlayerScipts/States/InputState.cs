@@ -27,6 +27,12 @@ namespace PlayerState
                 SetState( fsm.Damaged );
                 return;
             }
+            
+            if(player.inputs.dash)
+            {
+                SetState( fsm.Dash );
+                return;
+            }
         }
 
         public override void OnStateFixedUpdate()
