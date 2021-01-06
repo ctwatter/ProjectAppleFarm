@@ -67,7 +67,7 @@ namespace PlayerState
 
                 if(!animator.isFollowThrough)
                 {
-                    animator.resetAllAttackAnims();
+                    animator.ResetAllAttackAnims();
 
                     SetState(fsm.IdleMove);
                     return;

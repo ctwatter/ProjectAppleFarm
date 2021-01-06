@@ -14,25 +14,25 @@ public class PlayerAnimator : MonoBehaviour
     public bool isFollowThrough { get; private set; }
 
     // Triggered by event
-    public void attackDone()
+    public void AttackDone()
     {
         isAttack = false;
     }
 
     // Triggered by event
-    public void followThroughDone()
+    public void FollowThroughDone()
     {
         isAttack = false;
         isFollowThrough = false;
     }
 
-    public void resetAttackAnim()
+    public void ResetAttackAnim()
     {
         isAttack = false;
         isFollowThrough = false;
     }
 
-    public void resetAllAttackAnims()
+    public void ResetAllAttackAnims()
     {
         isAttack = false;
         isFollowThrough = false;
@@ -90,7 +90,7 @@ public class PlayerAnimator : MonoBehaviour
 
     public void OnIdle()
     {
-        this.resetAttackAnim();
+        this.ResetAttackAnim();
 
         animator.ResetTrigger("Attack0");
         animator.ResetTrigger("Attack1");
