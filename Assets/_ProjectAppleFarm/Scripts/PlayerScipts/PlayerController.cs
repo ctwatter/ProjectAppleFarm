@@ -80,6 +80,8 @@ public class PlayerController : MonoBehaviour
         //rb = GetComponent<Rigidbody>();
         charController = GetComponent<CharacterController>();
         dashStart = Time.time;
+        animator.ResetAllAttackAnims();
+        
        
     }
 
