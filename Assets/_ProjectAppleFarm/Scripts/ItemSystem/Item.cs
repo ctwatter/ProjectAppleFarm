@@ -15,7 +15,7 @@ public class Item  : ScriptableObject
     public bool isIndestructible = false;     //    Optional checkbox to prevent an item from being destroyed by the player (unimplemented)
     public bool isQuestItem = false;          //    Examples of additional information that could be held in InventoryItem
     public bool isStackable = false;
-    public bool CreatureFood = false;
+    public bool creatureFood = false;
 
     public bool destroyOnUse = false;         // do we want it to be destroyed?
     public float encumbranceValue = 0;        //    Examples of additional information that could be held in InventoryItem  !!!

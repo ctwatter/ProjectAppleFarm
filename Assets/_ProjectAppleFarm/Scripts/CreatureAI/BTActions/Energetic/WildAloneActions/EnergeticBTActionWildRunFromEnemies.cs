@@ -11,7 +11,8 @@ public class EnergeticBTActionWildRunFromEnemies : BTLeaf
     private float angularSpeed = 960f; //deg/s
     private float acceleration = 150f; //max accel units/sec^2
 
-    public EnergeticBTActionWildRunFromEnemies(string _name, CreatureAIContext _context) : base(_name, _context) {
+    public EnergeticBTActionWildRunFromEnemies(string _name, CreatureAIContext _context) : base(_name, _context)
+    {
         name = _name;
         context = _context;
 
@@ -38,7 +39,8 @@ public class EnergeticBTActionWildRunFromEnemies : BTLeaf
 
     public override NodeState Evaluate()
     {
-        if(!ranOnEnter){
+        if(!ranOnEnter)
+        {
             OnEnter();
         }
 
@@ -50,7 +52,9 @@ public class EnergeticBTActionWildRunFromEnemies : BTLeaf
             // creature escaped player
             OnExit();
             return NodeState.SUCCESS;
-        } else {
+        }
+        else
+        {
             // Still trying to get to player
             return NodeState.RUNNING;
         }

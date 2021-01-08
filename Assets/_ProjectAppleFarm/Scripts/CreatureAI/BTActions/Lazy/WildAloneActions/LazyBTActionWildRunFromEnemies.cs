@@ -11,7 +11,8 @@ public class LazyBTActionWildRunFromEnemies : BTLeaf
     private float angularSpeed = 500f; //deg/s
     private float acceleration = 50f; //max accel units/sec^2
 
-    public LazyBTActionWildRunFromEnemies(string _name, CreatureAIContext _context) : base(_name, _context) {
+    public LazyBTActionWildRunFromEnemies(string _name, CreatureAIContext _context) : base(_name, _context) 
+    {
         name = _name;
         context = _context;
 
@@ -38,7 +39,8 @@ public class LazyBTActionWildRunFromEnemies : BTLeaf
 
     public override NodeState Evaluate()
     {
-        if(!ranOnEnter){
+        if(!ranOnEnter)
+        {
             OnEnter();
         }
 
@@ -46,11 +48,14 @@ public class LazyBTActionWildRunFromEnemies : BTLeaf
         position_difference.Normalize();
         agent.destination = context.creatureTransform.position + position_difference * 10;
 
-        if(Vector3.Distance(context.targetEnemy.transform.position, context.creatureTransform.position) > 10){
+        if(Vector3.Distance(context.targetEnemy.transform.position, context.creatureTransform.position) > 10)
+        {
             // creature escaped player
             OnExit();
             return NodeState.SUCCESS;
-        } else {
+        } 
+        else 
+        {
             // Still trying to get to player
             return NodeState.RUNNING;
         }

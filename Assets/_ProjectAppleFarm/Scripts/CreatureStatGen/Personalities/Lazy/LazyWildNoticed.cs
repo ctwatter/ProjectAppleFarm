@@ -6,7 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LazyWildNoticed", menuName = "ScriptableObjects/BTSubtrees/Lazy/WildNoticed")]
 public class LazyWildNoticed : BTSubtree
 {
-    public override BTSequence BuildSequenceSubtree(CreatureAIContext context) {
+    public override BTSequence BuildSequenceSubtree(CreatureAIContext context) 
+    {
         //DEFAULT BT SUBTREE
         #region WILD PLAYER
             #region wild player scary

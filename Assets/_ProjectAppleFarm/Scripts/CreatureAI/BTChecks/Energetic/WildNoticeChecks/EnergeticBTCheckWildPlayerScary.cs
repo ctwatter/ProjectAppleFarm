@@ -15,9 +15,11 @@ public class EnergeticBTCheckWildPlayerScary : BTChecker
     public override NodeState Evaluate()
     {
         if (context.player.GetComponent<PlayerController>().currSpeed > context.playerSpeedToScare * .7)
+        {
             //we could expand on this check; rn it just checks if player is moving too fast for the creature
             //maybe make it dependent on creature personality?
             return NodeState.SUCCESS;
+        }
         return NodeState.FAILURE;
     }
 }

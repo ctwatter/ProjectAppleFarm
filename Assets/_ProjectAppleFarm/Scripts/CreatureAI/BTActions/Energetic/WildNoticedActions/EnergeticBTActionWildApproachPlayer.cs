@@ -11,7 +11,8 @@ public class EnergeticBTActionWildApproachPlayer : BTLeaf
     private float angularSpeed = 960f; //deg/s
     private float acceleration = 150f; //max accel units/sec^2
 
-    public EnergeticBTActionWildApproachPlayer(string _name, CreatureAIContext _context) : base(_name, _context) {
+    public EnergeticBTActionWildApproachPlayer(string _name, CreatureAIContext _context) : base(_name, _context) 
+    {
         name = _name;
         context = _context;
 
@@ -38,7 +39,8 @@ public class EnergeticBTActionWildApproachPlayer : BTLeaf
 
     public override NodeState Evaluate()
     {
-        if(!ranOnEnter){
+        if(!ranOnEnter)
+        {
             OnEnter();
         }
         //Vector3 desiredLook = new Vector3(context.player.transform.position.x, context.creatureTransform.transform.position.y, context.player.transform.position.z);
@@ -46,15 +48,20 @@ public class EnergeticBTActionWildApproachPlayer : BTLeaf
         //context.doMovement(context.CD.moveSpeed);
         agent.destination = context.player.transform.position;
 
-        if(!context.isNoticed){
+        if(!context.isNoticed)
+        {
             // Player too far away
             OnExit();
             return NodeState.FAILURE;
-        } else if(Vector3.Distance(context.creatureTransform.position, context.player.transform.position) < 2f){
+        } 
+        else if(Vector3.Distance(context.creatureTransform.position, context.player.transform.position) < 2f)
+        {
             // Made it to player
             OnExit();
             return NodeState.SUCCESS;
-        } else{
+        }
+        else
+        {
             // Still trying to get to player
             return NodeState.RUNNING;
         }

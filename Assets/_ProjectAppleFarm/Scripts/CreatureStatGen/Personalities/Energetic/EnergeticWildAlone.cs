@@ -6,7 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnergeticWildAlone", menuName = "ScriptableObjects/BTSubtrees/Energetic/WildAlone")]
 public class EnergeticWildAlone : BTSubtree
 {
-    public override BTSelector BuildSelectorSubtree(CreatureAIContext context) {
+    public override BTSelector BuildSelectorSubtree(CreatureAIContext context) 
+    {
         #region WILD NO PLAYER
             List<BTNode> WildNoPlayerList = new List<BTNode>();
 

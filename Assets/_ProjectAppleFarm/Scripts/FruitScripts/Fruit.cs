@@ -7,13 +7,15 @@ public class Fruit : MonoBehaviour
 {
     public Item item;
     
-    Fruit(bool playerDropped){
+    Fruit(bool playerDropped)
+    {
         droppedByPlayer = playerDropped;
     }
 
     public bool droppedByPlayer = false;
 
-    public void destroy(){
+    public void Destroy()
+    {
         Destroy(gameObject);
     }
 }

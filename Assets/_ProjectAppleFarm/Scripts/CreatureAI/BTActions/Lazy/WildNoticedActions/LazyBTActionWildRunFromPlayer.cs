@@ -11,7 +11,8 @@ public class LazyBTActionWildRunFromPlayer : BTLeaf
     private float angularSpeed = 500f; //deg/s
     private float acceleration = 50f; //max accel units/sec^2
 
-    public LazyBTActionWildRunFromPlayer(string _name, CreatureAIContext _context) : base(_name, _context) {
+    public LazyBTActionWildRunFromPlayer(string _name, CreatureAIContext _context) : base(_name, _context) 
+    {
         name = _name;
         context = _context;
 
@@ -39,7 +40,8 @@ public class LazyBTActionWildRunFromPlayer : BTLeaf
 
     public override NodeState Evaluate()
     {
-        if(!ranOnEnter){
+        if(!ranOnEnter)
+        {
             OnEnter();
         }
         //Vector3 desiredLook = new Vector3(context.player.transform.position.x, context.creatureTransform.transform.position.y, context.player.transform.position.z);
@@ -50,15 +52,18 @@ public class LazyBTActionWildRunFromPlayer : BTLeaf
         position_difference.Normalize();
         agent.destination = context.creatureTransform.position + position_difference * 10;
 
-        if(Vector3.Distance(context.player.transform.position, context.creatureTransform.position) > 10){
+        if(Vector3.Distance(context.player.transform.position, context.creatureTransform.position) > 10)
+        {
             // creature escaped player
             OnExit();
             return NodeState.SUCCESS;
         }
-        else if( context.player.GetComponent<PlayerController>().currSpeed <= context.playerSpeedToScare ){
+        else if( context.player.GetComponent<PlayerController>().currSpeed <= context.playerSpeedToScare )
+        {
             return NodeState.FAILURE;
         }
-        else {
+        else 
+        {
             // Still trying to get to player
             return NodeState.RUNNING;
         }

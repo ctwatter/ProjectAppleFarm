@@ -6,7 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnergeticWildNoticed", menuName = "ScriptableObjects/BTSubtrees/Energetic/WildNoticed")]
 public class EnergeticWildNoticed : BTSubtree
 {
-    public override BTSequence BuildSequenceSubtree(CreatureAIContext context) {
+    public override BTSequence BuildSequenceSubtree(CreatureAIContext context) 
+    {
         //DEFAULT BT SUBTREE
         #region WILD PLAYER
             #region wild player scary

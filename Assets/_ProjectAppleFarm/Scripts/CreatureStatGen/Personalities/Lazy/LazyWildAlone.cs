@@ -6,7 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LazyWildAlone", menuName = "ScriptableObjects/BTSubtrees/Lazy/WildAlone")]
 public class LazyWildAlone : BTSubtree
 {
-    public override BTSelector BuildSelectorSubtree(CreatureAIContext context) {
+    public override BTSelector BuildSelectorSubtree(CreatureAIContext context) 
+    {
         #region WILD NO PLAYER
             List<BTNode> WildNoPlayerList = new List<BTNode>();
 

@@ -10,7 +10,8 @@ public class LazyBTActionWildWanderInLocation : BTLeaf
     private float angularSpeed = 500f; //deg/s
     private float acceleration = 50f; //max accel units/sec^2
 
-    public LazyBTActionWildWanderInLocation (string _name, CreatureAIContext _context) : base(_name, _context) {
+    public LazyBTActionWildWanderInLocation (string _name, CreatureAIContext _context) : base(_name, _context) 
+    {
         name = _name;
         context = _context;
         agent = context.agent;
@@ -27,13 +28,16 @@ public class LazyBTActionWildWanderInLocation : BTLeaf
         context.wanderDestination = context.wildStartingLocation;
         //this is just to make sure the creature doesn't walk too short of a distance
         //might have to rework this in the future but eh, works now
-        while (Vector3.Distance(context.wanderDestination, context.creatureTransform.position) < 4f) {
+        while (Vector3.Distance(context.wanderDestination, context.creatureTransform.position) < 4f) 
+        {
             context.wanderDestination = context.wildStartingLocation + (Random.insideUnitSphere * context.wanderRadius);
             //this stuff *might* run a bit slow, so we might have to edit this later
             //but basically finds the closest point on the navmesh to the random location
             NavMeshHit hit;
             if (NavMesh.SamplePosition(context.wanderDestination, out hit, context.wanderRadius, NavMesh.AllAreas))
+            {
                 context.wanderDestination = hit.position;
+            }
         }
         Debug.Log(Vector3.Distance(context.wanderDestination, context.creatureTransform.position));
     }
@@ -50,20 +54,26 @@ public class LazyBTActionWildWanderInLocation : BTLeaf
     {
         //if idling, don't run the rest of the function
         if (context.wanderIdling)
+        {
             return NodeState.FAILURE;
+        }
 
-        if(!ranOnEnter){
+        if(!ranOnEnter)
+        {
             OnEnter();
         }
 
         //agent.destination = context.player.transform.position
         agent.destination = context.wanderDestination;
 
-        if(Vector3.Distance(context.wanderDestination, context.creatureTransform.position) <= 2f){
+        if(Vector3.Distance(context.wanderDestination, context.creatureTransform.position) <= 2f)
+        {
             // creature got to wander destination
             OnExit();
             return NodeState.SUCCESS;
-        } else {
+        }
+        else
+        {
             // still wandering
             return NodeState.RUNNING;
         }

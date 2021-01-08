@@ -5,7 +5,8 @@ using System.Collections.Generic;
 
 //Eugene
 
-public class ItemEditor : EditorWindow {
+public class ItemEditor : EditorWindow 
+{
 
     public ItemDatabase ItemDatabase;
     private int viewIndex = 1;
@@ -16,7 +17,8 @@ public class ItemEditor : EditorWindow {
         EditorWindow.GetWindow (typeof (ItemEditor));
     }
 
-    void  OnEnable () {
+    void  OnEnable () 
+    {
         if(EditorPrefs.HasKey("ObjectPath")) 
         {
             string objectPath = EditorPrefs.GetString("ObjectPath");
@@ -25,10 +27,12 @@ public class ItemEditor : EditorWindow {
 
     }
 
-    void  OnGUI () {
+    void  OnGUI () 
+    {
         GUILayout.BeginHorizontal ();
         GUILayout.Label ("Inventory Item Editor", EditorStyles.boldLabel);
-        if (ItemDatabase != null) {
+        if (ItemDatabase != null) 
+        {
             if (GUILayout.Button("Show Item List")) 
             {
                 EditorUtility.FocusProjectWindow();
@@ -60,8 +64,8 @@ public class ItemEditor : EditorWindow {
             }
             GUILayout.EndHorizontal ();
         }
-
-            GUILayout.Space(20);
+        
+        GUILayout.Space(20);
 
         if (ItemDatabase != null) 
         {
@@ -96,7 +100,9 @@ public class ItemEditor : EditorWindow {
 
             GUILayout.EndHorizontal ();
             if (ItemDatabase.itemList == null)
+            {
                 Debug.Log("Inventory is empty");
+            }
             if (ItemDatabase.itemList.Count > 0) 
             {
                 GUILayout.BeginHorizontal ();
@@ -129,7 +135,7 @@ public class ItemEditor : EditorWindow {
                 GUILayout.Space(10);
 
                 GUILayout.BeginHorizontal ();
-                ItemDatabase.itemList[viewIndex-1].CreatureFood = (bool)EditorGUILayout.Toggle("Food for Creature ", ItemDatabase.itemList[viewIndex-1].CreatureFood , GUILayout.ExpandWidth(false));
+                ItemDatabase.itemList[viewIndex-1].creatureFood = (bool)EditorGUILayout.Toggle("Food for Creature ", ItemDatabase.itemList[viewIndex-1].creatureFood , GUILayout.ExpandWidth(false));
                 GUILayout.EndHorizontal ();
 
                 GUILayout.Space(10);
@@ -137,7 +143,6 @@ public class ItemEditor : EditorWindow {
                 GUILayout.BeginHorizontal ();
                 ItemDatabase.itemList[viewIndex-1].spawnPoints = EditorGUILayout.Vector3Field("Spawn Position", ItemDatabase.itemList[viewIndex-1].spawnPoints , GUILayout.ExpandWidth(false));;
                 GUILayout.EndHorizontal ();
-
             } 
             else 
             {
@@ -173,8 +178,11 @@ public class ItemEditor : EditorWindow {
             string relPath = absPath.Substring(Application.dataPath.Length - "Assets".Length);
             ItemDatabase = AssetDatabase.LoadAssetAtPath (relPath, typeof(ItemDatabase)) as ItemDatabase;
             if (ItemDatabase.itemList == null)
+            {
                 ItemDatabase.itemList = new List<Item>();
-            if (ItemDatabase) {
+            }
+            if (ItemDatabase) 
+            {
                 EditorPrefs.SetString("ObjectPath", relPath);
             }
         }

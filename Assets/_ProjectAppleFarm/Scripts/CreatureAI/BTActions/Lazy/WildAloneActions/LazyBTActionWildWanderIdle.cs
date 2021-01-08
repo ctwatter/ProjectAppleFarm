@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class LazyBTActionWildWanderIdle : BTLeaf
 {
-    public LazyBTActionWildWanderIdle(string _name, CreatureAIContext _context) : base(_name, _context) {
+    public LazyBTActionWildWanderIdle(string _name, CreatureAIContext _context) : base(_name, _context) 
+    {
         name = _name;
         context = _context;
     }
@@ -28,13 +29,15 @@ public class LazyBTActionWildWanderIdle : BTLeaf
 
     public override NodeState Evaluate()
     {
-        if(!ranOnEnter){
+        if(!ranOnEnter)
+        {
             OnEnter();
         }
 
         context.doMovement(0);
         context.wanderIdleTimer += Time.deltaTime;
-        if (context.wanderIdleTimer >= context.wanderIdleDuration) {
+        if (context.wanderIdleTimer >= context.wanderIdleDuration) 
+        {
             OnExit();
             return NodeState.SUCCESS;
         }

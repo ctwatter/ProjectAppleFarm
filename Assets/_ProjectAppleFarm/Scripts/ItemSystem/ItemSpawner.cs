@@ -13,7 +13,9 @@ public class ItemSpawner : MonoBehaviour
     void Start()
     {
         if (playerObj == null)
+        {
              playerObj = GameObject.Find("Player");
+        }
         SpawnEntities();
     }
 
