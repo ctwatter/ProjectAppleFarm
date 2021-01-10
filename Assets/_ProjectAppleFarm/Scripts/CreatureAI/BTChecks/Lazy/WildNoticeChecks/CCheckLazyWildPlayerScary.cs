@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LazyBTCheckWildPlayerScary : BTChecker
+public class CCheckLazyWildPlayerScary : BTChecker
 {
 
-    public LazyBTCheckWildPlayerScary(string _name, CreatureAIContext _context) : base(_name, _context)
+    public CCheckLazyWildPlayerScary(string _name, CreatureAIContext _context) : base(_name, _context)
     {
         name = _name;
         context = _context;

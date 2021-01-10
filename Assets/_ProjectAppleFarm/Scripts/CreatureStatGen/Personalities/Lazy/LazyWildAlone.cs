@@ -13,8 +13,8 @@ public class LazyWildAlone : BTSubtree
 
             #region wild enemies nearby
                 List<BTNode> WildEnemiesList = new List<BTNode>();
-                LazyBTCheckWildEnemiesInRange wildEnemies = new LazyBTCheckWildEnemiesInRange("Are Enemies Nearby?", context);
-                LazyBTActionWildRunFromEnemies wildRunEnemy = new LazyBTActionWildRunFromEnemies("Run From Enemies", context);
+                CCheckLazyWildEnemiesInRange wildEnemies = new CCheckLazyWildEnemiesInRange("Are Enemies Nearby?", context);
+                CActionLazyWildRunFromEnemies wildRunEnemy = new CActionLazyWildRunFromEnemies("Run From Enemies", context);
                 WildEnemiesList.Add(wildEnemies);
                 WildEnemiesList.Add(wildRunEnemy);
                 BTSequence wildEnemySequence = new BTSequence("Wild Enemies Nearby", WildEnemiesList);
@@ -22,8 +22,8 @@ public class LazyWildAlone : BTSubtree
 
             #region wild wander
                 List<BTNode> WildWanderList = new List<BTNode>();
-                LazyBTActionWildWanderIdle wildWanderIdle = new LazyBTActionWildWanderIdle("Wander Idle", context);
-                LazyBTActionWildWanderInLocation wildWander = new LazyBTActionWildWanderInLocation("Wander", context);
+                CActionLazyWildWanderIdle wildWanderIdle = new CActionLazyWildWanderIdle("Wander Idle", context);
+                CActionLazyWanderInLocation wildWander = new CActionLazyWanderInLocation("Wander", context);
                 WildWanderList.Add(wildWanderIdle);
                 WildWanderList.Add(wildWander);
                 BTSelector wildWanderSelector = new BTSelector("Wild Wander", WildWanderList);

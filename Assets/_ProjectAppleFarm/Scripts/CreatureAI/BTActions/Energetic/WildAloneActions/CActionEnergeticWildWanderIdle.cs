@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LazyBTActionWildWanderIdle : BTLeaf
+public class CActionEnergeticWildWanderIdle : BTLeaf
 {
-    public LazyBTActionWildWanderIdle(string _name, CreatureAIContext _context) : base(_name, _context) 
+    public CActionEnergeticWildWanderIdle(string _name, CreatureAIContext _context) : base(_name, _context) 
     {
         name = _name;
         context = _context;
@@ -16,8 +16,7 @@ public class LazyBTActionWildWanderIdle : BTLeaf
         ranOnEnter = true;
         context.wanderIdleTimer = 0;
         context.wanderIdling = true;
-        context.wanderIdleDuration = Random.Range(4f, 6f);
-        context.animator.LayDown();
+        context.wanderIdleDuration = Random.Range(0.5f, 1f);
     }
 
     protected override void OnExit()

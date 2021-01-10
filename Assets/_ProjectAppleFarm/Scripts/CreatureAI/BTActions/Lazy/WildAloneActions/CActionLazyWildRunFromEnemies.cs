@@ -1,17 +1,17 @@
-// Enrico
+// Eugene
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class LazyBTActionWildApproachPlayer : BTLeaf
+public class CActionLazyWildRunFromEnemies : BTLeaf
 {
     private NavMeshAgent agent;
-    private float moveSpeed = 1f;
+    private float moveSpeed = 1.5f;
     private float angularSpeed = 500f; //deg/s
     private float acceleration = 50f; //max accel units/sec^2
 
-    public LazyBTActionWildApproachPlayer(string _name, CreatureAIContext _context) : base(_name, _context) 
+    public CActionLazyWildRunFromEnemies(string _name, CreatureAIContext _context) : base(_name, _context) 
     {
         name = _name;
         context = _context;
@@ -43,24 +43,18 @@ public class LazyBTActionWildApproachPlayer : BTLeaf
         {
             OnEnter();
         }
-        //Vector3 desiredLook = new Vector3(context.player.transform.position.x, context.creatureTransform.transform.position.y, context.player.transform.position.z);
-        //context.doLookAt(desiredLook);
-        //context.doMovement(context.CD.moveSpeed);
-        agent.destination = context.player.transform.position;
 
-        if(!context.isNoticed)
+        Vector3 position_difference = context.creatureTransform.position - context.targetEnemy.transform.position;
+        position_difference.Normalize();
+        agent.destination = context.creatureTransform.position + position_difference * 10;
+
+        if(Vector3.Distance(context.targetEnemy.transform.position, context.creatureTransform.position) > 10)
         {
-            // Player too far away
-            OnExit();
-            return NodeState.FAILURE;
-        } 
-        else if(Vector3.Distance(context.creatureTransform.position, context.player.transform.position) < 2f)
-        {
-            // Made it to player
+            // creature escaped player
             OnExit();
             return NodeState.SUCCESS;
-        }
-        else
+        } 
+        else 
         {
             // Still trying to get to player
             return NodeState.RUNNING;

@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class LazyBTActionWildRunFromEnemies : BTLeaf
+public class CActionEnergeticWildRunFromEnemies : BTLeaf
 {
     private NavMeshAgent agent;
-    private float moveSpeed = 1.5f;
-    private float angularSpeed = 500f; //deg/s
-    private float acceleration = 50f; //max accel units/sec^2
+    private float moveSpeed = 9f;
+    private float angularSpeed = 960f; //deg/s
+    private float acceleration = 150f; //max accel units/sec^2
 
-    public LazyBTActionWildRunFromEnemies(string _name, CreatureAIContext _context) : base(_name, _context) 
+    public CActionEnergeticWildRunFromEnemies(string _name, CreatureAIContext _context) : base(_name, _context)
     {
         name = _name;
         context = _context;
@@ -48,13 +48,12 @@ public class LazyBTActionWildRunFromEnemies : BTLeaf
         position_difference.Normalize();
         agent.destination = context.creatureTransform.position + position_difference * 10;
 
-        if(Vector3.Distance(context.targetEnemy.transform.position, context.creatureTransform.position) > 10)
-        {
+        if(Vector3.Distance(context.targetEnemy.transform.position, context.creatureTransform.position) > 10){
             // creature escaped player
             OnExit();
             return NodeState.SUCCESS;
-        } 
-        else 
+        }
+        else
         {
             // Still trying to get to player
             return NodeState.RUNNING;

@@ -12,8 +12,8 @@ public class EnergeticWildNoticed : BTSubtree
         #region WILD PLAYER
             #region wild player scary
                 List<BTNode> WildPlayerScaryList = new List<BTNode>();
-                EnergeticBTCheckWildPlayerScary playerScary = new EnergeticBTCheckWildPlayerScary("ENERGETIC Player Scary", context);
-                EnergeticBTActionWildRunFromPlayer runFromPlayer = new EnergeticBTActionWildRunFromPlayer("ENERGETIC Run From Player", context);
+                CCheckEnergeticWildPlayerScary playerScary = new CCheckEnergeticWildPlayerScary("ENERGETIC Player Scary", context);
+                CActionEnergeticWildRunFromPlayer runFromPlayer = new CActionEnergeticWildRunFromPlayer("ENERGETIC Run From Player", context);
                 WildPlayerScaryList.Add(playerScary);
                 WildPlayerScaryList.Add(runFromPlayer);
                 BTSequence playerScarySequence = new BTSequence("ENERGETIC Is Player Scary", WildPlayerScaryList);
@@ -21,8 +21,8 @@ public class EnergeticWildNoticed : BTSubtree
 
             #region wild approach player
                 List<BTNode> WildApproachPlayerList = new List<BTNode>();
-                EnergeticBTActionWildWanderInLocation wildWander = new EnergeticBTActionWildWanderInLocation("ENERGETIC Wander", context);
-                EnergeticBTActionWildWanderIdle wildWanderIdle = new EnergeticBTActionWildWanderIdle("ENERGETIC Wander Idle", context);
+                CActionEnergeticWildWanderInLocation wildWander = new CActionEnergeticWildWanderInLocation("ENERGETIC Wander", context);
+                CActionEnergeticWildWanderIdle wildWanderIdle = new CActionEnergeticWildWanderIdle("ENERGETIC Wander Idle", context);
                 WildApproachPlayerList.Add(playerScarySequence);
                 WildApproachPlayerList.Add(wildWander);
                 WildApproachPlayerList.Add(wildWanderIdle);

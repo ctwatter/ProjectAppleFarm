@@ -14,7 +14,7 @@ public class EnergeticWildAlone : BTSubtree
             #region wild enemies nearby
                 List<BTNode> WildEnemiesList = new List<BTNode>();
                 CCheckWildEnemiesInRange wildEnemies = new CCheckWildEnemiesInRange("ENERGETIC Are Enemies Nearby?", context);
-                EnergeticBTActionWildRunFromEnemies wildRunEnemy = new EnergeticBTActionWildRunFromEnemies("ENERGETIC Run From Enemies", context);
+                CActionEnergeticWildRunFromEnemies wildRunEnemy = new CActionEnergeticWildRunFromEnemies("ENERGETIC Run From Enemies", context);
                 WildEnemiesList.Add(wildEnemies);
                 WildEnemiesList.Add(wildRunEnemy);
                 BTSequence wildEnemySequence = new BTSequence("ENERGETIC Wild Enemies Nearby", WildEnemiesList);
@@ -22,8 +22,8 @@ public class EnergeticWildAlone : BTSubtree
 
             #region wild wander
                 List<BTNode> WildWanderList = new List<BTNode>();
-                EnergeticBTActionWildWanderInLocation wildWander = new EnergeticBTActionWildWanderInLocation("ENERGETIC Wander", context);
-                EnergeticBTActionWildWanderIdle wildWanderIdle = new EnergeticBTActionWildWanderIdle("ENERGETIC Wander Idle", context);
+                CActionEnergeticWildWanderInLocation wildWander = new CActionEnergeticWildWanderInLocation("ENERGETIC Wander", context);
+                CActionEnergeticWildWanderIdle wildWanderIdle = new CActionEnergeticWildWanderIdle("ENERGETIC Wander Idle", context);
                 WildWanderList.Add(wildWander);
                 WildWanderList.Add(wildWanderIdle);
                 BTSelector wildWanderSequence = new BTSelector("ENERGETIC Wild Wander", WildWanderList);

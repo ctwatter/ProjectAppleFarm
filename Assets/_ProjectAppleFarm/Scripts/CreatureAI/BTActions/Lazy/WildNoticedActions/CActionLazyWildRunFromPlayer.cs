@@ -4,18 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnergeticBTActionWildRunFromPlayer : BTLeaf
+public class CActionLazyWildRunFromPlayer : BTLeaf
 {
     private NavMeshAgent agent;
-    private float moveSpeed = 9f;
-    private float angularSpeed = 960f; //deg/s
-    private float acceleration = 150f; //max accel units/sec^2
+    private float moveSpeed = 2f;
+    private float angularSpeed = 500f; //deg/s
+    private float acceleration = 50f; //max accel units/sec^2
 
-    public EnergeticBTActionWildRunFromPlayer(string _name, CreatureAIContext _context) : base(_name, _context) 
+    public CActionLazyWildRunFromPlayer(string _name, CreatureAIContext _context) : base(_name, _context) 
     {
         name = _name;
         context = _context;
-
         agent = context.agent;
         //ObjToFollow = captCreature.followPoint;
         agent.autoBraking = true;

@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnergeticBTActionWildApproachPlayer : BTLeaf
+public class CActionEnergeticWildRunFromPlayer : BTLeaf
 {
     private NavMeshAgent agent;
     private float moveSpeed = 9f;
     private float angularSpeed = 960f; //deg/s
     private float acceleration = 150f; //max accel units/sec^2
 
-    public EnergeticBTActionWildApproachPlayer(string _name, CreatureAIContext _context) : base(_name, _context) 
+    public CActionEnergeticWildRunFromPlayer(string _name, CreatureAIContext _context) : base(_name, _context) 
     {
         name = _name;
         context = _context;
@@ -35,6 +35,7 @@ public class EnergeticBTActionWildApproachPlayer : BTLeaf
         ranOnEnter = false;
         context.doMovement(0f);
         agent.ResetPath();
+        context.wildStartingLocation = context.creatureTransform.position;
     }
 
     public override NodeState Evaluate()
@@ -46,25 +47,25 @@ public class EnergeticBTActionWildApproachPlayer : BTLeaf
         //Vector3 desiredLook = new Vector3(context.player.transform.position.x, context.creatureTransform.transform.position.y, context.player.transform.position.z);
         //context.doLookAt(desiredLook);
         //context.doMovement(context.CD.moveSpeed);
-        agent.destination = context.player.transform.position;
+        //agent.destination = context.backFollowPoint.transform.position;
+        Vector3 position_difference = context.creatureTransform.position - context.player.transform.position;
+        position_difference.Normalize();
+        agent.destination = context.creatureTransform.position + position_difference * 10;
 
-        if(!context.isNoticed)
+        if(Vector3.Distance(context.player.transform.position, context.creatureTransform.position) > 10)
         {
-            // Player too far away
-            OnExit();
-            return NodeState.FAILURE;
-        } 
-        else if(Vector3.Distance(context.creatureTransform.position, context.player.transform.position) < 2f)
-        {
-            // Made it to player
+            // creature escaped player
             OnExit();
             return NodeState.SUCCESS;
         }
-        else
+        else if( context.player.GetComponent<PlayerController>().currSpeed <= context.playerSpeedToScare )
+        {
+            return NodeState.FAILURE;
+        }
+        else 
         {
             // Still trying to get to player
             return NodeState.RUNNING;
         }
-        
     }
 }

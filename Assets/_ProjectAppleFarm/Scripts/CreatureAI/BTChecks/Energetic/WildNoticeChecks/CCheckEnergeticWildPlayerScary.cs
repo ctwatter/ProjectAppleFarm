@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnergeticBTCheckWildPlayerScary : BTChecker
+public class CCheckEnergeticWildPlayerScary : BTChecker
 {
 
-    public EnergeticBTCheckWildPlayerScary(string _name, CreatureAIContext _context) : base(_name, _context)
+    public CCheckEnergeticWildPlayerScary(string _name, CreatureAIContext _context) : base(_name, _context)
     {
         name = _name;
         context = _context;

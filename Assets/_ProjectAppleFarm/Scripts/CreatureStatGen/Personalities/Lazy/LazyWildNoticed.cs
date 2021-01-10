@@ -12,8 +12,8 @@ public class LazyWildNoticed : BTSubtree
         #region WILD PLAYER
             #region wild player scary
                 List<BTNode> WildPlayerScaryList = new List<BTNode>();
-                LazyBTCheckWildPlayerScary playerScary = new LazyBTCheckWildPlayerScary("Player Scary", context);
-                LazyBTActionWildRunFromPlayer runFromPlayer = new LazyBTActionWildRunFromPlayer("Run From Player", context);
+                CCheckLazyWildPlayerScary playerScary = new CCheckLazyWildPlayerScary("Player Scary", context);
+                CActionLazyWildRunFromPlayer runFromPlayer = new CActionLazyWildRunFromPlayer("Run From Player", context);
                 WildPlayerScaryList.Add(playerScary);
                 WildPlayerScaryList.Add(runFromPlayer);
                 BTSequence playerScarySequence = new BTSequence("Is Player Scary", WildPlayerScaryList);
@@ -21,8 +21,8 @@ public class LazyWildNoticed : BTSubtree
 
             #region wild approach player
                 List<BTNode> WildApproachPlayerList = new List<BTNode>();
-                LazyBTActionWildApproachPlayer approachPlayer = new LazyBTActionWildApproachPlayer("Approach Player", context);
-                LazyBTActionWildWanderIdle wildWanderIdle = new LazyBTActionWildWanderIdle("Wander Idle", context);
+                CActionLazyApproachPlayer approachPlayer = new CActionLazyApproachPlayer("Approach Player", context);
+                CActionLazyWildWanderIdle wildWanderIdle = new CActionLazyWildWanderIdle("Wander Idle", context);
                 WildApproachPlayerList.Add(playerScarySequence);
                 WildApproachPlayerList.Add(approachPlayer);
                 WildApproachPlayerList.Add(wildWanderIdle);
